@@ -1,0 +1,16 @@
+{"question_id": 450, "question": "Tarō Asō is the parent company of Hirofumi Nakasone.", "prediction": false, "correctness": "Correct"}
+{"question_id": 456, "question": "Dezmin Lewis's club is Buffalo Bills", "prediction": false, "correctness": "Error"}
+{"question_id": 465, "question": "Ted Washington, Sr. plays for History of the Houston Oilers.", "prediction": false, "correctness": "Error"}
+{"question_id": 467, "question": "Maurice Smith (American football) club is Atlanta Falcons.", "prediction": false, "correctness": "Error"}
+{"question_id": 473, "question": "Tourek Williams is in San Diego Chargers", "prediction": false, "correctness": "Error"}
+{"question_id": 474, "question": "Ralph Clayton plays for St. Louis Cardinals (NFL, 1960–1987)", "prediction": false, "correctness": "Error"}
+{"question_id": 480, "question": "The leader in Jewish Motifs International Film Festival is Mirosław Chojecki.", "prediction": false, "correctness": "Error"}
+{"question_id": 483, "question": "Philadelphia United German-Hungarians's leader is Werner Fricker.", "prediction": false, "correctness": "Error"}
+{"question_id": 487, "question": "The leader of Jewish Motifs International Film Festival is Mirosław Chojecki.", "prediction": false, "correctness": "Error"}
+{"question_id": 450, "question": "Tarō Asō is the parent company of Hirofumi Nakasone.", "prediction": false, "correctness": "Correct"}
+{"question_id": 456, "question": "Dezmin Lewis's club is Buffalo Bills", "prediction": true, "correctness": "Correct"}
+{"question_id": 465, "question": "Ted Washington, Sr. plays for History of the Houston Oilers.", "prediction": true, "correctness": "Error"}
+{"question_id": 467, "question": "Maurice Smith (American football) club is Atlanta Falcons.", "prediction": true, "correctness": "Error"}
+{"question_id": 473, "question": "Tourek Williams is in San Diego Chargers", "prediction": true, "correctness": "Error"}
+{"question_id": 474, "question": "Ralph Clayton plays for St. Louis Cardinals (NFL, 1960–1987)", "prediction": true, "correctness": "Error"}
+{"question_id": 480, "question": "The leader in Jewish Motifs International Film Festival is Mirosław Chojecki.", "prediction": true, "correctness": "Error"}
