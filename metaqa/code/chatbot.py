@@ -4,16 +4,15 @@ import openai
 import time
 import sys
 import os
+from dotenv import load_dotenv
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(os.path.dirname(current_dir))
-
 sys.path.append(root_dir)
-
-from openai_key import OPENAI_KEY
+load_dotenv()
 
 # GITIGNORE WHEN MAKING REPO PUBLIC
-openai.api_key = OPENAI_KEY
+openai.api_key = os.getenv('OPENAI_KEY')
 
 class Chatbot:
     def __init__(self):
