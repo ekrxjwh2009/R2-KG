@@ -1,0 +1,4 @@
+/openai_key.py
+openai_key.py
+**/__pycache__/
+**/*.pyc

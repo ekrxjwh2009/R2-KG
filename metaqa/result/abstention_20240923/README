@@ -1,0 +1,13 @@
+result for abstention (without confidenceCheck, start from 3 helper function prompt)
+Abstention method : If equal (ent, rel) pair appears more than 1 times, abstain and quit.
+
+abstention_test.py
+core function : helper_function.py -> exploreKGs_abstain() / class Information() in individual_claim_info.py
+
+Experimented by 3.5-turbo, 4o-mini
+
+- Correct
+- Wrong
+- Abstain : In this case, we abstain when LLM asks equivalent (ent, rel) pair twice or more times.
+- IDK : I Don't Know. This label is attached on qids which runned more than threshold iteration value (10 in this case)
+- Error : When code generates error for some reason (maybe due to parsing problem)

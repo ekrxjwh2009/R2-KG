@@ -1,0 +1,1034 @@
+\
+
+qid:20, claim:what does [Hiromi Nagasaku] star in?	Correct!
+
+qid:40, claim:what movies did [Caroline Aaron] star in?	Correct!
+
+qid:60, claim:what movies did [Paul Lynde] act in?	Correct!
+
+qid:80, claim:what films does [Julian Sands] appear in?	Correct!
+
+qid:100, claim:what movies was [Roger Perry] an actor in?	Correct!
+
+qid:120, claim:what movies did [Beatriz Batarda] act in?	Correct!
+
+qid:140, claim:what films did [Leigh McCormack] star in?	Correct!
+
+qid:160, claim:what does [Edward Chapman] act in?	Correct!
+
+qid:180, claim:what films did [Carmen Duncan] act in?	Correct!
+
+qid:200, claim:what films did [Yaya DaCosta] act in?	Correct!
+
+qid:220, claim:what films did [Jerry Stiller] star in?	Correct!
+
+qid:240, claim:what does [Jenna Fischer] star in?	Wrong
+
+qid:260, claim:what films does [Alan Ormsby] appear in?	Correct!
+
+qid:280, claim:what films did [Sam Parsonson] star in?	Correct!
+
+qid:300, claim:[Kirby Dick] appears in which movies?	Correct!
+
+qid:320, claim:what movies was [Betty Hutton] an actor in?	Correct!
+
+qid:340, claim:what films does [Sonakshi Sinha] appear in?	Correct!
+
+qid:360, claim:what movies was [Marla Gibbs] an actor in?	Correct!
+
+qid:380, claim:what films did [Ted Knight] act in?	Correct!
+
+qid:400, claim:what movies did [Edwige Fenech] act in?	Correct!
+
+qid:420, claim:what movies did [Mark Hamill] act in?	Correct!
+
+qid:440, claim:what movies did [Harris Yulin] act in?	Correct!
+
+qid:460, claim:[Rémy Girard] appears in which movies?	Correct!
+
+qid:480, claim:what movies was [Sissy Spacek] an actor in?	Wrong
+
+qid:500, claim:what films does [Ken Marshall] appear in?	Correct!
+
+qid:520, claim:what movies was [Nanette Newman] an actor in?	Correct!
+
+qid:540, claim:what does [Claude Lelouch] act in?	Wrong
+
+qid:560, claim:what does [Branko Tomovic] appear in?	Correct!
+
+qid:580, claim:what movies was [Cung Le] an actor in?	Correct!
+
+qid:600, claim:what does [Esther Furst] appear in?	Wrong
+
+qid:620, claim:what films did [Tia Texada] act in?	Correct!
+
+qid:640, claim:what movies was [Mía Maestro] an actor in?	Correct!
+
+qid:660, claim:what films did [Thomas Mann] act in?	Correct!
+
+qid:680, claim:what does [Stephen Mendillo] star in?	Correct!
+
+qid:700, claim:what movies did [Albert Hall] act in?	Correct!
+
+qid:720, claim:what does [Betsy Blair] appear in?	Wrong
+
+qid:740, claim:what movies did [Rory Culkin] star in?	Correct!
+
+qid:760, claim:what movies did [Lance Armstrong] star in?	Correct!
+
+qid:780, claim:what movies did [Season Hubley] act in?	Correct!
+
+qid:800, claim:what movies was [Margaret Cho] an actor in?	Correct!
+
+qid:820, claim:what films did [Joe Silver] act in?	Correct!
+
+qid:840, claim:[Roger Moore] appears in which movies?	Correct!
+
+qid:860, claim:what films did [Paul Robeson] star in?	Wrong
+
+qid:880, claim:which movie was [John Pasquin] the director for?	Correct!
+
+qid:900, claim:what movies did [Sidney Sheldon] direct?	Correct!
+
+qid:920, claim:which films did [George C. Wolfe] direct?	Correct!
+
+qid:940, claim:what movies did [David Mandel] direct?	Correct!
+
+qid:960, claim:which films did [Nora Ephron] direct?	Correct!
+
+qid:980, claim:what films did [John Emerson] direct?	Correct!
+
+qid:1000, claim:[Henry Jaglom] directed which movies?	Correct!
+
+qid:1020, claim:which films did [Jim Rash] direct?	Correct!
+
+qid:1040, claim:[Mikel Conrad] was the director of which films?	Correct!
+
+qid:1060, claim:what did [Giuliano Montaldo] direct?	Correct!
+
+qid:1080, claim:which films did [Gary Entin] direct?	Correct!
+
+qid:1100, claim:what was [Lewis R. Foster] the director of?	Correct!
+
+qid:1120, claim:what films did [Scott Thurman] direct?	Correct!
+
+qid:1140, claim:which movie was [Savage Steve Holland] the director for?	Correct!
+
+qid:1160, claim:what movies did [Nelson McCormick] direct?	Correct!
+
+qid:1180, claim:what is a film directed by [Assaf Bernstein]?	Correct!
+
+qid:1200, claim:[Jay Anania] directed which movies?	Correct!
+
+qid:1220, claim:which movies did [Greg Mottola] direct?	Correct!
+
+qid:1240, claim:which films did [Kazui Nihonmatsu] direct?	Correct!
+
+qid:1260, claim:[Sandy Tung] directed which movies?	Correct!
+
+qid:1280, claim:what films did [Daisy von Scherler Mayer] direct?	Correct!
+
+qid:1300, claim:what was [Henning Carlsen] the director of?	Correct!
+
+qid:1320, claim:which movies did [Marina de Van] direct?	Correct!
+
+qid:1340, claim:[Jamie Thraves] directed which movies?	Correct!
+
+qid:1360, claim:[Eugene Corr] was the director of which films?	Correct!
+
+qid:1380, claim:which films did [Yoshikazu Yasuhiko] direct?	Correct!
+
+qid:1400, claim:what is a film directed by [Matthew Barney]?	Correct!
+
+qid:1420, claim:what is a film directed by [Ana Kokkinos]?	Correct!
+
+qid:1440, claim:the movie [School for Scoundrels] starred who?	Correct!
+
+qid:1460, claim:who acted in [Jiminy Glick in Lalawood]?	Correct!
+
+qid:1480, claim:who stars in [The Rescuers Down Under]?	Correct!
+
+qid:1520, claim:who starred in [Blonde Ambition]?	Correct!
+
+qid:1540, claim:who stars in [City of Joy]?	Correct!
+
+qid:1560, claim:the film [Tokyo Zombie] starred which actors?	Correct!
+
+qid:1580, claim:who stars in [Paris Belongs to Us]?	Correct!
+
+qid:1600, claim:who starred in [Exam]?	Correct!
+
+qid:1620, claim:who stars in [The Escapist]?	Wrong
+
+qid:1640, claim:who stars in [Light Sleeper]?	Wrong
+
+qid:1660, claim:who stars in [Amazing Grace and Chuck]?	Correct!
+
+qid:1680, claim:who are the actors in [Earthlings]?	Correct!
+
+qid:1720, claim:who acted in [Boogie Woogie]?	Correct!
+
+qid:1740, claim:who are the actors in [We Need to Talk About Kevin]?	Correct!
+
+qid:1760, claim:the movie [Black Cadillac] starred who?	Error
+
+qid:1780, claim:who are the actors in [Interrupted Melody]?	Correct!
+
+qid:1800, claim:the film [Story of a Love Affair] starred which actors?	Correct!
+
+qid:1820, claim:who acted in the movie [Killer Klowns from Outer Space]?	Correct!
+
+qid:1840, claim:who acted in [Angel Eyes]?	Correct!
+
+qid:1860, claim:who stars in [The Living Daylights]?	Correct!
+
+qid:1880, claim:who acted in [Emma]?	Correct!
+
+qid:1920, claim:who acted in the movie [Son of Batman]?	Correct!
+
+qid:1940, claim:who acted in [Breakdown]?	Correct!
+
+qid:1960, claim:who acted in [The Other Side of Sunday]?	Correct!
+
+qid:1980, claim:the film [The Face of Love] starred which actors?	Correct!
+
+qid:2000, claim:the film [A Woman of Affairs] starred which actors?	Correct!
+
+qid:2020, claim:who starred in [Blood Out]?	Correct!
+
+qid:2040, claim:who stars in [O]?	Correct!
+
+qid:2060, claim:who stars in [King of Comedy]?	Correct!
+
+qid:2080, claim:who starred in [Monsieur Batignole]?	Correct!
+
+qid:2100, claim:the movie [Damage] starred who?	Wrong
+
+qid:2120, claim:the film [The Parent Trap] starred which actors?	Correct!
+
+qid:2140, claim:the movie [Big Trouble in Little China] starred who?	Wrong
+
+qid:2160, claim:who acted in the movie [The Princess and the Frog]?	Correct!
+
+qid:2180, claim:who stars in [The Invention of Lying]?	Correct!
+
+qid:2200, claim:who acted in [The Man in the Gray Flannel Suit]?	Correct!
+
+qid:2220, claim:who stars in [To the Shores of Tripoli]?	Correct!
+
+qid:2240, claim:who are the actors in [Circumstance]?	Correct!
+
+qid:2260, claim:the movie [Hercules] starred who?	Wrong
+
+qid:2280, claim:the film [The Return of Dracula] starred which actors?	Correct!
+
+qid:2300, claim:who starred in [The Little Shop of Horrors]?	Correct!
+
+qid:2320, claim:who are the actors in [Hyde Park on Hudson]?	Wrong
+
+qid:2340, claim:who acted in the movie [Amour]?	Correct!
+
+qid:2360, claim:who stars in [Splendor]?	Correct!
+
+qid:2380, claim:who acted in [Charade]?	Error
+
+qid:2400, claim:the movie [Where East Is East] starred who?	Correct!
+
+qid:2420, claim:the film [Jane Eyre] starred which actors?	Wrong
+
+qid:2440, claim:who starred in [High, Wide, and Handsome]?	Correct!
+
+qid:2460, claim:the movie [Ghosts of Girlfriends Past] starred who?	Correct!
+
+qid:2480, claim:who acted in the movie [The Maze]?	Correct!
+
+qid:2500, claim:who acted in [A Walk in the Woods]?	Correct!
+
+qid:2520, claim:who starred in [From Up on Poppy Hill]?	Correct!
+
+qid:2540, claim:who's the director of [Hurt]?	Correct!
+
+qid:2560, claim:the film [The Beautician and the Beast] was directed by who?	Correct!
+
+qid:2580, claim:the film [Naked Violence] was directed by who?	Correct!
+
+qid:2600, claim:who is listed as director for [Munich]?	Correct!
+
+qid:2620, claim:who was [Watch on the Rhine] directed by?	Correct!
+
+qid:2640, claim:who was the director of [Radio On]?	Correct!
+
+qid:2660, claim:who directed the movie [The Road to Glory]?	Correct!
+
+qid:2680, claim:who is the director of [Margin Call]?	Correct!
+
+qid:2700, claim:who's the director of [Where the Buffalo Roam]?	Correct!
+
+qid:2720, claim:who directed the film [Don]?	Correct!
+
+qid:2740, claim:who is the director for [The Brothers]?	Correct!
+
+qid:2760, claim:who's the director of [Arsène Lupin]?	Correct!
+
+qid:2780, claim:who directed the film [Hondo]?	Correct!
+
+qid:2800, claim:who directed the movie [Life and Nothing But]?	Correct!
+
+qid:2820, claim:who was [Womb] directed by?	Correct!
+
+qid:2840, claim:who is the director for [Dangerous Beauty]?	Correct!
+
+qid:2860, claim:who was the director of [Kings of the Road]?	Correct!
+
+qid:2880, claim:who was the director of [Cass Timberlane]?	Correct!
+
+qid:2900, claim:who directed the film [Lie with Me]?	Correct!
+
+qid:2920, claim:who is the director for [The Twelve Chairs]?	Correct!
+
+qid:2940, claim:who was the director of [Thunderbirds]?	Correct!
+
+qid:2960, claim:who directed the movie [The Wilby Conspiracy]?	Correct!
+
+qid:2980, claim:who was [Gotcha!] directed by?	Correct!
+
+qid:3000, claim:which person directed [Kangaroo Jack]?	Correct!
+
+qid:3020, claim:who directed [A Guide for the Married Man]?	Correct!
+
+qid:3040, claim:who is the director of [Astro Boy]?	Correct!
+
+qid:3060, claim:the director of [The Ballad of Cable Hogue] was?	Correct!
+
+qid:3080, claim:who is the director of [The Sailor Who Fell from Grace with the Sea]?	Correct!
+
+qid:3100, claim:who directed the film [Born Reckless]?	Correct!
+
+qid:3120, claim:who is the director for [Mona Lisa]?	Correct!
+
+qid:3140, claim:which person directed [Bhowani Junction]?	Correct!
+
+qid:3160, claim:who directed the film [Hunky Dory]?	Correct!
+
+qid:3180, claim:the director of [Georgia Rule] was?	Correct!
+
+qid:3200, claim:who is the director that directed [Instructions Not Included]?	Correct!
+
+qid:3220, claim:the director of [London River] was who?	Correct!
+
+qid:3240, claim:who directed [Slither]?	Correct!
+
+qid:3260, claim:who is the director that directed [Arthur Newman]?	Correct!
+
+qid:3280, claim:who was [Deadbolt] directed by?	Correct!
+
+qid:3300, claim:who directed the film [Carnage]?	Correct!
+
+qid:3320, claim:who directed [Torn Curtain]?	Correct!
+
+qid:3340, claim:who is listed as director for [The Banishment]?	Correct!
+
+qid:3360, claim:the film [At Close Range] was directed by who?	Correct!
+
+qid:3380, claim:who's the director of [The Weight of Water]?	Correct!
+
+qid:3400, claim:who is the director of [The Tall Guy]?	Correct!
+
+qid:3420, claim:who is the director of [Destry Rides Again]?	Correct!
+
+qid:3440, claim:who was [Chinese Roulette] directed by?	Correct!
+
+qid:3460, claim:who is the director for [Different for Girls]?	Correct!
+
+qid:3480, claim:who's the director of [The Birds]?	Correct!
+
+qid:3500, claim:who directed [Titus]?	Correct!
+
+qid:3520, claim:who is listed as director for [The Beast with Five Fingers]?	Correct!
+
+qid:3540, claim:who was [Moonlight and Valentino] directed by?	Correct!
+
+qid:3560, claim:who is the director for [Devil Girl from Mars]?	Correct!
+
+qid:3580, claim:who is the director that directed [Doomsday Prophecy]?	Correct!
+
+qid:3600, claim:who was the director of [Pride and Glory]?	Correct!
+
+qid:3620, claim:who was the director of [The Olsen Gang on the Track]?	Correct!
+
+qid:3660, claim:the director of [Spontaneous Combustion] was?	Correct!
+
+qid:3680, claim:who is the director that directed [A Little Princess]?	Correct!
+
+qid:3700, claim:who is the director that directed [Children of Men]?	Correct!
+
+qid:3720, claim:who is the director of [Massacre at Central High]?	Correct!
+
+qid:3740, claim:who is the director of [Making Plans for Lena]?	Correct!
+
+qid:3760, claim:who directed the movie [Rumor Has It...]?	Correct!
+
+qid:3800, claim:who is listed as director for [Indiscreet]?	Correct!
+
+qid:3840, claim:what kind of film is [The Assassination Bureau]?	Correct!
+
+qid:3860, claim:what sort of film is [The 40-Year-Old Virgin]?	Correct!
+
+qid:3880, claim:what type of movie is [Gunday]?	Correct!
+
+qid:3900, claim:what kind of film is [Raising Helen]?	Correct!
+
+qid:3920, claim:what sort of movie is [Simple Simon]?	Correct!
+
+qid:3940, claim:what is the genre for the movie [The Perils of Pauline]?	Correct!
+
+qid:3960, claim:what is the genre for [Sidekicks]?	Correct!
+
+qid:3980, claim:what is the genre for the film [Toomorrow]?	Correct!
+
+qid:4000, claim:what was the genre of the movie [Men of Honor]?	Correct!
+
+qid:4040, claim:what sort of movie is [Envy]?	Correct!
+
+qid:4060, claim:what is the genre of the film [Striptease]?	Correct!
+
+qid:4080, claim:what sort of film is [Madhouse]?	Correct!
+
+qid:4100, claim:what was the genre of [Safety Not Guaranteed]?	Correct!
+
+qid:4120, claim:what is the genre of the film [Centurion]?	Correct!
+
+qid:4140, claim:what kind of movie is [Bright Future]?	Correct!
+
+qid:4160, claim:what type of film is [Six Shooter]?	Correct!
+
+qid:4180, claim:what sort of movie is [Kuch Kuch Hota Hai]?	Correct!
+
+qid:4200, claim:what type of movie is [The Roots of Heaven]?	Correct!
+
+qid:4220, claim:what film genre is [Dear Jesse]?	Correct!
+
+qid:4240, claim:what is the genre for the movie [Adanggaman]?	Correct!
+
+qid:4260, claim:what was the genre of the film [Machete]?	Correct!
+
+qid:4280, claim:what is the genre for [Hello Herman]?	Correct!
+
+qid:4300, claim:what genre of movie is [Winter Light]?	Correct!
+
+qid:4320, claim:what is the genre for [Odd Thomas]?	Correct!
+
+qid:4340, claim:what was the genre of the movie [Beetlejuice]?	Correct!
+
+qid:4360, claim:what genre does [Happy Go Lovely] fall under?	Correct!
+
+qid:4380, claim:what was the genre of the film [I Accuse]?	Correct!
+
+qid:4400, claim:what kind of movie is [Once]?	Correct!
+
+qid:4420, claim:what is the genre of [Escanaba in da Moonlight]?	Correct!
+
+qid:4440, claim:what was the genre of the movie [Zapped!]?	Correct!
+
+qid:4460, claim:what sort of film is [The Lazarus Project]?	Correct!
+
+qid:4480, claim:what kind of movie is [Major League]?	Correct!
+
+qid:4500, claim:what is the genre of the film [Mr. Majestyk]?	Correct!
+
+qid:4520, claim:what is the genre of the film [Chloe]?	Correct!
+
+qid:4540, claim:what was the genre of [The Cry of the Owl]?	Correct!
+
+qid:4560, claim:what was the genre of the film [A History of Violence]?	Correct!
+
+qid:4580, claim:what genre does [The Informer] fall under?	Correct!
+
+qid:4600, claim:what sort of film is [In the Mouth of Madness]?	Correct!
+
+qid:4620, claim:what type of film is [Assassination of a High School President]?	Correct!
+
+qid:4640, claim:what was the genre of [4]?	Error
+
+qid:4660, claim:what is the genre for the film [Pina]?	Correct!
+
+qid:4680, claim:what is the genre of the movie [Troll]?	Correct!
+
+qid:4700, claim:what was the genre of the movie [Boy Meets Girl]?	Correct!
+
+qid:4720, claim:what sort of movie is [Watch the Birdie]?	Correct!
+
+qid:4740, claim:what was the genre of the film [54]?	Error
+
+qid:4760, claim:what is the genre of the movie [Overnight]?	Correct!
+
+qid:4780, claim:what sort of movie is [Silver Bears]?	Correct!
+
+qid:4800, claim:what was the genre of [Game Change]?	Correct!
+
+qid:4820, claim:what sort of film is [The Winning of Barbara Worth]?	Correct!
+
+qid:4840, claim:what is the genre of [The Crime of Monsieur Lange]?	Correct!
+
+qid:4860, claim:what genre is [Oklahoma!] in?	Correct!
+
+qid:4880, claim:what film genre is [Honor Among Lovers]?	Correct!
+
+qid:4900, claim:what is the genre for [Magic in the Water]?	Correct!
+
+qid:4920, claim:what is the genre of the movie [7 Women]?	Correct!
+
+qid:4940, claim:what is the genre of [Trois]?	Correct!
+
+qid:4960, claim:what genre does [What Just Happened] fall under?	Correct!
+
+qid:4980, claim:what language is [Sarraounia] in?	Correct!
+
+qid:5000, claim:what is the main language in [47 Ronin]?	Correct!
+
+qid:5020, claim:what is the language spoken in the movie [Dad Savage]?	Correct!
+
+qid:5040, claim:what is the main language in [The Little Fox]?	Correct!
+
+qid:5060, claim:what is the primary language in the film [What Richard Did]?	Correct!
+
+qid:5080, claim:what language is [Evilenko] in?	Correct!
+
+qid:5100, claim:what language is [Branded to Kill] in?	Correct!
+
+qid:5120, claim:what is the primary language in [It Started in Naples]?	Correct!
+
+qid:5140, claim:what language is the movie [The Love of Siam] in?	Correct!
+
+qid:5160, claim:what is the primary language in [Captain Abu Raed]?	Correct!
+
+qid:5180, claim:what is the language spoken in the movie [Black Ice]?	Correct!
+
+qid:5200, claim:what language is [The Lost Son] in?	Correct!
+
+qid:5220, claim:what is the primary language in [Heaven Knows, Mr. Allison]?	Correct!
+
+qid:5260, claim:what is the language spoken in the movie [Ip Man]?	Correct!
+
+qid:5280, claim:which topics is movie [Tooth Fairy] about?	Wrong
+
+qid:5300, claim:which words describe [Barry Munday]?	Error
+
+qid:5320, claim:describe [The Honeymooners] in a few words?	Correct!
+
+qid:5340, claim:which words describe movie [The Best Man]?	Correct!
+
+qid:5360, claim:which words describe film [Gangster Squad]?	Correct!
+
+qid:5380, claim:can you give a few words describing [Five Star Final]?	Error
+
+qid:5400, claim:can you give a few words describing what [Get Real] is about?	Correct!
+
+qid:5420, claim:what topics is [The Falcon and the Snowman] about?	Correct!
+
+qid:5440, claim:describe the movie [Mountains of the Moon] in a few words?	Correct!
+
+qid:5460, claim:what words describe [The Conversation]?	Error
+
+qid:5480, claim:which topics is [Frankenweenie] about?	Correct!
+
+qid:5500, claim:can you describe movie [Water for Elephants] in a few words?	Correct!
+
+qid:5520, claim:which words describe movie [Alias Betty]?	Correct!
+
+qid:5540, claim:can you give a few words describing what [Wimbledon] is about?	Correct!
+
+qid:5560, claim:what topics is [The Defiant Ones] about?	Error
+
+qid:5580, claim:can you describe movie [The Tourist] in a few words?	Correct!
+
+qid:5600, claim:which words describe [The Love Letter]?	Correct!
+
+qid:5620, claim:what words describe [Another Earth]?	Correct!
+
+qid:5640, claim:what words describe film [Dredd]?	Correct!
+
+qid:5660, claim:what words describe film [Seven Days in May]?	Correct!
+
+qid:5680, claim:what words describe film [Son of Rambow]?	Correct!
+
+qid:5700, claim:what are some words that describe movie [Edward Scissorhands]?	Correct!
+
+qid:5720, claim:which words describe [Raising Helen]?	Correct!
+
+qid:5740, claim:what words describe [Fever Pitch]?	Correct!
+
+
+qid:5760, claim:which topics is movie [A Smoky Mountain Christmas] about?	Correct!
+
+qid:5780, claim:what words describe [Beyond the Sea]?	Wrong
+
+qid:5800, claim:which words describe [No One Knows About Persian Cats]?	Wrong
+
+qid:5820, claim:describe [The Seventh Victim] in a few words?	Wrong
+
+qid:5840, claim:describe [Radioland Murders] in a few words?	Correct!
+
+qid:5860, claim:what terms are applicable to [Unstrung Heroes]?	Correct!
+
+qid:5880, claim:describe the movie [The Dawn Patrol] in a few words?	Correct!
+
+qid:5900, claim:can you describe movie [G.I. Jane] in a few words?	Wrong
+
+qid:5920, claim:what are some words that describe movie [Don Jon]?	Correct!
+
+qid:5940, claim:what are some words that describe movie [Lassie Come Home]?	Correct!
+
+qid:5960, claim:what words describe [Memoirs of an Invisible Man]?	Correct!
+
+qid:5980, claim:what words describe [The Debt]?	Correct!
+
+qid:6000, claim:which words describe film [The Traveler]?	Correct!
+
+qid:6020, claim:describe [Children of Nature] in a few words?	Correct!
+
+qid:6040, claim:which words describe movie [Knight Moves]?	Correct!
+
+qid:6060, claim:which words describe movie [Street Mobster]?	Error
+
+qid:6080, claim:can you describe movie [Mystic Pizza] in a few words?	Correct!
+
+qid:6100, claim:what topics is [Nothing to Declare] about?	Correct!
+
+qid:6120, claim:who was the writer of the film [Molière]?	Correct!
+
+qid:6140, claim:who is the writer of the film [Fever Pitch]?	Correct!
+
+qid:6160, claim:who's the writer of [Beauty and the Beast]?	Correct!
+
+qid:6180, claim:who is the author of [The Divorce of Lady X]?	Correct!
+
+qid:6200, claim:which screenwriter wrote the script for [The Traveler]?	Error
+
+qid:6220, claim:who was the writer of the film [Green for Danger]?	Correct!
+
+qid:6240, claim:who's the writer of [Thanks for Sharing]?	Correct!
+
+qid:6260, claim:who in the world wrote [Sanshiro Sugata]?	Correct!
+
+qid:6280, claim:who is the writer of the film [Hunger]?	Correct!
+
+qid:6300, claim:who is the creator of the film script for [Viy]?	Correct!
+
+qid:6320, claim:who was the writer of the film [The House of Branching Love]?	Correct!
+
+qid:6340, claim:who was the writer of [Secondhand Lions]?	Correct!
+
+qid:6360, claim:who is the writer of the film [Blow]?	Correct!
+
+qid:6380, claim:who wrote the movie [The Boy Friend]?	Correct!
+
+qid:6400, claim:who is the writer of the film [Noah]?	Correct!
+
+qid:6420, claim:which person wrote [The Window]?	Correct!
+
+qid:6440, claim:the film [The Adventures of Huckleberry Finn] was written by who?	Correct!
+
+qid:6460, claim:which person wrote the movie [Only the Strong]?	Correct!
+
+qid:6480, claim:who is the author of [Black Cat, White Cat]?	Correct!
+
+qid:6500, claim:who was the writer of the film [What Ever Happened to Aunt Alice?]?	Correct!
+
+qid:6520, claim:who wrote the film [Love, Rosie]?	Correct!
+
+qid:6540, claim:who wrote [The Greatest Story Ever Told]?	Correct!
+
+qid:6560, claim:who was [S.O.S. Eisberg] written by?	Correct!
+
+qid:6580, claim:which person wrote [Presto]?	Correct!
+
+qid:6600, claim:who was the writer of the film [Bully]?	Correct!
+
+qid:6620, claim:who is the writer of the film [Dark Skies]?	Correct!
+
+qid:6640, claim:who is the writer of the film [Jesus Christ Superstar]?	Correct!
+
+qid:6660, claim:who's the writer of [Some Kind of Hero]?	Correct!
+
+qid:6700, claim:[Werner Herzog Eats His Shoe] is a film written by this person?	Correct!
+
+qid:6720, claim:the film [Defendor] was written by who?	Correct!
+
+qid:6740, claim:who was the writer of [A Lady of Chance]?	Correct!
+
+qid:6760, claim:who wrote the film [The Free Will]?	Correct!
+
+qid:6780, claim:who is the creator of the film script for [Moonlight Serenade]?	Correct!
+
+qid:6800, claim:who was the writer of the film [The Little Rascals Save the Day]?	Correct!
+
+qid:6820, claim:who is the author of [Age of Heroes]?	Correct!
+
+qid:6840, claim:who is the writer of [She Hate Me]?	Correct!
+
+qid:6860, claim:who was the writer of the film [London After Midnight]?	Correct!
+
+qid:6880, claim:who wrote the movie [Here Comes the Boom]?	Correct!
+
+qid:6900, claim:[The Hurricane] is a film written by this person?	Correct!
+
+qid:6940, claim:the film [Country Strong] was written by who?	Correct!
+
+qid:6960, claim:[Mirage] is a film written by this person?	Correct!
+
+qid:6980, claim:who wrote the film [Diary of a Cannibal]?	Correct!
+
+qid:7000, claim:who is the author of [King Kong]?	Wrong
+
+qid:7020, claim:who wrote the screenplay for [Bullet to the Head]?	Correct!
+
+qid:7040, claim:who was the writer of [Twixt]?	Correct!
+
+qid:7060, claim:which person wrote [The Treasure of the Sierra Madre]?	Correct!
+
+qid:7080, claim:who in the world wrote [I as in Icarus]?	Correct!
+
+qid:7100, claim:the film [Ash Wednesday] was written by who?	Correct!
+
+qid:7120, claim:who was [César and Rosalie] written by?	Correct!
+
+qid:7140, claim:[U.S. Marshals] is a film written by this person?	Correct!
+
+qid:7160, claim:which person wrote [French Kiss]?	Correct!
+
+qid:7180, claim:who was [Repo Men] written by?	Correct!
+
+qid:7200, claim:which person wrote [Rebecca]?	Correct!
+
+qid:7220, claim:what year was [Doppelganger] released?	Correct!
+
+qid:7240, claim:what year was [Body of Evidence] released?	Correct!
+
+qid:7260, claim:what was the release date of the film [Michael Jordan to the Max]?	Correct!
+
+qid:7280, claim:what was the release year of the film [The Loneliest Planet]?	Correct!
+
+qid:7300, claim:the movie [Chocolat], when was it released?	Correct!
+
+qid:7320, claim:what year was [The Fifth Musketeer] released?	Correct!
+
+qid:7340, claim:what was the release year of the film [The Babymakers]?	Correct!
+
+qid:7360, claim:when was the movie [Izo] released?	Correct!
+
+qid:7380, claim:what was the release date of the movie [My Favorite Brunette]?	Correct!
+
+qid:7400, claim:what was the release year of the film [The Resident]?	Correct!
+
+qid:7420, claim:what was the release year of the film [One, Two, Three]?	Correct!
+
+qid:7440, claim:what year was [Games of Love and Chance] released?	Correct!
+
+qid:7460, claim:what was the release year of [Burnt Offerings]?	Correct!
+
+qid:7480, claim:what was the release date of [Dallas 362]?	Correct!
+
+qid:7500, claim:what was the release date of the film [Radio Days]?	Correct!
+
+qid:7520, claim:[Blackhat], when was it released?	Correct!
+
+qid:7540, claim:what was the release year of [Children of Men]?	Correct!
+
+qid:7560, claim:when was the film [Witchhammer] released?	Correct!
+
+qid:7580, claim:what was the release year of the film [Looking for Eric]?	Correct!
+
+qid:7600, claim:what was the release year of [Away from Her]?	Correct!
+
+qid:7620, claim:what was the release date of the movie [Madonna of the Seven Moons]?	Correct!
+
+qid:7640, claim:what year was the movie [Pretty in Pink] released?	Correct!
+
+qid:7660, claim:what year was [Vengo] released?	Correct!
+
+qid:7680, claim:what was the release year of the movie [The Artist and the Model]?	Correct!
+
+qid:7700, claim:what was the release date of [Mark of the Vampire]?	Correct!
+
+qid:7720, claim:what year was the movie [Yesterday, Today and Tomorrow] released?	Correct!
+
+qid:7740, claim:when was the film [The Harvey Girls] released?	Correct!
+
+qid:7760, claim:the movie [French Kiss], when was it released?	Correct!
+
+qid:7780, claim:what was the release date of the film [Mrs. Palfrey at the Claremont]?	Correct!
+
+qid:7800, claim:what year was the movie [But Not for Me] released?	Correct!
+
+qid:7820, claim:what was the release year of [Bad Boys II]?	Correct!
+
+qid:7840, claim:when was the film [Desert Bloom] released?	Correct!
+
+qid:7860, claim:when was the movie [Mary, Queen of Scots] released?	Correct!
+
+qid:7880, claim:what was the release year of the movie [Men with Brooms]?	Correct!
+
+qid:7900, claim:when was the film [Paddington] released?	Correct!
+
+qid:7920, claim:the movie [The Texas Chain Saw Massacre], when was it released?	Correct!
+
+qid:7940, claim:[Ice Soldiers], when was it released?	Correct!
+
+qid:7960, claim:when was [The Liberation of L.B. Jones] released?	Correct!
+
+qid:7980, claim:when was the movie [Radio Rebel] released?	Correct!
+
+qid:8000, claim:what year was [Precious] released?	Correct!
+
+qid:8020, claim:the movie [Grand Isle], when was it released?	Correct!
+
+qid:8040, claim:[The Night Walker], when was it released?	Correct!
+
+qid:8060, claim:when was the movie [Prancer] released?	Correct!
+
+qid:8080, claim:when was the film [Carried Away] released?	Correct!
+
+qid:8100, claim:what was the release date of the movie [Loser]?	Correct!
+
+qid:8120, claim:when was the movie [Paper Heart] released?	Correct!
+
+qid:8140, claim:what year was the movie [Holding Trevor] released?	Correct!
+
+qid:8160, claim:the movie [Down to the Sea in Ships], when was it released?	Correct!
+
+qid:8180, claim:the movie [Uncle Boonmee Who Can Recall His Past Lives], when was it released?	Correct!
+
+qid:8200, claim:when was the film [The Wedding Party] released?	Correct!
+
+qid:8220, claim:when was the movie [Revanche] released?	Correct!
+
+qid:8240, claim:what was the release year of the movie [Bridge of Dragons]?	Correct!
+
+qid:8260, claim:what year was the film [The Taste of Others] released?	Correct!
+
+qid:8280, claim:what year was the movie [The Trotsky] released?	Correct!
+
+qid:8300, claim:what year was the film [RoboCop 3] released?	Correct!
+
+qid:8320, claim:when was the film [The Incredible Hulk] released?	Correct!
+
+qid:8340, claim:[Friday the 13th Part 2], when was it released?	Correct!
+
+qid:8360, claim:when was [Ruby] released?	Correct!
+
+qid:8380, claim:when was [City Heat] released?	Correct!
+
+qid:8400, claim:what was the release year of the movie [Dog Nail Clipper]?	Correct!
+
+qid:8420, claim:what year was [Screwed] released?	Correct!
+
+qid:8440, claim:what was the release date of [Road to Rio]?	Correct!
+
+qid:8460, claim:what was the release date of the movie [All This, and Heaven Too]?	Correct!
+
+qid:8500, claim:what was the release date of the film [Prom Night]?	Correct!
+
+qid:8520, claim:what year was the film [The Love Guru] released?	Correct!
+
+qid:8540, claim:when was the film [Character] released?	Correct!
+
+qid:8560, claim:when was the movie [Tombstone] released?	Correct!
+
+qid:8580, claim:what was the release year of the movie [The Storage]?	Correct!
+
+qid:8600, claim:what was the release date of the film [Sheena]?	Correct!
+
+qid:8620, claim:when was [Delirious] released?	Correct!
+
+qid:8640, claim:what films can be described by [great]?	Wrong
+
+qid:8660, claim:what films are about [adam scott]?	Wrong
+
+qid:8680, claim:which films are about [sherlock holmes]?	Wrong
+
+qid:8700, claim:which movies are about [sport]?	Error
+
+qid:8720, claim:which movies are about [dennis iliadis]?	Correct!
+
+qid:8740, claim:what films can be described by [bernard rose]?	Wrong
+
+qid:8760, claim:which movies can be described by [kurosawa]?	Correct!
+
+qid:8780, claim:what movies can be described with [jennifer yuh]?	Correct!
+
+qid:8800, claim:which films can be described by [playboy]?	Correct!
+
+qid:8820, claim:what films are about [jean vigo]?	Correct!
+
+qid:8840, claim:which movies are about [aamir khan]?	Wrong
+
+qid:8860, claim:which films can be described by [roberto rossellini]?	Wrong
+
+qid:8880, claim:what films are about [william keighley]?	Correct!
+
+qid:8900, claim:which films are about [julie taymor]?	Correct!
+
+qid:8920, claim:what movies can be described with [spike jonze]?	Wrong
+
+qid:8940, claim:which movies can be described by [maryland]?	Correct!
+
+qid:8960, claim:which films are about [richard dreyfuss]?	Correct!
+
+qid:8980, claim:which movies can be described by [joseph h. lewis]?	Wrong
+
+qid:9000, claim:what movies can be described with [independence]?	Correct!
+
+qid:9020, claim:which films can be described by [jay chandrasekhar]?	Wrong
+
+qid:9040, claim:what is a movie written by [James Marsh]?	Correct!
+
+qid:9060, claim:which film did [Alfred Gough] write the story for?	Correct!
+
+qid:9080, claim:what film did [Cynthia Cidre] write?	Correct!
+
+qid:9120, claim:what movies did [John Cassavetes] write?	Correct!
+
+qid:9140, claim:which film did [Andrew Kevin Walker] write?	Correct!
+
+qid:9160, claim:what movies was [Jason Mantzoukas] the writer of?	Correct!
+
+qid:9180, claim:what films was [Sidney Harmon] a writer on?	Correct!
+
+qid:9200, claim:what is a film written by [Rosamond Lehmann]?	Correct!
+
+qid:9220, claim:which movie did [Joe Simpson] write?	Correct!
+
+qid:9240, claim:what movies did [Marshall Brickman] write?	Correct!
+
+qid:9260, claim:what movies did [Lane Slate] write?	Correct!
+
+qid:9280, claim:what is a film written by [Ralph Nelson]?	Correct!
+
+qid:9300, claim:what films did [Richard Rayner] write?	Correct!
+
+qid:9320, claim:which film did [Jeff Buhler] write?	Correct!
+
+qid:9340, claim:which movies was [Sylvia Sichel] the writer of?	Correct!
+
+qid:9360, claim:which film did [Robert Resnikoff] write?	Correct!
+
+qid:9380, claim:which film did [James Vanderbilt] write?	Correct!
+
+qid:9400, claim:what film did [Bibo Bergeron] write?	Correct!
+
+qid:9420, claim:what films was [Roberto Fontanarrosa] a writer on?	Correct!
+
+qid:9440, claim:which film did [Aaron Seltzer] write the story for?	Correct!
+
+qid:9460, claim:what film did [François Lelord] write?	Correct!
+
+qid:9480, claim:what is a film written by [Edgar Wallace]?	Correct!
+
+qid:9500, claim:which movies was [Richard Schenkman] a writer on?	Correct!
+
+qid:9520, claim:which film did [Tom Sullivan] write the story for?	Correct!
+
+qid:9540, claim:what films was [Wojciech Smarzowski] a writer on?	Correct!
+
+qid:9560, claim:which movies was [Don Marquis] a writer on?	Correct!
+
+qid:9580, claim:what movies did [Maurice Rapf] write?	Wrong
+
+qid:9600, claim:which movies was [Walter Campbell] a writer on?	Correct!
+
+qid:9620, claim:which movies was [Lawrence Blume] a writer on?	Correct!
+
+qid:9640, claim:what film did [David Gregory] write?	Correct!
+
+qid:9660, claim:what film did [William L. White] write?	Correct!
+
+qid:9680, claim:what films was [James Greer] a writer on?	Correct!
+
+qid:9700, claim:what movies was [Javier Fesser] the writer of?	
+
+qid:9700, claim:what movies was [Javier Fesser] the writer of?	Error
+
+qid:9720, claim:which film did [Tom Provost] write the story for?	Correct!
+
+qid:9740, claim:what is a film written by [Paul Weitz]?	Correct!
+
+qid:9760, claim:what films did [Jo Eisinger] write?	Correct!
+
+qid:9800, claim:which film did [Robert Drewe] write the story for?	Correct!
+
+qid:9820, claim:which film did [Ismail Kadare] write?	Correct!
+
+qid:9840, claim:what movie did [Irene Castle] write the story for?	Wrong
+
+qid:9860, claim:which movie did [Benson Lee] write?	Correct!
+
+qid:9880, claim:which movie did [Michael Laughlin] write?	Correct!
+
+qid:9900, claim:what film did [Joshua Close] write?	Correct!
+
+qid:9920, claim:what films did [Ken Kwapis] write?	Correct!
+
+qid:9940, claim:what movies did [Caryn Lucas] write?	Correct!
+
+====================================================================
+
+qid:240, claim:what does [Jenna Fischer] star in?	Wrong
+
+qid:480, claim:what movies was [Sissy Spacek] an actor in?	Wrong
+
+qid:540, claim:what does [Claude Lelouch] act in?	Wrong
+
+qid:600, claim:what does [Esther Furst] appear in?	Correct!
+
+qid:720, claim:what does [Betsy Blair] appear in?	Wrong
+
+qid:860, claim:what films did [Paul Robeson] star in?	Correct!
+
+qid:1620, claim:who stars in [The Escapist]?	Wrong
+
+qid:1640, claim:who stars in [Light Sleeper]?	Correct!
+
+qid:2100, claim:the movie [Damage] starred who?	Correct!
+
+qid:2140, claim:the movie [Big Trouble in Little China] starred who?	Correct!
+
+qid:2260, claim:the movie [Hercules] starred who?	Wrong
+
+qid:2320, claim:who are the actors in [Hyde Park on Hudson]?	Correct!
+
+qid:2420, claim:the film [Jane Eyre] starred which actors?	Correct!
+
+qid:5280, claim:which topics is movie [Tooth Fairy] about?	Wrong
+
+qid:5780, claim:what words describe [Beyond the Sea]?	Correct!
+
+qid:5800, claim:which words describe [No One Knows About Persian Cats]?	Correct!
+
+qid:5820, claim:describe [The Seventh Victim] in a few words?	Wrong
+
+qid:5900, claim:can you describe movie [G.I. Jane] in a few words?	Wrong
+
+qid:7000, claim:who is the author of [King Kong]?	Correct!
+
+qid:8640, claim:what films can be described by [great]?	Wrong
+
+qid:8660, claim:what films are about [adam scott]?	Wrong
+
+qid:8680, claim:which films are about [sherlock holmes]?	Wrong
+
+qid:8740, claim:what films can be described by [bernard rose]?	Wrong
+
+qid:8840, claim:which movies are about [aamir khan]?	Wrong
+
+qid:8860, claim:which films can be described by [roberto rossellini]?	Correct!
+
+qid:8920, claim:what movies can be described with [spike jonze]?	Wrong
+
+qid:8980, claim:which movies can be described by [joseph h. lewis]?	Wrong
+
+qid:9020, claim:which films can be described by [jay chandrasekhar]?	Correct!
+
+qid:9580, claim:what movies did [Maurice Rapf] write?	Wrong
+
+qid:9840, claim:what movie did [Irene Castle] write the story for?	Correct!
