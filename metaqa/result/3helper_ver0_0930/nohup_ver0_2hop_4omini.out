@@ -1,0 +1,1080 @@
+/home/jschoi/anaconda3/lib/python3.8/site-packages/pandas/core/computation/expressions.py:20: UserWarning: Pandas requires version '2.7.3' or newer of 'numexpr' (version '2.7.1' currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+  0%|          | 0/14872 [00:00<?, ?it/s]  0%|          | 20/14872 [00:05<1:02:36,  3.95it/s]  0%|          | 40/14872 [00:10<1:02:05,  3.98it/s]  0%|          | 60/14872 [00:14<1:00:41,  4.07it/s]  1%|          | 80/14872 [00:19<1:00:54,  4.05it/s]  1%|          | 100/14872 [00:26<1:07:53,  3.63it/s]  1%|          | 120/14872 [00:31<1:04:33,  3.81it/s]  1%|          | 140/14872 [00:40<1:22:40,  2.97it/s]  1%|          | 160/14872 [00:59<2:10:39,  1.88it/s]  1%|          | 180/14872 [01:05<1:50:16,  2.22it/s]  1%|▏         | 200/14872 [01:10<1:35:30,  2.56it/s]  1%|▏         | 220/14872 [01:16<1:27:27,  2.79it/s]  2%|▏         | 240/14872 [01:21<1:19:40,  3.06it/s]  2%|▏         | 260/14872 [01:27<1:19:34,  3.06it/s]  2%|▏         | 280/14872 [01:32<1:12:42,  3.34it/s]  2%|▏         | 300/14872 [01:35<1:02:41,  3.87it/s]  2%|▏         | 320/14872 [01:59<2:11:23,  1.85it/s]  2%|▏         | 340/14872 [02:02<1:42:22,  2.37it/s]  3%|▎         | 380/14872 [02:22<1:50:05,  2.19it/s]  3%|▎         | 400/14872 [02:27<1:38:07,  2.46it/s]  3%|▎         | 420/14872 [02:32<1:27:45,  2.74it/s]  3%|▎         | 440/14872 [02:35<1:13:09,  3.29it/s]  3%|▎         | 460/14872 [02:40<1:08:25,  3.51it/s]  3%|▎         | 480/14872 [02:42<57:58,  4.14it/s]    3%|▎         | 500/14872 [02:47<57:49,  4.14it/s]  3%|▎         | 520/14872 [02:54<1:05:56,  3.63it/s]  4%|▎         | 540/14872 [02:59<1:03:11,  3.78it/s]  4%|▍         | 580/14872 [03:04<48:04,  4.95it/s]    4%|▍         | 600/14872 [03:26<1:41:03,  2.35it/s]  4%|▍         | 620/14872 [03:32<1:33:15,  2.55it/s]  4%|▍         | 640/14872 [03:38<1:26:24,  2.75it/s]  4%|▍         | 660/14872 [03:44<1:21:29,  2.91it/s]  5%|▍         | 700/14872 [03:53<1:10:26,  3.35it/s]  5%|▍         | 720/14872 [04:00<1:10:56,  3.32it/s]  5%|▌         | 760/14872 [04:12<1:11:42,  3.28it/s]  5%|▌         | 780/14872 [04:17<1:08:29,  3.43it/s]  5%|▌         | 800/14872 [04:23<1:07:52,  3.46it/s]  6%|▌         | 820/14872 [04:25<58:19,  4.02it/s]    6%|▌         | 840/14872 [04:30<57:09,  4.09it/s]  6%|▌         | 860/14872 [04:33<50:53,  4.59it/s]  6%|▌         | 880/14872 [04:38<52:13,  4.46it/s]  6%|▌         | 920/14872 [04:43<42:09,  5.52it/s]  6%|▋         | 940/14872 [05:06<1:37:28,  2.38it/s]  6%|▋         | 960/14872 [05:13<1:32:03,  2.52it/s]  7%|▋         | 980/14872 [05:18<1:23:33,  2.77it/s]  7%|▋         | 1000/14872 [05:25<1:22:17,  2.81it/s]  7%|▋         | 1020/14872 [05:30<1:16:36,  3.01it/s]  7%|▋         | 1040/14872 [05:33<1:04:25,  3.58it/s]  7%|▋         | 1060/14872 [05:40<1:07:50,  3.39it/s]  7%|▋         | 1080/14872 [05:54<1:33:47,  2.45it/s]  7%|▋         | 1100/14872 [05:59<1:25:42,  2.68it/s]  8%|▊         | 1120/14872 [06:08<1:28:14,  2.60it/s]  8%|▊         | 1140/14872 [06:14<1:23:05,  2.75it/s]  8%|▊         | 1160/14872 [06:18<1:13:55,  3.09it/s]  8%|▊         | 1180/14872 [06:21<1:01:35,  3.70it/s]  8%|▊         | 1200/14872 [06:24<51:41,  4.41it/s]    8%|▊         | 1220/14872 [06:30<55:24,  4.11it/s]  8%|▊         | 1240/14872 [06:34<52:52,  4.30it/s]  8%|▊         | 1260/14872 [06:41<1:01:16,  3.70it/s]  9%|▊         | 1280/14872 [06:46<59:44,  3.79it/s]    9%|▊         | 1300/14872 [06:51<59:34,  3.80it/s]  9%|▉         | 1320/14872 [06:56<57:20,  3.94it/s]  9%|▉         | 1340/14872 [07:01<58:58,  3.82it/s]  9%|▉         | 1360/14872 [07:08<1:04:40,  3.48it/s]  9%|▉         | 1380/14872 [07:13<1:02:11,  3.62it/s]  9%|▉         | 1400/14872 [07:19<1:01:13,  3.67it/s] 10%|▉         | 1420/14872 [07:21<51:38,  4.34it/s]   10%|▉         | 1440/14872 [07:26<52:20,  4.28it/s] 10%|▉         | 1460/14872 [07:31<53:54,  4.15it/s] 10%|▉         | 1480/14872 [07:38<59:28,  3.75it/s] 10%|█         | 1500/14872 [07:43<1:00:45,  3.67it/s] 10%|█         | 1520/14872 [07:49<1:01:57,  3.59it/s] 10%|█         | 1540/14872 [07:56<1:06:50,  3.32it/s] 10%|█         | 1560/14872 [08:01<1:02:34,  3.55it/s] 11%|█         | 1580/14872 [08:06<1:00:45,  3.65it/s] 11%|█         | 1600/14872 [08:13<1:05:32,  3.37it/s] 11%|█         | 1620/14872 [08:16<56:12,  3.93it/s]   11%|█         | 1640/14872 [08:21<56:14,  3.92it/s] 11%|█         | 1660/14872 [08:27<58:26,  3.77it/s] 11%|█▏        | 1680/14872 [08:36<1:10:20,  3.13it/s] 11%|█▏        | 1700/14872 [08:42<1:08:09,  3.22it/s] 12%|█▏        | 1720/14872 [08:55<1:31:23,  2.40it/s] 12%|█▏        | 1740/14872 [09:05<1:34:37,  2.31it/s] 12%|█▏        | 1760/14872 [09:10<1:23:50,  2.61it/s] 12%|█▏        | 1780/14872 [09:16<1:17:54,  2.80it/s] 12%|█▏        | 1800/14872 [09:26<1:27:30,  2.49it/s] 12%|█▏        | 1820/14872 [09:32<1:19:43,  2.73it/s] 12%|█▏        | 1840/14872 [09:42<1:28:19,  2.46it/s] 13%|█▎        | 1860/14872 [09:51<1:30:42,  2.39it/s] 13%|█▎        | 1880/14872 [09:55<1:19:08,  2.74it/s] 13%|█▎        | 1900/14872 [10:06<1:29:35,  2.41it/s] 13%|█▎        | 1920/14872 [10:12<1:21:08,  2.66it/s] 13%|█▎        | 1940/14872 [10:17<1:13:21,  2.94it/s] 13%|█▎        | 1960/14872 [10:22<1:08:22,  3.15it/s] 13%|█▎        | 1980/14872 [10:28<1:05:11,  3.30it/s] 13%|█▎        | 2000/14872 [10:34<1:05:55,  3.25it/s]100%|██████████| 14872/14872 [10:34<00:00, 23.44it/s] 
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Rowland Barber'])
+Statement: Now, to find the movies that 'Rowland Barber' has written, I need to explore the graph from 'Rowland Barber' with related relations.
+Helper function: exploreKG(['Rowland Barber']: ['written_by'])
+Statement: Now, we have to find the types of the movie written by 'Rowland Barber'.
+Helper function: getRelation(["the_night_they_raided_minsky's"])
+Statement: To get the types of the movie written by 'Rowland Barber', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(["the_night_they_raided_minsky's"]: ['has_genre'])
+Now I have found the type of the movie written by 'Rowland Barber'. The answer to the claim is as follows:
+['comedy']
+
+Helper function: Verification(['comedy'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Giorgia Moll"])
+Statement: To find the films that 'Giorgia Moll' acted in, I need to explore the graph from 'Giorgia Moll' with related relations.
+Helper function: exploreKG(['Giorgia Moll']: ['starred_actors'])
+Statement: Now, I have found that Giorgia Moll starred in the film "The Quiet American." Next, I need to find the screenwriter of this film.
+Helper function: getRelation(['the_quiet_american'])
+Statement: To find the screenwriter of the film "The Quiet American," I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['the_quiet_american']: ['written_by'])
+Now I have found that "The Quiet American" was written by Joseph L. Mankiewicz and Graham Greene. The answer to the claim is as follows:
+['Joseph L. Mankiewicz', 'Graham Greene']
+
+Helper function: Verification(['Joseph L. Mankiewicz', 'Graham Greene'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Jacqueline Pearce')
+Statement: First, to solve the claim, I have to know the films in which 'Jacqueline Pearce' acted.
+Helper function: exploreKG('Jacqueline Pearce': ['starred_actors'])
+Statement: Now, I need to find the director of the film 'The Plague of the Zombies'.
+Helper function: getRelation('the_plague_of_the_zombies')
+Statement: To find the director of the film 'The Plague of the Zombies', I need to explore the graph with the film and related relations.
+Helper function: exploreKG('the_plague_of_the_zombies': ['directed_by'])
+Statement: Now I have found that the film 'The Plague of the Zombies' was directed by 'John Gilling'. The answer to the claim is as follows.
+['John Gilling']
+Helper function: Verification(['John Gilling'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('The Ambushers')
+Statement: First, to solve the claim, I have to know the screenwriter of 'The Ambushers'.
+Helper function: exploreKG('The Ambushers': ['written_by'])
+Statement: Now, I need to find the movies written by Donald Hamilton.
+Helper function: getRelation('donald_hamilton')
+Statement: To find the movies written by Donald Hamilton, I need to explore the graph with Donald Hamilton and the related relations.
+Helper function: exploreKG(['donald_hamilton']: ['written_by'])
+Statement: Now, I need to verify the movies written by Donald Hamilton to find the movies that have the same screenwriter as 'The Ambushers'.
+Helper function: Verification(['the_wrecking_crew', 'the_big_country', 'the_violent_men', 'the_silencers'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('King Arthur')
+Statement: First, to solve the claim, I have to know the screenwriter of 'King Arthur'.
+Helper function: exploreKG('King Arthur': ['written_by'])
+Statement: Next, I need to find the films written by David Franzoni. To find the films, I need relations linked with the screenwriter.
+Helper function: getRelation(['david_franzoni'])
+Statement: To get the films written by David Franzoni, I need to explore the graph with the screenwriter and related relations.
+Helper function: exploreKG(['david_franzoni']: ['written_by'])
+Statement: Now, I need to find the films that share the screenwriter with 'King Arthur', which is 'Amistad'.
+Helper function: Verification(['Amistad'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Massi Mrowat')
+Statement: First, to solve the claim, I have to know the films starred by 'Massi Mrowat'.
+Helper function: exploreKG('Massi Mrowat': ['starred_actors'])
+Statement: Now, I have to find the release years of the film starred by 'Massi Mrowat'.
+Helper function: getRelation(['the_patience_stone'])
+Statement: To get the release years of the film starred by 'Massi Mrowat', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['the_patience_stone']: ['release_year'])
+Now I have the release year of the film starred by 'Massi Mrowat'. The answer to the claim is as follows.
+['2012']
+
+Helper function: Verification(['2012'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Michael Madsen')
+Statement: First, to solve the claim, I have to know the movies in which 'Michael Madsen' acted.
+Helper function: exploreKG('Michael Madsen': ['starred_actors'])
+Statement: Next, I need to find the genres of the movies in which 'Michael Madsen' acted. To do this, I need to find the relations linked with each movie.
+Helper function: getRelation(['money_for_nothing', 'kill_me_again', 'the_getaway', 'piranhaconda', 'mulholland_falls', 'reservoir_dogs', 'species_ii', 'loosies', 'house', 'boarding_gate', 'donnie_brasco', 'bloodrayne', 'species', 'vice', 'the_bleeding'])
+Statement: To get the genres of the movies acted by 'Michael Madsen', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['money_for_nothing', 'kill_me_again', 'the_getaway', 'piranhaconda', 'mulholland_falls', 'reservoir_dogs', 'species_ii', 'loosies', 'house', 'boarding_gate', 'donnie_brasco', 'bloodrayne', 'species', 'vice', 'the_bleeding']: ['has_genre'])
+Statement: Now I have the genres of the movies acted by 'Michael Madsen'. The answer to the claim is as follows.
+['comedy', 'crime', 'action', 'thriller', 'horror', 'drama', 'fantasy', 'adventure']
+Helper function: Verification(['comedy', 'crime', 'action', 'thriller', 'horror', 'drama', 'fantasy', 'adventure'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Much Ado About Nothing')
+Statement: First, to solve the claim, I have to know the screenwriter of 'Much Ado About Nothing'.
+Helper function: exploreKG('Much Ado About Nothing': ['written_by'])
+Statement: Next, I need to find the films written by the screenwriters of 'Much Ado About Nothing'. To find these films, I need the relations linked with the screenwriters.
+Helper function: getRelation(['william_shakespeare', 'joss_whedon', 'kenneth_branagh'])
+Statement: To get the films written by the screenwriters of 'Much Ado About Nothing', I need to explore the graph with each screenwriter and related relations.
+Helper function: exploreKG(['william_shakespeare', 'joss_whedon', 'kenneth_branagh']: ['written_by'])
+Statement: To find the films that share the screenwriter with 'Much Ado About Nothing', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['tempest', 'king_lear', "love's_labour's_lost", 'macbeth', 'king_of_texas', 'romeo_+_juliet', 'othello', 'romeo_and_juliet', 'men_of_respect', 'looking_for_richard', 'o', 'julius_caesar', 'richard_iii', 'the_taming_of_the_shrew', 'as_you_like_it', "prospero's_books", 'coriolanus', 'the_tempest', 'the_banquet', 'private_romeo', 'chimes_at_midnight', 'henry_v', 'hamlet', "a_midsummer_night's_dream", 'haider', 'the_cabin_in_the_woods', 'the_avengers', 'in_your_eyes', 'toy_story', 'serenity', 'buffy_the_vampire_slayer', 'the_magic_flute']: ['written_by'])
+Statement: Now, I have found the films that share the screenwriter with 'Much Ado About Nothing'. The answer to the claim is as follows.
+['tempest', 'king_lear', "love's_labour's_lost", 'macbeth', 'king_of_texas', 'romeo_+_juliet', 'othello', 'romeo_and_juliet', 'men_of_respect', 'looking_for_richard', 'o', 'julius_caesar', 'richard_iii', 'the_taming_of_the_shrew', 'as_you_like_it', "prospero's_books", 'coriolanus', 'the_tempest', 'the_banquet', 'private_romeo', 'chimes_at_midnight', 'henry_v', 'hamlet', "a_midsummer_night's_dream", 'haider', 'the_cabin_in_the_woods', 'the_avengers', 'in_your_eyes', 'toy_story', 'serenity', 'buffy_the_vampire_slayer', 'the_magic_flute']
+Helper function: Verification(['tempest', 'king_lear', "love's_labour's_lost", 'macbeth', 'king_of_texas', 'romeo_+_juliet', 'othello', 'romeo_and_juliet', 'men_of_respect', 'looking_for_richard', 'o', 'julius_caesar', 'richard_iii', 'the_taming_of_the_shrew', 'as_you_like_it', "prospero's_books", 'coriolanus', 'the_tempest', 'the_banquet', 'private_romeo', 'chimes_at_midnight', 'henry_v', 'hamlet', "a_midsummer_night's_dream", 'haider', 'the_cabin_in_the_woods', 'the_avengers', 'in_your_eyes', 'toy_story', 'serenity', 'buffy_the_vampire_slayer', 'the_magic_flute'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Donatas Banionis')
+Statement: First, to solve the claim, I have to know the films acted by 'Donatas Banionis'.
+Helper function: exploreKG('Donatas Banionis': ['starred_actors'])
+Statement: Now, I need to find the directors of the film 'Solaris' to answer the claim.
+Helper function: getRelation('solaris')
+Statement: To find the directors of the film 'Solaris', I need to explore the graph with the film and related relations.
+Helper function: exploreKG('solaris': ['directed_by'])
+Now I have the information needed to answer the claim.
+
+The films acted by Donatas Banionis, specifically 'Solaris', were directed by Andrei Tarkovsky and Steven Soderbergh.
+
+The answer to the claim is as follows:
+['Andrei Tarkovsky', 'Steven Soderbergh']
+
+Helper function: Verification(['Andrei Tarkovsky', 'Steven Soderbergh'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Michel Blanc')
+Statement: First, to solve the claim, I have to know the movies written by 'Michel Blanc'.
+Helper function: exploreKG('Michel Blanc': ['written_by'])
+Statement: Now, I have found the movie written by 'Michel Blanc'. Next, I need to find the main languages in the movie.
+Helper function: getRelation(['summer_things'])
+Statement: To get the main languages in the movie written by 'Michel Blanc', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['summer_things']: ['in_language'])
+Now I have found the main languages in the movie written by Michel Blanc. The answer to the claim is as follows:
+['french', 'italian']
+
+Helper function: Verification(['french', 'italian'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Ari Folman')
+Statement: First, to solve the claim, I have to know the films directed by 'Ari Folman'.
+Helper function: exploreKG('Ari Folman': ['directed_by'])
+Statement: Now, I have the films directed by 'Ari Folman. Next, I need to find the genres of these films.
+Helper function: getRelation(['the_congress', 'waltz_with_bashir'])
+Statement: To get the genres of the films directed by 'Ari Folman, I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['the_congress', 'waltz_with_bashir']: ['has_genre'])
+Now I have the genres of the films directed by 'Ari Folman. The answer to the claim is as follows:
+['animation', 'documentary']
+Helper function: Verification(['animation', 'documentary'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Liza Marklund"])
+Statement: Now, to find the films that 'Liza Marklund' has written, I need to explore the graph from 'Liza Marklund' with related relations.
+Helper function: exploreKG(['Liza Marklund']: ['written_by'])
+Statement: Now, I have found that 'Liza Marklund' has written the film 'The Bomber'. Next, I need to find out when the film was released.
+Helper function: getRelation(['the_bomber'])
+Statement: To get the release year of the film 'The Bomber' written by 'Liza Marklund', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['the_bomber']: ['release_year'])
+Statement: Now I have found that the film 'The Bomber' written by Liza Marklund was released in 2001. The answer to the claim is as follows.
+['2001']
+Helper function: Verification(['2001'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Ringo Lam"])
+Statement: To find the release dates of the films directed by 'Ringo Lam', I need to explore the graph from 'Ringo Lam' with the related relations.
+Helper function: exploreKG(['Ringo Lam']: ['directed_by'])
+Statement: Now I have the films directed by 'Ringo Lam'. To find out when these films were released, I need to get the release dates of each film.
+Helper function: getRelation(['city_on_fire', 'twin_dragons', 'replicant', 'in_hell', 'maximum_risk', 'triangle'])
+Statement: To determine the release dates of the films directed by 'Ringo Lam', I need to explore the graph with each film and the related relations.
+Helper function: exploreKG(['city_on_fire', 'twin_dragons', 'replicant', 'in_hell', 'maximum_risk', 'triangle']: ['release_year'])
+Statement: Now I have the release dates of the films directed by 'Ringo Lam'. The answer to the claim is as follows.
+['1987', '1992', '2001', '2003', '1996', '2009', '2007']
+Helper function: Verification(['1987', '1992', '2001', '2003', '1996', '2009', '2007'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Flakes')
+Statement: First, to solve the claim, I have to know the actors starred in 'Flakes'.
+Helper function: exploreKG('Flakes': ['starred_actors'])
+Statement: Now, I need to find the movies in which 'Aaron Stanford' starred. To find these movies, I need the relations linked with the actor.
+Helper function: getRelation(['aaron_stanford'])
+Statement: To get the movies starred by 'Aaron Stanford', I need to explore the graph with the actor and related relations.
+Helper function: exploreKG(['aaron_stanford']: ['starred_actors'])
+Statement: Now, I have found the movies starred by 'Aaron Stanford'. The answer to the claim is as follows.
+['tadpole', 'live_free_or_die', 'rick']
+Helper function: Verification(['tadpole', 'live_free_or_die', 'rick'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Jeremy Sisto"])
+Statement: Now, to find the actors who acted together with 'Jeremy Sisto', I need to explore the graph from 'Jeremy Sisto' with related relations.
+Helper function: exploreKG(['Jeremy Sisto']: ['starred_actors'])
+Statement: Now I get the actors who acted together with 'Jeremy Sisto'. The answer to the claim is as follows.
+['angel_eyes', 'may', 'hideaway', 'wrong_turn', 'without_limits']
+Helper function: Verification(['angel_eyes', 'may', 'hideaway', 'wrong_turn', 'without_limits'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Reasonable Doubt')
+Statement: First, to solve the claim, I have to know the actors starred in 'Reasonable Doubt'.
+Helper function: exploreKG('Reasonable Doubt': ['starred_actors'])
+Statement: Next, I need films starred by the actors in 'Reasonable Doubt'. To find the films, I need relations linked with the actors.
+Helper function: getRelation(['gloria_reuben', 'samuel_l._jackson', 'dominic_cooper', 'ryan_robbins'])
+Statement: To get the films starred by the previous actors, I need to explore the graph with each actor and related relations.
+Helper function: exploreKG(['gloria_reuben', 'samuel_l._jackson', 'dominic_cooper', 'ryan_robbins']: ['starred_actors'])
+Statement: To get the films starred by the actors, I need to find the relations linked with all the films from the previous step.
+Helper function: getRelation(['lakeview_terrace', 'coach_carter', 'cleaner', 'the_long_kiss_goodnight', 'hard_eight', 'soul_men', 'turbo', 'freedomland', 'deep_blue_sea', 'in_my_country', 'farce_of_the_penguins', 'jackie_brown', 'basic', 'twisted', 'shaft', 'one_eight_seven', 's.w.a.t.', 'sphere', 'meeting_evil', 'black_snake_moan', 'loaded_weapon_1', 'unthinkable', 'the_sunset_limited', 'african_cats', 'a_time_to_kill', "eve's_bayou", 'the_negotiator', 'unbreakable', 'the_man', 'snakes_on_a_plane', 'kiss_of_death', 'fluke', 'resurrecting_the_champ', "the_caveman's_valentine", 'changing_lanes', 'the_great_white_hype', 'rules_of_engagement', 'no_good_deed', 'arena', 'dead_man_down', 'summer_in_february', "the_devil's_double"])
+s_bayou",_
+,_"the_caveman
+s_bayou",_
+,_"the_caveman
+Statement: To get the films starred by the actors, I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['lakeview_terrace', 'coach_carter', 'cleaner', 'the_long_kiss_goodnight', 'hard_eight', 'soul_men', 'turbo', 'freedomland', 'deep_blue_sea', 'in_my_country', 'farce_of_the_penguins', 'jackie_brown', 'basic', 'twisted', 'shaft', 'one_eight_seven', 's.w.a.t.', 'sphere', 'meeting_evil', 'black_snake_moan', 'loaded_weapon_1', 'unthinkable', 'the_sunset_limited', 'african_cats', 'a_time_to_kill', "eve's_bayou", "the_caveman's_valentine", 'changing_lanes', 'the_great_white_hype', 'rules_of_engagement', 'no_good_deed', 'arena', 'dead_man_down', 'summer_in_february', "the_devil's_double"]: ['starred_actors'])
+Statement: Now I get the actors of the films starred by the actor in 'Reasonable Doubt'. The answer of the claim is as follows.
+['kerry_washington', 'patrick_wilson', 'samuel_l._jackson', 'rob_brown', 'ed_harris', 'eva_mendes', 'geena_davis', 'gwyneth_paltrow', 'john_c._reilly', 'philip_baker_hall', 'sharon_leal', 'bernie_mac', 'michael_peña', 'ryan_reynolds', 'paul_giamatti', 'julianne_moore', 'saffron_burrows', 'thomas_jane', 'juliette_binoche', 'bob_saget', 'robert_forster', 'pam_grier', 'bridget_fonda', 'connie_nielsen', 'john_travolta', 'ashley_judd', 'richard_roundtree', 'jeffrey_wright', 'christopher_st._john', 'moses_gunn', 'charles_cioffi', 'christian_bale', 'michelle_rodriguez', 'colin_farrell', 'll_cool_j', 'sharon_stone', 'dustin_hoffman', 'luke_wilson', 'justin_timberlake', 'emilio_estevez', 'michael_sheen', 'tommy_lee_jones', 'patrick_stewart', 'matthew_mcconaughey', 'kevin_spacey', 'sandra_bullock', 'lynn_whitfield', 'meagan_good', 'ben_affleck', 'jeff_goldblum', 'peter_berg', 'doug_hutchison', 'idris_elba', 'stellan_skarsgård', 'milla_jovovich', 'kate_del_castillo', 'taraji_p._henson', 'kellan_lutz', 'claudia_christian', 'paul_satterfield', 'terrence_howard', 'noomi_rapace', 'dan_stevens']
+Helper function: Verification(['kerry_washington', 'patrick_wilson', 'samuel_l._jackson', 'rob_brown', 'ed_harris', 'eva_mendes', 'geena_davis', 'gwyneth_paltrow', 'john_c._reilly', 'philip_baker_hall', 'sharon_leal', 'bernie_mac', 'michael_peña', 'ryan_reynolds', 'paul_giamatti', 'julianne_moore', 'saffron_burrows', 'thomas_jane', 'juliette_binoche', 'bob_saget', 'robert_forster', 'pam_grier', 'bridget_fonda', 'connie_nielsen', 'john_travolta', 'ashley_judd', 'richard_roundtree', 'jeffrey_wright', 'christopher_st._john', 'moses_gunn', 'charles_cioffi', 'christian_bale', 'michelle_rodriguez', 'colin_farrell', 'll_cool_j', 'sharon_stone', 'dustin_hoffman', 'luke_wilson', 'justin_timberlake', 'emilio_estevez', 'michael_sheen', 'tommy_lee_jones', 'patrick_stewart', 'matthew_mcconaughey', 'kevin_spacey', 'sandra_bullock', 'lynn_whitfield', 'meagan_good', 'ben_affleck', 'jeff_goldblum', 'peter_berg', 'doug_hutchison', 'idris_elba', 'stellan_skarsgård', 'milla_jovovich', 'kate_del_castillo', 'taraji_p._henson', 'kellan_lutz', 'claudia_christian', 'paul_satterfield', 'terrence_howard', 'noomi_rapace', 'dan_stevens'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Nicoletta Braschi"])
+Statement: Now, to find the co-stars of 'Nicoletta Braschi', I need to explore the graph from 'Nicoletta Braschi' with related relations.
+Helper function: exploreKG(["Nicoletta Braschi"]: ['starred_actors'])
+Statement: Now I get the co-stars of 'Nicoletta Braschi'. The answer to the claim is as follows.
+['Johnny Stecchino']
+Helper function: Verification(['Johnny Stecchino'])
+Statement: I need to know the relations linked with the given entity.
+Helper function: getRelation(['Zach Clark'])
+Statement: First, to solve the claim, I have to know the films directed by 'Zach Clark'.
+Helper function: exploreKG(['Zach Clark']: ['directed_by'])
+Statement: Now I have the film directed by 'Zach Clark'. Next, I need to find the genres of the film.
+Helper function: getRelation(['white_reindeer'])
+Statement: To get the genres of the film directed by 'Zach Clark', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['white_reindeer']: ['has_genre'])
+Now I have the genre of the film directed by Zach Clark. The answer to the claim is as follows:
+['comedy']
+
+Helper function: Verification(['comedy'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Chris Van Allsburg"])
+Statement: Now, to find the movies that 'Chris Van Allsburg' has written, I need to explore the graph from 'Chris Van Allsburg' with related relations.
+Helper function: exploreKG(["Chris Van Allsburg"]: ['written_by'])
+Statement: Now, we have to find the directors of the movies written by 'Chris Van Allsburg'.
+Helper function: getRelation(['the_polar_express', 'jumanji'])
+Statement: To get the directors of the movies written by 'Chris Van Allsburg', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['the_polar_express', 'jumanji']: ['directed_by'])
+Now I have found the directors of the movies written by 'Chris Van Allsburg. The answer to the claim is as follows:
+['Robert Zemeckis', 'Joe Johnston']
+
+Helper function: Verification(['Robert Zemeckis', 'Joe Johnston'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Michèle Garcia')
+Statement: First, to solve the claim, I have to know the movies in which Michèle Garcia acted.
+Helper function: exploreKG('Michèle Garcia': ['starred_actors'])
+Statement: Now I have the movie starred by Michèle Garcia. Next, I need to find the primary languages in this movie.
+Helper function: getRelation(['monsieur_batignole'])
+Statement: To get the primary languages in the movie "Monsieur Batignole" acted by Michèle Garcia, I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['monsieur_batignole']: ['in_language'])
+Now I have found the primary languages in the movies acted by Michèle Garcia. The answer to the claim is as follows:
+['french', 'german']
+
+Helper function: Verification(['french', 'german'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Jim Kelly'])
+Statement: Now, to find the co-stars of 'Jim Kelly', I need to explore the graph from 'Jim Kelly' with related relations.
+Helper function: exploreKG(['Jim Kelly']: ['starred_actors'])
+Statement: Now I get the film that 'Jim Kelly' starred in. The answer to the claim is as follows.
+['enter_the_dragon']
+Helper function: Verification(['enter_the_dragon'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation(['Sheila Florance'])
+Statement: First, to solve the claim, I have to know the films starred by 'Sheila Florance'.
+Helper function: exploreKG(['Sheila Florance']: ['starred_actors'])
+Statement: Now, I need to find the directors of the film "A Woman's Tale" to answer the claim.
+Helper function: getRelation(["a_woman's_tale"])
+Statement: To find the directors of the film "A Woman's Tale," I need to explore the graph with the film and related relations.
+Helper function: exploreKG(["a_woman's_tale"]: ['directed_by'])
+Now I have the information needed to answer the claim.
+
+The movies starred by "Sheila Florance" were directed by "Paul Cox."
+
+The answer to the claim is as follows:
+["Paul Cox"]
+
+Helper function: Verification(["Paul Cox"])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Maria Kulle')
+Statement: First, to solve the claim, I have to know the movies in which 'Maria Kulle' acted.
+Helper function: exploreKG('Maria Kulle': ['starred_actors'])
+Statement: Now I get the movie starred by 'Maria Kulle'. The answer to the claim is as follows.
+['four_shades_of_brown']
+Helper function: Verification(['four_shades_of_brown'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Vittorio Mezzogiorno')
+Statement: First, to solve the claim, I have to know the films in which 'Vittorio Mezzogiorno' acted.
+Helper function: exploreKG('Vittorio Mezzogiorno': ['starred_actors'])
+Statement: Now, I have to find the person who wrote the film 'Three Brothers'.
+Helper function: getRelation('Three Brothers')
+Statement: To find the person who wrote the film 'Three Brothers', I need to explore the graph with the film and related relations.
+Helper function: exploreKG('Three Brothers': ['written_by'])
+Statement: Now I have found that the film 'Three Brothers' was written by 'Francesco Rosi'. The answer to the claim is as follows.
+['Francesco Rosi']
+Helper function: Verification(['Francesco Rosi'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Andrew Davies"])
+Statement: Now, to find the films that 'Andrew Davies' has written, I need to explore the graph from 'Andrew Davies' with related relations.
+Helper function: exploreKG(["Andrew Davies"]: ['written_by'])
+Statement: Now, I need to find the languages of the films written by 'Andrew Davies'. To do this, I have to find the relations linked with each film.
+Helper function: getRelation(['the_tailor_of_panama', 'brideshead_revisited', 'the_chatterley_affair', 'emma', 'affinity', 'northanger_abbey', 'b._monkey'])
+Statement: To determine the languages of the films written by 'Andrew Davies', I need to explore the graph with each film and the related relations.
+Helper function: exploreKG(['the_tailor_of_panama', 'brideshead_revisited', 'the_chatterley_affair', 'emma', 'affinity', 'northanger_abbey', 'b._monkey']: ['in_language'])
+Statement: Now I have found the languages of the films written by 'Andrew Davies'. The answer to the claim is as follows.
+['english']
+Helper function: Verification(['english'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Jessica Biel"])
+Statement: Now, to find the actors who acted together with 'Jessica Biel', I need to explore the graph from 'Jessica Biel' with related relations.
+Helper function: exploreKG(["Jessica Biel"]: ['starred_actors'])
+Statement: Now I get the films that 'Jessica Biel' starred in. The answer to the claim "who acted together with Jessica Biel" is as follows.
+['london', "i'll_be_home_for_christmas", 'stealth', 'the_a-team', 'the_tall_man', 'planet_51', 'summer_catch', 'the_rules_of_attraction', 'playing_for_keeps', 'next', 'total_recall', 'easy_virtue', 'the_illusionist']
+Helper function: Verification(['london', "i'll_be_home_for_christmas", 'stealth', 'the_a-team', 'the_tall_man', 'planet_51', 'summer_catch', 'the_rules_of_attraction', 'playing_for_keeps', 'next', 'total_recall', 'easy_virtue', 'the_illusionist'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Madame de La Fayette')
+Statement: First, to solve the claim, I have to know the films written by 'Madame de La Fayette'.
+Helper function: exploreKG(['Madame de La Fayette']: ['written_by'])
+Statement: Now, I have to find the main languages in the film 'The Princess of Montpensier'.
+Helper function: getRelation('the_princess_of_montpensier')
+Statement: To get the main languages in the film 'The Princess of Montpensier', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['the_princess_of_montpensier']: ['in_language'])
+Statement: Now I have found that the main language in films written by 'Madame de La Fayette' is French. The answer to the claim is as follows.
+['French']
+Helper function: Verification(['French'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Flags of Our Fathers')
+Statement: First, to solve the claim, I have to know the director of 'Flags of Our Fathers'.
+Helper function: exploreKG('Flags of Our Fathers': ['directed_by'])
+Statement: Next, I need to find the films directed by Clint Eastwood. To find the films, I need relations linked with Clint Eastwood.
+Helper function: getRelation(['clint_eastwood'])
+Statement: To get the films directed by Clint Eastwood, I need to explore the graph with Clint Eastwood and related relations.
+Helper function: exploreKG(['clint_eastwood']: ['directed_by'])
+Statement: To get the films directed by Clint Eastwood, I need to find the relations linked with all the films from the previous step.
+Helper function: getRelation(['american_sniper', 'pale_rider', 'white_hunter_black_heart', 'the_rookie', 'play_misty_for_me', 'sudden_impact', 'invictus', 'space_cowboys', 'bird', 'high_plains_drifter', 'the_eiger_sanction', 'j._edgar', 'a_perfect_world', 'mystic_river', 'hereafter', 'jersey_boys', 'firefox', 'bronco_billy', 'the_gauntlet', 'gran_torino', 'the_outlaw_josey_wales', 'changeling', 'absolute_power', 'true_crime', 'blood_work', 'million_dollar_baby', 'midnight_in_the_garden_of_good_and_evil', 'the_bridges_of_madison_county', 'breezy', 'unforgiven', 'heartbreak_ridge', 'honkytonk_man', 'letters_from_iwo_jima'])
+Statement: To get the films directed by Clint Eastwood, I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['american_sniper', 'pale_rider', 'white_hunter_black_heart', 'the_rookie', 'play_misty_for_me', 'sudden_impact', 'invictus', 'space_cowboys', 'bird', 'high_plains_drifter', 'the_eiger_sanction', 'j._edgar', 'a_perfect_world', 'mystic_river', 'hereafter', 'jersey_boys', 'firefox', 'bronco_billy', 'the_gauntlet', 'gran_torino', 'the_outlaw_josey_wales', 'changeling', 'absolute_power', 'true_crime', 'blood_work', 'million_dollar_baby', 'midnight_in_the_garden_of_good_and_evil', 'the_bridges_of_madison_county', 'breezy', 'unforgiven', 'heartbreak_ridge', 'honkytonk_man', 'letters_from_iwo_jima']: ['directed_by'])
+Statement: Now I get the films directed by Clint Eastwood. The answer to the claim is as follows.
+['american_sniper', 'pale_rider', 'white_hunter_black_heart', 'play_misty_for_me', 'sudden_impact', 'invictus', 'space_cowboys', 'bird', 'high_plains_drifter', 'the_eiger_sanction', 'j._edgar', 'a_perfect_world', 'mystic_river', 'hereafter', 'jersey_boys', 'firefox', 'bronco_billy', 'the_gauntlet', 'gran_torino', 'the_outlaw_josey_wales', 'changeling', 'absolute_power', 'true_crime', 'blood_work', 'million_dollar_baby', 'midnight_in_the_garden_of_good_and_evil', 'the_bridges_of_madison_county', 'breezy', 'unforgiven', 'heartbreak_ridge', 'honkytonk_man', 'letters_from_iwo_jima']
+Helper function: Verification(['american_sniper', 'pale_rider', 'white_hunter_black_heart', 'play_misty_for_me', 'sudden_impact', 'invictus', 'space_cowboys', 'bird', 'high_plains_drifter', 'the_eiger_sanction', 'j._edgar', 'a_perfect_world', 'mystic_river', 'hereafter', 'jersey_boys', 'firefox', 'bronco_billy', 'the_gauntlet', 'gran_torino', 'the_outlaw_josey_wales', 'changeling', 'absolute_power', 'true_crime', 'blood_work', 'million_dollar_baby', 'midnight_in_the_garden_of_good_and_evil', 'the_bridges_of_madison_county', 'breezy', 'unforgiven', 'heartbreak_ridge', 'honkytonk_man', 'letters_from_iwo_jima'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Night at the Museum')
+Statement: First, to solve the claim, I have to know the director of 'Night at the Museum'.
+Helper function: exploreKG('Night at the Museum': ['directed_by'])
+Statement: Next, I need to find the films directed by Shawn Levy. To find these films, I need the relations linked with Shawn Levy.
+Helper function: getRelation(['shawn_levy'])
+Statement: To get the films directed by Shawn Levy, I need to explore the graph with Shawn Levy and the 'directed_by' relation.
+Helper function: exploreKG(['shawn_levy']: ['directed_by'])
+Statement: Now, I have the films directed by the same director as 'Night at the Museum', which are 'The Internship', 'Cheaper by the Dozen', 'Real Steel', 'Big Fat Liar', 'Just Married', 'This Is Where I Leave You', and 'Date Night'.
+Helper function: Verification(['The Internship', 'Cheaper by the Dozen', 'Real Steel', 'Big Fat Liar', 'Just Married', 'This Is Where I Leave You', 'Date Night'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Edward Childs Carpenter"])
+Statement: Now, to find the movies that 'Edward Childs Carpenter' has written, I need to explore the graph from 'Edward Childs Carpenter' with related relations.
+Helper function: exploreKG(["Edward Childs Carpenter"]: ['written_by'])
+Statement: Now, I have found the movies written by 'Edward Childs Carpenter'. To determine when these movies were released, I need to find the release years of these movies.
+Helper function: getRelation(['whistling_in_the_dark', 'the_major_and_the_minor'])
+Statement: To determine the release years of the movies written by 'Edward Childs Carpenter', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['whistling_in_the_dark', 'the_major_and_the_minor']: ['release_year'])
+Statement: Now I have the release years of the movies written by 'Edward Childs Carpenter'. The answer to the claim is as follows.
+['1941', '1942']
+Helper function: Verification(['1941', '1942'])
+Statement: I need to start by finding the relations linked with the given entity.
+Helper function: getRelation(['Anthony Armstrong'])
+Statement: To find the films that 'Anthony Armstrong' has written, I need to explore the graph from 'Anthony Armstrong' with the related relations.
+Helper function: exploreKG(['Anthony Armstrong']: ['written_by'])
+Statement: Now, I have found the film 'The Man Who Haunted Himself' written by 'Anthony Armstrong'. Next, I need to find the release dates of this film.
+Helper function: getRelation(['the_man_who_haunted_himself'])
+Statement: To get the release date of the film 'The Man Who Haunted Himself', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['the_man_who_haunted_himself']: ['release_year'])
+Statement: Now I have the release date of the film 'The Man Who Haunted Himself' written by Anthony Armstrong. The answer to the claim is as follows.
+['1970']
+Helper function: Verification(['1970'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Juha')
+Statement: First, to solve the claim, I have to know the scriptwriter of 'Juha'.
+Helper function: exploreKG('Juha': ['written_by'])
+Statement: Next, I need to find movies written by the scriptwriters of 'Juha'. To find these movies, I need the relations linked with the scriptwriters.
+Helper function: getRelation(['aki_kaurismäki', 'juhani_aho'])
+Statement: To get the movies written by the scriptwriters, I need to explore the graph with each scriptwriter and related relations.
+Helper function: exploreKG(['aki_kaurismäki', 'juhani_aho']: ['written_by'])
+Statement: To get the movies written by the scriptwriters, I need to explore the graph with each scriptwriter and related relations.
+Helper function: exploreKG(['aki_kaurismäki']: ['written_by'])
+Statement: Now I have the movies written by the scriptwriter of 'Juha'. The answer to the claim is as follows.
+['ariel', 'leningrad_cowboys_go_america', 'shadows_in_paradise', 'lights_in_the_dusk', 'calamari_union', 'la_vie_de_bohème', 'le_havre', 'i_hired_a_contract_killer', 'the_match_factory_girl', 'the_worthless', 'crime_and_punishment', 'the_man_without_a_past', 'leningrad_cowboys_meet_moses', 'hamlet_goes_business', 'rocky_vi', 'drifting_clouds', 'take_care_of_your_scarf,_tatiana']
+Helper function: Verification(['ariel', 'leningrad_cowboys_go_america', 'shadows_in_paradise', 'lights_in_the_dusk', 'calamari_union', 'la_vie_de_bohème', 'le_havre', 'i_hired_a_contract_killer', 'the_match_factory_girl', 'the_worthless', 'crime_and_punishment', 'the_man_without_a_past', 'leningrad_cowboys_meet_moses', 'hamlet_goes_business', 'rocky_vi', 'drifting_clouds', 'take_care_of_your_scarf,_tatiana'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('The Fuller Brush Man')
+Statement: First, to solve the claim, I have to know the actors starred in 'The Fuller Brush Man'.
+Helper function: exploreKG('The Fuller Brush Man': ['starred_actors'])
+Statement: Next, I need movies that have the same actor as 'The Fuller Brush Man'. To find these movies, I need relations linked with the actor.
+Helper function: getRelation(['red_skelton'])
+Statement: To get the movies that have the same actor as 'The Fuller Brush Man', I need to explore the graph with the actor and related relations.
+Helper function: exploreKG(['red_skelton']: ['starred_actors'])
+Statement: Now I have the movies that have the same actor as 'The Fuller Brush Man'. The answer to the claim is as follows.
+['whistling_in_the_dark', 'watch_the_birdie', "neptune's_daughter", 'three_little_words', 'excuse_my_dust', 'whistling_in_brooklyn', 'whistling_in_dixie', 'texas_carnival', 'bathing_beauty', 'the_yellow_cab_man', 'a_southern_yankee']
+Helper function: Verification(['whistling_in_the_dark', 'watch_the_birdie', "neptune's_daughter", 'three_little_words', 'excuse_my_dust', 'whistling_in_brooklyn', 'whistling_in_dixie', 'texas_carnival', 'bathing_beauty', 'the_yellow_cab_man', 'a_southern_yankee'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('The House Bunny')
+Statement: First, to solve the claim, I have to know the actors starred in 'The House Bunny'.
+Helper function: exploreKG('The House Bunny': ['starred_actors'])
+Statement: Next, I need movies starred by Anna Faris. To find the movies, I need relations linked with Anna Faris.
+Helper function: getRelation(['anna_faris'])
+Statement: To get the movies starred by Anna Faris, I need to explore the graph with Anna Faris and related relations.
+Helper function: exploreKG(['anna_faris']: ['starred_actors'])
+Statement: To get the movies that have the same actor as 'The House Bunny', I need to explore the graph with each movie and related relations.
+Helper function: getRelation(['just_friends', 'yogi_bear', 'observe_and_report', 'may', 'frequently_asked_questions_about_time_travel', "what's_your_number?", 'my_super_ex-girlfriend', 'scary_movie_4', 'take_me_home_tonight', 'cloudy_with_a_chance_of_meatballs_2', 'smiley_face', 'waiting...', 'cloudy_with_a_chance_of_meatballs'])
+s_your_number?",_
+s_your_number?",_
+Statement: To get the movies that have the same actor as 'The House Bunny', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['just_friends', 'yogi_bear', 'observe_and_report', 'may', 'frequently_asked_questions_about_time_travel', "what's_your_number?", 'my_super_ex-girlfriend', 'scary_movie_4', 'take_me_home_tonight', 'cloudy_with_a_chance_of_meatballs_2', 'smiley_face', 'waiting...', 'cloudy_with_a_chance_of_meatballs']: ['starred_actors'])
+Statement: Now I have the movies that have the same actor as 'The House Bunny'. The answer to the claim is as follows.
+['just_friends', 'yogi_bear', 'observe_and_report', 'may', 'frequently_asked_questions_about_time_travel', "what's_your_number?", 'my_super_ex-girlfriend', 'scary_movie_4', 'take_me_home_tonight', 'cloudy_with_a_chance_of_meatballs_2', 'smiley_face', 'waiting...', 'cloudy_with_a_chance_of_meatballs']
+Helper function: Verification(['just_friends', 'yogi_bear', 'observe_and_report', 'may', 'frequently_asked_questions_about_time_travel', "what's_your_number?", 'my_super_ex-girlfriend', 'scary_movie_4', 'take_me_home_tonight', 'cloudy_with_a_chance_of_meatballs_2', 'smiley_face', 'waiting...', 'cloudy_with_a_chance_of_meatballs'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Hans Rameau"])
+Statement: Now, to find the films that 'Hans Rameau' has written, I need to explore the graph from 'Hans Rameau' with related relations.
+Helper function: exploreKG(['Hans Rameau']: ['written_by'])
+Statement: Now, we have to find the director of the film written by 'Hans Rameau'.
+Helper function: getRelation(['waterloo_bridge'])
+Statement: To get the director of the film, I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['waterloo_bridge']: ['directed_by'])
+Now I have found the directors of the films written by 'Hans Rameau'. The answer to the claim is as follows:
+['Mervyn LeRoy', 'James Whale']
+
+Helper function: Verification(['Mervyn LeRoy', 'James Whale'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Jay McInerney"])
+Statement: Now, to find the films that 'Jay McInerney' has written, I need to explore the graph from 'Jay McInerney' with the related relations.
+Helper function: exploreKG(["Jay McInerney"]: ['written_by'])
+Statement: Now, I have found the films written by 'Jay McInerney'. Next, I need to find out who directed these films.
+Helper function: getRelation(['bright_lights,_big_city', 'gia'])
+Statement: To determine who directed the films written by 'Jay McInerney', I need to explore the graph with the films and related relations.
+Helper function: exploreKG(['bright_lights,_big_city', 'gia']: ['directed_by'])
+Statement: Now I have found out who directed the films written by 'Jay McInerney'. The answer to the claim is as follows.
+['James Bridges', 'Michael Cristofer']
+
+Helper function: Verification(['James Bridges', 'Michael Cristofer'])
+Statement: I need to find the relations linked with the given entity.
+Helper function: getRelation('Cliff Owen')
+Statement: To find the movies directed by 'Cliff Owen', I need to explore the graph from 'Cliff Owen' with the relation 'directed_by'.
+Helper function: exploreKG(['Cliff Owen']: ['directed_by'])
+Statement: Now, I have found the movie directed by 'Cliff Owen'. The answer to the claim is as follows.
+['the_wrong_arm_of_the_law']
+Helper function: Verification(['the_wrong_arm_of_the_law'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Ryan Rowe')
+Statement: First, to solve the claim, I have to know the movies written by 'Ryan Rowe'.
+Helper function: exploreKG('Ryan Rowe': ['written_by'])
+Statement: Now, I have found the movie written by 'Ryan Rowe'. Next, I need to find the genres of this movie.
+Helper function: getRelation(["charlie's_angels"])
+Statement: To get the genres of the movie written by 'Ryan Rowe', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(["charlie's_angels"]: ['has_genre'])
+Now I have the genres of the movie written by 'Ryan Rowe'. The answer to the claim is as follows:
+['comedy', 'action', 'adventure']
+
+Helper function: Verification(['comedy', 'action', 'adventure'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Delores Taylor'])
+Statement: To find who appeared in the same movie with Delores Taylor, I need to explore the graph from Delores Taylor with the related relations.
+Helper function: exploreKG(['Delores Taylor']: ['starred_actors'])
+Statement: Now I have found the movie that Delores Taylor starred in. The answer to the claim, who appeared in the same movie with Delores Taylor, is as follows.
+['the_trial_of_billy_jack']
+Helper function: Verification(['the_trial_of_billy_jack'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Bill Irwin')
+Statement: First, to solve the claim, I have to know the movies in which 'Bill Irwin' acted.
+Helper function: exploreKG('Bill Irwin': ['starred_actors'])
+Statement: Now, I need to find the genres of the movie 'Rachel Getting Married' to determine the genres of the movies acted by 'Bill Irwin'.
+Helper function: getRelation(['rachel_getting_married'])
+Statement: To get the genres of the movie 'Rachel Getting Married', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['rachel_getting_married']: ['has_genre'])
+Statement: Now I have found that the movie 'Rachel Getting Married' falls under the genre 'drama'. The answer to the claim is as follows.
+['drama']
+Helper function: Verification(['drama'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Alexander Klein"])
+Statement: Now, to find the films that 'Alexander Klein' has written, I need to explore the graph from 'Alexander Klein' with related relations.
+Helper function: exploreKG(['Alexander Klein']: ['written_by'])
+Statement: Now, we have to find the director of the film written by 'Alexander Klein'.
+Helper function: getRelation(['the_counterfeit_traitor'])
+Statement: To get the director of the film written by 'Alexander Klein', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['the_counterfeit_traitor']: ['directed_by'])
+Now I have found the director of the films written by 'Alexander Klein'. The answer to the claim is as follows:
+['George Seaton']
+
+Helper function: Verification(['George Seaton'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('The Story of Dr. Wassell')
+Statement: First, to solve the claim, I have to know the actors starred in 'The Story of Dr. Wassell'.
+Helper function: exploreKG('The Story of Dr. Wassell': ['starred_actors'])
+Statement: Next, I need films starred by the actors 'Gary Cooper', 'Signe Hasso', "Dennis O'Keefe", and 'Laraine Day'. To find the films, I need relations linked with the actors.
+Helper function: getRelation(['gary_cooper', 'signe_hasso', "dennis_o'keefe", 'laraine_day'])
+keefe",_
+keefe",_
+Statement: To get the films starred by 'Gary Cooper', 'Signe Hasso', "Dennis O'Keefe", and 'Laraine Day', I need to explore the graph with each actor and related relations.
+Helper function: exploreKG(['gary_cooper', 'signe_hasso', "dennis_o'keefe", 'laraine_day']: ['starred_actors'])
+Statement: To get the films that share the same actor as 'The Story of Dr. Wassell', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['operator_13', 'the_court-martial_of_billy_mitchell', 'the_winning_of_barbara_worth', 'the_westerner', 'sergeant_york', 'a_farewell_to_arms', 'the_wedding_night', 'friendly_persuasion', 'city_streets', 'the_hanging_tree', 'morocco', 'along_came_jones', 'if_i_had_a_million', 'casanova_brown', 'one_sunday_afternoon', 'the_plainsman', 'for_whom_the_bell_tolls', 'design_for_living', 'springfield_rifle', 'north_west_mounted_police', 'now_and_forever', 'alice_in_wonderland', 'distant_drums', 'ball_of_fire', 'love_in_the_afternoon', 'beau_geste', 'cloak_and_dagger', 'the_fountainhead', 'unconquered', 'the_naked_edge', 'the_lives_of_a_bengal_lancer', 'saratoga_trunk', 'the_general_died_at_dawn', 'high_noon', 'meet_john_doe', 'they_came_to_cordura', 'the_cowboy_and_the_lady', 'vera_cruz', 'the_pride_of_the_yankees', 'dallas', 'ten_north_frederick', 'mr._deeds_goes_to_town', 'the_wreck_of_the_mary_deare', 'man_of_the_west', 'the_real_glory', 'desire', 'johnny_angel', 'a_double_life', 'hi_diddle_diddle', 't-men', 'the_fighting_seabees', 'foreign_correspondent', 'journey_for_margaret', 'the_high_and_the_mighty', 'my_dear_secretary', 'the_3rd_voice', 'mr._lucky', 'the_woman_on_pier_13']: ['starred_actors'])
+Statement: Now I need to find the films that share the same actor as 'The Story of Dr. Wassell'. The answer to the claim is as follows.
+['operator_13', 'the_court-martial_of_billy_mitchell', 'the_winning_of_barbara_worth', 'the_westerner', 'sergeant_york', 'a_farewell_to_arms', 'the_wedding_night', 'friendly_persuasion', 'city_streets', 'the_hanging_tree', 'morocco', 'along_came_jones', 'if_i_had_a_million', 'casanova_brown', 'one_sunday_afternoon', 'the_plainsman', 'for_whom_the_bell_tolls', 'design_for_living', 'springfield_rifle', 'north_west_mounted_police', 'now_and_forever', 'alice_in_wonderland', 'distant_drums', 'ball_of_fire', 'love_in_the_afternoon', 'beau_geste', 'cloak_and_dagger', 'the_fountainhead', 'unconquered', 'the_naked_edge', 'the_lives_of_a_bengal_lancer', 'saratoga_trunk', 'the_general_died_at_dawn', 'high_noon', 'meet_john_doe', 'they_came_to_cordura', 'the_cowboy_and_the_lady', 'vera_cruz', 'the_pride_of_the_yankees', 'dallas', 'ten_north_frederick', 'mr._deeds_goes_to_town', 'the_wreck_of_the_mary_deare', 'man_of_the_west', 'the_real_glory', 'desire', 'johnny_angel', 'a_double_life', 'hi_diddle_diddle', 't-men', 'the_fighting_seabees', 'foreign_correspondent', 'journey_for_margaret', 'the_high_and_the_mighty', 'my_dear_secretary', 'the_3rd_voice', 'mr._lucky', 'the_woman_on_pier_13']
+Helper function: Verification(['operator_13', 'the_court-martial_of_billy_mitchell', 'the_winning_of_barbara_worth', 'the_westerner', 'sergeant_york', 'a_farewell_to_arms', 'the_wedding_night', 'friendly_persuasion', 'city_streets', 'the_hanging_tree', 'morocco', 'along_came_jones', 'if_i_had_a_million', 'casanova_brown', 'one_sunday_afternoon', 'the_plainsman', 'for_whom_the_bell_tolls', 'design_for_living', 'springfield_rifle', 'north_west_mounted_police', 'now_and_forever', 'alice_in_wonderland', 'distant_drums', 'ball_of_fire', 'love_in_the_afternoon', 'beau_geste', 'cloak_and_dagger', 'the_fountainhead', 'unconquered', 'the_naked_edge', 'the_lives_of_a_bengal_lancer', 'saratoga_trunk', 'the_general_died_at_dawn', 'high_noon', 'meet_john_doe', 'they_came_to_cordura', 'the_cowboy_and_the_lady', 'vera_cruz', 'the_pride_of_the_yankees', 'dallas', 'ten_north_frederick', 'mr._deeds_goes_to_town', 'the_wreck_of_the_mary_deare', 'man_of_the_west', 'the_real_glory', 'desire', 'johnny_angel', 'a_double_life', 'hi_diddle_diddle', 't-men', 'the_fighting_seabees', 'foreign_correspondent', 'journey_for_margaret', 'the_high_and_the_mighty', 'my_dear_secretary', 'the_3rd_voice', 'mr._lucky', 'the_woman_on_pier_13'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('James Buckley')
+Statement: First, to solve the claim, I have to know the films starred by 'James Buckley'.
+Helper function: exploreKG('James Buckley': ['starred_actors'])
+Statement: Next, I need to find the genres of the films starred by 'James Buckley'. To find the genres, I need the relations linked with these films.
+Helper function: getRelation(['the_pyramid', 'the_inbetweeners_2', 'the_inbetweeners_movie'])
+Statement: To get the genres of the films starred by 'James Buckley', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['the_pyramid', 'the_inbetweeners_2', 'the_inbetweeners_movie']: ['has_genre'])
+Now I have found the genres of the movies starred by James Buckley. The answer to the claim is as follows:
+['horror', 'comedy', 'comedy']
+
+Helper function: Verification(['horror', 'comedy', 'comedy'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Charles Sturridge'])
+Statement: Now, to find the movies directed by 'Charles Sturridge' and their respective writers, I need to explore the graph from 'Charles Sturridge' with related relations.
+Helper function: exploreKG(['Charles Sturridge']: ['directed_by'])
+Statement: Now, I have the movies directed by 'Charles Sturridge'. To find out who wrote these movies, I need to explore the graph with each movie and the 'written_by' relation.
+Helper function: exploreKG(['a_handful_of_dust', 'the_scapegoat', 'where_angels_fear_to_tread', 'lassie']: ['written_by'])
+Statement: Now I have the information on who wrote the movies directed by 'Charles Sturridge'. The answer to the claim is as follows.
+['evelyn_waugh', 'daphne_du_maurier', 'derek_granger', 'tim_sullivan', 'eric_knight']
+
+Helper function: Verification(['evelyn_waugh', 'daphne_du_maurier', 'derek_granger', 'tim_sullivan', 'eric_knight'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Pierre Geller"])
+Statement: Now, to find the films that 'Pierre Geller' has written, I need to explore the graph from 'Pierre Geller' with related relations.
+Helper function: exploreKG(['Pierre Geller']: ['written_by'])
+Statement: Now, I have found the film written by 'Pierre Geller'. To get the release years of this film, I need to find the relations linked with the film.
+Helper function: getRelation(['rebellion'])
+Statement: To get the release years of the film written by 'Pierre Geller', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['rebellion']: ['release_year'])
+Now I have the release year of the film written by Pierre Geller. The answer to the claim is as follows:
+[2011]
+
+Helper function: Verification([2011])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Edward Streeter"])
+Statement: Now, to find the movies that 'Edward Streeter' wrote, I need to explore the graph from 'Edward Streeter' with related relations.
+Helper function: exploreKG(["Edward Streeter"]: ['written_by'])
+Statement: Now, we have to find the writers who wrote movies together with 'Edward Streeter'.
+Helper function: getRelation(['mr._hobbs_takes_a_vacation', 'father_of_the_bride'])
+Statement: To find the writers who wrote movies together with 'Edward Streeter', I need to explore the graph with the movies and related relations.
+Helper function: exploreKG(['mr._hobbs_takes_a_vacation', 'father_of_the_bride']: ['written_by'])
+Now I have found the writers who wrote movies together with 'Edward Streeter'. The answer to the claim is as follows:
+['Frances Goodrich', 'Albert Hackett']
+
+Helper function: Verification(['Frances Goodrich', 'Albert Hackett'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation(["Nikita Mikhalkov"])
+Statement: First, to solve the claim, I have to know the movies written by 'Nikita Mikhalkov'.
+Helper function: exploreKG(["Nikita Mikhalkov"]: ['written_by'])
+Statement: Next, I need to find the genres of the movies written by 'Nikita Mikhalkov'. To find the genres, I need the relations linked with all the movies from the previous step.
+Helper function: getRelation(['12', 'the_barber_of_siberia', 'burnt_by_the_sun'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('David Twohy')
+Statement: First, to solve the claim, I have to know the movies directed by 'David Twohy'.
+Helper function: exploreKG('David Twohy': ['directed_by'])
+Statement: Now, I have the movies directed by 'David Twohy'. Next, I need to find the release dates of these movies.
+Helper function: getRelation(['below', 'pitch_black', 'riddick', 'the_arrival', 'a_perfect_getaway', 'the_chronicles_of_riddick'])
+Statement: To get the release dates of the movies directed by 'David Twohy', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['below', 'pitch_black', 'riddick', 'the_arrival', 'a_perfect_getaway', 'the_chronicles_of_riddick']: ['release_year'])
+Statement: Now I have the release dates of the movies directed by 'David Twohy'. The answer to the claim is as follows.
+['2002', '2000', '2013', '1996', '2009', '2004']
+Helper function: Verification(['2002', '2000', '2013', '1996', '2009', '2004'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Wind Across the Everglades')
+Statement: First, to solve the claim, I have to know the actors starred in 'Wind Across the Everglades'.
+Helper function: exploreKG('Wind Across the Everglades': ['starred_actors'])
+Statement: Next, I need movies that share the same actors as 'Wind Across the Everglades'. To find these movies, I need relations linked with the actors.
+Helper function: getRelation(['gypsy_rose_lee', 'christopher_plummer'])
+Statement: To get the movies that share the same actors as 'Wind Across the Everglades', I need to explore the graph with each actor and related relations.
+Helper function: exploreKG(['gypsy_rose_lee', 'christopher_plummer']: ['starred_actors'])
+Statement: To find the movies that share the same actor as 'Wind Across the Everglades', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['a_beautiful_mind', 'the_amateur', 'starcrash', 'dracula_2000', 'the_pyx', 'the_man_who_would_be_king', 'eyewitness', 'vampire_in_venice', 'the_return_of_the_pink_panther', 'closing_the_ring', 'man_in_the_chair', 'syriana', 'the_new_world', 'the_sound_of_music', 'crackerjack', 'the_silent_partner', 'inside_man', '9', 'the_scarlet_and_the_black', 'somewhere_in_time', 'aces_high', 'the_imaginarium_of_doctor_parnassus', 'our_fathers', 'the_insider', 'triple_cross', 'the_last_station', 'inside_daisy_clover', 'waterloo', 'ararat', 'the_man_who_planted_trees', 'my_dog_tulip', 'the_lake_house']: ['starred_actors'])
+Statement: Now I have found the movies that share the same actor as 'Wind Across the Everglades'. The answer to the claim is as follows.
+['a_beautiful_mind', 'the_amateur', 'starcrash', 'dracula_2000', 'the_pyx', 'the_man_who_would_be_king', 'eyewitness', 'vampire_in_venice', 'the_return_of_the_pink_panther', 'closing_the_ring', 'man_in_the_chair', 'syriana', 'the_new_world', 'the_sound_of_music', 'crackerjack', 'the_silent_partner', 'inside_man', '9', 'the_scarlet_and_the_black', 'somewhere_in_time', 'aces_high', 'the_imaginarium_of_doctor_parnassus', 'our_fathers', 'the_insider', 'triple_cross', 'the_last_station', 'inside_daisy_clover', 'waterloo', 'ararat', 'the_man_who_planted_trees', 'my_dog_tulip', 'the_lake_house']
+Helper function: Verification(['a_beautiful_mind', 'the_amateur', 'starcrash', 'dracula_2000', 'the_pyx', 'the_man_who_would_be_king', 'eyewitness', 'vampire_in_venice', 'the_return_of_the_pink_panther', 'closing_the_ring', 'man_in_the_chair', 'syriana', 'the_new_world', 'the_sound_of_music', 'crackerjack', 'the_silent_partner', 'inside_man', '9', 'the_scarlet_and_the_black', 'somewhere_in_time', 'aces_high', 'the_imaginarium_of_doctor_parnassus', 'our_fathers', 'the_insider', 'triple_cross', 'the_last_station', 'inside_daisy_clover', 'waterloo', 'ararat', 'the_man_who_planted_trees', 'my_dog_tulip', 'the_lake_house'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Yasuhiro Takemoto"])
+Statement: Now, to find the movies directed by 'Yasuhiro Takemoto' and their release dates, I need to explore the graph from 'Yasuhiro Takemoto' with the related relations.
+Helper function: exploreKG(['Yasuhiro Takemoto']: ['directed_by'])
+Statement: Now I have found the movie directed by 'Yasuhiro Takemoto'. To determine when this movie was released, I need to find the release date of the movie.
+Helper function: getRelation(['the_disappearance_of_haruhi_suzumiya'])
+Statement: To get the release date of the movie directed by 'Yasuhiro Takemoto', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['the_disappearance_of_haruhi_suzumiya']: ['release_year'])
+Now I have the release date of the movie directed by Yasuhiro Takemoto. The answer to the claim is as follows:
+['2010']
+
+Helper function: Verification(['2010'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Joey Lauren Adams')
+Statement: First, to solve the claim, I have to know the films starred by 'Joey Lauren Adams'.
+Helper function: exploreKG('Joey Lauren Adams': ['starred_actors'])
+Statement: Next, I need to find the directors of the films starred by 'Joey Lauren Adams'. To find the directors, I need relations linked with the films.
+Helper function: getRelation(['a_cool,_dry_place', 'harvard_man', 'dazed_and_confused', 'beautiful'])
+Statement: To get the directors of the films starred by 'Joey Lauren Adams', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['a_cool,_dry_place', 'harvard_man', 'dazed_and_confused', 'beautiful']: ['directed_by'])
+Statement: Now I have found the directors of the movies starred by 'Joey Lauren Adams'. The answer to the claim is as follows.
+['john_n._smith', 'james_toback', 'richard_linklater', "dean_o'flaherty", 'sally_field']
+
+Helper function: Verification(['john_n._smith', 'james_toback', 'richard_linklater', "dean_o'flaherty", 'sally_field'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Nora Roberts')
+Statement: First, to solve the claim, I have to know the movies written by 'Nora Roberts'.
+Helper function: exploreKG('Nora Roberts': ['written_by'])
+Statement: Next, I need to find the genres of the movies written by 'Nora Roberts'. To do this, I need to find the relations linked with all the movies from the previous step.
+Helper function: getRelation(['carolina_moon', 'montana_sky', 'angels_fall', 'northern_lights', 'midnight_bayou', 'tribute', 'high_noon', 'blue_smoke'])
+Statement: To get the genres of the movies written by 'Nora Roberts', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['carolina_moon', 'montana_sky', 'angels_fall', 'northern_lights', 'midnight_bayou', 'tribute', 'high_noon', 'blue_smoke']: ['has_genre'])
+Statement: Now I have found the genres of the movies written by 'Nora Roberts'. The answer to the claim is as follows.
+['comedy', 'western']
+Helper function: Verification(['comedy', 'western'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Odette Annable')
+Statement: First, to solve the claim, I have to know the movies Odette Annable acted in.
+Helper function: exploreKG('Odette Annable': ['starred_actors'])
+Statement: Now, I need to find the genres of the movie "And Soon the Darkness" to answer the claim.
+Helper function: getRelation(['and_soon_the_darkness'])
+Statement: To get the genres of the movie "And Soon the Darkness," I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['and_soon_the_darkness']: ['has_genre'])
+Now I have found the genre of the movie acted by Odette Annable. The answer to the claim is as follows:
+['thriller']
+
+Helper function: Verification(['thriller'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Chris New'])
+Statement: Now, to find the actors who acted together with 'Chris New', I need to explore the graph from 'Chris New' with related relations.
+Helper function: exploreKG(['Chris New']: ['starred_actors'])
+Statement: Now I get the film in which 'Chris New' acted. The answer to the claim is as follows.
+['weekend']
+Helper function: Verification(['weekend'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Fernanda Torres')
+Statement: First, to solve the claim, I have to know the films Fernanda Torres acted in.
+Helper function: exploreKG('Fernanda Torres': ['starred_actors'])
+Statement: Now I get the film acted by Fernanda Torres. The answer to the claim is as follows.
+['so_normal']
+Helper function: Verification(['so_normal'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Daniel Franzese')
+Statement: First, to solve the claim, I have to know the movies starred by 'Daniel Franzese'.
+Helper function: exploreKG('Daniel Franzese': ['starred_actors'])
+Statement: Now, I need to find the release years of the movies starred by 'Daniel Franzese'.
+Helper function: getRelation(['killer_pad', 'i_spit_on_your_grave'])
+Statement: To get the release years of the movies starred by 'Daniel Franzese', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['killer_pad', 'i_spit_on_your_grave']: ['release_year'])
+Now I have the release years of the movies starred by 'Daniel Franzese'. The answer to the claim is as follows:
+['2008', '2010']
+
+Helper function: Verification(['2008', '2010'])
+Statement: I need to find the relations linked with the given entity.
+Helper function: getRelation(['Chester Gould'])
+Statement: To solve the claim, I have to know the films written by 'Chester Gould'.
+Helper function: exploreKG(['Chester Gould']: ['written_by'])
+Statement: Now, I need to find the screenwriters who wrote films together with 'Chester Gould'.
+Helper function: exploreKG(['dick_tracy_vs._cueball', 'dick_tracy']: ['written_by'])
+Now I have found the screenwriter who wrote films together with Chester Gould. The answer to the claim is as follows:
+['Jim Cash']
+
+Helper function: Verification(['Jim Cash'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Romy Schneider')
+Statement: First, to solve the claim, I have to know the films in which 'Romy Schneider' acted.
+Helper function: exploreKG('Romy Schneider': ['starred_actors'])
+Statement: Now, I need to find the languages of the films in which 'Romy Schneider' acted. To do this, I have to find the relations linked with each of the films.
+Helper function: getRelation(['césar_and_rosalie', 'la_piscine', 'good_neighbor_sam'])
+Statement: To get the languages of the films acted by 'Romy Schneider', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['césar_and_rosalie', 'la_piscine', 'good_neighbor_sam']: ['in_language'])
+Statement: Now I have found the languages of the films acted by 'Romy Schneider'. The answer to the claim is as follows.
+['french', 'french', 'english']
+Helper function: Verification(['french', 'french', 'english'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Barry Hines"])
+Statement: Now, to find the films that 'Barry Hines' has written, I need to explore the graph from 'Barry Hines' with related relations.
+Helper function: exploreKG(['Barry Hines']: ['written_by'])
+Statement: Now, I have found the films written by 'Barry Hines'. Next, I need to find the directors of these films.
+Helper function: getRelation(['kes', 'threads'])
+Statement: To find the directors of the films written by 'Barry Hines', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['kes', 'threads']: ['directed_by'])
+Now I have found the directors of the films written by 'Barry Hines'. The answer to the claim is as follows:
+['Ken Loach', 'Mick Jackson']
+
+Helper function: Verification(['Ken Loach', 'Mick Jackson'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Whitfield Cook"])
+Statement: Now, to find the films that 'Whitfield Cook' wrote, I need to explore the graph from 'Whitfield Cook' with related relations.
+Helper function: exploreKG(['Whitfield Cook']: ['written_by'])
+Statement: Now, I have found that 'Whitfield Cook' wrote the film 'Stage Fright'. Next, I need to find out when the film 'Stage Fright' was released.
+Helper function: getRelation(['stage_fright'])
+Statement: To determine when the film 'Stage Fright' written by 'Whitfield Cook' was released, I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['stage_fright']: ['release_year'])
+Now I have the release years of the film "Stage Fright" written by Whitfield Cook. The answer to the claim is as follows:
+['1950', '2014']
+
+Helper function: Verification(['1950', '2014'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Robert Harari"])
+Statement: Now, to find the films that 'Robert Harari' has written, I need to explore the graph from 'Robert Harari' with related relations.
+Helper function: exploreKG(['Robert Harari']: ['written_by'])
+Statement: Now, I have found the film written by 'Robert Harari'. Next, I need to find the release years of the film.
+Helper function: getRelation(['a_foreign_affair'])
+Statement: To get the release year of the film written by 'Robert Harari', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['a_foreign_affair']: ['release_year'])
+Now I have the release year of the film written by 'Robert Harari'. The answer to the claim is as follows:
+['1948']
+
+Helper function: Verification(['1948'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Reb Braddock')
+Statement: First, to solve the claim, I have to know the films written by 'Reb Braddock'.
+Helper function: exploreKG(['Reb Braddock']: ['written_by'])
+Statement: Now, I have found the film 'Curdled' written by 'Reb Braddock'. Next, I need to find the genres of the film 'Curdled'.
+Helper function: getRelation(['curdled'])
+Statement: To get the genres of the film 'Curdled' written by 'Reb Braddock', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['curdled']: ['has_genre'])
+Now I have found that the film 'Curdled' written by 'Reb Braddock' falls under the genres comedy and crime. 
+The answer to the claim is as follows:
+['comedy', 'crime']
+
+Helper function: Verification(['comedy', 'crime'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Justin Timberlake')
+Statement: First, to solve the claim, I have to know the films in which 'Justin Timberlake' acted.
+Helper function: exploreKG('Justin Timberlake': ['starred_actors'])
+Statement: Next, I need to find the genres of the films in which 'Justin Timberlake' acted. To do this, I need to find the relations linked with each film.
+Helper function: getRelation(['inside_llewyn_davis', 'yogi_bear', 'black_snake_moan', 'edison', 'in_time', 'friends_with_benefits', 'runner_runner', 'bad_teacher', 'the_open_road'])
+Statement: To get the genres of the films in which 'Justin Timberlake' acted, I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['inside_llewyn_davis', 'yogi_bear', 'black_snake_moan', 'edison', 'in_time', 'friends_with_benefits', 'runner_runner', 'bad_teacher', 'the_open_road']: ['has_genre'])
+Statement: Now I have the genres of the films in which 'Justin Timberlake' acted. The answer to the claim is as follows.
+['music', 'drama', 'comedy', 'thriller', 'crime']
+Helper function: Verification(['music', 'drama', 'comedy', 'thriller', 'crime'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Anthony Drazan"])
+Statement: Now, to find the movies that 'Anthony Drazan' has written, I need to explore the graph from 'Anthony Drazan' with related relations.
+Helper function: exploreKG(['Anthony Drazan']: ['written_by'])
+Statement: Now, we have to find the actors in the movie written by 'Anthony Drazan'.
+Helper function: getRelation(['zebrahead'])
+Statement: To get the actors in the movie, I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['zebrahead']: ['starred_actors'])
+Now I have the actors who starred in the movie written by 'Anthony Drazan'. The answer to the claim is as follows:
+['Kevin Corrigan', 'Lois Bendler', 'Michael Rapaport']
+
+Helper function: Verification(['Kevin Corrigan', 'Lois Bendler', 'Michael Rapaport'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Ronald Millar'])
+Statement: Now, to find the movies that 'Ronald Millar' has written, I need to explore the graph from 'Ronald Millar' with related relations.
+Helper function: exploreKG(['Ronald Millar']: ['written_by'])
+Statement: Now, I have found the movies written by 'Ronald Millar'. Next, I need to find the release dates of these movies.
+Helper function: getRelation(['scaramouche', 'betrayed'])
+Statement: To get the release dates of the movies written by 'Ronald Millar', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['scaramouche', 'betrayed']: ['release_year'])
+Statement: Now I have the release dates of the movies written by 'Ronald Millar'. The answer to the claim is as follows.
+['1952', '1954', '1988']
+Helper function: Verification(['1952', '1954', '1988'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Giancarlo Lui')
+Statement: First, to solve the claim, I have to know the films directed by 'Giancarlo Lui'.
+Helper function: exploreKG('Giancarlo Lui': ['directed_by'])
+Statement: Now I get the film directed by 'Giancarlo Lui'. The answer to the claim is as follows.
+['caligula']
+Helper function: Verification(['caligula'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Ben Queen"])
+Statement: Now, to find the films that 'Ben Queen' has written, I need to explore the graph from 'Ben Queen' with related relations.
+Helper function: exploreKG(["Ben Queen"]: ['written_by'])
+Statement: Now, we have to find the genres of the film written by 'Ben Queen'.
+Helper function: getRelation(['cars_2'])
+Statement: To get the genres of the film written by 'Ben Queen', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['cars_2']: ['has_genre'])
+Now I have the genres of the films written by 'Ben Queen'. The answer to the claim is as follows:
+['comedy', 'animation']
+
+Helper function: Verification(['comedy', 'animation'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Salon Kitty')
+Statement: First, to solve the claim, I have to know the director of 'Salon Kitty'.
+Helper function: exploreKG('Salon Kitty': ['directed_by'])
+Statement: Now, I need to find the movies directed by Tinto Brass.
+Helper function: exploreKG(['Tinto Brass']: ['directed_by'])
+Statement: Now I get the movies directed by Tinto Brass. The answer to the claim is as follows.
+['Caligula', 'The Key']
+Helper function: Verification(['Caligula', 'The Key'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('A Simple Twist of Fate')
+Statement: First, to solve the claim, I have to know the screenwriter of 'A Simple Twist of Fate'.
+Helper function: exploreKG('A Simple Twist of Fate': ['written_by'])
+Statement: Next, I need to find the movies written by the screenwriters of 'A Simple Twist of Fate'. To find these movies, I need the relations linked with the screenwriters.
+Helper function: getRelation(['george_eliot', 'steve_martin'])
+Statement: To get the movies written by the screenwriters, I need to explore the graph with each screenwriter and related relations.
+Helper function: exploreKG(['george_eliot', 'steve_martin']: ['written_by'])
+Statement: Now, I have found the movies written by the screenwriters of 'A Simple Twist of Fate'. The answer to the claim is as follows.
+['the_pink_panther_2', 'l.a._story', '¡three_amigos!', "dead_men_don't_wear_plaid", 'bowfinger', 'shopgirl', 'traitor', 'roxanne', 'the_jerk', 'the_pink_panther', 'the_man_with_two_brains']
+Helper function: Verification(['the_pink_panther_2', 'l.a._story', '¡three_amigos!', "dead_men_don't_wear_plaid", 'bowfinger', 'shopgirl', 'traitor', 'roxanne', 'the_jerk', 'the_pink_panther', 'the_man_with_two_brains'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Prasoon Joshi"])
+Statement: Now, to find the films that 'Prasoon Joshi' has written, I need to explore the graph from 'Prasoon Joshi' with related relations.
+Helper function: exploreKG(["Prasoon Joshi"]: ['written_by'])
+Statement: Now, we have to find the actors in the film "Bhaag Milkha Bhaag" written by 'Prasoon Joshi'.
+Helper function: getRelation(['bhaag_milkha_bhaag'])
+Statement: To get the actors in the film "Bhaag Milkha Bhaag", I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['bhaag_milkha_bhaag']: ['starred_actors'])
+Statement: Now I get the actors of the films written by 'Prasoon Joshi'. The answer to the claim is as follows.
+['Pavan Malhotra', 'Sonam Kapoor', 'Farhan Akhtar']
+Helper function: Verification(['Pavan Malhotra', 'Sonam Kapoor', 'Farhan Akhtar'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Gaby Dellal"])
+Statement: Now, to find the films that 'Gaby Dellal' directed, I need to explore the graph from 'Gaby Dellal' with related relations.
+Helper function: exploreKG(['Gaby Dellal']: ['directed_by'])
+Statement: Now, I have to find the languages spoken in the films directed by 'Gaby Dellal'. To do this, I need to find the relations linked with each film.
+Helper function: getRelation(['on_a_clear_day', 'angels_crest'])
+Statement: To get the languages spoken in the films directed by 'Gaby Dellal', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['on_a_clear_day', 'angels_crest']: ['in_language'])
+Now I have found the languages spoken in the films directed by Gaby Dellal. The answer to the claim is as follows:
+['english']
+
+Helper function: Verification(['english'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Dylan Haggerty"])
+Statement: Now, to find the films that 'Dylan Haggerty' has written, I need to explore the graph from 'Dylan Haggerty' with the 'written_by' relation.
+Helper function: exploreKG(['Dylan Haggerty']: ['written_by'])
+Statement: Now, I have found the film 'Smiley Face' written by 'Dylan Haggerty'. Next, I need to find the actors who starred in this film.
+Helper function: getRelation(['smiley_face'])
+Statement: To get the actors who starred in the film 'Smiley Face' written by 'Dylan Haggerty', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['smiley_face']: ['starred_actors'])
+Now I have the actors who starred in the movie written by 'Dylan Haggerty', which is 'Smiley Face'. The answer to the claim is as follows:
+['Danny Masterson', 'Anna Faris', 'Roscoe Lee Browne']
+
+Helper function: Verification(['Danny Masterson', 'Anna Faris', 'Roscoe Lee Browne'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Max Wilk'])
+Statement: Now, to find the films that 'Max Wilk' has written, I need to explore the graph from 'Max Wilk' with the related relations.
+Helper function: exploreKG(['Max Wilk']: ['written_by'])
+Statement: Now, we have to find the directors of the film written by 'Max Wilk'.
+Helper function: getRelation(['it_happened_to_jane'])
+Statement: To get the directors of the film, I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['it_happened_to_jane']: ['directed_by'])
+Now I have found the director of the film written by 'Max Wilk'. The answer to the claim is as follows:
+['Richard Quine']
+
+Helper function: Verification(['Richard Quine'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation(['Andrew Robinson'])
+Statement: First, to solve the claim, I have to know the films starred by 'Andrew Robinson'.
+Helper function: exploreKG(['Andrew Robinson']: ['starred_actors'])
+Statement: Next, I need to find the directors of the films starred by 'Andrew Robinson'. To find the directors, I need relations linked with the films.
+Helper function: getRelation(['charley_varrick', 'cobra'])
+Statement: To get the directors of the films starred by 'Andrew Robinson', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['charley_varrick', 'cobra']: ['directed_by'])
+Now I have found the directors of the films starred by 'Andrew Robinson'. The answer to the claim is as follows:
+['Don Siegel', 'George P. Cosmatos']
+
+Helper function: Verification(['Don Siegel', 'George P. Cosmatos'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Bill Kelly"])
+Statement: Now, to find the films that 'Bill Kelly' has written, I need to explore the graph from 'Bill Kelly' with related relations.
+Helper function: exploreKG(["Bill Kelly"]: ['written_by'])
+Statement: Now, I have found the movie written by 'Bill Kelly'. Next, I need to find out who directed the movie 'Enchanted'.
+Helper function: getRelation(['Enchanted'])
+Statement: To determine who directed the movie 'Enchanted', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['Enchanted']: ['directed_by'])
+Now I have found out that the movie written by 'Bill Kelly', which is 'Enchanted', was directed by 'Kevin Lima'.
+The answer to the claim is as follows:
+['Kevin Lima']
+
+Helper function: Verification(['Kevin Lima'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Joseph Calleia'])
+Statement: Now, to find the co-stars of 'Joseph Calleia', I need to explore the graph from 'Joseph Calleia' with related relations.
+Helper function: exploreKG(['Joseph Calleia']: ['starred_actors'])
+Statement: Now I get the films where 'Joseph Calleia' starred. The answer to the claim is as follows.
+['touch_of_evil', 'my_little_chickadee']
+Helper function: Verification(['touch_of_evil', 'my_little_chickadee'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Muriel Resnik"])
+Statement: Now, to find the films that 'Muriel Resnik' has written, I need to explore the graph from 'Muriel Resnik' with the related relations.
+Helper function: exploreKG(["Muriel Resnik"]: ['written_by'])
+Statement: Now, we have to find the genres of the film "Any Wednesday" written by 'Muriel Resnik'.
+Helper function: getRelation(['any_wednesday'])
+Statement: To get the genres of the film "Any Wednesday" written by 'Muriel Resnik', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['any_wednesday']: ['has_genre'])
+Now I have the genre of the film "Any Wednesday" written by 'Muriel Resnik'. The answer to the claim is as follows.
+['comedy']
+
+Helper function: Verification(['comedy'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Dean DeBlois"])
+Statement: Now, to find the movies directed by 'Dean DeBlois' and their release dates, I need to explore the graph from 'Dean DeBlois' with related relations.
+Helper function: exploreKG(["Dean DeBlois"]: ['directed_by'])
+Statement: Now I have the movies directed by 'Dean DeBlois'. To find out when these movies were released, I need to get the release dates of the movies.
+Helper function: getRelation(['how_to_train_your_dragon', 'how_to_train_your_dragon_2'])
+Statement: To get the release dates of the movies directed by 'Dean DeBlois', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['how_to_train_your_dragon']: ['release_year']), exploreKG(['how_to_train_your_dragon_2']: ['release_year'])
+Statement: Now I have the release dates of the movies directed by 'Dean DeBlois'. The answer to the claim is as follows.
+['2010', '2014']
+Helper function: Verification(['2010', '2014'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Touching the Void')
+Statement: First, to solve the claim, I have to know the director of 'Touching the Void'.
+Helper function: exploreKG('Touching the Void': ['directed_by'])
+Statement: Next, I need to find films directed by Kevin Macdonald. To find the films, I need relations linked with the director.
+Helper function: getRelation(['kevin_macdonald'])
+Statement: To get the films directed by Kevin Macdonald, I need to explore the graph with the director and related relations.
+Helper function: exploreKG(['kevin_macdonald']: ['directed_by'])
+Statement: To find the films that have the same director as 'Touching the Void', I need to explore the graph with each film and related relations.
+Helper function: getRelation(['state_of_play', 'the_eagle', 'black_sea', 'the_last_king_of_scotland', 'how_i_live_now'])
+Statement: To get the films that have the same director as 'Touching the Void', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['state_of_play', 'the_eagle', 'black_sea', 'the_last_king_of_scotland', 'how_i_live_now']: ['directed_by'])
+Statement: Now I have found the films that have the same director as 'Touching the Void'. The answer to the claim is as follows.
+['state_of_play', 'the_eagle', 'black_sea', 'the_last_king_of_scotland', 'how_i_live_now']
+Helper function: Verification(['state_of_play', 'the_eagle', 'black_sea', 'the_last_king_of_scotland', 'how_i_live_now'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Duane Adler"])
+Statement: Now, to find the movies that 'Duane Adler' written, I need to explore the graph from 'Duane Adler' with related relations.
+Helper function: exploreKG(["Duane Adler"]: ['written_by'])
+Statement: Now, I have to find the person who directed the movies written by 'Duane Adler'. The answer to the claim is as follows.
+['Step Up', 'Make It Happen', 'Make Your Move']
+Helper function: Verification(['Step Up', 'Make It Happen', 'Make Your Move'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Rocky IV')
+Statement: First, to solve the claim, I have to know the actors starred in 'Rocky IV'.
+Helper function: exploreKG('Rocky IV': ['starred_actors'])
+Statement: Next, I need films starred by the actors from 'Rocky IV'. To find the films, I need relations linked with the actors.
+Helper function: getRelation(['sylvester_stallone', 'burt_young', 'talia_shire', 'carl_weathers'])
+Statement: To get the films starred by the actors from 'Rocky IV', I need to explore the graph with each actor and related relations.
+Helper function: exploreKG(['sylvester_stallone', 'burt_young', 'talia_shire', 'carl_weathers']: ['starred_actors'])
+Statement: To get the films that share the same actor of 'Rocky IV', I need to find the relations linked with all the films from the previous step.
+Helper function: getRelation(['bullet_to_the_head', 'the_expendables', 'no_place_to_hide', 'kambakkht_ishq', 'rocky_balboa', 'cop_land', 'grudge_match', 'first_blood', 'stop!_or_my_mom_will_shoot', 'the_specialist', 'assassins', 'rocky_ii', 'cliffhanger', 'paradise_alley', 'capone', 'death_race_2000', 'rambo', 'the_expendables_2', 'rocky', 'judge_dredd', 'the_expendables_3', 'driven', 'avenging_angelo', 'lock_up', 'rhinestone', 'over_the_top', 'demolition_man', 'escape_plan', 'rocky_v', 'rocky_iii', 'get_carter', 'daylight', 'cobra', 'nighthawks', 'oscar', 'back_to_school', 'blood_beach', 'going_overboard', 'convoy', "lookin'_to_get_out", 'windows', 'prophecy', 'action_jackson', 'death_hunt', 'predator'])
+_to_get_out",_
+_to_get_out",_
+Statement: To get the films that share the same actor of 'Rocky IV', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['bullet_to_the_head', 'the_expendables', 'no_place_to_hide', 'kambakkht_ishq', 'rocky_balboa', 'cop_land', 'grudge_match', 'first_blood', 'stop!_or_my_mom_will_shoot', 'the_specialist', 'assassins', 'rocky_ii', 'cliffhanger', 'paradise_alley', 'capone', 'death_race_2000', 'rambo', 'the_expendables_2', 'rocky', 'judge_dredd', 'the_expendables_3', 'driven', 'avenging_angelo', 'lock_up', 'rhinestone', 'over_the_top', 'demolition_man', 'escape_plan', 'rocky_v', 'rocky_iii', 'get_carter', 'daylight', 'cobra', 'nighthawks', 'oscar', 'back_to_school', 'blood_beach', 'going_overboard', 'convoy', "lookin'_to_get_out"])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Twin Dragons')
+Statement: First, to solve the claim, I have to know the actors starred in 'Twin Dragons'.
+Helper function: exploreKG('Twin Dragons': ['starred_actors'])
+Statement: Now, I need to find the movies in which Jackie Chan starred.
+Helper function: getRelation(['jackie_chan'])
+Statement: To find the movies in which Jackie Chan starred, I need to explore the graph with Jackie Chan and related relations.
+Helper function: exploreKG(['jackie_chan']: ['starred_actors'])
+Statement: Now I have found the movies in which Jackie Chan starred. The answer to the claim is as follows.
+['crime_story', 'the_protector', 'drunken_master', 'the_forbidden_kingdom', 'spiritual_kung_fu', 'shanghai_noon', 'around_the_world_in_80_days', 'armour_of_god', '1911', 'dragons_forever', 'rush_hour_2', 'the_tuxedo', 'project_a', 'the_fearless_hyena', 'city_hunter', 'the_accidental_spy', 'the_medallion', 'the_karate_kid', 'mr._nice_guy', 'the_myth', 'new_police_story', 'shinjuku_incident', 'rush_hour', "snake_in_the_eagle's_shadow", 'gorgeous', 'rush_hour_3', 'island_of_fire', 'the_young_master', 'police_story_2', 'wheels_on_meals', 'who_am_i?', 'police_story', 'the_spy_next_door', 'rumble_in_the_bronx', 'little_big_soldier', 'thunderbolt']
+Helper function: Verification(['crime_story', 'the_protector', 'drunken_master', 'the_forbidden_kingdom', 'spiritual_kung_fu', 'shanghai_noon', 'around_the_world_in_80_days', 'armour_of_god', '1911', 'dragons_forever', 'rush_hour_2', 'the_tuxedo', 'project_a', 'the_fearless_hyena', 'city_hunter', 'the_accidental_spy', 'the_medallion', 'the_karate_kid', 'mr._nice_guy', 'the_myth', 'new_police_story', 'shinjuku_incident', 'rush_hour', "snake_in_the_eagle's_shadow", 'gorgeous', 'rush_hour_3', 'island_of_fire', 'the_young_master', 'police_story_2', 'wheels_on_meals', 'who_am_i?', 'police_story', 'the_spy_next_door', 'rumble_in_the_bronx', 'little_big_soldier', 'thunderbolt'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Jed Harris"])
+Statement: Now, to find the movies that 'Jed Harris' has written, I need to explore the graph from 'Jed Harris' with related relations.
+Helper function: exploreKG(["Jed Harris"]: ['written_by'])
+Statement: Now, we have to find the directors of the movies written by 'Jed Harris'.
+Helper function: getRelation(['operation_mad_ball', 'night_people'])
+Statement: To get the directors of the movies written by 'Jed Harris', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['operation_mad_ball', 'night_people']: ['directed_by'])
+Now I have found the directors of the movies written by 'Jed Harris'. The answer to the claim is as follows:
+['Richard Quine', 'Nunnally Johnson']
+
+Helper function: Verification(['Richard Quine', 'Nunnally Johnson'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Kinji Fukasaku"])
+Statement: First, to solve the claim, I have to know the films directed by 'Kinji Fukasaku'.
+Helper function: exploreKG(['Kinji Fukasaku']: ['directed_by'])
+Statement: Now, I need to find the genres of the films directed by 'Kinji Fukasaku'.
+Helper function: getRelation(['samurai_reincarnation', 'battle_royale', 'under_the_flag_of_the_rising_sun', 'street_mobster', 'the_green_slime'])
+Statement: To get the genres of the films directed by 'Kinji Fukasaku', I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['samurai_reincarnation', 'battle_royale', 'under_the_flag_of_the_rising_sun', 'street_mobster', 'the_green_slime']: ['has_genre'])
+Statement: Now I have found the genres of the films directed by 'Kinji Fukasaku'. The answer to the claim is as follows.
+['action', 'crime']
+Helper function: Verification(['action', 'crime'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Herbie Goes Bananas')
+Statement: First, to solve the claim, I have to know the actors starred in 'Herbie Goes Bananas'.
+Helper function: exploreKG('Herbie Goes Bananas': ['starred_actors'])
+Statement: Next, I need movies starred by Cloris Leachman. To find the movies, I need relations linked with the actor.
+Helper function: getRelation(['cloris_leachman'])
+Statement: To get the movies starred by Cloris Leachman, I need to explore the graph with the actor and related relations.
+Helper function: exploreKG(['cloris_leachman']: ['starred_actors'])
+Statement: To find the movies that have the same actor as 'Herbie Goes Bananas', I need to explore the graph with each of the movies starred by Cloris Leachman and related relations.
+Helper function: getRelation(['prancer', 'the_beverly_hillbillies', 'walk_like_a_man', 'crazy_mama', 'high_anxiety', 'beerfest', 'a_troll_in_central_park'])
+Statement: To get the movies that have the same actor as 'Herbie Goes Bananas', I need to explore the graph with each of the movies and related relations.
+Helper function: exploreKG(['prancer', 'the_beverly_hillbillies', 'walk_like_a_man', 'crazy_mama', 'high_anxiety', 'beerfest', 'a_troll_in_central_park']: ['starred_actors'])
+Statement: Now I have found the movies that have the same actor as 'Herbie Goes Bananas'. The answer to the claim is as follows.
+['prancer', 'the_beverly_hillbillies', 'walk_like_a_man', 'crazy_mama', 'high_anxiety', 'beerfest', 'a_troll_in_central_park']
+Helper function: Verification(['prancer', 'the_beverly_hillbillies', 'walk_like_a_man', 'crazy_mama', 'high_anxiety', 'beerfest', 'a_troll_in_central_park'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['James Adomian'])
+Statement: Now, to find the films that 'James Adomian' starred in, I need to explore the graph from 'James Adomian' with related relations.
+Helper function: exploreKG(['James Adomian']: ['starred_actors'])
+Statement: Now I get the film starred by 'James Adomian'. Next, I need to find the directors of the film.
+Helper function: getRelation(['hits'])
+Statement: To get the directors of the film 'hits', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['hits']: ['directed_by'])
+Now I have found the director of the film 'hits' in which James Adomian starred. The answer to the claim "who are the directors of the films starred by James Adomian?" is as follows:
+['David Cross']
+
+Helper function: Verification(['David Cross'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Lindsay Lohan')
+Statement: First, to solve the claim, I have to know the films starred by 'Lindsay Lohan'.
+Helper function: exploreKG('Lindsay Lohan': ['starred_actors'])
+Statement: Next, I need to find out who wrote the screenplay for the movies starred by 'Lindsay Lohan'. To do this, I need the relations linked with the movies.
+Helper function: getRelation(['just_my_luck', 'the_parent_trap', 'mean_girls', 'confessions_of_a_teenage_drama_queen', 'the_canyons', 'freaky_friday', 'georgia_rule', 'labor_pains', 'i_know_who_killed_me'])
+Statement: To find out who wrote the screenplay for the movies starred by 'Lindsay Lohan', I need to explore the graph with each movie and related relations.
+Helper function: exploreKG(['just_my_luck', 'the_parent_trap', 'mean_girls', 'confessions_of_a_teenage_drama_queen', 'the_canyons', 'freaky_friday', 'georgia_rule', 'labor_pains', 'i_know_who_killed_me']: ['written_by'])
+Statement: Now I have found out who wrote the screenplay for the movies starred by 'Lindsay Lohan'. The answer to the claim is as follows.
+['i._marlene_king', 'erich_kästner', 'david_swift', 'nancy_meyers', 'charles_shyer', 'tina_fey', 'rosalind_wiseman', 'gail_parent', 'dyan_sheldon', 'bret_easton_ellis', 'mary_rodgers', 'lara_shapiro']
+Helper function: Verification(['i._marlene_king', 'erich_kästner', 'david_swift', 'nancy_meyers', 'charles_shyer', 'tina_fey', 'rosalind_wiseman', 'gail_parent', 'dyan_sheldon', 'bret_easton_ellis', 'mary_rodgers', 'lara_shapiro'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Mohabbatein')
+Statement: First, to solve the claim, I have to know the actors starred in 'Mohabbatein'.
+Helper function: exploreKG('Mohabbatein': ['starred_actors'])
+Statement: Now, I need to find the films starred by Amitabh Bachchan. To find the films, I need relations linked with Amitabh Bachchan.
+Helper function: getRelation(['amitabh_bachchan'])
+Statement: To get the films starred by Amitabh Bachchan, I need to explore the graph with Amitabh Bachchan and related relations.
+Helper function: exploreKG(['amitabh_bachchan']: ['starred_actors'])
+Statement: Now I have the films starred by Amitabh Bachchan. The answer to the claim is as follows.
+['cheeni_kum', 'deewaar', 'bunty_aur_babli', 'paheli', 'aladin', 'sholay', 'don', 'aankhen', 'kabhi_khushi_kabhie_gham', 'zanjeer', 'baghban', 'black', 'amar_akbar_anthony']
+Helper function: Verification(['cheeni_kum', 'deewaar', 'bunty_aur_babli', 'paheli', 'aladin', 'sholay', 'don', 'aankhen', 'kabhi_khushi_kabhie_gham', 'zanjeer', 'baghban', 'black', 'amar_akbar_anthony'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(['Maia Mitchell'])
+Statement: Now, to find the actors who acted together with 'Maia Mitchell', I need to explore the graph from 'Maia Mitchell' with related relations.
+Helper function: exploreKG(['Maia Mitchell']: ['starred_actors'])
+Statement: Now I get the film 'Maia Mitchell' starred in. To find the actors who acted together with 'Maia Mitchell' in the film, I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['teen_beach_movie']: ['starred_actors'])
+Now I have found that Ross Lynch acted together with Maia Mitchell in the film "Teen Beach Movie." The answer to the claim "who acted together with Maia Mitchell?" is Ross Lynch.
+Helper function: Verification(['Ross Lynch'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Harry and the Hendersons')
+Statement: First, to solve the claim, I have to know the director of 'Harry and the Hendersons'.
+Helper function: exploreKG('Harry and the Hendersons': ['directed_by'])
+Statement: Next, I need to find the films directed by William Dear. To find these films, I need the relations linked with William Dear.
+Helper function: getRelation(['William Dear'])
+Statement: To get the films directed by William Dear, I need to explore the graph with William Dear and the relation 'directed_by'.
+Helper function: exploreKG(['William Dear']: ['directed_by'])
+Statement: To find the films directed by William Dear, I need to know the relations linked with each of these films.
+Helper function: getRelation(['if_looks_could_kill', 'the_perfect_game', 'santa_who?', 'wild_america', 'simon_says', 'mr._troop_mom'])
+Statement: To get the genres of the films directed by William Dear, I need to explore the graph with each film and related relations.
+Helper function: exploreKG(['if_looks_could_kill', 'the_perfect_game', 'santa_who?', 'wild_america', 'simon_says', 'mr._troop_mom']: ['has_genre'])
+Statement: Now I have the genres of the films directed by William Dear. The answer to the claim is as follows.
+['comedy', 'action', 'drama', 'adventure', 'horror']
+Helper function: Verification(['comedy', 'action', 'drama', 'adventure', 'horror'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Anthony Hemingway"])
+Statement: Now, to find the movies directed by 'Anthony Hemingway', I need to explore the graph from 'Anthony Hemingway' with related relations.
+Helper function: exploreKG(["Anthony Hemingway"]: ['directed_by'])
+Statement: Now, we have to find the actors in the movie directed by 'Anthony Hemingway'.
+Helper function: getRelation(['red_tails'])
+Statement: To get the actors in the movie, I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['red_tails']: ['starred_actors'])
+Now I have found the actor in the movie directed by Anthony Hemingway. The answer to the claim is as follows:
+['Terrence Howard']
+
+Helper function: Verification(['Terrence Howard'])
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Ben Drew')
+Statement: First, to solve the claim, I have to know the movies starred by 'Ben Drew'.
+Helper function: exploreKG('Ben Drew': ['starred_actors'])
+Statement: Now, I need to find the release years of the movies starred by 'Ben Drew'.
+Helper function: getRelation(['the_sweeney'])
+Statement: To get the release years of the movies starred by 'Ben Drew', I need to explore the graph with the movie and related relations.
+Helper function: exploreKG(['the_sweeney']: ['release_year'])
+Now I have the release year of the movie starred by 'Ben Drew'. The answer to the claim is as follows:
+['2012']
+
+Helper function: Verification(['2012'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Gregory Poirier"])
+Statement: To find the release dates of the films directed by 'Gregory Poirier', I need to explore the graph from 'Gregory Poirier' with the related relations.
+Helper function: exploreKG(['Gregory Poirier']: ['directed_by'])
+Statement: Now I have found that 'Gregory Poirier' directed the film 'Tomcats'. To determine when this film was released, I need to find the relations linked with the film.
+Helper function: getRelation(['tomcats'])
+Statement: To get the release date of the film 'Tomcats' directed by 'Gregory Poirier', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['tomcats']: ['release_year'])
+Statement: Now I have found that the film 'Tomcats' directed by 'Gregory Poirier' was released in 2001. The answer to the claim is as follows.
+['2001']
+Helper function: Verification(['2001'])
+Statement: I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation(["Frank Herbert"])
+Statement: Now, to find the films that 'Frank Herbert' has written, I need to explore the graph from 'Frank Herbert' with related relations.
+Helper function: exploreKG(["Frank Herbert"]: ['written_by'])
+Statement: Now, I have found the film written by 'Frank Herbert'. To determine when this film was released, I need to find the relations linked with the film.
+Helper function: getRelation(['dune'])
+Statement: To get the release year of the film written by 'Frank Herbert', I need to explore the graph with the film and related relations.
+Helper function: exploreKG(['dune']: ['release_year'])
+Now I have the release year of the film written by Frank Herbert. The answer to the claim is as follows:
+['1984']
+
+Helper function: Verification(['1984'])
+Statement: I need to find the relations linked with the given entity.
+Helper function: getRelation(['Douglas Fairbanks Jr.'])
+Statement: To determine the actors that Douglas Fairbanks Jr. acted together with, I need to explore the graph data starting from Douglas Fairbanks Jr. with the 'starred_actors' relation.
+Helper function: exploreKG(['Douglas Fairbanks Jr.']: ['starred_actors'])
+Statement: Now that I have found the film that Douglas Fairbanks Jr. starred in, which is 'The Rise of Catherine the Great', I will identify the actors he acted together with in that film.
+Helper function: getRelation(['the_rise_of_catherine_the_great'])
+Statement: To determine the actors that Douglas Fairbanks Jr. acted together with in the film 'The Rise of Catherine the Great', I need to explore the graph data with the film and the 'starred_actors' relation.
+Helper function: exploreKG(['the_rise_of_catherine_the_great']: ['starred_actors'])
+Now I have identified the actors that Douglas Fairbanks Jr. acted together with in the film 'The Rise of Catherine the Great'. The answer to the claim is as follows:
+['Elisabeth Bergner', 'Flora Robson']
+
+Helper function: Verification(['Elisabeth Bergner', 'Flora Robson'])
+Correct:  79 [20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 380, 400, 420, 460, 500, 520, 580, 600, 620, 640, 660, 700, 720, 760, 780, 800, 840, 880, 920, 940, 960, 980, 1000, 1020, 1060, 1080, 1100, 1120, 1140, 1160, 1220, 1240, 1260, 1280, 1300, 1320, 1340, 1360, 1380, 1400, 1440, 1460, 1480, 1500, 1520, 1540, 1560, 1580, 1600, 1640, 1660, 1680, 1740, 1760, 1780, 1800, 1820, 1840, 1860, 1880, 1920, 1940, 1960, 1980, 2000]
+Wrong:  14 [300, 320, 340, 440, 480, 540, 820, 860, 1180, 1200, 1420, 1620, 1700, 1900]
+Error:  2 [1040, 1720]
+Result:  0.8315789473684211

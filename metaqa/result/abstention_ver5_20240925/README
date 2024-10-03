@@ -1,5 +1,8 @@
 result for abstention (without confidenceCheck, start from 3 helper function prompt)
-Abstention method : If equal (ent, rel) pair appears more than 1 times, abstain and quit.
+Abstention method : 
+    - If equal (ent, rel) pair appears more than 1 times, abstain and quit.
+    - If iteration is done more than n(threshold) times, abtain and quit.
+    - If tail entity doesn't exist after exploreKG(), do exploreKG() process again from that point. (It can give an effect to upper 2nd abstention method)
 
 abstention_test.py
 core function : helper_function.py -> exploreKGs_abstain() / class Information() in individual_claim_info.py
@@ -9,11 +12,15 @@ Experimented by 3.5-turbo, 4o-mini
 - Correct
 - Wrong
 - Abstain : In this case, we abstain when LLM asks equivalent (ent, rel) pair twice or more times.
-- IDK : I Don't Know. This label is attached on qids which runned more than threshold iteration value (10 in this case)
+- IDK : I Don't Know. This label is attached on qids which runned more than threshold iteration value (Exact iteration number in this case)
 - Error : When code generates error for some reason (maybe due to parsing problem)
+
 
 
 ** gtignore files
 For MetaQA two hop, there are 'X -> Y -> X' template for the question, and the true label for this template doesn't include ground truth label to it. Therefore, we have to exclude the gt_entity for prediction labels.
 Also for three hop, there are 'X -> Y -> X -> Z' template, we have to exclude gt_entity for second 'X' in this case.
 gtignore suffix is for this case.
+=========================================
+1hop
+    - perfect abstention for two qids : both cases tried to get films' genre (which is not actually needed to answer the claim), but it exceeds iteration threshold so it was abstained.

@@ -1,20 +1,22 @@
-"""Generate answers with GPT-3.5-turbo"""
-# Note: you need to be using OpenAI Python v0.27.0 for the code below to work
 # Test code from helper function prompt including abstention method
 # both systemetic way and LLM-wise way
 import argparse
 import json
 import os
 import re
+import pickle
 from collections import defaultdict
 import dbpedia_sparql as db
+import chain_test as chain
 import helper_function as helper
 import fair_qid as qid_test
 # import query_form as sparql
+import query_form_with_rel as sparql
 from tqdm import tqdm
 from chatbot import Chatbot
 from individual_claim_info import Information
 from prompt.factkg_prompt import prompt
+from prompt.factkg_prompt import prompt_wo_statement
 
 
 def open_file(filepath):
@@ -27,15 +29,22 @@ def save_file(filepath, content):
         outfile.write(content)
 
         
-def get_answer(qid: int, claim: str, gt_entities: list, top_k: int, max_tokens: int):
+def get_answer(qid: int, claim: str, gt_entities: list, top_k: int, max_tokens: int, max_iter: int):
+
     information = Information(qid, claim, gt_entities)
 
     #### 1. 
     chatbot = Chatbot()
 
+    chat_iter = 0
+
     prom = prompt.replace('<<<<CLAIM>>>>', claim).replace('<<<<GT_ENTITY>>>>', str(gt_entities))
     res = chatbot.chat_with_history2(prom)
-    # print(res)
+    chat_iter += 1
+    
+    print(res)
+
+    # TODO : Add token error handling code here
 
     # Extracting helper function included string
     flag = False
@@ -44,7 +53,9 @@ def get_answer(qid: int, claim: str, gt_entities: list, top_k: int, max_tokens: 
     chat_history = []
     chat_history.append(res)
 
-    for trial in range(10):
+    while chat_iter <= max_iter:
+
+        print('==============================================')
         helper_str = ''
         for line in reversed(res.splitlines()):
             if 'Helper function: ' in line:
@@ -58,39 +69,50 @@ def get_answer(qid: int, claim: str, gt_entities: list, top_k: int, max_tokens: 
             else:
                 label = False
             break
-        if 'Abstain' in helper_str:
-            flag = False
-            label = 'IDK'
-            break
 
-        # if not 'confidenceCheck' in helper_str:
-        #     chat_history.append(helper.helper_function_parser(helper_str, chat_history, information))
-        res = chatbot.chat_with_history2(helper.helper_function_parser(helper_str, chat_history, information))
-        # print(res)
-        # print(chatbot.chat_history)
-        if 'exploreKG' in helper_str:
-            if information.state == 0:
+        if 'getRelation' in helper_str:
+            prev_history = chatbot.chat_history
+            prev_res = res
+        
+        # prev_history = chatbot.chat_history
+        # prev_res = res
+        execution_result = helper.helper_function_parser(helper_str, chat_history, information)
+        print(execution_result)
+
+        if information.state == -1:
                 flag = False
-                label = 'Abstain'
                 break
-        if not 'confidenceCheck' in res:
-            chat_history.append(res)
-        # print(res)
+        elif information.state == -4:
+            res = prev_res
+            chatbot.chat_history = prev_history
+            information.set_abstain(1)
+            continue
+
+        res = chatbot.chat_with_history2(execution_result)
+        print(res)
+        chat_iter += 1
+        
+        
+        chat_history.append(res)
     
     if not flag:
         if information.state == -1:
             print(str(qid), "Abstain - same pair of entrel")
-        else: print(str(qid), "I Don't Know! - max iteration")
+            label = 'Abstain'
 
-    # print(chat_history)
+        else: 
+            print(str(qid), "I Don't Know! - max iteration")
+            label = 'IDK'
+
     return label
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max_iter", type = int,
+                        default = 6, help = "max iteration (LLM-User communication) limit")
 
-    print('Start!!!')
-
-    print('Data loading done!!!')
+    args = parser.parse_args()
     
     futures = []
     start_token = 0
@@ -123,6 +145,8 @@ if __name__ == "__main__":
 
 
     for qid, question in tqdm(questions_dict.items()):
+
+        # if qid not in [194, 203]: continue
 
         question  = questions_dict[qid]
         question_type = types_dict[qid]
@@ -158,6 +182,7 @@ if __name__ == "__main__":
             qtype = 'multihop'
             if qid in qid_test.multihop_true:
                 qtype = 'multihop_true'
+                # continue
             elif qid in qid_test.multihop_false:
                 qtype = 'multihop_false'
             question_types['multi hop'] += 1
@@ -168,7 +193,7 @@ if __name__ == "__main__":
         future = ''
 
         try:
-            future = get_answer(qid, question, entity_set_dict[qid], top_k = 5, max_tokens=1024)
+            future = get_answer(qid, question, entity_set_dict[qid], top_k = 5, max_tokens=1024, max_iter = args.max_iter)
             futures.append(future)
             if future == 'Another Answer':
                 # Another.append(qid)
@@ -201,7 +226,7 @@ if __name__ == "__main__":
             flag = 'Error'
         
         dict = {"question_id": qid, "question" : question, "prediction" : future, "correctness": flag}
-        with open("../result/test/{}.jsonl".format(qtype), 'a', encoding = 'utf-8') as outfile:
+        with open("../result/abstention_ver5_20240928/test/{}.jsonl".format(qtype), 'a', encoding = 'utf-8') as outfile:
             json_str = json.dumps(dict, ensure_ascii=False)
             outfile.write(json_str + '\n')
 

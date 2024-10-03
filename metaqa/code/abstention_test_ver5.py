@@ -1,11 +1,8 @@
 import argparse
 import json
 import os
-import time
 import re
-import openai
 import tqdm
-import shortuuid
 import ast
 import dbpedia_sparql as db
 import helper_function as helper
@@ -24,37 +21,32 @@ def save_file(filepath, content):
     with open(filepath, 'w', encoding='utf-8') as outfile:
         outfile.write(content)
 
-def get_answer(qid: int, claim: str, gt_entity: str, top_k: int, max_tokens: int):
+def get_answer(qid: int, claim: str, gt_entity: str, top_k: int, max_tokens: int, max_iter: int):
 
     gt_entity_lower = gt_entity.strip('"').replace(' ', '_').lower()
 
     information = Information(qid, claim, gt_entity_lower)
 
-    rel_dict = {}
-    ent_dict = {}
     labels = []
-
-    # for gt_entity_elem in gt_entity:
-    ent_dict[gt_entity_lower] = []
-    rel_dict[gt_entity_lower] = db.getRelationsFromEntity(gt_entity_lower, noInverse = True)
-    
-    # print(gt_entity_lower)
+    chat_iter = 0
 
     # Create Chatbot for GPT-User communication
     chatbot = Chatbot()
 
     pr = prompt_fusion.replace('<<<<CLAIM>>>>', claim).replace('<<<<GT_ENTITY>>>>', gt_entity)
-
     res = chatbot.chat_with_history2(pr)
-    # print(res)
+    chat_iter += 1
 
+    print(res)
+
+    # Have to be used in confidenceCheck, but not using in this version
     chat_history = []
     chat_history.append(res)
 
     # Extracting helper function included string
     flag = False
-    used_relation = []
-    for trial in range(10):
+
+    while chat_iter <= max_iter: # 3
         helper_str = ''
         for line in reversed(res.splitlines()):
             if 'Helper function: ' in line:
@@ -66,25 +58,31 @@ def get_answer(qid: int, claim: str, gt_entity: str, top_k: int, max_tokens: int
             labels = helper.helper_function_parser(helper_str, chat_history, information)
             labels = ast.literal_eval(labels.split('Execution result: ')[1])
             break
-        # print(helper.helper_function_parser(helper_str, used_relation))
-        # if not 'confidenceCheck' in helper_str:
-        #     chat_history.append(helper.helper_function_parser(helper_str, chat_history))
-        res = chatbot.chat_with_history2(helper.helper_function_parser(helper_str, chat_history, information))
-        # print(chatbot.chat_history)
+
+        prev_history = chatbot.chat_history
+        prev_res = res
+        execution_result = helper.helper_function_parser(helper_str, chat_history, information)
+        res = chatbot.chat_with_history2(execution_result)
+        print(res)
+        chat_iter += 1
+
         if 'exploreKG' in helper_str:
-            if information.state == 0:
+            if information.state == -1:
                 flag = False
-                labels = ['Abstain'] # Temporal form for abstained result (Have to be changed)
                 break
-        if not 'confidenceCheck' in res:
-            chat_history.append(res)
+            elif information.state == -4:
+                res = prev_res
+                chatbot.chat_history = prev_history
+                continue
+
+        chat_history.append(res)
         # print(res)
-        # if 'Exit' in helper_str:
         
-    
     if not flag:
         if information.state == -1:
             print(str(qid), "Abstain - same pair of entrel")
+            labels = ['Abstain'] # Temporal form for abstained result (Have to be changed)
+
         else: 
             print(str(qid), "I Don't Know! - max iteration")
             labels = ['IDK']
@@ -92,38 +90,15 @@ def get_answer(qid: int, claim: str, gt_entity: str, top_k: int, max_tokens: int
 
     return list(set(labels))
 
-def f1_score(label, pred):
-    label_len = len(label)
-    pred_len = len(pred)
-
-    for i in range(pred_len): pred[i] = pred[i].replace(' ', '_').lower()
-
-    tp = 0
-    for lab in label:
-        lab = lab.replace(' ', '_').lower()
-        if lab in pred:
-            tp += 1
-    
-    fn = label_len - tp
-    fp = pred_len - tp
-
-    try:
-        precision = tp / (tp + fp)
-        recall = tp / (tp + fn)
-    except:
-        return 0
-
-    if (precision + recall) == 0:
-        return 0
-    
-    f1 = (2 * precision * recall) / (precision + recall)
-
-    return f1
-
 
 
 if __name__ == "__main__":
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max_iter", type = int,
+                        default = 7, help = "max iteration (LLM-User communication) limit")
+    
+    args = parser.parse_args()
+    
     futures = []
     start_token = 0
     
@@ -141,6 +116,9 @@ if __name__ == "__main__":
             entity_set_dict[q["question_id"]] = q["entity_set"]
             label_set_dict[q["question_id"]] = q["Label"]
 
+    #with open(f'./twohop_result.pickle', 'rb') as f:
+    #    result = pickle.load(f)
+    
     Correct = []
     Wrong = []
     IDK = []
@@ -149,24 +127,22 @@ if __name__ == "__main__":
     Another = []
     futures = []
     
-    f1_score_total = 0
     qid_count = 0
 
     for qid, question in tqdm(questions_dict.items()):
         if qid > 2000:
             continue
-        
+
         if qid % 20 != 0:
             continue
             
-        f1_score_total = f1_score_total * qid_count
         qid_count += 1
         
         flag = 'Error'
         future = ''
 
         try:
-            future = get_answer(qid, question, entity_set_dict[qid][0], top_k = 5, max_tokens=1024)
+            future = get_answer(qid, question, entity_set_dict[qid][0], top_k = 5, max_tokens=1024, max_iter = args.max_iter)
             is_correct = 0
 
             lower_label = []
@@ -203,8 +179,9 @@ if __name__ == "__main__":
             result[qid] = 'Error'
             flag = 'Error'
         
+    
         dict = {"question_id": qid, "question" : question, "prediction" : future, "gt_label" : label_set_dict[qid], "correctness": flag}
-        with open("../result/abstention_ver4_20240923/threehop_35turbo_gtignore_trial3.jsonl", 'a', encoding = 'utf-8') as outfile:
+        with open("../result/abstention_ver5_20240925/threehop_35turbo_gtignore_trial2.jsonl", 'a', encoding = 'utf-8') as outfile:
             json_str = json.dumps(dict, ensure_ascii=False)
             outfile.write(json_str + '\n')
 

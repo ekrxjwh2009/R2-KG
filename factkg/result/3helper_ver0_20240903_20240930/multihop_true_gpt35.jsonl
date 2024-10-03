@@ -1,0 +1,50 @@
+{"question_id": 3998, "question": "An astronaut was born on the 15th of March 1932 and his Alma Mater is UT Austin, B.S. 1955.", "prediction": true, "correctness": "Correct"}
+{"question_id": 4000, "question": "An astronaut (born on 1932-03-15) graduated from UT Austin in 1955 with a B.Sc. degree.", "prediction": true, "correctness": "Correct"}
+{"question_id": 4171, "question": "With their CEO as a key person, a company is in the pharmaceutical industry.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4185, "question": "The key person of brazilian company, a company, is their CEO.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4367, "question": "The native name for the place, designed by Hüseyin Bütüner and Hilmi Güner is Türk Şehitleri Anıtı.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4368, "question": "The place is known in Turkish as Turk Sehitleri Aniti and the designers are Hüseyin Bütüner and Hilmi Güner.", "prediction": true, "correctness": "Correct"}
+{"question_id": 4501, "question": "The building is located on U.S. Route 83 and has the reference number 88002539 in the National Register of Historic Places.", "prediction": true, "correctness": "Correct"}
+{"question_id": 4510, "question": "A company is a pharmaceutical company that also sells cosmetics.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4645, "question": "A soccer manager, born on 03-08-1970, is the music composer of Death on a Factory Farm.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4891, "question": "Ashgabat is the location of an airport which has a runway length of 2989.0 and is located 211 metres above sea level.", "prediction": true, "correctness": "Correct"}
+{"question_id": 4939, "question": "A soccer player, whose birthdate is 1 July 1976, plays for Al-Naft and his club is Steel Azin FC.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4957, "question": "A building (which had 20 floors) was designed by architect Helmut Jahn and is owned by Redefine Properties Limited.", "prediction": "", "correctness": "Error"}
+{"question_id": 4971, "question": "A city is part of Cuyahoga County, Ohio in the United States, it's home to 200 public square.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 4999, "question": "Graeme Garden stars in a fictional character which is broadcast by the BBC and first aired on 3 October 1983.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5052, "question": "S.A. corporation a company, which has a net income of 108,600,000, has a subsidiary called Mantecorp.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5124, "question": "The automobile, which has the alternative name of Alfa Romeo 168, is considered a mid-size luxury executive car and has a 2.5 litre engine.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5155, "question": "Born in Cleveland, a person (spouse to Agnes Ward White), finished his career on March 4th 1905.", "prediction": "", "correctness": "Error"}
+{"question_id": 5156, "question": "Cleveland born a governor, husband of Agnes Ward White, retired March 4, 1905.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5165, "question": "A soccer manager has been manager of AC Lumezzane he is part of A.C> Chievo Verona and plays for Vicenza Calcio.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5186, "question": "A soccer club full name is a soccer club S.p.A.; they have 47290 members and competed in the 2014 season.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5220, "question": "Mario Botta is Dean of the university which is located in the city of Mendrisio and was established in 1996.", "prediction": "", "correctness": "Error"}
+{"question_id": 5244, "question": "The building on U.S. Route 83 was constructed in 1911 and added to the National Register of Historic Places on 22 November 1988.", "prediction": "", "correctness": "Error"}
+{"question_id": 5251, "question": "A company was founded Jan. 1, 2001 as a type of S.A. corporation that has a current net income of 108,600,000.", "prediction": "", "correctness": "Error"}
+{"question_id": 5273, "question": "The place in Azerbaijan was designed by Hüseyin Bütüner and Hilmi Güner and is dedicated to the Ottoman Army Soldiers killed in the Battle of Baku.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5319, "question": "An asteroid a planet which was discovered on 11 June 1929 has a rotation period of 20378.5 and the periapsis of 260855000000.0.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5325, "question": "A film was produced by Anatole de Grunwald, directed by Harold French, with Nicholas Brodszky as the composer of the songs used.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5327, "question": "A city (located in the Pacific Daylight time zone) is in the Pacific Standard Time zone and its population density is 1604.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5341, "question": "The government type of a city is the council-manager government, one of the leaders is the city manager and the population of the metropolitan area is 1,777,539.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5374, "question": "An artist was born on the 2nd of May, 1908 and died on the 14th of June, 1994, in Israel.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5385, "question": "The 89-minute-long movie a film includes music composed by Nicholas Brodszky. Alan Jaggs was in charge of the editing.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5422, "question": "The planet asteroid has a rotation period of 20378.5, a periapsis of 260855000000, with an orbital period of 1249.6 days.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5485, "question": "Although a company is in the pharmaceuticals industry and its main product is drugs, it also sells healthcare products.", "prediction": true, "correctness": "Correct"}
+{"question_id": 5540, "question": "A food is part of Colombian cuisine, one of its ingredients is another food, that is found in the Andalusia region.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5589, "question": "A soccer manager, player of the football club Ashford Town (Middlesex) F.C composed the music for the movie \"a television show\", a film broadcasted by HBO.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 5593, "question": "An artist died in Petah Tikva and was born in the country, whose national anthem was Die Wacht am Rhein.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 11786, "question": "A place is not dedicated to the Ottoman Army soldiers killed in the Battle of Baku not designed by Hüseyin Bütüner and Hilmi Güner.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 11869, "question": "\"a film\" was not written by Anatole de Grunwald and Iglesias, Alex Ander, Rob Davis.", "prediction": true, "correctness": "Correct"}
+{"question_id": 11897, "question": "A scientist, who is well-known for the Anthropic principle theory, does not call Žiežmariai his birthplace.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 11925, "question": "An artist, not born in the Edgar, Nebraska, did not her studies at the School of Applied Arts in Stuttgart.", "prediction": true, "correctness": "Correct"}
+{"question_id": 11962, "question": "Liselotte Grschebina did not die in a country, is not a country which has a population density of 33.32061628221308 people per square kilometre of land area.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 11968, "question": "A television show is not directed by Prof. dr hab. Zdzisław Pietrzyk and does not have a running time of 83.0.", "prediction": true, "correctness": "Correct"}
+{"question_id": 12733, "question": "An astronaut was a member of the Apollo 12 crew, his nationality is United States and the operator of Apollo 12 was NASA.", "prediction": "", "correctness": "Error"}
+{"question_id": 12741, "question": "A soccer player's clubs are Esteghlal Ahvaz FC and also Al-Zawra'a SC which is managed by Basim Qasim.", "prediction": true, "correctness": "Correct"}
+{"question_id": 12784, "question": "The icebreaker Aleksey Chirikov was built in Helsinki, a country, the leader of which, is Sauli Niinisto.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 12787, "question": "The icebreaker ship Aleksey Chirikov was built in Helsinki, a country where Juha Sipilä is a leader.", "prediction": true, "correctness": "Correct"}
+{"question_id": 12799, "question": "The icebreaker Aleksey Chirikov was built by a country's (led by Juha Sipila) Arctech Helsinki Shipyard.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 12803, "question": "The place, categorised as a historic district in the United States, is located in the Monocacy National Battlefield and has Frederick, Maryland as its nearest city.", "prediction": true, "correctness": "Correct"}
+{"question_id": 12807, "question": "The place, located on the Monocacy National Battlefield in Frederick County, Maryland, is categorised as a historic district in the United States.", "prediction": false, "correctness": "Wrong"}
+{"question_id": 12815, "question": "William M O Dawson succeeded Albert B White, who died in a city, United States.", "prediction": true, "correctness": "Correct"}
+{"question_id": 12817, "question": "Albert B White, who was succeeded by William M O Dawson, died in a city, United States.", "prediction": false, "correctness": "Wrong"}

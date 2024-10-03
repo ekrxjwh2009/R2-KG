@@ -48,16 +48,9 @@ def helper_function_parser(helper_str, temp_param, information = Information(0, 
         res = getRelations_integrate(helper_str)
 
     elif ind == 1:
-        # res = exploreKGs(helper_str)
-        res = exploreKGs_abstain(helper_str, information)
+        res = exploreKGs(helper_str, information)
+        # res = exploreKGs_abstain(helper_str, information)
 
-        # res = exploreKGs_integrate(helper_str)
-
-        # for trip in triple_list:
-        #     if trip[1][0] == '~':
-        #         used_relation.append(trip[1].split('~')[1])
-        #     else:
-        #         used_relation.append(trip[1])
     elif ind == 2:
         res = checkSufficiency(helper_str)
     elif ind == 3:
@@ -114,42 +107,6 @@ def getRelations(helper_str):
     
     return ', '.join(res_string)
 
-# def getRelations_integrate(helper_str):
-
-#     helpers = helper_str.split('getRelation')
-#     params = []
-#     for ind in range(len(helpers)):
-#         if ind == 0:
-#             continue
-#         paren = matching_parentheses(helpers[ind])
-#         start = min(paren.keys())
-#         end = paren[start]
-#         params.append(helpers[ind][start + 2 : end - 1])
-
-#     res_string = []
-#     print(params)
-#     for ent in params:
-#         ent_list = []
-#         try:
-#             ent_list = ast.literal_eval(ent)
-#         except:
-#             ent_list = [ent]
-#         rels = []
-
-#         for e in ent_list:
-#             e = e.replace(' ', '_').lower()
-#             rels += db.getRelationsFromEntity(e)
-#             # rels += db.getRelationsFromEntity('"' + e + '"')
-
-#             for ind in range(len(rels)):
-#                 if rels[ind][0] == '~':
-#                     rels[ind] = rels[ind].split('~')[1]
-                
-#         rels = list(set(rels))
-#         s = 'Relations_list("' + str(ent_list) + '") = ' + str(rels)
-#         res_string.append(s)
-    
-#     return ', '.join(res_string)
 
 def getRelations_integrate(helper_str):
 
@@ -188,7 +145,7 @@ def getRelations_integrate(helper_str):
     
     return ', '.join(res_string)
 
-def exploreKGs(helper_str):
+def exploreKGs(helper_str, information):
     helpers_temp = helper_str.split('exploreKG')
 
     helpers = []
@@ -220,22 +177,6 @@ def exploreKGs(helper_str):
         ent_rel_pair.append((ent_list, rels))
         
 
-    # # For exploreKG with ', ' splitter
-    # except:
-    #     for helper in helpers:
-    #         paren = matching_big_parentheses(helper)
-    #         ent_start = min(paren.keys())
-    #         ent_end = paren[ent_start]
-    #         rel_start = max(paren.keys())
-    #         rel_end = paren[rel_start]
-
-    #         param = helper[ent_start : ent_end + 1]
-    #         ent_list = ast.literal_eval(param)
-    #         rels = helper[rel_start : rel_end + 1]
-    #         rels = ast.literal_eval(rels)
-    #         ent_rel_pair.append((ent_list, rels))
-    
-
     triples = []
     entire_tails = []
     # print(ent_rel_pair)
@@ -258,6 +199,7 @@ def exploreKGs(helper_str):
                 
                 entire_tails += tails
                 for tail in tails:
+                    if tail == information.gt_entity: continue
                     triples.append([ent, rel, tail])
         
     
@@ -314,7 +256,7 @@ def exploreKGs_abstain(helper_str, information):
             for rel in rels:
                 if (ent, rel) in information.ent_rel_history:
                     print(information.ent_rel_history, pair)
-                    information.set_abstain()
+                    information.set_abstain(-1)
                     return ''
                 
                 tails = []
@@ -326,12 +268,16 @@ def exploreKGs_abstain(helper_str, information):
                     tails += db.getEntityFromEntRel(ent, '~' + rel)
                 
                 for tail in tails:
+                    if tail == information.gt_entity: continue # Line for metaqa property : don't take entity same with given entity
                     triples.append([ent, rel, tail])
                 
                 information.add_pair((ent, rel))
         
     
     # print(triples)
+    if len(triples) == 0:
+        information.set_abstain(-4)
+        
     return str(triples)
 
 def checkSufficiency():

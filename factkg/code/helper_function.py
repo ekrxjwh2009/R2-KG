@@ -36,12 +36,6 @@ def helper_function_parser(helper_str, temp_param, information = Information(0, 
     elif ind == 1:
         # res = exploreKGs(helper_str)
         res = exploreKGs_abstain(helper_str, information)
-        # triple_list = ast.literal_eval(res)
-        # for trip in triple_list:
-            # if trip[1][0] == '~':
-            #     temp_param.append(trip[1].split('~')[1])
-            # else:
-            #     temp_param.append(trip[1])
 
     # checkSufficiency
     elif ind == 2:
@@ -183,7 +177,7 @@ def exploreKGs_abstain(helper_str, information):
         for rel in rels:
             if (ent, rel) in information.ent_rel_history:
                 print(information.ent_rel_history, pair)
-                information.set_abstain()
+                information.set_abstain(-1)
                 return ''
             tails = []
             if rel[0] == '~':
@@ -199,4 +193,7 @@ def exploreKGs_abstain(helper_str, information):
             information.add_pair((ent, rel))
     
     # print(triples)
+    if len(triples) == 0:
+        information.set_abstain(-4)
+        
     return str(triples)

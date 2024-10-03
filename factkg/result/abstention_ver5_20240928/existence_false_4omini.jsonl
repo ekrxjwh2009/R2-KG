@@ -1,0 +1,21 @@
+{"question_id": 189, "question": "Branches of science had a parent company.", "prediction": false, "correctness": "Correct"}
+{"question_id": 194, "question": "Uncertain data had a capital.", "prediction": false, "correctness": "Correct"}
+{"question_id": 203, "question": "Shock and awe had a garrison.", "prediction": "", "correctness": "Error"}
+{"question_id": 230, "question": "Dejan Ranković had a youthclub.", "prediction": true, "correctness": "Wrong"}
+{"question_id": 236, "question": "Medical literature had a religion.", "prediction": false, "correctness": "Correct"}
+{"question_id": 237, "question": "Milica Branković had a religion.", "prediction": false, "correctness": "Correct"}
+{"question_id": 246, "question": "Funny Cide had a religion.", "prediction": false, "correctness": "Correct"}
+{"question_id": 272, "question": "Hanne Rømer had a successor.", "prediction": false, "correctness": "Correct"}
+{"question_id": 284, "question": "Colmán Rímid had a child.", "prediction": false, "correctness": "Correct"}
+{"question_id": 293, "question": "Elsa Skarbøvik had a child.", "prediction": false, "correctness": "Correct"}
+{"question_id": 297, "question": "ČAFC Židenice had a nickname.", "prediction": false, "correctness": "Correct"}
+{"question_id": 301, "question": "SK Kravaře had a nickname.", "prediction": false, "correctness": "Correct"}
+{"question_id": 308, "question": "AS Veti had a nickname.", "prediction": false, "correctness": "Correct"}
+{"question_id": 309, "question": "Yacht club had a nickname.", "prediction": "Abstain", "correctness": "Abstain"}
+{"question_id": 406, "question": "Gyōki was a president.", "prediction": false, "correctness": "Correct"}
+{"question_id": 426, "question": "Bastard baronets was a vice president.", "prediction": false, "correctness": "Correct"}
+{"question_id": 11115, "question": "Kingdom of Iberia did not have a capital.", "prediction": false, "correctness": "Correct"}
+{"question_id": 11125, "question": "37th Bomb Squadron did not have a garrison.", "prediction": false, "correctness": "Correct"}
+{"question_id": 11127, "question": "Army Cadet Force did not have a garrison.", "prediction": false, "correctness": "Correct"}
+{"question_id": 11129, "question": "3rd Dental Battalion did not have a garrison.", "prediction": false, "correctness": "Correct"}
+{"question_id": 11164, "question": "Yasser Mugerwa did not have a youthclub.", "prediction": false, "correctness": "Correct"}

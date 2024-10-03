@@ -32,6 +32,10 @@ if __name__ == '__main__':
     attend = 0
     total_score = 0
 
+    predict_num = 0
+    answer_num = 0
+    total_error = 0
+
     for item in experiment_data:
         qid = item['question_id']
         prediction = item['prediction']
@@ -41,6 +45,7 @@ if __name__ == '__main__':
         else: attend += 1
 
         score = 0
+        error = 0
 
         gt_item = original_data[qid - 1]
         if gt_item['question_id'] != qid:
@@ -56,13 +61,21 @@ if __name__ == '__main__':
         gt_label = gt_item['Label']
         gt_label_num = len(gt_label)
         prediction_label_num = len(prediction)
+        # if gt_label_num != prediction_label_num: print(qid)
+
+        predict_num += prediction_label_num
+        answer_num += gt_label_num
 
         for label in gt_label:
             if label.replace(' ', '_').lower() in prediction:
                 score += (1 / len(gt_label))
                 gt_label_num -= 1
                 prediction_label_num -= 1
-            
+
+        error += (gt_label_num + prediction_label_num)
+        error /= len(gt_label)
+        if error != 0: print(qid, error)
+
         if PENALTY == 0:
             pass
         elif PENALTY == -1:
@@ -75,6 +88,7 @@ if __name__ == '__main__':
         # print(score)
         # if score < 0: print(item)
         total_score += score
+        total_error += error
     
     print('total : ', len(experiment_data))
     print('attended : ', attend)
@@ -83,5 +97,9 @@ if __name__ == '__main__':
     print()
     print('metric 1 : ', attend / len(experiment_data))
     print('metric 2 : ', total_score / attend)
+    print('metric 3 : ', total_error / attend)
+
+    print(predict_num, answer_num)
+
 
 
