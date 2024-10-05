@@ -7,7 +7,6 @@ import argparse
 import sample_number
 import numpy as np
 import re
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 import dbpedia_sparql as db
 
 
