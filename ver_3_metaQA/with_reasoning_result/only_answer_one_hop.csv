@@ -1,0 +1,101 @@
+qid,correct,wrong,prediction,gt_label
+20,1.0,0,'doppelganger',['Doppelganger']
+40,1.0,0,'A Modern Affair',['A Modern Affair']
+60,1.0,71.0,"'the_villain', 'gunfight_at_the_o.k._corral', 'paths_of_glory', 'cast_a_giant_shadow', 'once_is_not_enough', 'the_brotherhood', 'the_arrangement', 'there_was_a_crooked_man...', 'the_last_sunset', 'along_the_great_divide', 'spartacus', 'ace_in_the_hole', 'the_man_from_snowy_river', 'a_letter_to_three_wives', 'posse', 'strangers_when_we_meet', 'diamonds', 'two_weeks_in_another_town', 'the_big_trees', 'my_dear_secretary', 'the_final_countdown', 'out_of_the_past', 'lust_for_life', 'tough_guys', 'champion', 'the_fury', 'the_bad_and_the_beautiful', 'the_story_of_three_loves', 'greedy', 'saturn_3', 'the_vikings', 'the_war_wagon', ""in_harm's_way"", 'ulysses', 'the_strange_love_of_martha_ivers', 'last_train_from_gun_hill', 'town_without_pity', 'the_big_sky', '20,000_leagues_under_the_sea', 'seven_days_in_may', 'young_man_with_a_horn', 'it_runs_in_the_family', 'detective_story', 'lonely_are_the_brave', 'total_recall', 'collateral_damage', 'the_running_man', 'the_6th_day', 'end_of_days', 'the_last_stand', 'hercules_in_new_york', 'kindergarten_cop', 'junior', 'conan_the_destroyer', 'commando', 'generation_iron', 'predator', 'escape_plan', 'conan_the_barbarian', 'the_expendables_3', 'pumping_iron', 'true_lies', 'last_action_hero', 'the_terminator', 'red_sonja', 'stay_hungry', 'eraser', 'jingle_all_the_way', 'red_heat', 'twins', 'raw_deal', 'sabotage'",['The Villain']
+80,0.16666666666666666,0,"'warlock', 'blood_and_bone', 'the_medallion', 'gothic', 'boxing_helena', 'the_killing_fields'","['The Killing Fields', 'The Medallion', 'Blood and Bone', 'Warlock', 'Boxing Helena', 'Gothic']"
+100,0,3.0,"'ray_milland', 'roger_perry', 'don_marshall'",['The Thing with Two Heads']
+120,1.0,0,'alice',['Alice']
+140,1.0,0,'the_long_day_closes',['The Long Day Closes']
+160,1.0,0,'murder!',['Murder!']
+180,0,4.0,"'Carmen Duncan', 'Broderick Crawford', 'David Hemmings', 'Robert Powell'",['Harlequin']
+200,1.0,0,'Take the Lead',['Take the Lead']
+220,0.2,0,"'hot_pursuit', 'the_independent', 'stag', 'the_heartbreak_kid', 'the_ritz'","['The Heartbreak Kid', 'Hot Pursuit', 'The Ritz', 'The Independent', 'Stag']"
+240,0.5,0,"'lollilove', 'hall_pass'","['Hall Pass', 'LolliLove']"
+260,1.0,0,"""children_shouldn't_play_with_dead_things""","[""Children Shouldn't Play with Dead Things""]"
+280,1.0,0,'coffin_rock',['Coffin Rock']
+300,0,2.0,"'kirby_dick', 'amy_ziering'",['The Invisible War']
+320,0.25,0,"'the_miracle_of_morgan\'s_creek', 'the_greatest_show_on_earth', 'annie_get_your_gun', 'the_perils_of_pauline'","['The Greatest Show on Earth', ""The Miracle of Morgan's Creek"", 'Annie Get Your Gun', 'The Perils of Pauline']"
+340,0.5,0,"'action_jackson', 'dabangg_2'","['Dabangg 2', 'Action Jackson']"
+360,1.0,0,'the_meteor_man',['The Meteor Man']
+380,1.0,0,'caddyshack',['Caddyshack']
+400,1.0,0,'your_vice_is_a_locked_room_and_only_i_have_the_key',['Your Vice Is a Locked Room and Only I Have the Key']
+420,0.25,0,"'the_night_the_lights_went_out_in_georgia', 'slipstream', 'the_big_red_one', 'corvette_summer'","['The Big Red One', 'Corvette Summer', 'Slipstream', 'The Night the Lights Went Out in Georgia']"
+440,1.0,7.0,"'a_short_history_of_decay', 'wrong_turn', 'on_the_line', 'fort_bliss', 'nobel_son', 'the_perfect_score', 'bride_wars', 'prime'",['A Short History of Decay']
+460,1.0,0,'father_and_guns',['Father and Guns']
+480,0.058823529411764705,0,"'3_women', 'blast_from_the_past', 'an_american_haunting', 'get_low', 'lake_city', 'the_river', 'in_the_bedroom', 'badlands', 'the_straight_story', ""'night,_mother"", ""coal_miner's_daughter"", 'the_long_walk_home', 'missing', 'four_christmases', 'the_grass_harp', 'carrie', 'raggedy_man'","['Carrie', 'The Straight Story', 'Blast from the Past', 'Four Christmases', 'Badlands', 'In the Bedroom', 'An American Haunting', 'Get Low', ""Coal Miner's Daughter"", 'Missing', '3 Women', 'The River', 'The Grass Harp', 'The Long Walk Home', ""'night, Mother"", 'Raggedy Man', 'Lake City']"
+500,1.0,0,'krull',['Krull']
+520,1.0,17.0,"'the_stepford_wives', 'mars_attacks!', 'fatal_attraction', 'the_world_according_to_garp', 'dangerous_liaisons', '101_dalmatians', 'rabbit_hole', 'the_hours', 'cold_mountain', 'moulin_rouge!', 'the_graduate', 'the_legacy', 'hocus_pocus', 'beaches', 'saturday_the_14th', 'the_parallax_view', 'the_lion_king', ""ferris_bueller's_day_off""",['The Stepford Wives']
+540,1.0,0,'happy_new_year',['Happy New Year']
+560,1.0,0,'entity',['Entity']
+580,1.0,0,'dragon_eyes',['Dragon Eyes']
+600,0,3.0,"'Esther Furst', 'George E. Mather', 'Austin Green'",['Ring of Terror']
+620,1.0,0,'Spartan',['Spartan']
+640,1.0,0,'the_speed_of_thought',['The Speed of Thought']
+660,1.0,0,'project_x',['Project X']
+680,1.0,0,'City of Hope',['City of Hope']
+700,0.5,0,"'rookie_of_the_year', 'malcolm_x'","['Malcolm X', 'Rookie of the Year']"
+720,0,1.0,"'comedy', 'drama'","['Il Grido', 'All Night Long']"
+740,0.2,0,"'mean_creek', 'signs', 'you_can_count_on_me', 'down_in_the_valley', 'lymelife'","['Signs', 'Mean Creek', 'You Can Count on Me', 'Down in the Valley', 'Lymelife']"
+760,1.0,0,'the_armstrong_lie',['The Armstrong Lie']
+780,0.5,0,"'vice_squad', 'hardcore'","['Hardcore', 'Vice Squad']"
+800,0,1.0,"'drama', 'comedy'","[""It's My Party"", ""I'm the One That I Want""]"
+820,1.0,0,'rabid',['Rabid']
+840,0.058823529411764705,0,"'gold', 'moonraker', 'the_sea_wolves', 'interrupted_melody', 'the_man_who_haunted_himself', 'a_view_to_a_kill', 'the_wild_geese', ""the_man_who_wouldn't_die"", 'for_your_eyes_only', 'the_spy_who_loved_me', 'octopussy', 'escape_to_athena', 'the_naked_face', 'live_and_let_die', 'the_man_with_the_golden_gun', 'the_cannonball_run', 'the_quest'","['The Spy Who Loved Me', 'Octopussy', 'Live and Let Die', 'The Man with the Golden Gun', 'For Your Eyes Only', 'Moonraker', 'A View to a Kill', 'The Cannonball Run', 'The Quest', 'The Wild Geese', 'Escape to Athena', 'The Sea Wolves', 'Gold', 'The Man Who Haunted Himself', 'Interrupted Melody', 'The Naked Face', ""The Man Who Wouldn't Die""]"
+860,0.2,0,"'king_solomon\'s_mines', 'the_proud_valley', 'the_emperor_jones', 'big_fella', 'song_of_freedom'","[""King Solomon's Mines"", 'The Emperor Jones', 'The Proud Valley', 'Song of Freedom', 'Big Fella']"
+880,0.3333333333333333,0,"'the_santa_clause', 'joe_somebody', 'jungle_2_jungle'","['The Santa Clause', 'Jungle 2 Jungle', 'Joe Somebody']"
+900,1.0,0,'Dream Wife',['Dream Wife']
+920,1.0,0,"""You're Not You""","[""You're Not You""]"
+940,1.0,0,'eurotrip',['EuroTrip']
+960,0.14285714285714285,0,"'this_is_my_life', 'lucky_numbers', ""you've_got_mail"", 'bewitched', 'michael', 'sleepless_in_seattle', 'mixed_nuts'","[""You've Got Mail"", 'Sleepless in Seattle', 'Bewitched', 'Michael', 'Lucky Numbers', 'Mixed Nuts', 'This Is My Life']"
+980,1.0,0,'the_mystery_of_the_leaping_fish',['The Mystery of the Leaping Fish']
+1000,0.16666666666666666,0,"'venice/venice', 'last_summer_in_the_hamptons', 'déjà_vu', 'irene_in_time', 'festival_in_cannes', 'a_safe_place'","['Déjà Vu', 'A Safe Place', 'Festival in Cannes', 'Last Summer in the Hamptons', 'Venice/Venice', 'Irene in Time']"
+1020,1.0,0,'the_way_way_back',['The Way Way Back']
+1040,1.0,0,'the_flying_saucer',['The Flying Saucer']
+1060,1.0,0,'Machine Gun McCain',['Machine Gun McCain']
+1080,1.0,0,'geography_club',['Geography Club']
+1100,1.0,0,'the_last_outpost',['The Last Outpost']
+1120,1.0,0,'the_revisionaries',['The Revisionaries']
+1140,1.0,0,'one_crazy_summer',['One Crazy Summer']
+1160,0.5,0,"'the_stepfather', 'prom_night'","['Prom Night', 'The Stepfather']"
+1180,1.0,0,'the_debt',['The Debt']
+1200,1.0,0,'the_letter',['The Letter']
+1220,0.2,0,"'clear_history', 'the_daytrippers', 'paul', 'superbad', 'adventureland'","['Superbad', 'Paul', 'Adventureland', 'Clear History', 'The Daytrippers']"
+1240,1.0,0,'the_x_from_outer_space',['The X from Outer Space']
+1260,1.0,0,'Across the Tracks',['Across the Tracks']
+1280,0.5,0,"'party_girl', 'the_guru'","['The Guru', 'Party Girl']"
+1300,0.5,0,"'pan', 'hunger'","['Hunger', 'Pan']"
+1320,0.3333333333333333,0,"""don't_look_back"", 'dark_touch', 'in_my_skin'","[""Don't Look Back"", 'In My Skin', 'Dark Touch']"
+1340,1.0,0,'the_cry_of_the_owl',['The Cry of the Owl']
+1360,1.0,0,'Desert Bloom',['Desert Bloom']
+1380,1.0,0,'Venus Wars',['Venus Wars']
+1400,0.5,0,'drawing_restraint_9',"['Destricted', 'Drawing Restraint 9']"
+1420,1.0,0,'head_on',['Head On']
+1440,0.5,0.5,"'jon_heder', 'ian_carmichael', 'billy_bob_thornton'","['Billy Bob Thornton', 'Jon Heder']"
+1460,1.0,0,'martin_short',['Martin Short']
+1480,0.3333333333333333,0,"'eva_gabor', 'john_candy', 'bob_newhart'","['John Candy', 'Bob Newhart', 'Eva Gabor']"
+1500,0.3333333333333333,0,"'rei_sakuma', 'kappei_yamaguchi', 'minami_takayama'","['Kappei Yamaguchi', 'Rei Sakuma', 'Minami Takayama']"
+1520,0.5,0,"'jessica_simpson', 'luke_wilson'","['Luke Wilson', 'Jessica Simpson']"
+1540,0.3333333333333333,0,"'shabana_azmi', 'patrick_swayze', 'om_puri'","['Patrick Swayze', 'Om Puri', 'Shabana Azmi']"
+1560,0.5,0,"'erika_okuda', 'tadanobu_asano'","['Tadanobu Asano', 'Erika Okuda']"
+1580,1.0,0,'betty_schneider',['Betty Schneider']
+1600,0.25,0,"'adar_beck', 'nathalie_cox', 'john_lloyd_fillingham', 'gemma_chan'","['Nathalie Cox', 'Adar Beck', 'Gemma Chan', 'John Lloyd Fillingham']"
+1620,0.3333333333333333,1.3333333333333333,"'gary_lewis', 'brian_cox', 'jonny_lee_miller', 'joseph_fiennes', 'seu_jorge', 'damian_lewis', 'andy_serkis'","['Andy Serkis', 'Jonny Lee Miller', 'Gary Lewis']"
+1640,0.3333333333333333,0,"'susan_sarandon', 'willem_dafoe', 'dana_delany'","['Willem Dafoe', 'Susan Sarandon', 'Dana Delany']"
+1660,0.5,0,"'jamie_lee_curtis', 'gregory_peck'","['Jamie Lee Curtis', 'Gregory Peck']"
+1680,1.0,0,'joaquin_phoenix',['Joaquin Phoenix']
+1700,0.25,0,"'cyd_charisse', 'gene_kelly', 'dan_dailey', 'dolores_gray'","['Gene Kelly', 'Cyd Charisse', 'Dan Dailey', 'Dolores Gray']"
+1720,0.25,0,"'danny_huston', 'gillian_anderson', 'alan_cumming', 'heather_graham'","['Danny Huston', 'Heather Graham', 'Gillian Anderson', 'Alan Cumming']"
+1740,1.0,0,'tilda_swinton',['Tilda Swinton']
+1760,0.25,0,"'jason_dohring', 'shane_johnson', 'randy_quaid', 'josh_hammond'","['Randy Quaid', 'Jason Dohring', 'Shane Johnson', 'Josh Hammond']"
+1780,0.25,0,"'eleanor_parker', 'roger_moore', 'glenn_ford', 'cecil_kellaway'","['Roger Moore', 'Eleanor Parker', 'Glenn Ford', 'Cecil Kellaway']"
+1800,0.5,0,"'ferdinando_sarmi', 'massimo_girotti'","['Massimo Girotti', 'Ferdinando Sarmi']"
+1820,0.5,0,"'suzanne_snyder', 'grant_cramer'","['Suzanne Snyder', 'Grant Cramer']"
+1840,0.3333333333333333,0,"'jim_caviezel', 'jeremy_sisto', 'jennifer_lopez'","['Jim Caviezel', 'Jennifer Lopez', 'Jeremy Sisto']"
+1860,1.0,0,'timothy_dalton',['Timothy Dalton']
+1880,1.0,4.0,"'marie_dressler', 'kate_beckinsale', 'mark_strong', 'alan_cumming', 'gwyneth_paltrow'",['Marie Dressler']
+1900,1.0,0,'al_pacino',['Al Pacino']
+1920,1.0,0,"""jason_o'mara""","[""Jason O'Mara""]"
+1940,0.5,0,"'kathleen_quinlan', 'kurt_russell'","['Kurt Russell', 'Kathleen Quinlan']"
+1960,0.5,0,"'bjørn_sundquist', 'marie_theisen'","['Bjørn Sundquist', 'Marie Theisen']"
+1980,0.25,0,"'annette_bening', 'ed_harris', 'robin_williams', 'jess_weixler'","['Ed Harris', 'Robin Williams', 'Annette Bening', 'Jess Weixler']"
+2000,0.3333333333333333,0,"'greta_garbo', 'john_gilbert', 'lewis_stone'","['Greta Garbo', 'Lewis Stone', 'John Gilbert']"

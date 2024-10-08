@@ -1,5 +1,6 @@
 import openai
 import sys, os
+import ast
 from openai import OpenAI
 import json
 import csv
@@ -19,7 +20,7 @@ You can use below helper functions to find the evidence for finding labels.
 Helper Functions
 1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
 2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
-3.Verification['true' or 'false']: If you can judge the claim as True or False give the answer.
+3.Verification[True or False]: If you can judge the claim as True or False give the answer.
 
 You must follow the exact format of the given helper function.
 
@@ -40,7 +41,7 @@ Helper function : getRelation["\"Punjab, Pakistan\""] ## getRelation["Jinnah_Int
 Execution result : Relation_list["\"Punjab, Pakistan\""] = ['s', 'divdab', 'state', 'location', 'birthPlace', 'placeOfBirth', 'rdf-schema#label', 'deathPlace', 'placeOfDeath', 'origin', 'mapCaption', 'country'], Relation_list("Jinnah_International_Airport") = ['statYear', 'website', 'elevationF', 'stat2Data', 'r2LengthM', 'r1Number', 'stat1Data', '~targetAirport', 'icao', '~secondaryHubs', 'stat3Header', 'stat2Header', '~hubs', 'operator', 'imageWidth', 'airportManager', '~hubAirport', 'iata', 'type', 'r2Number', 'city', 'ownerOper', 'name', 'metricRwy', 'elevationM', 'hub', 'hypernym', '~headquarter', '~bases', '~origin', 'stat1Header', 'image2Width', 'runwayLength', 'icaoLocationIdentifier', 'owner', 'homepage', '22-rdf-syntax-ns#type', '~stopover', 'r1Surface', 'r1LengthM', 'subject', 'runwayDesignation', 'rdf-schema#label', '~wikiPageRedirects', 'image', 'stat3Data', '~location', 'location', '~target', '~headquarters', 'r2Surface', 'elevation', 'iataLocationIdentifier', 'runwaySurface', 'r2LengthF', 'r1LengthF', 'cityServed']
 [ChatGPT]
 Statement : Now, to find the airport located in Punjab, I need to explore the graph with "Punjab, Pakistan" and related relations. Also, to find the government agency of 'Jinnah_International_Airport', I need to explore the graph too.
-Helper function : exploreKG["\"Punjab, Pakistan\""]=['location'] ## exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
+Helper function : exploreKG["\"Punjab, Pakistan\""]=['location']) ## exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
 [User]
 Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
 [ChatGPT]
@@ -190,38 +191,22 @@ def client_answer(response, label):
     #    return prompt, result
 
     helper_ftn_calls = split_functions(response)
-    if len(helper_ftn_calls):
-        prompt = '\n[User]\n You gave wrong format of functions'
-        result = None
-    prompt = '\n[User]\nExecution result : '
-    for ftn in helper_ftn_calls:
+    prompt = '\n[User]\nExecution result :'
+    for helper_str in helper_ftn_calls:
         
         
-        if 'getRelation' in ftn:
-            try :
-                entity = ftn.split("getRelation[")[1].split("]")[0][1:-1]
-                result = get_relation(entity)
-                if len(result)==0:
-                    prompt+= f"\nDo not change the format of entity {entity} in helper function."
-                else:
-                    prompt += f"\nRelation_list[{entity}] = {result}"
-            except :
-                prompt += f'\nYou gave wrong format of entity {entity}. Call the helper function again follow the right format'
-        elif 'exploreKG' in ftn:
-            try:
-                entity = ftn.split("exploreKG[")[1].split("]=")[0][1:-1]
-                relations = ftn.split("=[")[1].split("]")[0].strip().split(', ')
-                result = explore_kg(entity, relations)      #entity, string of relation list
-                if len(result) ==0 :
-                    prompt += f"\nChoose another relations Or follow the format of Entity {entity} and Relations"
-                else:
-                    prompt += f"\n{', '.join([str(triple) for triple in result])}"
+        if 'getRelation' in helper_str:
     
-            except:
-                prompt = f'\nYou gave wrong format of entity {entity}. Call the helper function again follow the right format'
-        elif 'Verification' in ftn:
+            result = getRelations(helper_str)
+            prompt +=  "\n" + result
+            
+        elif 'exploreKG' in helper_str:
+            result = exploreKGs(helper_str)
+            prompt += "\n" + result
+            
+        elif 'Verification' in helper_str:
             try:
-                result = ftn.split("Verification[")[1].split("]")[0][:]
+                result = helper_str.split("Verification[")[1].split("]")[0]
                 prompt += f"\nDone!!Prediction:{result}\nReal label:{label}"
             except:
                 prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
@@ -230,6 +215,7 @@ def client_answer(response, label):
     
     return prompt, result
     
+
 def retrieval_relation_parse_answer(rel):
     
     post_rel = re.sub('[-=+,#/\?:^.@*\"※ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', rel)
@@ -237,38 +223,55 @@ def retrieval_relation_parse_answer(rel):
 
 def split_functions(response):
     helper_ftn_calls=[]
-    try: 
-        response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
-        functions = response.split("Helper function : ")[1]
-    except:
-        return helper_ftn_calls
+    response = response.replace("[ChatGPT]\n",'')
+    statement = response.split("Statement : ")[0].split("Helper function : ")[0]
+    functions = response.split("Helper function : ")[1]
     if '##' in functions:
         helper_ftn_calls = functions.split(' ## ')
     else :
         helper_ftn_calls = [functions]
     return helper_ftn_calls
 
-def get_relation(entity):
-
-    relation_list = db.getRelationsFromEntity(entity)
-    #print(f"reltaion list of called fucntion:{relation_list}")
-    return relation_list
-
-def explore_kg(entity, relations):
-    triple_sets= []
-    if len(db.getRelationsFromEntity(entity)) ==0 :
-        return triple_sets
+def getRelations(helper_str):
+    relations = []
+    
+    entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
+    relations += db.getRelationsFromEntity(entity)
+    relations += db.getRelationsFromEntity('"' + entity + '"')
+    if len(relations) ==0 :
+        return f"Do not change the format of entity {entity} in helper function."
     else:
-        for rel in relations:
-            rel = retrieval_relation_parse_answer(rel)
-            #print(f"Entity:{entity}, Relation:{rel}")
-            tails = db.getEntityFromEntRel(entity, rel)
-            for tail in tails:
-                tmp = [entity,rel,tail]
-                triple_sets.append(tmp)
-        #print(f'triple sets:{triple_sets}')
-    return triple_sets
+        return 'Relations_list["' + entity + '"] = ' + str(relations)
+
+
+def exploreKGs(helper_str):
+    triples= []
+    ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
+    relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+    
+    if len(db.getRelationsFromEntity(ent)) < len(db.getRelationsFromEntity('"' + ent + '"')):
+        ent = '"' + ent + '"'
+        
+    for rel in relations:
+        rel = retrieval_relation_parse_answer(rel)
+        tails = []
+        if rel[0] == '~':
+            tails += db.getEntityFromEntRel(ent, rel)
+            tails += db.getEntityFromEntRel(ent, rel.split('~')[1])
+        else:
+            tails += db.getEntityFromEntRel(ent, rel)
+            tails += db.getEntityFromEntRel(ent, '~' + rel)
+        
+        for tail in tails:
+            triples.append([ent, rel, tail])
+            
+    if len(triples)==0:
+        return f"Choose another relations Or follow the format of Entity {ent} and Relations"
+    
+    return str(triples)
+                
+            
+
 
 def score(predict, label,f):
     abs, correct, wrong =0,0,0
@@ -317,7 +320,7 @@ if __name__ == "__main__":
     if args.type == 'existence': qid_list = sample_number.existence
     elif args.type =="num1" : qid_list = sample_number.num1
     elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
-    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
+    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop_v2
     else:
         print("Wrong argument")
 
@@ -333,6 +336,7 @@ if __name__ == "__main__":
             
             f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
             f.write(f"GT entity:{entities}")
+            print(f"GT entity:{entities}")
             
             prompt = initial_prompt.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
             
