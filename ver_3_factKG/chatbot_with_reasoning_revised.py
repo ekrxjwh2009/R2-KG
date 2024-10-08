@@ -292,7 +292,7 @@ if __name__ == "__main__":
     parser.add_argument("type", type=str, default="existence")
     args = parser.parse_args()
     
-    save_path = f"./with_reasoning_result"
+    save_path = f"./with_reasoning_result_revised"
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     
@@ -327,7 +327,7 @@ if __name__ == "__main__":
     
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
-    with open(os.path.join(save_path, f"result_{args.type}_revised.txt"),'a') as f:
+    with open(os.path.join(save_path, f"result_{args.type}.txt"),'a') as f:
         for qid in qid_list:
             print(f"Qid:{qid}")
             question = questions_dict[qid]
@@ -372,7 +372,7 @@ if __name__ == "__main__":
         f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
         f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
         
-    f= open(f"./with_reasoning_result/only_answer_{args.type}_revised.csv",'w')
+    f= open(f"./with_reasoning_result_revised/only_answer_{args.type}.csv",'w')
     writer= csv.writer(f)
     writer.writerows(answer_list)
     f.close()
