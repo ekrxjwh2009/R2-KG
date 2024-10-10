@@ -1,5 +1,2 @@
 qid,prediction,gt_label
-4000,True,True
-4171,Abstain,True
-4185,Abstain,True
-4367,True,True
+4367,False,True
