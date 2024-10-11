@@ -150,8 +150,8 @@ class OpenAIBot:
             
 def reasoning(initial_prompt, label, f):
             
-    #engine="gpt-3.5-turbo-0125"         
-    engine = "gpt-4o-mini-2024-07-18"
+    engine="gpt-3.5-turbo-0125"         
+    #engine = "gpt-4o-mini-2024-07-18"
     chatbot = OpenAIBot(engine, client)
 
     iter_limit=15
@@ -165,8 +165,9 @@ def reasoning(initial_prompt, label, f):
             #prompt = input()
             
             prompt, result = client_answer(response, label)
-            
-        f.write(prompt)
+        
+        if i>0:    
+            f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -190,8 +191,9 @@ def client_answer(response, label):
     #    prompt = '[Server]\nYou gave wrong format. Call the helper function again follow the right format'
     #    return prompt, result
 
-    helper_ftn_calls = split_functions(response)
-    prompt = '\n[User]\nExecution result :'
+    helper_ftn_calls, prompt = split_functions(response)
+
+    
     for helper_str in helper_ftn_calls:
         
         
@@ -223,52 +225,70 @@ def retrieval_relation_parse_answer(rel):
 
 def split_functions(response):
     helper_ftn_calls=[]
-    response = response.replace("[ChatGPT]\n",'')
-    statement = response.split("Statement : ")[0].split("Helper function : ")[0]
-    functions = response.split("Helper function : ")[1]
-    if '##' in functions:
-        helper_ftn_calls = functions.split(' ## ')
-    else :
-        helper_ftn_calls = [functions]
-    return helper_ftn_calls
+    prompt=''
+    try:
+        response = response.replace("[ChatGPT]\n",'')
+        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
+        functions = response.split("Helper function : ")[1]
+        if '##' in functions:
+            helper_ftn_calls = functions.split(' ## ')
+        else :
+            helper_ftn_calls = [functions]
+        prompt ='\n[User]\nExecution result :'
+        
+    except:
+        prompt = "\n[User]\nYou gave wrong format of helper function. Follow the format of examples."
+        
+    return helper_ftn_calls, prompt
 
 def getRelations(helper_str):
     relations = []
     
-    entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
-    relations += db.getRelationsFromEntity(entity)
-    relations += db.getRelationsFromEntity('"' + entity + '"')
-    if len(relations) ==0 :
-        return f"Do not change the format of entity {entity} in helper function."
-    else:
-        return 'Relations_list["' + entity + '"] = ' + str(relations)
+    try:
+        entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
+
+        relations += db.getRelationsFromEntity(entity)
+        relations += db.getRelationsFromEntity('"' + entity + '"')
+        if len(relations) ==0 :
+            return f"Do not change the format of entity {entity} in helper function."
+        else:
+            return 'Relations_list["' + entity + '"] = ' + str(relations)
+    except:
+        return 'You gave wrong format. Call the helper function again follow the right format'
 
 
 def exploreKGs(helper_str):
     triples= []
-    ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
-    relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+    try:
+        ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
+        relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
     
-    if len(db.getRelationsFromEntity(ent)) < len(db.getRelationsFromEntity('"' + ent + '"')):
-        ent = '"' + ent + '"'
-        
-    for rel in relations:
-        rel = retrieval_relation_parse_answer(rel)
-        tails = []
-        if rel[0] == '~':
-            tails += db.getEntityFromEntRel(ent, rel)
-            tails += db.getEntityFromEntRel(ent, rel.split('~')[1])
-        else:
-            tails += db.getEntityFromEntRel(ent, rel)
-            tails += db.getEntityFromEntRel(ent, '~' + rel)
-        
-        for tail in tails:
-            triples.append([ent, rel, tail])
+    
+        if len(db.getRelationsFromEntity(ent)) < len(db.getRelationsFromEntity('"' + ent + '"')):
+            ent = '"' + ent + '"'
             
-    if len(triples)==0:
-        return f"Choose another relations Or follow the format of Entity {ent} and Relations"
+        for rel in relations:
+            rel = retrieval_relation_parse_answer(rel)
+            tails = []
+            if rel[0] == '~':
+                tails += db.getEntityFromEntRel(ent, rel)
+                tails += db.getEntityFromEntRel(ent, rel.split('~')[1])
+            else:
+                tails += db.getEntityFromEntRel(ent, rel)
+                tails += db.getEntityFromEntRel(ent, '~' + rel)
+            
+            for tail in tails:
+                triples.append([ent, rel, tail])
+                
+        if len(triples)==0:
+            return f"Choose another relations Or follow the format of Entity {ent} and Relations"
+        
+        return str(triples)
+        
+    except:
+        return 'You gave wrong format. Call the helper function again follow the right format'
     
-    return str(triples)
+    
                 
             
 
@@ -320,7 +340,7 @@ if __name__ == "__main__":
     if args.type == 'existence': qid_list = sample_number.existence
     elif args.type =="num1" : qid_list = sample_number.num1
     elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
-    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop_v2
+    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
     else:
         print("Wrong argument")
 
@@ -372,7 +392,7 @@ if __name__ == "__main__":
         f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
         f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
         
-    f= open(f"./with_reasoning_result_revised/only_answer_{args.type}.csv",'w')
+    f= open(os.path.join(save_path,f"only_answer_{args.type}.csv"),'w')
     writer= csv.writer(f)
     writer.writerows(answer_list)
     f.close()

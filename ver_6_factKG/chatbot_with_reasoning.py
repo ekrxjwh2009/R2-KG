@@ -72,8 +72,9 @@ def reasoning(claim,initial_prompt, label, f, sub_prompt):
 
             if len(triples) > 0:
                 gold_set+=triples
-            
-        #f.write(prompt)
+        
+        if i>0:    
+            f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         

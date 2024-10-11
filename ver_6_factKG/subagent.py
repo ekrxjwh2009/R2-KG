@@ -22,7 +22,7 @@ def feedback(claim,gold_set,f,sub_prompt):
         try :  
             response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.3, top_p = 0.1)
             assistant_response = response.choices[0].message.content.strip()
-            print(assistant_response)
+            #print(assistant_response)
             try:
                 sub_result = assistant_response.split("Evaluation")[1].strip()
                 
