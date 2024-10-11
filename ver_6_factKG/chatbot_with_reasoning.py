@@ -69,7 +69,7 @@ def reasoning(claim,initial_prompt, label, f, sub_prompt):
             #prompt = input()
             
             prompt, result, triples = client_answer(claim,response, label, gold_set,f, sub_prompt)
-
+            
             if len(triples) > 0:
                 gold_set+=triples
         
@@ -100,7 +100,7 @@ def client_answer(claim,response, label, gold_set,f, sub_prompt):
     #    return prompt, result
 
     helper_ftn_calls, prompt = split_functions(response)
-
+    triples = []
     for helper_str in helper_ftn_calls:
         
         
@@ -108,22 +108,27 @@ def client_answer(claim,response, label, gold_set,f, sub_prompt):
     
             result = getRelations(helper_str)
             prompt +=  "\n" + result
-            return prompt, result, []
+            #return prompt, result, []
+            
             
         elif 'exploreKG' in helper_str:
-            triples, result_prompt = exploreKGs(helper_str)
+            result, result_prompt = exploreKGs(helper_str)
             prompt += "\n" + result_prompt
-            return prompt, triples, triples
+            triples += result
+            #return prompt, triples, triples
+        
             
         elif 'Verification' in helper_str:
-            sub_answer, case, prediction = verification(claim,gold_set,f, sub_prompt)
+            sub_answer, case, result = verification(claim,gold_set,f, sub_prompt)
             prompt += "\n" +sub_answer
+            
             f.write(f"CASE COUNT:{case}")
-            return prompt, prediction, []
+            #return prompt, prediction, []
         else:
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
+            result =''
     
-    return prompt, result, []
+    return prompt, result, triples
     
 
 def retrieval_relation_parse_answer(rel):
@@ -145,7 +150,7 @@ def split_functions(response):
         prompt ='\n[User]\nExecution result :'
         
     except:
-        prompt = "\n[User]\nYou gave wrong format of helper function. Follow the format of examples."
+        prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
         
     return helper_ftn_calls, prompt
 
@@ -189,7 +194,7 @@ def exploreKGs(helper_str):
                 triples.append([ent, rel, tail])
                 
         if len(triples)==0:
-            result_prompt += f"Choose another relations Or follow the format of Entity {ent} and Relations"
+            result_prompt += f"Choose other relations based refer to the Relations_list Or follow the format of Entity {ent} and Relations"
         
         else:
             result_prompt += ', '.join(str(sublist) for sublist in triples)
@@ -198,6 +203,7 @@ def exploreKGs(helper_str):
         result_prompt += "You gave wrong format of exploreKGs() function. Follow the format of examples."
 
     
+
     return triples, result_prompt
                 
 
@@ -264,6 +270,7 @@ if __name__ == "__main__":
     
     if args.subagent == '7shot' : sub_prompt = prompts.sub_agent_7shot
     if args.subagent == '2option' : sub_prompt = prompts.sub_agent_2option
+    if args.subagent == '2option_V2' : sub_prompt = prompts.sub_agent_2option_v2
     else:
         print("Wrong argument")
 

@@ -1,0 +1,9 @@
+
+
+
+Qid:1595
+Question :Allama Iqbal International airport is located in Pakistan, the leader of the country is Gil Snider.GT entity:['Allama_Iqbal_International_Airport', 'Pakistan', '"Gil Snider"']
+
+
+Qid:1595
+Question :Allama Iqbal International airport is located in Pakistan, the leader of the country is Gil Snider.GT entity:['Allama_Iqbal_International_Airport', 'Pakistan', '"Gil Snider"']

@@ -8,12 +8,22 @@ client = OpenAI(api_key=openai.api_key)
 
 
 def feedback(claim,gold_set,f,sub_prompt):
-      
-    #f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}")       
+    
     engine="gpt-3.5-turbo-0125"
     #engine = "gpt-4o-mini-2024-07-18"
+    
+    f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}")     
+    final_evidence=[]
+    
+    
+    for tri in gold_set:
+        if tri not in final_evidence:
+            final_evidence.append(tri)
+      
+    f.write(f"\nFinal Evidence!!!!!!!!!!!!!!!!!!!!!!\n{final_evidence}")       
+    
     conversation = [{"role": "system", "content": "You are a helpful assistant."}]
-    prompt = sub_prompt.replace('<<<<CLAIM>>>>', claim).replace('<<<<Triple set>>>>', str(gold_set))
+    prompt = sub_prompt.replace('<<<<CLAIM>>>>', claim).replace('<<<<Triple set>>>>', str(final_evidence))
     conversation.append({"role": "user", "content": prompt})
     
     for i in range(5):
@@ -24,11 +34,13 @@ def feedback(claim,gold_set,f,sub_prompt):
             assistant_response = response.choices[0].message.content.strip()
             #print(assistant_response)
             try:
+                sub_statement = assistant_response.split("Statement : ")[1].split("Evaluation")[0].strip()
                 sub_result = assistant_response.split("Evaluation")[1].strip()
                 
                 
                 if "(Insufficient evidence)" in sub_result:
-                    sub_response = "We don't have enough evidence to verify the claim. You must extract more information from the graph data."
+                    #sub_response = "We don't have enough evidence to verify the claim. You must extract more information from the graph data."
+                    sub_response = sub_statement
                     case =1
                     prediction = None
                     break
@@ -57,6 +69,11 @@ def feedback(claim,gold_set,f,sub_prompt):
                 print(f"OpenAI API returned an API Error: {e}")
                 continue
     
+    # Ensure sub_response has a value before returning
+    if sub_response is None:
+        sub_response = "There is problem in server. Please call Verification[] one more time/"
+        case = -1
+        prediction = None
     
     
     return sub_response, case, prediction
