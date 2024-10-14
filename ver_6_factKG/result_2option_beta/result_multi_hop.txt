@@ -1,0 +1,69 @@
+
+
+
+Qid:3998
+Question :An astronaut was born on the 15th of March 1932 and his Alma Mater is UT Austin, B.S. 1955.GT entity:['"1932-03-15"', '"UT Austin, B.S. 1955"']
+************************************Iteration:0***********************************
+Statement : I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function : getRelation["1932-03-15"] ## getRelation["UT Austin, B.S. 1955"]
+[User]
+Execution result :
+Relations_list["1932-03-15"] = ['~openingDate', '~commissioningDate', '~firstAirDate', '~inaugurationDate', '~dateOfBirth', '~deathDate', '~shipCommissioned', '~dateOfDeath', '~birthDate']
+Relations_list["UT Austin, B.S. 1955"] = ['~almaMater']
+************************************Iteration:1***********************************
+Statement : To verify the claim, I can choose proper relations for each entity.
+Helper function : exploreKG["1932-03-15"]=['~dateOfBirth'] ## exploreKG["UT Austin, B.S. 1955"]=['~almaMater']
+[User]
+Execution result :
+['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua']
+['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']
+************************************Iteration:2***********************************
+Statement : The astronaut born on the 15th of March 1932, Alan Bean, attended UT Austin, B.S. 1955. The claim is True.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["1932-03-15"] = ['~openingDate', '~commissioningDate', '~firstAirDate', '~inaugurationDate', '~dateOfBirth', '~deathDate', '~shipCommissioned', '~dateOfDeath', '~birthDate']
+Relations_list["UT Austin, B.S. 1955"] = ['~almaMater']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]CASE COUNT:-1
+[User]
+Execution result :
+There is problem in server. Please call Verification[] one more time/
+************************************Iteration:3***********************************
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["1932-03-15"] = ['~openingDate', '~commissioningDate', '~firstAirDate', '~inaugurationDate', '~dateOfBirth', '~deathDate', '~shipCommissioned', '~dateOfDeath', '~birthDate']
+Relations_list["UT Austin, B.S. 1955"] = ['~almaMater']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]CASE COUNT:-1
+[User]
+Execution result :
+There is problem in server. Please call Verification[] one more time/
+************************************Iteration:4***********************************
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["1932-03-15"] = ['~openingDate', '~commissioningDate', '~firstAirDate', '~inaugurationDate', '~dateOfBirth', '~deathDate', '~shipCommissioned', '~dateOfDeath', '~birthDate']
+Relations_list["UT Austin, B.S. 1955"] = ['~almaMater']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]CASE COUNT:-1
+[User]
+Execution result :
+There is problem in server. Please call Verification[] one more time/
+************************************Iteration:5***********************************
+I will try to call Verification[] one more time. 
+
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['"1932-03-15"', '~dateOfBirth', 'Arif_Mardin'], ['"1932-03-15"', '~dateOfBirth', 'Will_Renfro'], ['"1932-03-15"', '~dateOfBirth', 'Ron_Reiffel'], ['"1932-03-15"', '~dateOfBirth', 'Alan_Bean'], ['"1932-03-15"', '~dateOfBirth', 'Renee_Nele'], ['"1932-03-15"', '~dateOfBirth', 'Nicholas_Euclid'], ['"1932-03-15"', '~dateOfBirth', 'Tang_Fei'], ['"1932-03-15"', '~dateOfBirth', 'Rita_Joe'], ['"1932-03-15"', '~dateOfBirth', 'Roger_Curtis_Green'], ['"1932-03-15"', '~dateOfBirth', 'Alexey_Gogua'], ['"UT Austin, B.S. 1955"', '~almaMater', 'Alan_Bean']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["1932-03-15"] = ['~openingDate', '~commissioningDate', '~firstAirDate', '~inaugurationDate', '~dateOfBirth', '~deathDate', '~shipCommissioned', '~dateOfDeath', '~birthDate']
+Relations_list["UT Austin, B.S. 1955"] = ['~almaMater']
