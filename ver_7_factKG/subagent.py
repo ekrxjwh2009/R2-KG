@@ -10,7 +10,8 @@ client = OpenAI(api_key=openai.api_key)
 def feedback(claim,gold_set,gold_relations,f,sub_prompt):
     
     #engine="gpt-3.5-turbo-0125"
-    engine = "gpt-4o-mini-2024-07-18"
+    #engine = "gpt-4o-mini-2024-07-18"
+    engine = "gpt-4o-2024-08-06"
     
     f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
     f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    

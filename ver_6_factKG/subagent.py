@@ -9,8 +9,8 @@ client = OpenAI(api_key=openai.api_key)
 
 def feedback(claim,gold_set,gold_relations,f,sub_prompt):
     
-    engine="gpt-3.5-turbo-0125"
-    #engine = "gpt-4o-mini-2024-07-18"
+    #engine="gpt-3.5-turbo-0125"
+    engine = "gpt-4o-mini-2024-07-18"
     
     f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
     f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    
@@ -39,11 +39,12 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
         try :  
             response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.3, top_p = 0.1)
             assistant_response = response.choices[0].message.content.strip()
-            #print(assistant_response)
+            print(assistant_response)
+            
             try:
-                sub_statement = assistant_response.split("Statement : ")[1].split("Evaluation")[0].strip()
+                sub_statement = assistant_response.split("Statement")[1].split("Evaluation")[0].strip()
                 sub_result = assistant_response.split("Evaluation")[1].strip()
-                
+                print(f"SUb result: {sub_result}")
                 
                 if "(Insufficient evidence)" in sub_result:
                     #sub_response = "We don't have enough evidence to verify the claim. You must extract more information from the graph data."
@@ -57,17 +58,20 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
                     prediction = "Abstain"
                     break
                 else: 
-                    #Executable case
                     if 'True' in sub_result or 'true' in sub_result:
                         sub_response = "Done!! True"
                         prediction = 'True'
-                    else:
+                        case = 3
+                        break  # Ensure the loop exits
+                    elif 'False' in sub_result or 'false' in sub_result:
                         sub_response = "Done!! False"
                         prediction = 'False'
-                    case=3
-                    break
-            except:
+                        case = 3
+                        break  # Ensure the loop exits
+            except Exception as e:
+                print(f"Error parsing assistant response: {e}")
                 continue
+
 
         
 

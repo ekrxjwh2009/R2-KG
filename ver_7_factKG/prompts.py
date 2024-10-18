@@ -102,7 +102,7 @@ You can use one of the helper functions below to find the evidence for finding l
 Helper Functions
 1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
 2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
-3.Verification[True or False]: If you can judge the claim as True or False give the answer.
+3.Verification[]: If you can judge the claim as True or False give the answer.
 
 You must follow the exact format of the given helper function.
 
@@ -756,7 +756,7 @@ Relations_list["Tim_Brooke-Taylor"] = ['birthPlace', 'honorificSuffix', '~after'
 Relations_list["Joe_Quesada"] = ['influences', 'birthPlace', '~after', '~keyPeople', '~artists', 'write', 'years', 'title', '~executiveProducer', 'givenName', '~wikiPageDisambiguates', 'shortDescription', 'surname', 'birthName', '~writer', '~creator', 'placeOfBirth', '~writers', '~pencillers', 'type', '~keypeople', 'hypernym', '~foundedBy', 'birthYear', 'edit', 'caption', 'dateOfBirth', '~creators', 'rdf-schema#label', 'birthDate', 'subject', '~keyPerson', '22-rdf-syntax-ns#type', '~wikiPageRedirects', 'nationality', 'pencil', 'subcat', 'after', 'description', '~aux', '~before', 'before', '~editors', 'awards', 'id', 'name']
 Relations_list["Lebanese_Broadcasting_Corporation"] = ['networkLogo', 'broadcastArea', 'homepage', 'networkName', '~owningCompany', 'country', '~wikiPageDisambiguates', 'networkType', '~channel', '~network', '~employer', 'launchDate', 'slogan', '~distributor', 'owner', 'hypernym', '~tv', 'locationCountry', 'firstAirDate', 'rdf-schema#label', 'subject', '22-rdf-syntax-ns#type', '~sisterNames', '~wikiPageRedirects', 'owningCompany', 'logocaption', 'available', '~sisterStation']
 [ChatGPT]
-Statement : It is impossible to determine the claim because information about the fictional character created by Joe Quesada being broadcast and starred cannot be found in the triple sets. Try to look relation '~starring' linked with Tim_Brooke-Taylor and relation 'broadcastArea, ~channel,~tv' linked with Lebanese_Broadcasting_Corporation.
+Statement : We need more information for verification. Try to look relation '~starring' linked with Tim_Brooke-Taylor and relation 'broadcastArea, ~channel,~tv' linked with Lebanese_Broadcasting_Corporation.
 Evaluation : Not executable (Insufficient evidence)
 
 
@@ -795,7 +795,7 @@ Relations_list["Colombian_cuisine"] = ['22-rdf-syntax-ns#type', '~wikiPageRedire
 Relations_list["Andalusia"] = ['imageFlag', 'direction', 'areaTotalKm', 'country', 'populationAsOf', '~ground', 'type', '~jurisdiction', 'hypernym', '~sourceRegion', 'longew', 'coordinatesDisplay', 'imageShield', 'subdivisionType', 'areaRank', 'caption', 'latm', 'blank2InfoSec', 'rdf-schema#label', '~stylisticOrigins', '~title', '22-rdf-syntax-ns#type', '~placeOfDeath', 'demographics1Name', '~province', 'longm', 'latns', '~deathPlace', 'width', 'flagAlt', 'PopulatedPlace/areaTotal', 'alt', '~location', 'leaderParty', 'flagSize', '~state', '~significantProject', '~origin', '~stylisticOrigin', 'blankInfoSec', '~regionServed', '~place', 'image', 'settlementType', '~seats1Title', 'leader', '~genre', 'populationRank', 'longd', 'imageMap', 'populationTotal', '~capital', 'coordinatesType', 'shieldSize', 'coordinatesRegion', '~region', '~isPartOf', 'seat', '~other', 'align', 'mapCaption', 'leaderName', 'populationTotalRanking', 'blankNameSec', '~headquarter', '~autonomousCommunity', '~wikiPageDisambiguates', '~populationPlace', 'leaderTitle', '~popplace', 'postalCode', '~restingPlace', '~rdf-schema#seeAlso', '~hometown', 'motto', 'governingBody', 'postalCodeType', '~locationCountry', '~headquarters', '~available', 'areaTotal', 'subject', 'blank1InfoSec', '~wikiPageRedirects', 'anthem', 'populationDensityKm', 'name', '~shipNamesake', 'homepage', '~broadcastArea', '~mouthRegion', '~subdivisionName', '~armiger', 'shieldAlt', '~placeOfBirth', 'populationBlank', '~birthPlace', '~core#subject', '~locatedInArea', '~country', 'populationDemonym', '~locale', 'populationBlank1Title', 'seatType', '~residence', 'blank1NameSec', 'latd', 'blank2NameSec', '~body', '~location', '~otherName', '~largestCityWl', '~subdivisionName', '~autonomousCommunity', '~origin', '~centre', '~seatWl', '~commonscat', '~rdf-schema#label', '~highschool', '~seat', '~country', '~territory', '~name', '~article', '~synonym', '~title', '~region', '~team']
 Relation_list(Pueblito_Viejo) = ['telephone', 'seatingCapacity', 'established', 'country', 'zip', 'hypernym', 'subject', 'cuisine', 'name', '22-rdf-syntax-ns#type', 'streetAddress', 'address', 'state', 'currentOwner', 'city', 'foodType', 'rdf-schema#label']
 [ChatGPT]
-Statement : The evidence supporting that Pueblito Viejo’s food type is Colombian cuisine is clear, but there is a lack of information about the ingredients. Try to look relations 'country, zip, subject, cuisine' of Pueblito_Viejo.
+Statement : We need more information for verification. Try to look relations 'country, zip, subject, cuisine' of Pueblito_Viejo.
 Evaluation : Not executable (Insufficient evidence)
 
 
