@@ -625,7 +625,7 @@ if __name__ == "__main__":
     label_set_dict = {}
     types_dict ={}
     
-    with open("../extracted_dev_set.jsonl") as f:
+    with open("../data/extracted_dev_set.jsonl") as f:
         for line in f:
             if not line:
                 continue

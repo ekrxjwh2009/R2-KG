@@ -96,52 +96,6 @@ Claim: <<<<CLAIM>>>>
 Given entity: <<<<GT_ENTITY>>>>
 """
 
-examples="""
-Claim: An artist died in Petah Tikva and was born in the country, whose national anthem was Die Wacht am Rhein.
-Given entity: ["Petah_Tikva", "Die_Wacht_am_Rhein"]
-Label: True
-4o V? claim을 푸는 단계는 정확하지만, token length (german_empire의 birthplace)가 너무 길어서 length error
-3.5 X 'national anthem was Die Wacht am Rhein'과 'An artist died in Petah Tikva' 를 찾고, 그 artist가 어디서 태어났는지까지 solution을 찾지 못함. 
-
-Claim: The Alfa Romeo 164, assembled in Italy, is related to Fiat Croma and Lancia Thema.
-Given entity: ["Lancia_Thema", "Alfa_Romeo_164", "Italy", "Fiat_Croma"]
-3.5 V
-
-
-
-Claim: Tim Brooke-Taylor starred as a fictional character, which was first aired on 10/03/1983 and was broadcast by STV.
-Given entity: ["1983-10-03", "STV", "Tim_Brooke-Taylor"]
-Label: True
-
-
-
-Claim: The airport in Punjab, Pakistan is operated by the government agency of the Jinnah International Airport.
-Given entity: ["Punjab, Pakistan", "Jinnah_International_Airport"]
-Label: True
-3.5(non-sufficientCheck)
-
-
-Claim: Agnes Ward White was the wife of Albert B. White who succeeded William M. O. Dawson, born in Istmina.
-Given entity: ["Albert_B._White", "William_M._O._Dawson", "Agnes_Ward_White", "Istmina"]
-Label: False
-3.5 V
-
-Claim: Located in Pakistan, an airport has a runway length of 2900 metres and a runway name, 18L/36R.
-Given entity: ["18L/36R", "Pakistan", "2900.0"]
-3.5 V
-
-Claim: A soccer player's clubs are Esteghlal Ahvaz F C and a soccer club, which is managed by Basim Qasim.
-Given entity: ["Basim_Qasim", "Esteghlal_Ahvaz_F.C."]
-Label: True
-3.5 : token length problem
-
-Claim: A soccer player plays for the Soviet Union national football team and a soccer club who are managed by Valery Petrakov.
-Given entity: ["Valery_Petrakov", "Soviet_Union_national_football_team"]
-Label: True
-"""
-
-
-
 prompt_abstain = """
 Your task is to determine the given claim is whether true or false based on the graph data without your base knowledge.
 You can use below helper functions to find the evidence in graph data to find answer.
@@ -315,4 +269,87 @@ Statement: Everything is on track. Finish the process since verification is done
 Now, it's your turn. Your response must have same form with upper examples.
 Claim: <<<<CLAIM>>>>
 Given entity: <<<<GT_ENTITY>>>>
+"""
+
+paraphrase_prompt = """
+You are the paraphraser. Rewrite the following claim in a more formal tone, keeping the core idea intact.
+If the given claim has a colloquial style format, paraphrase it into written style format.
+Give three paraphrased sentences for given claim.
+
+<Example 1>
+[User]
+Claim : Sure. He was born in England on 1st January 1942.
+[ChatGPT]
+1. He was born in England on January 1, 1942.
+2. His place of birth is England, and he was born on 1st January 1942.
+3. The person was born in England on the 1st of January, 1942.
+
+
+<Example 2>
+[User]
+Claim : Hypermarcas is a type of S.A. (corporation) that has a subsidiary called Mantecorp and employs 10252 employees.
+[ChatGPT]
+1. Hypermarcas operates as a type of S.A. (corporation) and possesses a subsidiary called Mantecorp, which has a workforce of 10,252 employees.
+2. Hypermarcas is categorized as a type of S.A. (corporation) and has a subsidiary named Mantecorp, employing 10,252 workers.
+3. Hypermarcas operates under the structure of an S.A. (corporation) and manages a subsidiary, Mantecorp, with a total of 10,252 employees.
+
+
+<Example 3>
+[User]
+Claim : Albert B White was born in Cleveland on 22nd September 1856.
+[ChatGPT]
+1. Albert B. White was born in Cleveland on the 22nd of September, 1856.
+2. The birth of Albert B. White took place in Cleveland on September 22, 1856.
+3. On September 22, 1856, Albert B. White was born in Cleveland.
+
+
+<Example 4>
+[User]
+Claim : The Baku Turkish Martyrs' Memorial, designed by Huseyin Butuner and Hilmi Guner, is located in Azerbaijan, where the leader is Artur Rasizade.
+[ChatGPT]
+1. The Baku Turkish Martyrs' Memorial, created by architects Huseyin Butuner and Hilmi Guner, is located in Azerbaijan, where Artur Rasizade serves as the leader.
+2. Designed by Huseyin Butuner and Hilmi Guner, the Baku Turkish Martyrs' Memorial is located in Azerbaijan, where Artur Rasizade is the leader.
+3. The Baku Turkish Martyrs' Memorial, created by Huseyin Butuner and Hilmi Guner, is found in Azerbaijan, the country led by Artur Rasizade.
+
+
+<Example 5>
+[User]
+Claim : Anatole de Grunwald was the producer of 'English Without Tears', with Harold French, the director and Bernard Knowles, the cinematographer.
+[ChatGPT]
+1. "English Without Tears" was produced by Anatole de Grunwald, with Harold French as the director and Bernard Knowles serving as the cinematographer.
+2. Anatole de Grunwald served as the producer of "English Without Tears," collaborating with director Harold French and cinematographer Bernard Knowles.
+3. "English Without Tears" was produced by Anatole de Grunwald, with direction by Harold French and cinematography by Bernard Knowles.
+
+
+<Example 6>
+[User]
+Claim : It can be found in Italy where Pietro Grasso the leader and the Italian language is spoken.
+[ChatGPT]
+1. It is located in Italy, where Pietro Grasso serves as the leader and the Italian language is spoken.
+2. It can be found in Italy, a country where the Italian language is spoken and Pietro Grasso holds a leadership position.
+3. This site can be found in Italy, where the Italian language is spoken and leadership is provided by Pietro Grasso.
+
+
+<Example 7>
+[User]
+Claim : Yes Bill Oddie from Lancashire starred in Bananaman.
+[ChatGPT]
+1. Bill Oddie, a native of Lancashire, featured in "Bananaman."
+2. Bill Oddie, originally from Lancashire, was a star in "Bananaman."
+3. Bill Oddie, who comes from Lancashire, participated in the show "Bananaman."
+
+
+<Example 8>
+[User]
+Claim : Well, lemon is an ingredient in Bandeja paisa.
+[ChatGPT]
+1. Lemon is an ingredient in Bandeja paisa.
+2. Lemon is included as an ingredient in Bandeja paisa.
+3. Lemon is a component of Bandeja paisa.
+
+
+
+Now, it's your turn. Continue your 'Statement and Evaluation' task. Response must have same form with upper examples.
+[User]
+Claim : <<<<CLAIM>>>>
 """
