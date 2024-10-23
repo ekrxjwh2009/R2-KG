@@ -1,0 +1,1016 @@
+
+
+
+Qid:16
+Question :Alberto João Jardim had a spouse during his lifetime.
+GT entity:['Alberto_João_Jardim']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Alberto_João_Jardim']---
+[User]
+Execution result: 
+Relations_list["Alberto_João_Jardim"] = ['~leader', '~predecessor', 'rdf-schema#label', 'surname', 'nationality', 'predecessor', 'order', 'dateOfBirth', 'orderInOffice', 'termEnd', 'termStart', '~afterElection', 'givenName', 'party', 'description', 'birthYear', '~beforeElection', 'years', '22-rdf-syntax-ns#type', 'religion', '~firstLeader', 'birthPlace', 'vicepresident', 'birthDate', 'shortDescription', 'almaMater', 'hypernym', 'termPeriod', 'successor', 'name', 'subject', 'office', '~successor', 'spouse', '~wikiPageDisambiguates', 'placeOfBirth', 'title']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can see that there is a relation called 'spouse' linked to 'Alberto João Jardim'. I will explore this relation to find more information about his spouse.  
+Helper function: exploreKG['Alberto_João_Jardim']=['spouse']---
+[User]
+Execution result: 
+['Alberto_João_Jardim', 'spouse', '"Maria Ângela Andrade Martins"']
+************************************Iteration:2************************************
+Statement: The exploration shows that 'Alberto João Jardim' had a spouse named 'Maria Ângela Andrade Martins'. Therefore, the claim that Alberto João Jardim had a spouse during his lifetime is true.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:44
+Question :ČD Cargo operated under the ownership of a parent company.  
+GT entity:['ČD_Cargo']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation["ČD_Cargo"]  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["ČD_Cargo"] = ['numberOfEmployees', 'rdf-schema#label', 'numEmployees', 'netIncome', 'locationCountry', '~subsid', 'locationCity', '~operator', 'services', '22-rdf-syntax-ns#type', 'revenue', 'parent', 'name', 'subject', '~majoroperators', 'homepage', 'equity', 'assets', '~subsidiary', 'parentCompany']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the proper relations to find the ownership and parent company of 'ČD_Cargo'.  
+Helper function: exploreKG["ČD_Cargo"]=['parent', 'parentCompany']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['ČD_Cargo', 'parent', 'České_dráhy'], ['ČD_Cargo', 'parentCompany', 'České_dráhy']
+************************************Iteration:2************************************
+Statement: The parent company of 'ČD_Cargo' is 'České_dráhy', which indicates that 'ČD_Cargo' operates under the ownership of a parent company. Therefore, the claim is True.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:52
+Question :A garrison was established for the 3rd Alpini Regiment.  
+GT entity:['3rd_Alpini_Regiment']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['3rd_Alpini_Regiment']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["3rd_Alpini_Regiment"] = ['battles', 'size', 'rdf-schema#label', 'unitName', 'militaryBranch', 'motto', 'country', 'anniversary', 'type', 'caption', 'activeYearsEndYear', '22-rdf-syntax-ns#type', 'battle', 'hypernym', 'garrison', 'militaryUnitSize', 'decorations', 'activeYearsStartYear', 'name', 'subject', 'role', 'commandStructure', 'branch', 'anniversaries', 'dates']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find details about the garrison related to the '3rd Alpini Regiment'.  
+Helper function: exploreKG['3rd_Alpini_Regiment']=['garrison']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['3rd_Alpini_Regiment', 'garrison', '"Pinerolo"'], ['3rd_Alpini_Regiment', 'garrison', 'Pinerolo']
+************************************Iteration:2************************************
+Statement: The '3rd Alpini Regiment' has a garrison established in 'Pinerolo'. This supports the claim that a garrison was established for the 3rd Alpini Regiment.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:71
+Question :The nickname of Riodike Fútbol Club was recognized.  
+GT entity:['Riodike_Fútbol_Club']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Riodike_Fútbol_Club']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Riodike_Fútbol_Club"] = ['rdf-schema#label', 'rightarm', 'patternSh', 'fullname', 'league', 'nick', 'patternRa', 'patternSo', '22-rdf-syntax-ns#type', 'website', 'hypernym', 'patternLa', 'shorts', 'nickname', 'chairman', 'founded', 'manager', 'name', 'subject', 'body', 'homepage', 'formationDate', 'leftarm', 'clubname', 'patternB', 'socks']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can see that there is a relation 'nickname' linked with 'Riodike_Fútbol_Club'. I will explore this relation to find the nickname.  
+Helper function: exploreKG['Riodike_Fútbol_Club']=['nickname']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Riodike_Fútbol_Club', 'nickname', '"Gasolero, Aurirrojo ,Leones"']
+************************************Iteration:2************************************
+Statement: The nickname of 'Riodike Fútbol Club' is recognized as '"Gasolero, Aurirrojo, Leones"', which confirms the claim.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:82
+Question :A youth club was founded by Nguyễn Quý Sửu.  
+GT entity:['Nguyễn_Quý_Sửu']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Nguyễn_Quý_Sửu']---
+[User]
+Execution result: 
+Relations_list["Nguyễn_Quý_Sửu"] = ['rdf-schema#label', 'currentclub', 'position', 'team', 'youthclubs', 'height', 'nationalyears', 'nationalteam', '22-rdf-syntax-ns#type', 'years', 'birthPlace', 'birthDate', 'hypernym', 'clubs', 'name', 'subject', 'careerStation', '~name', '~currentMember']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the proper relation to find out if Nguyễn Quý Sửu founded a youth club.  
+Helper function: exploreKG['Nguyễn_Quý_Sửu']=['youthclubs']---
+[User]
+Execution result: 
+['Nguyễn_Quý_Sửu', 'youthclubs', 'Dong_Thap_FC']
+************************************Iteration:2************************************
+Statement: Nguyễn Quý Sửu is associated with the youth club 'Dong_Thap_FC', which supports the claim that he founded a youth club.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:119
+Question :"Champion," as a novel, is preceded by another work.  
+GT entity:['Champion_(novel)']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Champion_(novel)']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Champion_(novel)"] = ['rdf-schema#label', 'pages', 'published', '~subsequentWork', 'numberOfPages', 'literaryGenre', 'language', 'precededBy', 'country', 'author', '22-rdf-syntax-ns#type', 'italicTitle', 'hypernym', '~followedBy', 'publisher', 'series', 'previousWork', 'subject', 'name', '~wikiPageDisambiguates', 'genre']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the relation that indicates if "Champion" is preceded by another work.  
+Helper function: exploreKG['Champion_(novel)']=['precededBy', 'previousWork']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Champion_(novel)', 'precededBy', 'Prodigy_(Marie_Lu_novel)'], ['Champion_(novel)', 'previousWork', 'Prodigy_(Marie_Lu_novel)']
+************************************Iteration:2************************************
+Statement: The novel "Champion" is preceded by "Prodigy," confirming that there is indeed another work before it. Therefore, the claim is True.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:131
+Question :Milan Hodža adhered to a particular faith.  
+GT entity:['Milan_Hodža']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Milan_Hodža']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Milan_Hodža"] = ['~predecessor', 'rdf-schema#label', 'surname', '~before', '~commander', '~primeminister', 'activeYearsStartDate', 'predecessor', 'dateOfDeath', 'dateOfBirth', 'orderInOffice', 'termEnd', 'termStart', 'givenName', '~primeMinister', 'party', 'deathYear', '~after', 'description', 'birthYear', '22-rdf-syntax-ns#type', 'years', 'religion', 'deathDate', 'birthPlace', 'birthDate', 'hypernym', 'shortDescription', 'activeYearsEndDate', 'after', 'before', 'deathPlace', 'placeOfDeath', 'name', 'subject', 'office', 'successor', 'placeOfBirth', 'title']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can see that there is a relation 'religion' linked to 'Milan_Hodža'. I will explore this relation to find out more about his faith.  
+Helper function: exploreKG['Milan_Hodža']=['religion']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Milan_Hodža', 'religion', 'Lutheranism']
+************************************Iteration:2************************************
+Statement: Milan Hodža adhered to the faith of Lutheranism, which confirms the claim.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:135
+Question :An official religion was present in the Kingdom of Romania.  
+GT entity:['Kingdom_of_Romania']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Kingdom_of_Romania']---
+[User]
+Execution result: 
+Relations_list["Kingdom_of_Romania"] = ['era', '~locationSigned', 'rdf-schema#label', 'imageFlag', '~headquarters', 'imageMap', 'flagS', '~placeOfBirth', '~deathPlace', '~titles', 'rdf-schema#seeAlso', 'yearStart', 'conventionalLongName', 'hypernym', '~allegiance', 'imageCoat', '~combatant', 'imageMapCaption', 'leader', 'subject', 'footnotes', 'statYear', 'statPop', 'commonLanguages', 'commonName', '~placeOfBurial', '~country', '~place', '~headquarter', '~nationality', 'currency', '~core#subject', 'statArea', '~award', '~birthPlace', 'religion', 'dissolutionDate', 'eventEnd', 'dissolutionYear', 'capital', 's', 'dateStart', 'dateEnd', '~eventEnd', 'p', 'titleDeputy', 'region', '~residence', '~rdf-schema#seeAlso', '~placeOfDeath', 'event', 'nationalMotto', '~usedBy', 'nationalAnthem', 'house', 'titleLeader', '22-rdf-syntax-ns#type', '~origin', 'eventStart', 'yearEnd', 'continent', 'legislature', 'deputy', 'name', 'flagArticle', 'dateEvent', 'anthem', 'governmentType', 'yearLeader', '~militaryBranch', 'motto', 'foundingYear', 'country', 'flagP', '~establishedEvent', 'foundingDate', '~participants', 'yearDeputy', '~restingPlace', 'nativeName']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the relation related to religion from the entity.  
+Helper function: exploreKG['Kingdom_of_Romania']=['religion']---
+[User]
+Execution result: 
+['Kingdom_of_Romania', 'religion', 'Romanian_Orthodox_Church']
+************************************Iteration:2************************************
+Statement: The official religion present in the Kingdom of Romania is the Romanian Orthodox Church, which supports the claim.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:179
+Question :Raúl Gibb Guerrero was a university student.
+GT entity:['Raúl_Gibb_Guerrero']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Raúl_Gibb_Guerrero']---
+[User]
+Execution result: 
+Relations_list["Raúl_Gibb_Guerrero"] = ['university', 'rdf-schema#label', 'occupation', 'surname', 'term', 'project', 'nationality', 'dateOfDeath', 'dateOfBirth', 'givenName', 'course', 'deathYear', 'description', 'caption', 'birthYear', 'knownFor', '22-rdf-syntax-ns#type', 'float', 'deathDate', 'birthDate', 'hypernym', 'shortDescription', 'alternativemap', 'deathCause', 'deathPlace', 'placeOfDeath', 'name', 'subject', 'homepage', 'alt', 'nativeName', 'organization', 'width', 'awards', 'residence', 'nativeNameLang']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the relation that indicates whether Raúl Gibb Guerrero was a university student.  
+Helper function: exploreKG['Raúl_Gibb_Guerrero']=['university', 'course']---
+[User]
+Execution result: 
+['Raúl_Gibb_Guerrero', 'university', '"University of Southern Indiana"'], ['Raúl_Gibb_Guerrero', 'course', '"Wikipedia:USEP/Courses/Introduction to Mass Communications"']
+************************************Iteration:2************************************
+Statement: Since Raúl Gibb Guerrero is associated with the "University of Southern Indiana" and has a course related to mass communications, it supports the claim that he was a university student.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:181
+Question :Traveler, the mascot, was a university attendee.  
+GT entity:['Traveler_(mascot)']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Traveler_(mascot)']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Traveler_(mascot)"] = ['~mascot', 'rdf-schema#label', 'subject', 'firstSeen', 'name', 'conference', 'university', 'conferenceShort', 'hypernym', '~wikiPageDisambiguates', 'imageSize', 'caption', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the relation that indicates whether 'Traveler' is associated with a university.  
+Helper function: exploreKG['Traveler_(mascot)']=['university']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Traveler_(mascot)', 'university', '"University of Southern California"']
+************************************Iteration:2************************************
+Statement: Since 'Traveler' is associated with the "University of Southern California", the claim that Traveler, the mascot, was a university attendee is True.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:189
+Question :A parent company was responsible for the development of various branches of science.  
+GT entity:['Branches_of_science']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Branches_of_science']---
+[User]
+Execution result: 
+Relations_list["Branches_of_science"] = ['hypernym', 'subject', '22-rdf-syntax-ns#type', 'rdf-schema#label']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any parent company related to the development of branches of science.  
+Helper function: exploreKG['Branches_of_science']=['hypernym']---
+[User]
+Execution result: 
+['Branches_of_science', 'hypernym', 'Sciences']
+************************************Iteration:2************************************
+Statement: The hypernym of 'Branches_of_science' is 'Sciences'. I need to explore further to find any parent company related to 'Sciences'.  
+Helper function: getRelation['Sciences']---
+[User]
+Execution result: 
+Relations_list["Sciences"] = ['rdf-schema#label', '~hypernym', '~rdf-schema#label', '~workplaces', '~disciplines', '~subject']
+************************************Iteration:3************************************
+Statement: To find a parent company responsible for the development of 'Sciences', I need to explore the graph for related disciplines or workplaces.  
+Helper function: exploreKG['Sciences']=['~disciplines', '~workplaces']---predict:abstain, label:false
+
+
+Qid:194
+Question :The capital was associated with uncertain data.
+GT entity:['Uncertain_data']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.
+Helper function: getRelation['Uncertain_data']---
+[User]
+Execution result: 
+Relations_list["Uncertain_data"] = ['rdf-schema#label', 'subject', 'hypernym', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph with the available relations linked to "Uncertain_data".
+Helper function: exploreKG['Uncertain_data']=['subject']---
+[User]
+Execution result: 
+['Uncertain_data', 'subject', 'Category:Machine_learning'], ['Uncertain_data', 'subject', 'Category:Uncertainty_of_numbers'], ['Uncertain_data', 'subject', 'Category:Data_mining']
+************************************Iteration:2************************************
+Statement: The subjects associated with "Uncertain_data" include categories related to machine learning, uncertainty of numbers, and data mining. However, there is no direct indication of a capital associated with "Uncertain_data". Therefore, I cannot confirm the claim based on the current information. 
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:203
+Question :The operation known as "Shock and Awe" included the presence of a garrison.
+GT entity:['Shock_and_awe']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Shock_and_awe']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Shock_and_awe"] = ['rdf-schema#label', 'subject', 'hypernym', '~wikiPageDisambiguates', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph around "Shock and Awe" to find any related information about its operations, specifically regarding the presence of a garrison.  
+Helper function: exploreKG['Shock_and_awe']=['subject']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Shock_and_awe', 'subject', 'Category:Military_doctrines'], ['Shock_and_awe', 'subject', 'Category:Iraq_War'], ['Shock_and_awe', 'subject', 'Category:1996_works'], ['Shock_and_awe', 'subject', 'Category:English_phrases'], ['Shock_and_awe', 'subject', 'Category:Warfare_post-1945'], ['Shock_and_awe', 'subject', 'Category:Psychological_warfare_techniques']
+************************************Iteration:2************************************
+Statement: The "Shock and Awe" operation is linked to various military-related categories, but I need to find specific information regarding the presence of a garrison in relation to this operation. I will explore the categories related to military doctrines and the Iraq War for more details.  
+Helper function: exploreKG['Category:Military_doctrines']=['subject'] ## exploreKG['Category:Iraq_War']=['subject']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Category:Military_doctrines', 'subject', 'Intensified_submarine_warfare'], ['Category:Military_doctrines', 'subject', 'Defence_in_depth'], ['Category:Military_doctrines', 'subject', 'Military_doctrine_of_Russia'], ['Category:Military_doctrines', 'subject', 'Five_paragraph_order'], ['Category:Military_doctrines', 'subject', 'Continental_Policy_(Japan)'], ['Category:Military_doctrines', 'subject', 'Kampfgruppe'], ['Category:Military_doctrines', 'subject', 'Patterns_of_Conflict'], ['Category:Military_doctrines', 'subject', 'Fleet_in_being'], ['Category:Military_doctrines', 'subject', 'Reserve_formation'], ['Category:Military_doctrines', 'subject', 'Reagan_Doctrine'], ['Category:Military_doctrines', 'subject', 'Command_by_negation'], ['Category:Military_doctrines', 'subject', 'Suppression_of_Enemy_Air_Defenses'], ['Category:Military_doctrines', 'subject', 'Fragplan'], ['Category:Military_doctrines', 'subject', 'Three_Block_War'], ['Category:Military_doctrines', 'subject', 'Massive_retaliation'], ['Category:Military_doctrines', 'subject', 'Forward_basing'], ['Category:Military_doctrines', 'subject', 'Civilian_control_of_the_military'], ['Category:Military_doctrines', 'subject', 'Intelligence,_surveillance,_target_acquisition,_and_reconnaissance'], ['Category:Military_doctrines', 'subject', 'Combat_box'], ['Category:Military_doctrines', 'subject', 'Military_doctrine'], ['Category:Military_doctrines', 'subject', 'Force_dispersal'], ['Category:Military_doctrines', 'subject', 'Defence_diplomacy'], ['Category:Military_doctrines', 'subject', 'War_Plan_Orange'], ['Category:Military_doctrines', 'subject', 'Cult_of_the_offensive'], ['Category:Military_doctrines', 'subject', 'Mission_creep'], ['Category:Military_doctrines', 'subject', 'Principles_of_warfare'], ['Category:Military_doctrines', 'subject', 'Combined_operations'], ['Category:Military_doctrines', 'subject', 'Irregular_warfare'], ['Category:Military_doctrines', 'subject', 'First-generation_warfare'], ['Category:Military_doctrines', 'subject', 'Vernichtungsgedanke'], ['Category:Military_doctrines', 'subject', 'Cold_Start_(military_doctrine)'], ['Category:Military_doctrines', 'subject', 'Firepower'], ['Category:Military_doctrines', 'subject', 'Targeting_(warfare)'], ['Category:Military_doctrines', 'subject', 'Indirect_approach'], ['Category:Military_doctrines', 'subject', 'First_island_chain'], ['Category:Military_doctrines', 'subject', 'Strategic_bombing'], ['Category:Military_doctrines', 'subject', 'Zero-defects_mentality'], ['Category:Military_doctrines', 'subject', 'Shock_and_awe'], ['Category:Military_doctrines', 'subject', 'Second-generation_warfare'], ['Category:Military_doctrines', 'subject', 'Peace_through_strength'], ['Category:Military_doctrines', 'subject', 'Jointness'], ['Category:Military_doctrines', 'subject', 'Assured_destruction'], ['Category:Military_doctrines', 'subject', 'Unrestricted_submarine_warfare'], ['Category:Military_doctrines', 'subject', 'Principles_of_sustainment'], ['Category:Military_doctrines', 'subject', 'Fourth-generation_warfare'], ['Category:Military_doctrines', 'subject', 'Operational_manoeuvre_group'], ['Category:Military_doctrines', 'subject', 'Lethality'], ['Category:Military_doctrines', 'subject', 'Generations_of_warfare'], ['Category:Military_doctrines', 'subject', 'Powell_Doctrine'], ['Category:Military_doctrines', 'subject', 'Aerial_ramming'], ['Category:Military_doctrines', 'subject', 'Loss_of_Strength_Gradient'], ['Category:Military_doctrines', 'subject', 'Intent_(military)'], ['Category:Military_doctrines', 'subject', 'Pre-emptive_nuclear_strike'], ['Category:Military_doctrines', 'subject', 'Trench_warfare'], ['Category:Military_doctrines', 'subject', 'Militarized_interstate_dispute'], ['Category:Military_doctrines', 'subject', 'Principles_of_war'], ['Category:Military_doctrines', 'subject', 'Upward_Spiral'], ['Category:Military_doctrines', 'subject', 'Mutual_assured_destruction'], ['Category:Military_doctrines', 'subject', "Noncommissioned_officer's_creed"], ['Category:Military_doctrines', 'subject', 'Red_team'], ['Category:Military_doctrines', 'subject', 'Insurgency'], ['Category:Military_doctrines', 'subject', 'Mission-type_tactics'], ['Category:Military_doctrines', 'subject', 'Ramming'], ['Category:Military_doctrines', 'subject', 'Military_theory'], ['Category:Military_doctrines', 'subject', 'Tactical_formation'], ['Category:Military_doctrines', 'subject', 'Launch_on_warning'], ['Category:Military_doctrines', 'subject', 'Absolute_war'], ['Category:Military_doctrines', 'subject', 'Economy_of_force'], ['Category:Military_doctrines', 'subject', 'Third-generation_warfare'], ['Category:Military_doctrines', 'subject', 'Strategic_depth'], ['Category:Military_doctrines', 'subject', 'Military_reserve'], ['Category:Military_doctrines', 'subject', 'Naval_offensive'], ['Category:Military_doctrines', 'subject', 'Operations_order'], ['Category:Military_doctrines', 'subject', 'AirSea_Battle'], ['Category:Military_doctrines', 'subject', 'AirLand_Battle'], ['Category:Military_doctrines', 'subject', 'Counter-insurgency'], ['Category:Military_doctrines', 'subject', 'Air_supremacy'], ['Category:Military_doctrines', 'subject', 'Force_concentration'], ['Category:Military_doctrines', 'subject', 'Debriefing'], ['Category:Military_doctrines', 'subject', 'Regionally_Aligned_Forces'], ['Category:Military_doctrines', 'subject', 'Total_war'], ['Category:Military_doctrines', 'subject', 'Deep_operation'], ['Category:Military_doctrines', 'subject', 'Code_of_the_United_States_Fighting_Force'], ['Category:Military_doctrines', 'subject', 'Attaque_à_outrance']
+['Category:Iraq_War', 'subject', 'List_of_aviation_shootdowns_and_accidents_during_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Canada_and_Iraq_War_resisters'], ['Category:Iraq_War', 'subject', 'Academi'], ['Category:Iraq_War', 'subject', 'Mukaradeeb_wedding_party_massacre'], ['Category:Iraq_War', 'subject', 'Emergency_Committee_for_Iraq'], ['Category:Iraq_War', 'subject', 'CIA_activities_in_Iraq'], ['Category:Iraq_War', 'subject', 'Iraqi_Civil_Defense_Corps'], ['Category:Iraq_War', 'subject', 'Camp_Casey,_Crawford,_Texas'], ['Category:Iraq_War', 'subject', 'Star_Spangled_Ice_Cream'], ['Category:Iraq_War', 'subject', 'Fort_Suse'], ['Category:Iraq_War', 'subject', "International_figures'_positions_on_invasion_of_Iraq"], ['Category:Iraq_War', 'subject', 'Coalition_of_the_Unwilling'], ['Category:Iraq_War', 'subject', 'Damage_to_Baghdad_during_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'United_Nations_Monitoring,_Verification_and_Inspection_Commission'], ['Category:Iraq_War', 'subject', 'Hostage_Working_Group'], ['Category:Iraq_War', 'subject', "Blair's_tests_for_Iraq_disarmament"], ['Category:Iraq_War', 'subject', 'Iraq_leak'], ['Category:Iraq_War', 'subject', 'National_Strategy_for_Victory_in_Iraq'], ['Category:Iraq_War', 'subject', 'Flat_Daddy'], ['Category:Iraq_War', 'subject', 'Violence_against_academics_in_post-invasion_Iraq'], ['Category:Iraq_War', 'subject', 'Control_Room_(film)'], ['Category:Iraq_War', 'subject', 'Military_Action_Against_Iraq_(Parliamentary_Approval)_Bill'], ['Category:Iraq_War', 'subject', 'Office_of_Special_Plans'], ['Category:Iraq_War', 'subject', 'Camp_Doha'], ['Category:Iraq_War', 'subject', 'Iraq_War'], ['Category:Iraq_War', 'subject', '2003_invasion_of_Iraq'], ['Category:Iraq_War', 'subject', 'DynCorp'], ['Category:Iraq_War', 'subject', 'Firdos_Square_statue_destruction'], ['Category:Iraq_War', 'subject', "Commander's_Emergency_Response_Program"], ['Category:Iraq_War', 'subject', 'International_Criminal_Court_and_the_2003_invasion_of_Iraq'], ['Category:Iraq_War', 'subject', 'Iraq_War_troop_surge_of_2007'], ['Category:Iraq_War', 'subject', 'Saddam_Hussein_and_al-Qaeda_link_allegations'], ['Category:Iraq_War', 'subject', 'Stovepiping'], ['Category:Iraq_War', 'subject', 'List_of_charges_in_United_States_v._Manning'], ['Category:Iraq_War', 'subject', 'Iraq_War_documents_leak'], ['Category:Iraq_War', 'subject', 'Haditha_killings'], ['Category:Iraq_War', 'subject', 'Raymond_Costabile'], ['Category:Iraq_War', 'subject', 'Legality_of_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Iraq_Historic_Allegations_Team'], ['Category:Iraq_War', 'subject', 'Iraqi_map_pendant'], ['Category:Iraq_War', 'subject', 'Hood_event'], ['Category:Iraq_War', 'subject', 'Iraq_Intelligence_Commission'], ['Category:Iraq_War', 'subject', 'Private_militias_in_Iraq'], ['Category:Iraq_War', 'subject', 'Global_Linguist_Solutions'], ['Category:Iraq_War', 'subject', 'Mission_Accomplished_speech'], ['Category:Iraq_War', 'subject', 'Invasion_of_Iraq_order_of_battle_2003'], ['Category:Iraq_War', 'subject', 'Shadow_Company'], ['Category:Iraq_War', 'subject', 'Failed_Iraqi_peace_initiatives'], ['Category:Iraq_War', 'subject', 'Iraq_Study_Group'], ['Category:Iraq_War', 'subject', 'Assyrian_exodus_from_Iraq'], ['Category:Iraq_War', 'subject', 'Firdos_Square'], ['Category:Iraq_War', 'subject', 'Task_Force_Tripoli'], ['Category:Iraq_War', 'subject', 'White_House_Iraq_Group'], ['Category:Iraq_War', 'subject', 'July_12,_2007_Baghdad_airstrike'], ['Category:Iraq_War', 'subject', 'Iraqi_sovereignty'], ['Category:Iraq_War', 'subject', 'Scorpions_(Iraq)'], ['Category:Iraq_War', 'subject', 'Combat_Outpost_San_Juan'], ['Category:Iraq_War', 'subject', 'Red_Zone_(Iraq)'], ['Category:Iraq_War', 'subject', 'Copper_Green'], ['Category:Iraq_War', 'subject', 'Withdrawal_of_U.S._troops_from_Iraq'], ['Category:Iraq_War', 'subject', 'Shock_and_awe'], ['Category:Iraq_War', 'subject', 'History_of_Iraq_(2003–11)'], ['Category:Iraq_War', 'subject', 'Walk_for_Iraq'], ['Category:Iraq_War', 'subject', 'Fort_Qualls'], ['Category:Iraq_War', 'subject', 'USA_kill_or_capture_strategy_in_Iraq'], ['Category:Iraq_War', 'subject', 'Rejectionists'], ['Category:Iraq_War', 'subject', 'Dead_checking'], ['Category:Iraq_War', 'subject', 'Dover_test'], ['Category:Iraq_War', 'subject', 'Plame_affair'], ['Category:Iraq_War', 'subject', 'Custer_Battles'], ['Category:Iraq_War', 'subject', 'The_Surge:_A_Military_History'], ['Category:Iraq_War', 'subject', 'Law_of_Administration_for_the_State_of_Iraq_for_the_Transitional_Period'], ['Category:Iraq_War', 'subject', 'Casualties_of_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Task_Force_Shield'], ['Category:Iraq_War', 'subject', 'Mark_77_bomb'], ['Category:Iraq_War', 'subject', 'Coalition_Forces_Land_Component_Command'], ['Category:Iraq_War', 'subject', 'Iraqi_opposition_(pre-2003)'], ['Category:Iraq_War', 'subject', 'William_D._(Bill)_Murray'], ['Category:Iraq_War', 'subject', 'Kuala_Lumpur_War_Crimes_Commission'], ['Category:Iraq_War', 'subject', 'Saleh_v._Bush'], ['Category:Iraq_War', 'subject', 'Canada_and_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Most-wanted_Iraqi_playing_cards'], ['Category:Iraq_War', 'subject', 'April_8,_2003_journalist_deaths_by_U.S._fire'], ['Category:Iraq_War', 'subject', 'Ghost_detainee'], ['Category:Iraq_War', 'subject', 'Archaeology_awareness_playing_cards'], ['Category:Iraq_War', 'subject', 'Falluja_Precursors'], ['Category:Iraq_War', 'subject', 'Iraq_War_and_the_War_on_Terror'], ['Category:Iraq_War', 'subject', 'List_Project'], ['Category:Iraq_War', 'subject', 'NATO_Training_Mission_–_Iraq'], ['Category:Iraq_War', 'subject', 'The_wrong_war,_at_the_wrong_place,_at_the_wrong_time,_and_with_the_wrong_enemy'], ['Category:Iraq_War', 'subject', 'Jamaat_Ansar_al-Sunna'], ['Category:Iraq_War', 'subject', 'Commission_on_Wartime_Contracting_in_Iraq_and_Afghanistan'], ['Category:Iraq_War', 'subject', 'Nisour_Square_massacre'], ['Category:Iraq_War', 'subject', 'Iraq_withdrawal_benchmarks'], ['Category:Iraq_War', 'subject', 'Coalition_Press_Information_Center'], ['Category:Iraq_War', 'subject', 'Triangle_of_Death_(Iraq)'], ['Category:Iraq_War', 'subject', 'U.S._list_of_most-wanted_Iraqis'], ['Category:Iraq_War', 'subject', 'Ishaqi_incident'], ['Category:Iraq_War', 'subject', 'Timeline_of_Saddam_Hussein_and_al-Qaeda_link_allegations'], ['Category:Iraq_War', 'subject', 'Al-Sadr_Online'], ['Category:Iraq_War', 'subject', 'Task_Force_Viking'], ['Category:Iraq_War', 'subject', 'Periodic_Report_of_the_United_States_of_America_to_the_United_Nations_Committee_Against_Torture'], ['Category:Iraq_War', 'subject', 'Iraq_Study_Group_Report'], ['Category:Iraq_War', 'subject', 'Polo_Step_(code_name)'], ['Category:Iraq_War', 'subject', 'Makkah_Document'], ['Category:Iraq_War', 'subject', 'Timeline_of_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Saeed_Chmagh'], ['Category:Iraq_War', 'subject', '2008_Abu_Kamal_raid'], ['Category:Iraq_War', 'subject', 'Report_to_Congress_on_the_Situation_in_Iraq'], ['Category:Iraq_War', 'subject', 'Real_Time_Regional_Gateway'], ['Category:Iraq_War', 'subject', 'Farris_Hassan'], ['Category:Iraq_War', 'subject', 'Camp_Al-Saqr'], ['Category:Iraq_War', 'subject', 'Nowthatsfuckedup.com'], ['Category:Iraq_War', 'subject', 'Freedom_fries'], ['Category:Iraq_War', 'subject', 'Sectarian_violence_in_Iraq_(2006–07)'], ['Category:Iraq_War', 'subject', 'Victory_in_Iraq_Day'], ['Category:Iraq_War', 'subject', 'Sunni_Triangle'], ['Category:Iraq_War', 'subject', 'Iraqi_no-fly_zones'], ['Category:Iraq_War', 'subject', 'Timeline_of_the_2003_invasion_of_Iraq'], ['Category:Iraq_War', 'subject', 'George_W._Bush_and_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Detainees_in_Iraq'], ['Category:Iraq_War', 'subject', 'Hearts_and_minds_(Iraq)'], ['Category:Iraq_War', 'subject', 'Financial_cost_of_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Humanitarian_crises_of_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Namir_Noor-Eldeen'], ['Category:Iraq_War', 'subject', 'United_States_v._Libby'], ['Category:Iraq_War', 'subject', 'Assassinations_of_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'United_Nations_Security_Council_and_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Curveball_(informant)'], ['Category:Iraq_War', 'subject', 'Forward_Operating_Base_Kalsu'], ['Category:Iraq_War', 'subject', 'Julio_Anguita_Parrado'], ['Category:Iraq_War', 'subject', 'List_of_bombings_during_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'AFN_Iraq'], ['Category:Iraq_War', 'subject', 'Fallujah_during_the_Iraq_War'], ['Category:Iraq_War', 'subject', 'Blessed_July'], ['Category:Iraq_War', 'subject', 'Gang_presence_in_the_United_States_military']
+************************************Iteration:3************************************
+Statement: The "Shock and Awe" operation is associated with the Iraq War and is listed under various military doctrines. However, I still need to find specific information regarding the presence of a garrison related to this operation. I will explore the specific subjects related to the Iraq War for more details.  
+Helper function: exploreKG['List_of_aviation_shootdowns_and_accidents_during_the_Iraq_War']=['subject'] ## exploreKG['Iraqi_Civil_Defense_Corps']=['subject'] ## exploreKG['Forward_Operating_Base_Kalsu']=['subject']  
+<Wait For User Response>---predict:abstain, label:false
+
+
+Qid:230
+Question :A youth club was founded by Dejan Ranković.  
+GT entity:['Dejan_Ranković']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Dejan_Ranković']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Dejan_Ranković"] = ['caps', 'rdf-schema#label', 'clubnumber', 'surname', 'currentclub', 'position', 'team', 'dateOfBirth', 'fullname', 'givenName', 'height', 'description', 'birthYear', 'years', '22-rdf-syntax-ns#type', 'birthPlace', 'birthDate', 'hypernym', 'shortDescription', 'clubs', 'name', 'subject', 'pcupdate', 'careerStation', '~name', 'goals', 'number', '~currentMember', 'placeOfBirth']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any relation that indicates the founding of a youth club by Dejan Ranković.  
+Helper function: exploreKG['Dejan_Ranković']=['clubs']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Dejan_Ranković', 'clubs', 'FK_Sloga_Petrovac_na_Mlavi'], ['Dejan_Ranković', 'clubs', 'FK_Slavija_Sarajevo'], ['Dejan_Ranković', 'clubs', 'FK_Sloboda_Užice'], ['Dejan_Ranković', 'clubs', 'FK_Smederevo_1924']
+************************************Iteration:2************************************
+Statement: Dejan Ranković is associated with several clubs, but there is no indication that he founded any of them based on the execution results. Therefore, I need to check if any of these clubs are youth clubs or if there is any additional information about their founding.  
+Helper function: getRelation['FK_Sloga_Petrovac_na_Mlavi'] ## getRelation['FK_Slavija_Sarajevo'] ## getRelation['FK_Sloboda_Užice'] ## getRelation['FK_Smederevo_1924']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["FK_Sloga_Petrovac_na_Mlavi"] = ['rdf-schema#label', '~managerClub', 'rightarm', 'nat', 'position', '~clubs', 'capacity', 'pos', 'league', 'patternSo', 'patternRa', '22-rdf-syntax-ns#type', '~team', 'website', 'hypernym', 'patternLa', 'shorts', 'chairman', 'no', 'founded', 'manager', 'other', '~youthclubs', '~managerclubs', 'name', 'subject', 'body', 'homepage', 'leftarm', 'clubname', 'patternB', 'season', 'socks', '~currentclub', '~wikiPageDisambiguates', 'ground']
+Relations_list["FK_Slavija_Sarajevo"] = ['rdf-schema#label', '~managerClub', 'rightarm', 'nat', 'position', '~clubs', 'managerTitle', 'capacity', 'fullname', 'pos', '~club', 'league', 'patternRa', 'chrtitle', '22-rdf-syntax-ns#type', '~team', 'chairmanTitle', 'mgrtitle', 'hypernym', 'patternLa', 'shorts', 'chairman', 'no', 'manager', '~longestLosses', '~youthclubs', '~managerclubs', 'name', 'subject', 'body', 'leftarm', 'clubname', 'patternB', 'season', 'socks', '~currentclub', '~wikiPageDisambiguates', 'ground']
+Relations_list["FK_Sloboda_Užice"] = ['rdf-schema#label', '~managerClub', 'rightarm', 'nat', 'position', '~clubs', 'managerTitle', '~tenant', 'capacity', 'pos', 'fullname', '~club', 'patternSh', 'league', 'nick', '~tenants', 'patternSo', '22-rdf-syntax-ns#type', '~team', 'mgrtitle', 'website', 'hypernym', 'shorts', 'nickname', 'chairman', 'no', 'manager', 'other', '~youthclubs', '~managerclubs', 'name', 'subject', 'body', 'homepage', 'leftarm', 'clubname', 'patternB', 'season', 'socks', '~currentclub', '~wikiPageDisambiguates', 'ground', 'current']
+Relations_list["FK_Smederevo_1924"] = ['rdf-schema#label', '~managerClub', 'rightarm', '~owner', 'position', '~clubs', '~promoted', '~runnerUp', 'managerTitle', '~tenant', '~operator', 'capacity', '~rd1Team', 'fullname', '~club', '~relegated', 'league', '~core#subject', 'nick', '~tenants', '~continentalcup2Qualifiers', '~continentalcup3Qualifiers', 'chrtitle', '22-rdf-syntax-ns#type', '~team', 'chairmanTitle', 'mgrtitle', 'hypernym', 'shorts', 'nickname', '~youthclubs', '~managerclubs', 'name', 'subject', 'body', 'leftarm', 'clubname', 'season', 'socks', '~currentclub', 'ground', '~champions']
+************************************Iteration:3************************************
+Statement: All four clubs associated with Dejan Ranković have a relation indicating they may have youth clubs ('~youthclubs'). I need to explore these youth clubs to see if any of them were founded by Dejan Ranković.  
+Helper function: exploreKG['FK_Sloga_Petrovac_na_Mlavi']=['~youthclubs'] ## exploreKG['FK_Slavija_Sarajevo']=['~youthclubs'] ## exploreKG['FK_Sloboda_Užice']=['~youthclubs'] ## exploreKG['FK_Smederevo_1924']=['~youthclubs']  
+<Wait For User Response>---predict:abstain, label:false
+
+
+Qid:236
+Question :There existed a religious aspect within medical literature.
+GT entity:['Medical_literature']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.
+Helper function: getRelation['Medical_literature']---
+[User]
+Execution result: 
+Relations_list["Medical_literature"] = ['rdf-schema#label', 'subject', '~literaryGenre', 'hypernym', '~genre', '~core#subject', 'rdf-schema#seeAlso', '~academicDiscipline', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph for 'Medical_literature' and find any relations that might indicate a religious aspect.
+Helper function: exploreKG['Medical_literature']=['subject', '~academicDiscipline']---
+[User]
+Execution result: 
+['Medical_literature', 'subject', 'Category:Medical_manuals'], ['Medical_literature', 'subject', 'Category:Medical_journals'], ['Medical_literature', '~academicDiscipline', 'Vaccine_(journal)']
+************************************Iteration:2************************************
+Statement: The subjects related to 'Medical_literature' include 'Category:Medical_manuals' and 'Category:Medical_journals', and there is a connection to 'Vaccine_(journal)'. I need to explore these categories to check if there is any mention of a religious aspect within them.
+Helper function: exploreKG['Category:Medical_manuals']=['subject'] ## exploreKG['Category:Medical_journals']=['subject']---
+[User]
+Execution result: 
+['Category:Medical_manuals', 'subject', 'Lingshu_Jing'], ['Category:Medical_manuals', 'subject', 'The_Principles_and_Practice_of_Medicine'], ['Category:Medical_manuals', 'subject', 'Lühhike_öppetus'], ['Category:Medical_manuals', 'subject', 'Commission_E'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_X:_Diseases_of_the_respiratory_system'], ['Category:Medical_manuals', 'subject', "Gray's_Anatomy_for_Students"], ['Category:Medical_manuals', 'subject', 'Merck_Manual_of_Diagnosis_and_Therapy'], ['Category:Medical_manuals', 'subject', 'Ambulatory_Patient_Group'], ['Category:Medical_manuals', 'subject', 'Yin_Yang_Shiyi_Mai_Jiujing'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XXI:_Factors_influencing_health_status_and_contact_with_health_services'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XXII:_Codes_for_special_purposes'], ['Category:Medical_manuals', 'subject', 'OPCS-4'], ['Category:Medical_manuals', 'subject', 'Taisu'], ['Category:Medical_manuals', 'subject', "Physicians'_Desk_Reference"], ['Category:Medical_manuals', 'subject', 'AAP_Red_Book'], ['Category:Medical_manuals', 'subject', 'Chinese_Medical_Herbology_and_Pharmacology'], ['Category:Medical_manuals', 'subject', "Rapid_Interpretation_of_EKG's"], ['Category:Medical_manuals', 'subject', 'Medical_manual'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_680–709:_diseases_of_the_skin_and_subcutaneous_tissue'], ['Category:Medical_manuals', 'subject', 'ICD-10_Clinical_Modification'], ['Category:Medical_manuals', 'subject', 'Fields_Virology'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_740–759:_congenital_anomalies'], ['Category:Medical_manuals', 'subject', 'The_Merck_Manuals'], ['Category:Medical_manuals', 'subject', 'Lacnunga'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XVIII:_Symptoms,_signs_and_abnormal_clinical_and_laboratory_findings'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_140–239:_neoplasms'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_760–779:_certain_conditions_originating_in_the_perinatal_period'], ['Category:Medical_manuals', 'subject', 'The_Oxford_Textbook_of_Medicine'], ['Category:Medical_manuals', 'subject', 'Risk_of_mortality'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_VIII:_Diseases_of_the_ear_and_mastoid_process'], ['Category:Medical_manuals', 'subject', 'International_Classification_of_Sleep_Disorders'], ['Category:Medical_manuals', 'subject', "Dorland's_medical_reference_works"], ['Category:Medical_manuals', 'subject', 'Classification_of_Pharmaco-Therapeutic_Referrals'], ['Category:Medical_manuals', 'subject', "Gray's_Anatomy"], ['Category:Medical_manuals', 'subject', 'Case_mix_index'], ['Category:Medical_manuals', 'subject', "Wushi'er_Bingfang"], ['Category:Medical_manuals', 'subject', 'Tacuinum_Sanitatis'], ['Category:Medical_manuals', 'subject', 'Zubi_Shiyi_Mai_Jiujing'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_IV:_Endocrine,_nutritional_and_metabolic_diseases'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XV:_Pregnancy,_childbirth_and_the_puerperium'], ['Category:Medical_manuals', 'subject', 'Diagnostic_and_Statistical_Manual_of_Mental_Disorders'], ['Category:Medical_manuals', 'subject', 'Medical_literature'], ['Category:Medical_manuals', 'subject', 'International_Classification_of_Diseases_for_Oncology'], ['Category:Medical_manuals', 'subject', 'Edwin_Smith_Papyrus'], ['Category:Medical_manuals', 'subject', 'De_Usu_Flagrorum'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_580–629:_diseases_of_the_genitourinary_system'], ['Category:Medical_manuals', 'subject', 'Current_Procedural_Terminology'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XIX:_Injury,_poisoning_and_certain_other_consequences_of_external_causes'], ['Category:Medical_manuals', 'subject', "Harrison's_Principles_of_Internal_Medicine"], ['Category:Medical_manuals', 'subject', 'Notes_on_Nursing'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_800–999:_injury_and_poisoning'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_710–739:_diseases_of_the_musculoskeletal_system_and_connective_tissue'], ['Category:Medical_manuals', 'subject', 'A_Counterblaste_to_Tobacco'], ['Category:Medical_manuals', 'subject', 'ICPC-2_PLUS'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_290–319:_mental_disorders'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XVII:_Congenital_malformations,_deformations_and_chromosomal_abnormalities'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XIII:_Diseases_of_the_musculoskeletal_system_and_connective_tissue'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_VI:_Diseases_of_the_nervous_system'], ['Category:Medical_manuals', 'subject', 'Diagnosis-related_group'], ['Category:Medical_manuals', 'subject', 'Manual_of_Medical_Diagnostics_and_Healthcare'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_780–799:_symptoms,_signs,_and_ill-defined_conditions'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_630–679:_complications_of_pregnancy,_childbirth,_and_the_puerperium'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XVI:_Certain_conditions_originating_in_the_perinatal_period'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_IX:_Diseases_of_the_circulatory_system'], ['Category:Medical_manuals', 'subject', 'Control_of_Communicable_Diseases_Manual'], ['Category:Medical_manuals', 'subject', 'Martindale:_The_Complete_Drug_Reference'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XIV:_Diseases_of_the_genitourinary_system'], ['Category:Medical_manuals', 'subject', 'Ishinpō'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_390–459:_diseases_of_the_circulatory_system'], ['Category:Medical_manuals', 'subject', 'Hospital-acquired_condition'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_VII:_Diseases_of_the_eye,_adnexa'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XX:_External_causes_of_morbidity_and_mortality'], ['Category:Medical_manuals', 'subject', 'Australian_Pharmaceutical_Formulary'], ['Category:Medical_manuals', 'subject', 'HCPCS_Level_2'], ['Category:Medical_manuals', 'subject', 'Relief_of_Fevers'], ['Category:Medical_manuals', 'subject', 'Chinese_Classification_of_Mental_Disorders'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_001–139:_infectious_and_parasitic_diseases'], ['Category:Medical_manuals', 'subject', 'Washington_Manual_of_Medical_Therapeutics'], ['Category:Medical_manuals', 'subject', 'Merck_Veterinary_Manual'], ['Category:Medical_manuals', 'subject', 'DSM-5'], ['Category:Medical_manuals', 'subject', 'Healthcare_Common_Procedure_Coding_System'], ['Category:Medical_manuals', 'subject', 'Severity_of_illness'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_E_and_V_codes:_external_causes_of_injury_and_supplemental_classification'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_520–579:_diseases_of_the_digestive_system'], ['Category:Medical_manuals', 'subject', 'Bibliotheca_Anatomica'], ['Category:Medical_manuals', 'subject', 'Huangdi_Neijing'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_280–289:_diseases_of_the_blood_and_blood-forming_organs'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_360–389:_diseases_of_the_sense_organs'], ['Category:Medical_manuals', 'subject', 'De_Medicina'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XII:_Diseases_of_the_skin_and_subcutaneous_tissue'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_XI:_Diseases_of_the_digestive_system'], ['Category:Medical_manuals', 'subject', 'Psychodynamic_Diagnostic_Manual'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_240–279:_endocrine,_nutritional_and_metabolic_diseases,_and_immunity_disorders'], ['Category:Medical_manuals', 'subject', 'ICD-10_Chapter_V:_Mental_and_behavioural_disorders'], ['Category:Medical_manuals', 'subject', 'Pharmacopoeia'], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_460–519:_diseases_of_the_respiratory_system'], ['Category:Medical_manuals', 'subject', 'International_Classification_of_Primary_Care'], ['Category:Medical_manuals', 'subject', 'International_Statistical_Classification_of_Diseases_and_Related_Health_Problems'], ['Category:Medical_manuals', 'subject', "Miller's_Anesthesia"], ['Category:Medical_manuals', 'subject', "Bald's_Leechbook"], ['Category:Medical_manuals', 'subject', 'List_of_ICD-9_codes_320–359:_diseases_of_the_nervous_system'], ['Category:Medical_manuals', 'subject', 'Chirurgia_magna']
+['Category:Medical_journals', 'subject', 'Physician_Executive'], ['Category:Medical_journals', 'subject', 'MJA_InSight'], ['Category:Medical_journals', 'subject', 'Health_and_Interprofessional_Practice'], ['Category:Medical_journals', 'subject', 'Molecular_Imaging_and_Biology'], ['Category:Medical_journals', 'subject', 'The_Cleft_Palate-Craniofacial_Journal'], ['Category:Medical_journals', 'subject', 'Cyclopædia_of_Practical_Medicine'], ['Category:Medical_journals', 'subject', 'Medical_History_(journal)'], ['Category:Medical_journals', 'subject', 'Journal_of_Biomedical_Materials_Research_Part_B'], ['Category:Medical_journals', 'subject', 'Statistical_Methods_in_Medical_Research'], ['Category:Medical_journals', 'subject', 'Medicom,_the_African_Journal_of_Hospital_Medicine'], ['Category:Medical_journals', 'subject', 'International_Journal_of_Circumpolar_Health'], ['Category:Medical_journals', 'subject', 'Discovery_Medicine'], ['Category:Medical_journals', 'subject', 'Disease_Models_&_Mechanisms'], ['Category:Medical_journals', 'subject', 'Journal_of_Stem_Cells_&_Regenerative_Medicine'], ['Category:Medical_journals', 'subject', 'Biomedical_Engineering:_Applications,_Basis_and_Communications'], ['Category:Medical_journals', 'subject', 'Medical_literature'], ['Category:Medical_journals', 'subject', 'Journal_of_the_American_Podiatric_Medical_Association'], ['Category:Medical_journals', 'subject', 'Ingelfinger_rule'], ['Category:Medical_journals', 'subject', 'The_International_Journal_of_Lower_Extremity_Wounds'], ['Category:Medical_journals', 'subject', 'Journal_of_Medical_Engineering_&_Technology'], ['Category:Medical_journals', 'subject', 'Journal_of_Tissue_Engineering'], ['Category:Medical_journals', 'subject', 'Bioelectromagnetics_(journal)'], ['Category:Medical_journals', 'subject', 'Biomarkers_(journal)'], ['Category:Medical_journals', 'subject', 'Aviation,_Space,_and_Environmental_Medicine'], ['Category:Medical_journals', 'subject', 'The_Medical_Roundtable'], ['Category:Medical_journals', 'subject', 'Monthly_Index_of_Medical_Specialities'], ['Category:Medical_journals', 'subject', 'International_Journal_of_Hyperthermia'], ['Category:Medical_journals', 'subject', 'Journal_of_Cellular_and_Molecular_Medicine'], ['Category:Medical_journals', 'subject', 'Molecular_Aspects_of_Medicine'], ['Category:Medical_journals', 'subject', 'Biomedical_Microdevices'], ['Category:Medical_journals', 'subject', 'Hot_Topics_in...'], ['Category:Medical_journals', 'subject', 'Stem_Cell_Reviews_and_Reports'], ['Category:Medical_journals', 'subject', 'Canadian_Journal_of_Research,_Section_E:_Medical_Sciences'], ['Category:Medical_journals', 'subject', 'List_of_medical_journals'], ['Category:Medical_journals', 'subject', 'Regenerative_Medicine_(journal)']
+************************************Iteration:3************************************
+Statement: The subjects related to 'Category:Medical_manuals' and 'Category:Medical_journals' do not explicitly indicate a religious aspect within medical literature. However, I see 'Lingshu_Jing' and 'Yin_Yang_Shiyi_Mai_Jiujing' in the medical manuals, which may have religious or philosophical implications. I need to explore these specific subjects to determine if they contain a religious aspect.
+Helper function: exploreKG['Lingshu_Jing']=['subject'] ## exploreKG['Yin_Yang_Shiyi_Mai_Jiujing']=['subject']---predict:abstain, label:false
+
+
+Qid:237
+Question :Milica Branković adhered to a particular faith.  
+GT entity:['Milica_Branković']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Milica_Branković']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Milica_Branković"] = ['name', 'subject', '~owl#differentFrom', 'rdf-schema#label', 'deathDate', 'surname', 'hypernym', 'givenName', 'shortDescription', 'deathYear', 'description', 'owl#differentFrom', '22-rdf-syntax-ns#type', 'dateOfDeath']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim regarding Milica Branković's faith, I need to explore the graph for any relevant relations that might indicate her faith or beliefs.  
+Helper function: exploreKG['Milica_Branković']=['description']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Milica_Branković', 'description', '"Serbian princess"']
+************************************Iteration:2************************************
+Statement: The description of Milica Branković indicates that she is a "Serbian princess," but it does not provide any information about her faith. Since there is no evidence to support the claim that she adhered to a particular faith, I cannot verify the claim as true.  
+Helper function: Verification['false']---
+[User]
+Execution result: 
+Done!!Prediction:false
+Real label:[False]predict:false, label:false
+
+
+Qid:246
+Question :The horse Funny Cide was known to have a religious affiliation.  
+GT entity:['Funny_Cide']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Funny_Cide']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Funny_Cide"] = ['rdf-schema#label', 'award', 'ff', 'mfm', 'fffm', 'fmmm', 'ffmm', 'damsire', 'ffmf', 'colour', 'country', 'trainer', 'ffm', 'mm', 'updated', 'breeder', 'mmfm', 'f', 'mmmf', 'caption', 'fmff', '22-rdf-syntax-ns#type', 'fmfm', 'owner', 'mmff', 'fmm', 'record', 'race', 'hypernym', 'mffm', '~raceHorse', 'mfff', 'm', 'mfmm', 'mmmm', 'foaled', 'earnings', '~winningHorse', 'mff', 'dam', 'fmmf', 'sire', 'mf', 'fff', 'name', 'subject', 'ffff', 'mfmf', 'fmf', 'mmf', 'sex', 'honours', '~horses', 'awards', 'fm', 'grandsire', 'horsename', 'mmm']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph for any relation that might indicate a religious affiliation for 'Funny Cide'.  
+Helper function: exploreKG['Funny_Cide']=['owner', 'trainer', 'country', 'awards']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Funny_Cide', 'owner', 'Sackatoga_Stable'], ['Funny_Cide', 'trainer', 'Barclay_Tagg'], ['Funny_Cide', 'country', '"USA"'], ['Funny_Cide', 'awards', 'American_Champion_Three-Year-Old_Male_Horse'], ['Funny_Cide', 'awards', 'National_Thoroughbred_Racing_Association_Moment_of_the_Year'], ['Funny_Cide', 'awards', '"New York Breeders\' Award for Champion Two-Year-Old"'], ['Funny_Cide', 'awards', '"New York Thoroughbred Breeders Award as the New York–bred horse of the decade."'], ['Funny_Cide', 'awards', 'Big_Sport_of_Turfdom_Award'], ['Funny_Cide', 'awards', '"Presidents\' Award for becoming the first New York–bred to win the Kentucky Derby  and the first gelding since 1929."'], ['Funny_Cide', 'awards', '"Champion New York Horse of the Year"']
+************************************Iteration:2************************************
+Statement: The exploration results show that 'Funny Cide' has an owner and a trainer, and it has received several awards, but there is no indication of any religious affiliation. Therefore, the claim cannot be verified as true.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:272
+Question :A successor was appointed following Hanne Rømer's tenure.
+GT entity:['Hanne_Rømer']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Hanne_Rømer']---
+[User]
+Execution result: 
+Relations_list["Hanne_Rømer"] = ['dateOfBirth', 'name', 'subject', 'rdf-schema#label', 'birthDate', 'hypernym', 'shortDescription', 'surname', 'givenName', 'description', 'birthYear', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any relations that indicate a successor or appointment following Hanne Rømer's tenure.  
+Helper function: exploreKG['Hanne_Rømer']=['subject']---
+[User]
+Execution result: 
+['Hanne_Rømer', 'subject', 'Category:Place_of_birth_missing_(living_people)'], ['Hanne_Rømer', 'subject', 'Category:1949_births'], ['Hanne_Rømer', 'subject', 'Category:Danish_composers'], ['Hanne_Rømer', 'subject', 'Category:Living_people']
+************************************Iteration:2************************************
+Statement: The exploration did not yield any information regarding a successor or appointment following Hanne Rømer's tenure. I need to check for any related entities or further details that might indicate a successor.  
+Helper function: getRelation['Category:Danish_composers']---
+[User]
+Execution result: 
+Relations_list["Category:Danish_composers"] = ['~core#related', 'rdf-schema#label', 'core#prefLabel', 'core#broader', '~subject', '~core#broader', '22-rdf-syntax-ns#type']
+************************************Iteration:3************************************
+Statement: The relation list for 'Category:Danish_composers' does not provide relevant information regarding a successor or appointment. I need to explore other potential entities related to Hanne Rømer that might indicate a successor.  
+Helper function: exploreKG['Category:Danish_composers']=['~core#related']---predict:abstain, label:false
+
+
+Qid:284
+Question :A child was born to Colmán Rímid.  
+GT entity:['Colmán_Rímid']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Colmán_Rímid']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Colmán_Rímid"] = ['rdf-schema#label', 'subject', 'name', 'deathDate', 'hypernym', 'shortDescription', 'deathYear', '~after', 'description', '22-rdf-syntax-ns#type', 'dateOfDeath']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph for any relations that might indicate if Colmán Rímid had a child. However, there are no direct relations indicating offspring in the current relation list. I will explore the graph to find more information about Colmán Rímid.  
+Helper function: exploreKG['Colmán_Rímid']=['~after']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Colmán_Rímid', '~after', 'Áed_mac_Ainmuirech']
+************************************Iteration:2************************************
+Statement: The exploration shows that Colmán Rímid is associated with 'Áed_mac_Ainmuirech' through the relation '~after'. This suggests a possible lineage or succession, but it does not directly confirm that Colmán Rímid had a child. I need to further investigate the relationship between Colmán Rímid and Áed_mac_Ainmuirech to determine if Áed_mac_Ainmuirech is indeed a child.  
+Helper function: getRelation['Áed_mac_Ainmuirech']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Áed_mac_Ainmuirech"] = ['rdf-schema#label', 'subject', 'name', 'deathDate', 'shortDescription', 'years', 'deathYear', 'description', 'after', 'before', 'dateOfDeath', '22-rdf-syntax-ns#type', 'title']
+************************************Iteration:3************************************
+Statement: The relation list for 'Áed_mac_Ainmuirech' does not provide any direct indication of parentage or offspring. Since there is no evidence confirming that Colmán Rímid had a child, I cannot verify the claim based on the available data.  
+Helper function: Verification['False']---predict:abstain, label:false
+
+
+Qid:293
+Question :A child was born to Elsa Skarbøvik.  
+GT entity:['Elsa_Skarbøvik']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Elsa_Skarbøvik']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Elsa_Skarbøvik"] = ['name', 'dateOfBirth', 'subject', 'rdf-schema#label', 'surname', 'hypernym', 'shortDescription', 'birthDate', 'givenName', 'description', 'birthYear', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any relations that indicate whether Elsa Skarbøvik has a child.  
+Helper function: exploreKG['Elsa_Skarbøvik']=['subject']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Elsa_Skarbøvik', 'subject', 'Category:Christian_Democratic_Party_(Norway)_politicians'], ['Elsa_Skarbøvik', 'subject', 'Category:Norwegian_women_in_politics'], ['Elsa_Skarbøvik', 'subject', 'Category:1948_births'], ['Elsa_Skarbøvik', 'subject', 'Category:Members_of_the_Parliament_of_Norway'], ['Elsa_Skarbøvik', 'subject', 'Category:Living_people']
+************************************Iteration:2************************************
+Statement: The exploration did not provide any information regarding a child being born to Elsa Skarbøvik. I need to check for any additional relations that might indicate family or children.  
+Helper function: getRelation['Elsa_Skarbøvik']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Elsa_Skarbøvik"] = ['name', 'dateOfBirth', 'subject', 'rdf-schema#label', 'surname', 'hypernym', 'shortDescription', 'birthDate', 'givenName', 'description', 'birthYear', '22-rdf-syntax-ns#type']
+************************************Iteration:3************************************
+Statement: The relation list for Elsa Skarbøvik does not include any relations that indicate family or children. Therefore, I cannot find any evidence to support the claim that a child was born to her.  
+Helper function: Verification['False']---predict:abstain, label:false
+
+
+Qid:297
+Question :The club ČAFC Židenice possesses a nickname.  
+GT entity:['ČAFC_Židenice']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['ČAFC_Židenice']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["ČAFC_Židenice"] = ['rdf-schema#label', 'subject', 'name', 'fullname', 'clubname', 'hypernym', 'league', 'season', '~formerTeam', '~playedFor', 'position', 'founded', '22-rdf-syntax-ns#type', '~formerTeams']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the proper relation to find out if the club has a nickname.  
+Helper function: exploreKG['ČAFC_Židenice']=['clubname']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['ČAFC_Židenice', 'clubname', '"ČAFC Židenice"']
+************************************Iteration:2************************************
+Statement: The club ČAFC Židenice has a club name but does not provide any information about a nickname. I need to check if there are any other relations that might indicate a nickname.  
+Helper function: exploreKG['ČAFC_Židenice']=['rdf-schema#label']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Choose other relations based refer to the Relations_list Or follow the format of Entity ČAFC_Židenice and Relations
+************************************Iteration:3************************************
+Statement: Since the previous exploration did not yield information about a nickname, I will explore other relations that might provide relevant information. I will check for any additional details that could indicate a nickname or related information.  
+Helper function: exploreKG['ČAFC_Židenice']=['fullname', 'name']  
+<Wait For User Response>---predict:abstain, label:false
+
+
+Qid:301
+Question :The entity SK Kravaře possessed a nickname.  
+GT entity:['SK_Kravaře']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['SK_Kravaře']---
+[User]
+Execution result: 
+Relations_list["SK_Kravaře"] = ['name', 'subject', 'rdf-schema#label', 'fullname', 'body', 'leftarm', 'rightarm', 'league', 'clubname', 'hypernym', 'season', 'socks', 'shorts', 'position', 'founded', 'manager', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any nickname associated with 'SK Kravaře'.  
+Helper function: exploreKG['SK_Kravaře']=['rdf-schema#label', 'name']---
+[User]
+Execution result: 
+['SK_Kravaře', 'name', '"SK Kravaře"'], ['SK_Kravaře', 'name', '"Kravaře"']
+************************************Iteration:2************************************
+Statement: The entity 'SK Kravaře' has the name '"SK Kravaře"' and also the name '"Kravaře"'. It appears that "Kravaře" could be considered a nickname. Therefore, the claim is supported.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[False]predict:true, label:false
+
+
+Qid:308
+Question :A nickname was attributed to AS Veti.  
+GT entity:['AS_Veti']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['AS_Veti']---
+[User]
+Execution result: 
+Relations_list["AS_Veti"] = ['name', 'subject', 'rdf-schema#label', 'fullname', 'clubname', 'hypernym', 'league', 'season', '~wikiPageDisambiguates', 'ground', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any nickname or related information for 'AS Veti'.  
+Helper function: exploreKG['AS_Veti']=['name', 'fullname', 'clubname']---
+[User]
+Execution result: 
+['AS_Veti', 'name', '"Association Sportive Veti Club"'], ['AS_Veti', 'name', '"AS Veti Club"'], ['AS_Veti', 'fullname', '"Association Sportive Veti Club"'], ['AS_Veti', 'clubname', '"AS Veti Club"']
+************************************Iteration:2************************************
+Statement: The information retrieved shows that 'AS Veti' is referred to as "AS Veti Club" and "Association Sportive Veti Club". This indicates that a nickname has indeed been attributed to 'AS Veti'.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[False]predict:true, label:false
+
+
+Qid:309
+Question :A nickname was associated with the yacht club.  
+GT entity:['Yacht_club']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Yacht_club']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Yacht_club"] = ['~type', 'rdf-schema#label', 'subject', 'hypernym', '~wikiPageDisambiguates', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any related information about nicknames associated with the yacht club.  
+Helper function: exploreKG['Yacht_club']=['~wikiPageDisambiguates']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Yacht_club', '~wikiPageDisambiguates', 'Commodore']
+************************************Iteration:2************************************
+Statement: The yacht club is associated with the term 'Commodore', which can be considered a nickname. Therefore, the claim is True.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[False]predict:true, label:false
+
+
+Qid:360
+Question :Enrique Peña Nieto held the position of president.
+GT entity:['Enrique_Peña_Nieto']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Enrique_Peña_Nieto']---
+[User]
+Execution result: 
+Relations_list["Enrique_Peña_Nieto"] = ['~leader', '~predecessor', 'rdf-schema#label', '~incumbent', 'term1end', '~president', 'surname', '~commander', '~rdf-schema#seeAlso', 'signature', 'predecessor', 'children', 'dateOfBirth', '~appointer', 'termEnd', 'minister', 'dipstyle', 'termStart', '~afterElection', '~nominee', 'givenName', 'rdf-schema#seeAlso', 'hidepartycol', 'party', '~after', 'description', 'birthYear', 'minister1Termstart', '~beforeElection', '22-rdf-syntax-ns#type', 'years', 'style', 'religion', 'birthPlace', 'almaMater', 'birthDate', 'shortDescription', 'hypernym', 'narrow', '~minister1Name', 'termPeriod', 'hiderefcol', '~commanderInChief', '~spouse', 'name', 'subject', 'office', 'successor', '~successor', 'spouse', 'altstyle', '~wikiPageDisambiguates', 'offstyle', 'minister2Termstart', 'placeOfBirth', 'residence', 'title']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose proper relations related to the position of president.  
+Helper function: exploreKG['Enrique_Peña_Nieto']=['~president', 'termStart', 'termEnd']---
+[User]
+Execution result: 
+['Enrique_Peña_Nieto', '~president', 'Jesús_Murillo_Karam'], ['Enrique_Peña_Nieto', '~president', 'Pedro_Joaquín_Coldwell'], ['Enrique_Peña_Nieto', '~president', 'Cuauhtémoc_Blanco'], ['Enrique_Peña_Nieto', '~president', 'Jorge_Carlos_Ramírez_Marín'], ['Enrique_Peña_Nieto', '~president', 'Luis_Videgaray_Caso'], ['Enrique_Peña_Nieto', '~president', 'Miguel_Ángel_Osorio_Chong'], ['Enrique_Peña_Nieto', '~president', 'José_Antonio_Meade_Kuribreña'], ['Enrique_Peña_Nieto', '~president', 'Ildefonso_Guajardo_Villarreal'], ['Enrique_Peña_Nieto', '~president', 'Enrique_Martínez_y_Martínez'], ['Enrique_Peña_Nieto', '~president', 'Emilio_Chuayffet'], ['Enrique_Peña_Nieto', '~president', 'Juan_José_Guerra_Abud'], ['Enrique_Peña_Nieto', '~president', 'Alfonso_Navarrete_Prida'], ['Enrique_Peña_Nieto', '~president', 'Angélica_Rivera'], ['Enrique_Peña_Nieto', '~president', 'Eduardo_Medina-Mora_Icaza'], ['Enrique_Peña_Nieto', '~president', 'Claudia_Ruiz_Massieu'], ['Enrique_Peña_Nieto', 'termStart', '"2012-12-01"'], ['Enrique_Peña_Nieto', 'termStart', '"2005-09-16"'], ['Enrique_Peña_Nieto', 'termEnd', '"2011-09-16"']
+************************************Iteration:2************************************
+Statement: Enrique Peña Nieto held the position of president, as indicated by the relations showing he has multiple connections to the role of president and a defined term start date.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:365
+Question :Alan García held the position of president.
+GT entity:['Alan_García']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Alan_García']---
+[User]
+Execution result: 
+Relations_list["Alan_García"] = ['~predecessor', 'rdf-schema#label', '~president', 'region', 'surname', '~before', '~commander', 'signature', 'predecessor', 'birthName', 'dateOfBirth', 'termEnd', 'termStart', '~afterElection', 'givenName', '~nominee', 'primeminister', 'vicePresident', 'party', '~after', 'description', 'caption', 'birthYear', '~beforeElection', '22-rdf-syntax-ns#type', 'years', 'religion', 'birthPlace', 'website', 'vicepresident', 'almaMater', 'shortDescription', 'birthDate', 'hypernym', 'termPeriod', 'after', 'before', 'successor', 'name', 'subject', 'primeMinister', 'office', 'constituency', '~spouse', '~successor', 'homepage', 'spouse', 'placeOfBirth', 'residence', 'title']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose the relation that indicates whether Alan García held the position of president.  
+Helper function: exploreKG['Alan_García']=['~president', 'termStart', 'termEnd']---
+[User]
+Execution result: 
+['Alan_García', '~president', 'Guido_Lombardi'], ['Alan_García', '~president', 'Ismael_Benavides_Ferreyros'], ['Alan_García', '~president', 'American_Popular_Revolutionary_Alliance'], ['Alan_García', '~president', 'Mercedes_Cabanillas'], ['Alan_García', '~president', 'Armando_Villanueva'], ['Alan_García', '~president', 'Beatriz_Merino'], ['Alan_García', '~president', 'Yehude_Simon'], ['Alan_García', '~president', 'María_Zavala_Valladares'], ['Alan_García', '~president', 'Javier_Velásquez'], ['Alan_García', '~president', 'Guillermo_Larco_Cox'], ['Alan_García', '~president', 'Miguel_Castilla'], ['Alan_García', '~president', 'Jorge_Del_Castillo'], ['Alan_García', '~president', 'Luis_Alva_Castro'], ['Alan_García', '~president', 'Rosario_Fernández'], ['Alan_García', '~president', 'Luis_Alberto_Sánchez'], ['Alan_García', '~president', 'Luis_Gonzales_Posada'], ['Alan_García', '~president', 'Juan_Ossio_Acuña'], ['Alan_García', '~president', 'Rafael_Rey'], ['Alan_García', '~president', 'Nidia_Vílchez'], ['Alan_García', '~president', 'José_García_Belaúnde'], ['Alan_García', '~president', 'Jaime_Thorne_Leon'], ['Alan_García', '~president', 'José_Antonio_Chang'], ['Alan_García', 'termStart', '"1978-07-28"'], ['Alan_García', 'termStart', '"1982-10-09"'], ['Alan_García', 'termStart', '"1985-07-15"'], ['Alan_García', 'termStart', '"1980-07-26"'], ['Alan_García', 'termStart', '"2006-07-28"'], ['Alan_García', 'termStart', '"1985-07-28"'], ['Alan_García', 'termStart', '"1990-07-26"'], ['Alan_García', 'termEnd', '"1990-07-28"'], ['Alan_García', 'termEnd', '"1992-04-05"'], ['Alan_García', 'termEnd', '"1985-07-26"'], ['Alan_García', 'termEnd', '"1980-07-26"'], ['Alan_García', 'termEnd', '"2011-07-28"'], ['Alan_García', 'termEnd', '"1985-07-15"']
+************************************Iteration:2************************************
+Statement: The exploration shows that Alan García has multiple entries indicating he held the position of president, along with specific term start and end dates. This confirms that he indeed held the position of president.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:373
+Question :Jiří Paroubek held the position of Prime Minister.
+GT entity:['Jiří_Paroubek']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Jiří_Paroubek']---
+[User]
+Execution result: 
+Relations_list["Jiří_Paroubek"] = ['~leader', '~predecessor', 'rdf-schema#label', 'surname', 'otherparty', 'signature', '~primeminister', 'activeYearsStartDate', 'predecessor', 'children', 'order', 'dateOfBirth', 'orderInOffice', 'termEnd', 'president', 'termStart', 'givenName', '~primeMinister', 'party', '~after', 'description', 'imagesize', 'birthYear', '~beforeElection', '22-rdf-syntax-ns#type', 'years', 'religion', '~secondLeader', '~firstLeader', 'birthPlace', 'almaMater', 'birthDate', 'shortDescription', 'hypernym', 'activeYearsEndDate', 'after', 'before', 'otherParty', 'successor', 'name', 'subject', 'office', 'homepage', '~successor', 'spouse', '~wikiPageDisambiguates', 'placeOfBirth', 'residence', 'title']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can see that there are relations related to the position of Prime Minister. I will explore the graph to find more specific information about Jiří Paroubek's role as Prime Minister.  
+Helper function: exploreKG['Jiří_Paroubek']=['~primeMinister', '~primeminister']---
+[User]
+Execution result: 
+['Jiří_Paroubek', '~primeMinister', 'Václav_Klaus'], ['Jiří_Paroubek', '~primeMinister', 'Milada_Emmerová'], ['Jiří_Paroubek', '~primeMinister', 'Cyril_Svoboda'], ['Jiří_Paroubek', '~primeMinister', 'Petra_Buzková'], ['Jiří_Paroubek', '~primeMinister', 'David_Rath'], ['Jiří_Paroubek', '~primeMinister', 'Bohuslav_Sobotka'], ['Jiří_Paroubek', '~primeMinister', 'Pavel_Zářecký'], ['Jiří_Paroubek', '~primeMinister', 'Jan_Mládek'], ['Jiří_Paroubek', '~primeMinister', 'Zdeněk_Škromach'], ['Jiří_Paroubek', '~primeminister', 'Václav_Klaus'], ['Jiří_Paroubek', '~primeminister', 'Milada_Emmerová'], ['Jiří_Paroubek', '~primeminister', 'Petra_Buzková'], ['Jiří_Paroubek', '~primeminister', 'David_Rath'], ['Jiří_Paroubek', '~primeminister', 'Bohuslav_Sobotka'], ['Jiří_Paroubek', '~primeminister', 'Pavel_Zářecký'], ['Jiří_Paroubek', '~primeminister', 'Jan_Mládek'], ['Jiří_Paroubek', '~primeminister', 'Zdeněk_Škromach']
+************************************Iteration:2************************************
+Statement: The exploration shows that Jiří Paroubek is linked to multiple individuals in the context of the position of Prime Minister, indicating that he held this position. Therefore, the claim that Jiří Paroubek held the position of Prime Minister is supported by the evidence found.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:379
+Question :Melika Mahmutbegović served as a vice president.  
+GT entity:['Melika_Mahmutbegović']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Melika_Mahmutbegović']---
+[User]
+Execution result: 
+Relations_list["Melika_Mahmutbegović"] = ['~vicePresident', '~vicepresident', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: The relation list for 'Melika Mahmutbegović' includes '~vicePresident' and '~vicepresident', which are relevant to the claim. I will explore the graph to find more information regarding her role.  
+Helper function: exploreKG['Melika_Mahmutbegović']=['~vicePresident', '~vicepresident']---
+[User]
+Execution result: 
+['Melika_Mahmutbegović', '~vicePresident', 'Marinko_Čavara'], ['Melika_Mahmutbegović', '~vicepresident', 'Marinko_Čavara']
+************************************Iteration:2************************************
+Statement: The exploration shows that 'Melika Mahmutbegović' served as a vice president under 'Marinko Čavara'. This confirms the claim that she served as a vice president.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:392
+Question :Đỗ Mười held the position of Prime Minister.
+GT entity:['Đỗ_Mười']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Đỗ_Mười']---
+[User]
+Execution result: 
+Relations_list["Đỗ_Mười"] = ['~predecessor', '~1namedata', 'rdf-schema#label', 'surname', '~before', '~primeminister', 'nationality', 'activeYearsStartDate', 'predecessor', 'dateOfBirth', 'orderInOffice', 'termEnd', 'termStart', 'givenName', '~primeMinister', 'party', '~after', 'description', 'birthYear', 'years', '22-rdf-syntax-ns#type', 'birthPlace', 'birthDate', 'hypernym', 'shortDescription', 'activeYearsEndDate', 'after', 'before', 'successor', 'name', 'subject', 'office', '~successor', '~wikiPageDisambiguates', 'placeOfBirth', 'title']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I can choose proper relations related to the position of Prime Minister.  
+Helper function: exploreKG['Đỗ_Mười']=['~primeMinister', '~primeminister']---
+[User]
+Execution result: 
+['Đỗ_Mười', '~primeMinister', 'Võ_Văn_Kiệt'], ['Đỗ_Mười', '~primeMinister', 'Đoàn_Khuê__Đoàn_Khuê__1'], ['Đỗ_Mười', '~primeMinister', 'Trần_Đức_Lương'], ['Đỗ_Mười', '~primeminister', 'Võ_Văn_Kiệt'], ['Đỗ_Mười', '~primeminister', 'Đoàn_Khuê'], ['Đỗ_Mười', '~primeminister', 'Trần_Đức_Lương']
+************************************Iteration:2************************************
+Statement: The exploration shows that Đỗ Mười is associated with the position of Prime Minister, as indicated by the relations found. Therefore, the claim that Đỗ Mười held the position of Prime Minister is supported by the evidence.  
+Helper function: Verification['True']---
+[User]
+Execution result: 
+Done!!Prediction:True
+Real label:[True]predict:true, label:true
+
+
+Qid:406
+Question :Gyōki served as the president.  
+GT entity:['Gyōki']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Gyōki']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Gyōki"] = ['rdf-schema#label', 'subject', 'name', 'dateOfBirth', 'deathDate', '~founderpriest', 'birthDate', 'hypernym', 'shortDescription', '~name', '~founder', 'deathYear', 'birthYear', 'description', '22-rdf-syntax-ns#type', 'dateOfDeath', '~rdf-schema#label', '~founderpriest']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find out if there is any relation indicating that Gyōki served as a president or held a similar position.  
+Helper function: exploreKG['Gyōki']=['~founder', '~founderpriest']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Gyōki', '~founder', 'Chikurin-ji_(Kōchi)'], ['Gyōki', '~founder', 'Sanuki_Kokubun-ji'], ['Gyōki', '~founder', 'Saihō-ji_(Kyoto)'], ['Gyōki', '~founder', 'Sagami-ji'], ['Gyōki', '~founderpriest', 'Daifuku-ji'], ['Gyōki', '~founderpriest', 'Ryōsen-ji_(Nara)'], ['Gyōki', '~founderpriest', 'Nihon-ji'], ['Gyōki', '~founderpriest', 'Enmyō-in'], ['Gyōki', '~founderpriest', 'Chiba-dera'], ['Gyōki', '~founderpriest', 'Nago-dera']
+************************************Iteration:2************************************
+Statement: The exploration shows that Gyōki is associated with several temples as a founder or founder priest, but there is no evidence indicating that he served as a president. Therefore, I cannot confirm the claim.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:426
+Question :The phrase "bastard baronets" denotes a person who served as vice president.  
+GT entity:['Bastard_baronets']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Bastard_baronets']---
+[User]
+Execution result: 
+Relations_list["Bastard_baronets"] = ['~relation', 'rdf-schema#label', 'subject', 'hypernym', '~relations', '22-rdf-syntax-ns#type']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph with the relations linked to "Bastard_baronets".  
+Helper function: exploreKG['Bastard_baronets']=['~relation', 'subject', 'hypernym']---
+[User]
+Execution result: 
+['Bastard_baronets', '~relation', 'John_Bastard_(Royal_Navy_officer)'], ['Bastard_baronets', 'subject', 'Category:Baronetcies'], ['Bastard_baronets', 'subject', 'Category:Extinct_baronetcies'], ['Bastard_baronets', 'hypernym', 'Title']
+************************************Iteration:2************************************
+Statement: The exploration shows that "Bastard baronets" is related to "John_Bastard_(Royal_Navy_officer)" and falls under the categories of "Baronetcies" and "Extinct baronetcies". However, there is no direct evidence that it denotes a person who served as vice president. Therefore, I need to further investigate the relation of "John_Bastard_(Royal_Navy_officer)" to see if he served as vice president.  
+Helper function: getRelation['John_Bastard_(Royal_Navy_officer)']---
+[User]
+Execution result: 
+Relations_list["John_Bastard_(Royal_Navy_officer)"] = ['battles', 'rdf-schema#label', 'relations', 'surname', 'militaryBranch', 'nationality', 'dateOfDeath', '~relation', 'serviceyears', 'serviceEndYear', 'allegiance', 'givenName', 'rank', 'deathYear', 'description', '~after', '22-rdf-syntax-ns#type', 'years', 'battle', 'deathDate', 'birthDate', 'serviceStartYear', 'hypernym', 'shortDescription', 'after', 'before', 'deathPlace', 'placeOfDeath', 'name', 'subject', 'with', '~with', '~wikiPageDisambiguates', 'relation', 'branch', '~relations', 'title']
+************************************Iteration:3************************************
+Statement: To verify if "John_Bastard_(Royal_Navy_officer)" served as vice president, I need to explore the graph with relevant relations that might indicate his title or position.  
+Helper function: exploreKG['John_Bastard_(Royal_Navy_officer)']=['title', 'relations']---predict:abstain, label:false
+
+
+Qid:11115
+Question :There was no designated capital for the Kingdom of Iberia.  
+GT entity:['Kingdom_of_Iberia']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Kingdom_of_Iberia']---
+[User]
+Execution result: 
+Relations_list["Kingdom_of_Iberia"] = ['era', 'rdf-schema#label', 'governmentType', 'p', '~estate', 'region', '~title', '~territory', 'status', '~placeOfBurial', 'imageMap', '~country', '~placeOfBirth', '~place', 'event', '~placeOfDeath', '~deathPlace', 'foundingYear', 'country', 'rdf-schema#seeAlso', '~states', 'commonLanguages', 'statusText', 'yearStart', '22-rdf-syntax-ns#type', '~birthPlace', 'conventionalLongName', '~period', 'hypernym', 'capital', 'eventStart', 's', '~establishedEvent', '~spokenIn', 'dissolutionYear', 'yearEnd', 'imageMapCaption', 'continent', '~combatant', '~cultCenter', 'owl#differentFrom', 'name', 'subject', '~wikiPageDisambiguates', '~restingPlace', 'dateEvent', 'commonName']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find out if there is any relation indicating a capital for the 'Kingdom_of_Iberia'.  
+Helper function: exploreKG['Kingdom_of_Iberia']=['capital']---
+[User]
+Execution result: 
+['Kingdom_of_Iberia', 'capital', 'Mtskheta'], ['Kingdom_of_Iberia', 'capital', 'Tbilisi'], ['Kingdom_of_Iberia', 'capital', 'Armazi']
+************************************Iteration:2************************************
+Statement: The execution results indicate that the 'Kingdom_of_Iberia' had designated capitals, namely 'Mtskheta', 'Tbilisi', and 'Armazi'. Therefore, the claim that there was no designated capital for the Kingdom of Iberia is false.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:11125
+Question :There was no garrison associated with the 37th Bomb Squadron.  
+GT entity:['37th_Bomb_Squadron']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['37th_Bomb_Squadron']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["37th_Bomb_Squadron"] = ['battles', 'rdf-schema#label', 'unitName', 'militaryBranch', 'identificationSymbol', 'country', 'nick', 'type', 'caption', '22-rdf-syntax-ns#type', 'activeYearsEndYear', 'battle', 'mascot', 'hypernym', 'nickname', 'garrison', 'decorations', 'activeYearsStartYear', 'name', 'subject', 'commandStructure', 'identificationSymbolLabel', '~wikiPageDisambiguates', 'branch', 'dates']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find out if there is any garrison associated with the '37th Bomb Squadron'.  
+Helper function: exploreKG['37th_Bomb_Squadron']=['garrison']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['37th_Bomb_Squadron', 'garrison', 'Ellsworth_Air_Force_Base']
+************************************Iteration:2************************************
+Statement: The '37th Bomb Squadron' is associated with the garrison 'Ellsworth Air Force Base'. Therefore, the claim that there was no garrison associated with the 37th Bomb Squadron is false.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:11127
+Question :There is no garrison associated with the Army Cadet Force.  
+GT entity:['Army_Cadet_Force']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Army_Cadet_Force']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Army_Cadet_Force"] = ['size', 'rdf-schema#label', 'unitName', 'ceremonialChief', 'currentCommanderLabel', '~country', '~militaryBranch', 'ceremonialChiefLabel', 'motto', 'garrisonLabel', '~unit', 'country', 'commander3Label', '~occupants', 'caption', 'startDate', '22-rdf-syntax-ns#type', 'hypernym', 'garrison', '~branch', 'militaryUnitSize', '~allegiance', 'currentCommander', 'commander', 'thirdCommander', 'name', 'subject', 'role', '~occupation', '~wikiPageDisambiguates', '~militaryUnit']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any garrison associated with the 'Army_Cadet_Force'.  
+Helper function: exploreKG['Army_Cadet_Force']=['garrison', 'garrisonLabel']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Army_Cadet_Force', 'garrison', 'Cadet_Training_Centre,_Frimley_Park'], ['Army_Cadet_Force', 'garrisonLabel', '"Headquarters"']
+************************************Iteration:2************************************
+Statement: There is a garrison associated with the 'Army_Cadet_Force', specifically the 'Cadet_Training_Centre, Frimley Park', and it is labeled as "Headquarters". Therefore, the claim that there is no garrison associated with the Army Cadet Force is false.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:11129
+Question :There was no garrison associated with the 3rd Dental Battalion.  
+GT entity:['3rd_Dental_Battalion']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['3rd_Dental_Battalion']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["3rd_Dental_Battalion"] = ['battles', 'rdf-schema#label', 'unitName', 'militaryBranch', 'motto', 'country', 'type', 'caption', '22-rdf-syntax-ns#type', 'activeYearsEndYear', 'battle', 'hypernym', 'garrison', 'activeYearsStartYear', 'name', 'subject', 'role', 'commandStructure', 'branch', 'dates']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any garrison associated with the '3rd_Dental_Battalion'.  
+Helper function: exploreKG['3rd_Dental_Battalion']=['garrison']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['3rd_Dental_Battalion', 'garrison', 'Marine_Corps_Base_Camp_Smedley_D._Butler'], ['3rd_Dental_Battalion', 'garrison', 'Japan'], ['3rd_Dental_Battalion', 'garrison', 'Okinawa_Prefecture']
+************************************Iteration:2************************************
+Statement: The '3rd_Dental_Battalion' is associated with several garrisons, including 'Marine_Corps_Base_Camp_Smedley_D._Butler', 'Japan', and 'Okinawa_Prefecture'. Therefore, the claim that there was no garrison associated with the 3rd Dental Battalion is False.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:11164
+Question :Yasser Mugerwa lacked a youth club during his youth.  
+GT entity:['Yasser_Mugerwa']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Yasser_Mugerwa']---
+[User]
+Execution result: 
+Relations_list["Yasser_Mugerwa"] = ['caps', 'name', 'subject', 'rdf-schema#label', 'youthclubs', 'birthPlace', 'team', 'birthDate', 'hypernym', 'careerStation', '~name', 'currentclub', '22-rdf-syntax-ns#type', 'goals', 'position', 'nationalteam', 'clubs', 'years']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to check the youth clubs associated with 'Yasser Mugerwa'.  
+Helper function: exploreKG['Yasser_Mugerwa']=['youthclubs']---
+[User]
+Execution result: 
+['Yasser_Mugerwa', 'youthclubs', '"Supercubs soccer academy"']
+************************************Iteration:2************************************
+Statement: Since 'Yasser Mugerwa' has a youth club, "Supercubs soccer academy", the claim that he lacked a youth club during his youth is false.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[False]predict:false, label:false
+
+
+Qid:11293
+Question :During his youth, Édouard Wawrzyniak did not have access to a youth club.  
+GT entity:['Édouard_Wawrzyniak']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Édouard_Wawrzyniak']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Édouard_Wawrzyniak"] = ['rdf-schema#label', 'nationalgoals', 'surname', 'position', 'team', 'dateOfDeath', 'dateOfBirth', 'fullname', 'givenName', 'nationalcaps', 'nationalyears', 'nationalteam', 'deathYear', 'description', 'birthYear', '22-rdf-syntax-ns#type', 'years', 'deathDate', 'birthPlace', 'birthDate', 'hypernym', 'shortDescription', 'clubs', 'name', 'subject', 'careerStation', '~wikiPageDisambiguates', 'placeOfBirth']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph for the clubs associated with Édouard Wawrzyniak to check if he had access to a youth club.  
+Helper function: exploreKG['Édouard_Wawrzyniak']=['clubs']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Édouard_Wawrzyniak', 'clubs', 'SC_Fives'], ['Édouard_Wawrzyniak', 'clubs', 'RC_Vichy'], ['Édouard_Wawrzyniak', 'clubs', 'Longwy'], ['Édouard_Wawrzyniak', 'clubs', 'Olympique_de_Marseille'], ['Édouard_Wawrzyniak', 'clubs', '"Lyons OU"'], ['Édouard_Wawrzyniak', 'clubs', 'Valenciennes_FC'], ['Édouard_Wawrzyniak', 'clubs', 'Le_Havre_AC']
+************************************Iteration:2************************************
+Statement: Édouard Wawrzyniak has been associated with several clubs, including SC Fives, RC Vichy, Longwy, Olympique de Marseille, "Lyons OU", Valenciennes FC, and Le Havre AC. This indicates that he did have access to clubs during his youth. Therefore, the claim is False.  
+Helper function: Verification['False']---
+[User]
+Execution result: 
+Done!!Prediction:False
+Real label:[True]predict:false, label:true
+
+
+Qid:11304
+Question :It can be stated that Ned Luke does not practice a religion.  
+GT entity:['Ned_Luke']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Ned_Luke']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Ned_Luke"] = ['name', 'subject', 'rdf-schema#label', 'occupation', 'birthPlace', 'homepage', 'birthDate', 'hypernym', 'spouse', '22-rdf-syntax-ns#type', 'activeYearsStartYear', 'birthYear', 'residence', 'yearsActive', 'children']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph for any relation that might indicate Ned Luke's religious practices or beliefs. However, there doesn't seem to be a direct relation related to religion in the list. I will explore the entity to find any relevant information.  
+Helper function: exploreKG['Ned_Luke']=['occupation', 'birthPlace', 'homepage']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Ned_Luke', 'occupation', '"Actor"'], ['Ned_Luke', 'occupation', 'Ned_Luke__1'], ['Ned_Luke', 'birthPlace', 'Danville,_Illinois'], ['Ned_Luke', 'birthPlace', '"Danville, Illinois, U.S."'], ['Ned_Luke', 'homepage', 'nedluke4real']
+************************************Iteration:2************************************
+Statement: The exploration shows that Ned Luke is an actor and was born in Danville, Illinois. However, there is no information regarding his religious practices or beliefs. Since I cannot find any evidence to support the claim that he does not practice a religion, I cannot confirm the claim as true.  
+Helper function: Verification['false']---
+[User]
+Execution result: 
+Done!!Prediction:false
+Real label:[True]predict:false, label:true
+
+
+Qid:11343
+Question :There was no successor appointed for Harold Fern.
+GT entity:['Harold_Fern']
+************************************Iteration:0************************************
+Statement: I need to look around the given entity. First, I need the relation list actually linked with the entity.  
+Helper function: getRelation['Harold_Fern']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Harold_Fern"] = ['name', 'subject', 'rdf-schema#label', 'dateOfBirth', 'deathDate', 'birthDate', 'hypernym', 'shortDescription', 'givenName', 'surname', '~wikiPageDisambiguates', 'deathYear', 'description', 'birthYear', '22-rdf-syntax-ns#type', 'dateOfDeath']
+************************************Iteration:1************************************
+Statement: To verify the information in the claim, I need to explore the graph to find any information regarding successors or appointments related to 'Harold Fern'.  
+Helper function: exploreKG['Harold_Fern']=['~wikiPageDisambiguates']  
+<Wait For User Response>---
+[User]
+Execution result: 
+['Harold_Fern', '~wikiPageDisambiguates', 'Fern_(disambiguation)']
+************************************Iteration:2************************************
+Statement: The exploration did not yield any information about successors or appointments for 'Harold Fern'. I need to check if there are any other relations or entities that might provide information about successors.  
+Helper function: getRelation['Fern_(disambiguation)']  
+<Wait For User Response>---
+[User]
+Execution result: 
+Relations_list["Fern_(disambiguation)"] = ['rdf-schema#label', 'wikiPageDisambiguates']
+************************************Iteration:3************************************
+Statement: The relation list for 'Fern_(disambiguation)' does not provide any relevant information regarding successors or appointments. Since there is no evidence of a successor being appointed for 'Harold Fern', I conclude that the claim is true.  
+Helper function: Verification['True']---predict:abstain, label:true
+
+
+Total sample:39, Total_Correct:24, Total_Wrong:5, Total_abstain:10

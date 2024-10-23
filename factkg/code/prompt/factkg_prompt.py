@@ -349,7 +349,7 @@ Claim : Well, lemon is an ingredient in Bandeja paisa.
 
 
 
-Now, it's your turn. Continue your 'Statement and Evaluation' task. Response must have same form with upper examples.
+Now, it's your turn. Continue your paraphrasing task. Response must have same form with upper examples.
 [User]
 Claim : <<<<CLAIM>>>>
 """
