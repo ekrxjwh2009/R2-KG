@@ -386,7 +386,7 @@ if __name__ == "__main__":
         if (total_sample - total_abs ) ==0 :
             metric1=0
         else:
-            metric1 = (total_sample - total_abs ) /  len(questions_dict)
+            metric1 = (total_sample - total_abs ) /  total_sample
         if total_correct==0:
             metric2 =0
         else :

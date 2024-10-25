@@ -1,0 +1,101 @@
+qid,prediction,gt_label
+20,['doppelganger'],['Doppelganger']
+40,['abstain'],['A Modern Affair']
+60,['abstain'],['The Villain']
+80,"['warlock', 'gothic', 'boxinghelena', 'themedallion', 'bloodandbone', 'thekillingfields']","['The Killing Fields', 'The Medallion', 'Blood and Bone', 'Warlock', 'Boxing Helena', 'Gothic']"
+100,['abstain'],['The Thing with Two Heads']
+120,['abstain'],['Alice']
+140,['thelongdaycloses'],['The Long Day Closes']
+160,['abstain'],['Murder!']
+180,['abstain'],['Harlequin']
+200,['abstain'],['Take the Lead']
+220,"['theindependent', 'hotpursuit', 'theheartbreakkid', 'stag', 'theritz']","['The Heartbreak Kid', 'Hot Pursuit', 'The Ritz', 'The Independent', 'Stag']"
+240,"['lollilove', 'hallpass']","['Hall Pass', 'LolliLove']"
+260,['abstain'],"[""Children Shouldn't Play with Dead Things""]"
+280,['coffinrock'],['Coffin Rock']
+300,['abstain'],['The Invisible War']
+320,"['thegreatestshowonearth', 'anniegetyourgun', 'theperilsofpauline', 'themiracleofmorganscreek']","['The Greatest Show on Earth', ""The Miracle of Morgan's Creek"", 'Annie Get Your Gun', 'The Perils of Pauline']"
+340,"['actionjackson', 'dabangg2']","['Dabangg 2', 'Action Jackson']"
+360,['themeteorman'],['The Meteor Man']
+380,['abstain'],['Caddyshack']
+400,['abstain'],['Your Vice Is a Locked Room and Only I Have the Key']
+420,"['slipstream', 'thenightthelightswentoutingeorgia', 'thebigredone', 'corvettesummer']","['The Big Red One', 'Corvette Summer', 'Slipstream', 'The Night the Lights Went Out in Georgia']"
+440,['abstain'],['A Short History of Decay']
+460,['abstain'],['Father and Guns']
+480,"['missing', 'blastfromthepast', 'thegrassharp', 'thelongwalkhome', 'getlow', 'lakecity', 'raggedyman', 'carrie', 'fourchristmases', '3women', 'badlands', 'thestraightstory', 'coalminersdaughter', 'theriver', 'nightmother', 'inthebedroom', 'anamericanhaunting']","['Carrie', 'The Straight Story', 'Blast from the Past', 'Four Christmases', 'Badlands', 'In the Bedroom', 'An American Haunting', 'Get Low', ""Coal Miner's Daughter"", 'Missing', '3 Women', 'The River', 'The Grass Harp', 'The Long Walk Home', ""'night, Mother"", 'Raggedy Man', 'Lake City']"
+500,['abstain'],['Krull']
+520,['abstain'],['The Stepford Wives']
+540,['abstain'],['Happy New Year']
+560,['abstain'],['Entity']
+580,['abstain'],['Dragon Eyes']
+600,['ringofterror'],['Ring of Terror']
+620,['abstain'],['Spartan']
+640,['abstain'],['The Speed of Thought']
+660,['abstain'],['Project X']
+680,['cityofhope'],['City of Hope']
+700,"['malcolmx', 'rookieoftheyear']","['Malcolm X', 'Rookie of the Year']"
+720,"['ilgrido', 'allnightlong']","['Il Grido', 'All Night Long']"
+740,"['lymelife', 'youcancountonme', 'downinthevalley', 'signs', 'meancreek']","['Signs', 'Mean Creek', 'You Can Count on Me', 'Down in the Valley', 'Lymelife']"
+760,['abstain'],['The Armstrong Lie']
+780,"['vicesquad', 'hardcore']","['Hardcore', 'Vice Squad']"
+800,"['imtheonethatiwant', 'itsmyparty']","[""It's My Party"", ""I'm the One That I Want""]"
+820,['abstain'],['Rabid']
+840,"['foryoureyesonly', 'thecannonballrun', 'escapetoathena', 'themanwiththegoldengun', 'gold', 'aviewtoakill', 'moonraker', 'thewildgeese', 'thenakedface', 'octopussy', 'thespywholovedme', 'themanwhohauntedhimself', 'theseawolves', 'interruptedmelody', 'themanwhowouldntdie', 'liveandletdie', 'thequest']","['The Spy Who Loved Me', 'Octopussy', 'Live and Let Die', 'The Man with the Golden Gun', 'For Your Eyes Only', 'Moonraker', 'A View to a Kill', 'The Cannonball Run', 'The Quest', 'The Wild Geese', 'Escape to Athena', 'The Sea Wolves', 'Gold', 'The Man Who Haunted Himself', 'Interrupted Melody', 'The Naked Face', ""The Man Who Wouldn't Die""]"
+860,"['kingsolomonsmines', 'theproudvalley', 'bigfella', 'songoffreedom', 'theemperorjones']","[""King Solomon's Mines"", 'The Emperor Jones', 'The Proud Valley', 'Song of Freedom', 'Big Fella']"
+880,['abstain'],"['The Santa Clause', 'Jungle 2 Jungle', 'Joe Somebody']"
+900,['dreamwife'],['Dream Wife']
+920,['abstain'],"[""You're Not You""]"
+940,['abstain'],['EuroTrip']
+960,"['michael', 'luckynumbers', 'youvegotmail', 'sleeplessinseattle', 'bewitched', 'thisismylife', 'mixednuts']","[""You've Got Mail"", 'Sleepless in Seattle', 'Bewitched', 'Michael', 'Lucky Numbers', 'Mixed Nuts', 'This Is My Life']"
+980,['abstain'],['The Mystery of the Leaping Fish']
+1000,"['lastsummerinthehamptons', 'venicevenice', 'asafeplace', 'ireneintime', 'festivalincannes', 'djvu']","['Déjà Vu', 'A Safe Place', 'Festival in Cannes', 'Last Summer in the Hamptons', 'Venice/Venice', 'Irene in Time']"
+1020,['abstain'],['The Way Way Back']
+1040,['abstain'],['The Flying Saucer']
+1060,['machinegunmccain'],['Machine Gun McCain']
+1080,['abstain'],['Geography Club']
+1100,['abstain'],['The Last Outpost']
+1120,['abstain'],['The Revisionaries']
+1140,['onecrazysummer'],['One Crazy Summer']
+1160,"['thestepfather', 'promnight']","['Prom Night', 'The Stepfather']"
+1180,['thedebt'],['The Debt']
+1200,['abstain'],['The Letter']
+1220,"['clearhistory', 'adventureland', 'paul', 'superbad', 'thedaytrippers']","['Superbad', 'Paul', 'Adventureland', 'Clear History', 'The Daytrippers']"
+1240,['abstain'],['The X from Outer Space']
+1260,['abstain'],['Across the Tracks']
+1280,"['theguru', 'partygirl']","['The Guru', 'Party Girl']"
+1300,"['pan', 'hunger']","['Hunger', 'Pan']"
+1320,"['inmyskin', 'dontlookback', 'darktouch']","[""Don't Look Back"", 'In My Skin', 'Dark Touch']"
+1340,['abstain'],['The Cry of the Owl']
+1360,['abstain'],['Desert Bloom']
+1380,['abstain'],['Venus Wars']
+1400,"['destricted', 'drawingrestraint9']","['Destricted', 'Drawing Restraint 9']"
+1420,['headon'],['Head On']
+1440,"['iancarmichael', 'jonheder', 'billybobthornton']","['Billy Bob Thornton', 'Jon Heder']"
+1460,['martinshort'],['Martin Short']
+1480,"['johncandy', 'evagabor', 'bobnewhart']","['John Candy', 'Bob Newhart', 'Eva Gabor']"
+1500,"['reisakuma', 'minamitakayama', 'kappeiyamaguchi']","['Kappei Yamaguchi', 'Rei Sakuma', 'Minami Takayama']"
+1520,"['lukewilson', 'jessicasimpson']","['Luke Wilson', 'Jessica Simpson']"
+1540,"['shabanaazmi', 'ompuri', 'patrickswayze']","['Patrick Swayze', 'Om Puri', 'Shabana Azmi']"
+1560,"['erikaokuda', 'tadanobuasano']","['Tadanobu Asano', 'Erika Okuda']"
+1580,['bettyschneider'],['Betty Schneider']
+1600,"['nathaliecox', 'gemmachan', 'johnlloydfillingham', 'adarbeck']","['Nathalie Cox', 'Adar Beck', 'Gemma Chan', 'John Lloyd Fillingham']"
+1620,"['josephfiennes', 'andyserkis', 'briancox', 'seujorge', 'garylewis', 'jonnyleemiller', 'damianlewis']","['Andy Serkis', 'Jonny Lee Miller', 'Gary Lewis']"
+1640,"['danadelany', 'willemdafoe', 'susansarandon']","['Willem Dafoe', 'Susan Sarandon', 'Dana Delany']"
+1660,"['jamieleecurtis', 'gregorypeck']","['Jamie Lee Curtis', 'Gregory Peck']"
+1680,['joaquinphoenix'],['Joaquin Phoenix']
+1700,"['doloresgray', 'genekelly', 'dandailey', 'cydcharisse']","['Gene Kelly', 'Cyd Charisse', 'Dan Dailey', 'Dolores Gray']"
+1720,"['heathergraham', 'alancumming', 'dannyhuston', 'gilliananderson']","['Danny Huston', 'Heather Graham', 'Gillian Anderson', 'Alan Cumming']"
+1740,['tildaswinton'],['Tilda Swinton']
+1760,"['jasondohring', 'joshhammond', 'randyquaid', 'shanejohnson']","['Randy Quaid', 'Jason Dohring', 'Shane Johnson', 'Josh Hammond']"
+1780,"['cecilkellaway', 'glennford', 'eleanorparker', 'rogermoore']","['Roger Moore', 'Eleanor Parker', 'Glenn Ford', 'Cecil Kellaway']"
+1800,"['ferdinandosarmi', 'massimogirotti']","['Massimo Girotti', 'Ferdinando Sarmi']"
+1820,"['suzannesnyder', 'grantcramer']","['Suzanne Snyder', 'Grant Cramer']"
+1840,"['jimcaviezel', 'jenniferlopez', 'jeremysisto']","['Jim Caviezel', 'Jennifer Lopez', 'Jeremy Sisto']"
+1860,['timothydalton'],['Timothy Dalton']
+1880,"['gwynethpaltrow', 'mariedressler', 'katebeckinsale', 'alancumming', 'markstrong']",['Marie Dressler']
+1900,['alpacino'],['Al Pacino']
+1920,['jasonomara'],"[""Jason O'Mara""]"
+1940,"['kathleenquinlan', 'kurtrussell']","['Kurt Russell', 'Kathleen Quinlan']"
+1960,"['bjrnsundquist', 'marietheisen']","['Bjørn Sundquist', 'Marie Theisen']"
+1980,"['robinwilliams', 'annettebening', 'jessweixler', 'edharris']","['Ed Harris', 'Robin Williams', 'Annette Bening', 'Jess Weixler']"
+2000,"['gretagarbo', 'johngilbert', 'lewisstone']","['Greta Garbo', 'Lewis Stone', 'John Gilbert']"
