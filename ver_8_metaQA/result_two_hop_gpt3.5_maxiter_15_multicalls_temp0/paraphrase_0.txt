@@ -1,0 +1,315 @@
+
+
+
+Qid:20
+Question :What genres do the films authored by [Rowland Barber] belong to?GT entity:['Rowland Barber']
+************************************Iteration:0***********************************
+Statement : I need to look around the given entities. First, I need the relation list actually linked with the entity.
+Helper function : getRelation['Rowland Barber']
+[User]
+Execution result :
+Relations_list["rowland_barber"] = ['~written_by']
+************************************Iteration:1***********************************
+Statement : Now, let's look at what films Rowland Barber directed.
+Helper function : exploreKG['Rowland Barber']=['~written_by']
+[User]
+Execution result :
+['rowland_barber', '~written_by', "the_night_they_raided_minsky's"]
+************************************Iteration:2***********************************
+Statement : According to the evidence, Rowland Barber directed "The Night They Raided Minsky's."
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['rowland_barber', '~written_by', "the_night_they_raided_minsky's"]]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["rowland_barber"] = ['~written_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['rowland_barber', '~written_by', "the_night_they_raided_minsky's"]]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim about the types of the movies. Try to look relation 'has_genre' of "the_night_they_raided_minsky's".
+************************************Iteration:3***********************************
+Statement: Alright. We need information about the genres of the film "The Night They Raided Minsky's."
+Helper function: getRelation["the_night_they_raided_minsky's"]
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:4***********************************
+Statement : To get the genres of the film "The Night They Raided Minsky's," I need to find the relations linked with the film.
+Helper function : getRelation["the_night_they_raided_minsky's"]
+[User]
+Execution result :
+Relations_list["the_night_they_raided_minsky's"] = ['written_by', 'has_genre', 'directed_by', 'release_year']
+************************************Iteration:5***********************************
+Statement : To get the genres of the film "The Night They Raided Minsky's," I need to explore the graph with the film and related relations.
+Helper function : exploreKG["the_night_they_raided_minsky's"]=['has_genre']
+[User]
+Execution result :
+["the_night_they_raided_minsky's", 'has_genre', 'comedy']
+************************************Iteration:6***********************************
+Statement : Now I have the genre of the film "The Night They Raided Minsky's" directed by Rowland Barber. The answer to the claim is as follows.
+['comedy']
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['rowland_barber', '~written_by', "the_night_they_raided_minsky's"], ["the_night_they_raided_minsky's", 'has_genre', 'comedy']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["rowland_barber"] = ['~written_by']
+Relations_list["the_night_they_raided_minsky's"] = ['written_by', 'has_genre', 'directed_by', 'release_year']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['rowland_barber', '~written_by', "the_night_they_raided_minsky's"], ["the_night_they_raided_minsky's", 'has_genre', 'comedy']]CASE COUNT:3
+[User]
+Execution result :
+Done!!
+
+
+Qid:40
+Question :Which screenwriter is credited for films featuring Giorgia Moll as an actress?GT entity:['Giorgia Moll']
+************************************Iteration:0***********************************
+Statement : I need the relations linked with the given entity.
+Helper function : getRelation['Giorgia Moll']
+[User]
+Execution result :
+Relations_list["giorgia_moll"] = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement : First, to solve the claim, I have to know the films Giorgia Moll starred in.
+Helper function : exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+Execution result :
+['giorgia_moll', '~starred_actors', 'the_quiet_american']
+************************************Iteration:2***********************************
+Statement : Now I can answer the claim. The film 'The Quiet American' features Giorgia Moll as an actress.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['giorgia_moll', '~starred_actors', 'the_quiet_american']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["giorgia_moll"] = ['~starred_actors']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['giorgia_moll', '~starred_actors', 'the_quiet_american']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim. Try to look relation 'written_by' of the_quiet_american.
+************************************Iteration:3***********************************
+Statement: Alright. We need information about the screenwriter of the film 'The Quiet American'.
+Helper function: exploreKG['the_quiet_american']=['written_by']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:4***********************************
+Statement : We need information about the screenwriter of the film 'The Quiet American'.
+Helper function : getRelation['the_quiet_american']
+[User]
+Execution result :
+Relations_list["the_quiet_american"] = ['release_year', 'starred_actors', 'has_tags', 'written_by', 'directed_by', 'in_language']
+************************************Iteration:5***********************************
+Statement : To find the screenwriter credited for the film 'The Quiet American', I need to explore the graph with the film and the 'written_by' relation.
+Helper function : exploreKG['the_quiet_american']=['written_by']
+[User]
+Execution result :
+['the_quiet_american', 'written_by', 'graham_greene'], ['the_quiet_american', 'written_by', 'joseph_l._mankiewicz']
+************************************Iteration:6***********************************
+Statement : Now I have the screenwriters credited for the film 'The Quiet American' featuring Giorgia Moll as an actress. The screenwriters are Graham Greene and Joseph L. Mankiewicz.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['giorgia_moll', '~starred_actors', 'the_quiet_american'], ['the_quiet_american', 'written_by', 'graham_greene'], ['the_quiet_american', 'written_by', 'joseph_l._mankiewicz']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["giorgia_moll"] = ['~starred_actors']
+Relations_list["the_quiet_american"] = ['release_year', 'starred_actors', 'has_tags', 'written_by', 'directed_by', 'in_language']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['giorgia_moll', '~starred_actors', 'the_quiet_american'], ['the_quiet_american', 'written_by', 'graham_greene'], ['the_quiet_american', 'written_by', 'joseph_l._mankiewicz']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim about the screenwriters of films acted by 'Giorgia Moll'. Try to look for relation '~starred_actors' of 'Giorgia Moll' to find more films she acted in, and then check the 'written_by' relation of those films.
+************************************Iteration:7***********************************
+Statement: Okay, I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:8***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:9***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:10***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:11***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:12***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:13***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:14***********************************
+Statement: I need to find more films that Giorgia Moll acted in to determine the screenwriters. To do this, I will explore the graph with the relation '~starred_actors' of Giorgia Moll.
+Helper function: exploreKG['Giorgia Moll']=['~starred_actors']
+
+
+Qid:60
+Question :Who directed the films in which Jacqueline Pearce acted?GT entity:['Jacqueline Pearce']
+************************************Iteration:0***********************************
+Statement : I need the relations linked with the given entity.
+Helper function : getRelation['Jacqueline Pearce']
+[User]
+Execution result :
+Relations_list["jacqueline_pearce"] = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement : Now, to find the films in which Jacqueline Pearce acted, I need to explore the graph from 'Jacqueline Pearce' with related relations.
+Helper function : exploreKG['Jacqueline Pearce']=['~starred_actors']
+[User]
+Execution result :
+['jacqueline_pearce', '~starred_actors', 'the_plague_of_the_zombies']
+************************************Iteration:2***********************************
+Statement : Now I get the films in which Jacqueline Pearce acted. The answer to the claim is as follows:
+['the_plague_of_the_zombies']
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['jacqueline_pearce', '~starred_actors', 'the_plague_of_the_zombies']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["jacqueline_pearce"] = ['~starred_actors']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['jacqueline_pearce', '~starred_actors', 'the_plague_of_the_zombies']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim. Try to look relation 'directed_by' of the_plague_of_the_zombies.
+************************************Iteration:3***********************************
+Statement: Alright. We need information about the director of the film "The Plague of the Zombies."
+Helper function: getRelation['the_plague_of_the_zombies']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:4***********************************
+Statement : We need to find the director of the film "The Plague of the Zombies."
+Helper function : getRelation['the_plague_of_the_zombies']
+[User]
+Execution result :
+Relations_list["the_plague_of_the_zombies"] = ['starred_actors', 'release_year', 'has_tags', 'directed_by', 'has_genre']
+************************************Iteration:5***********************************
+Statement : To find out who directed the film "The Plague of the Zombies," I need to explore the graph with the film and the related relations.
+Helper function : exploreKG['the_plague_of_the_zombies']=['directed_by']
+[User]
+Execution result :
+['the_plague_of_the_zombies', 'directed_by', 'john_gilling']
+************************************Iteration:6***********************************
+Statement : Now I have the information on who directed the film "The Plague of the Zombies," which Jacqueline Pearce acted in. The answer to the claim is as follows:
+['John Gilling']
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['jacqueline_pearce', '~starred_actors', 'the_plague_of_the_zombies'], ['the_plague_of_the_zombies', 'directed_by', 'john_gilling']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["jacqueline_pearce"] = ['~starred_actors']
+Relations_list["the_plague_of_the_zombies"] = ['starred_actors', 'release_year', 'has_tags', 'directed_by', 'has_genre']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['jacqueline_pearce', '~starred_actors', 'the_plague_of_the_zombies'], ['the_plague_of_the_zombies', 'directed_by', 'john_gilling']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim. Try to look for the relation '~starred_actors' of other films acted by Jacqueline Pearce to determine their directors.
+************************************Iteration:7***********************************
+Statement: Okay, we need to find the directors of other films in which Jacqueline Pearce acted. To do this, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['Jacqueline Pearce']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:8***********************************
+Statement: We need to find the directors of other films in which Jacqueline Pearce acted. To do this, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['the_plague_of_the_zombies']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:9***********************************
+Statement: To find the directors of other films in which Jacqueline Pearce acted, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['the_plague_of_the_zombies']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:10***********************************
+Statement: To find the directors of other films in which Jacqueline Pearce acted, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['Jacqueline Pearce']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:11***********************************
+Statement: To find the directors of other films in which Jacqueline Pearce acted, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['Jacqueline Pearce']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:12***********************************
+Statement: To find the directors of other films in which Jacqueline Pearce acted, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['Jacqueline Pearce']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:13***********************************
+Statement: To find the directors of other films in which Jacqueline Pearce acted, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['Jacqueline Pearce']=['~starred_actors']
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:14***********************************
+Statement: To find the directors of other films in which Jacqueline Pearce acted, I will explore the graph with the related relation for each film.
+Helper function: exploreKG['Jacqueline Pearce']=['~starred_actors']
+
+
+Qid:80
+Question :Which films share the same screenwriter as [The Ambushers]?GT entity:['The Ambushers']
+************************************Iteration:0***********************************
+Statement : I need the relations linked with the given entity.
+Helper function : getRelation['The Ambushers']
+[User]
+Execution result :
+Relations_list["the_ambushers"] = ['release_year', 'has_genre', 'starred_actors', 'written_by']
+************************************Iteration:1***********************************
+Statement : First, to solve the claim, I have to know the screenwriter of ‘The Ambushers’.
+Helper function : exploreKG['The Ambushers']=['written_by']
+[User]
+Execution result :
+['the_ambushers', 'written_by', 'donald_hamilton']
+************************************Iteration:2***********************************
+Statement : Now I can answer the claim. The screenwriter of 'The Ambushers' is Donald Hamilton.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['the_ambushers', 'written_by', 'donald_hamilton']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["the_ambushers"] = ['release_year', 'has_genre', 'starred_actors', 'written_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['the_ambushers', 'written_by', 'donald_hamilton']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim. Try to look relation '~written_by' of donald_hamilton.
+************************************Iteration:3***********************************
+Statement : Okay, I need to find films written by Donald Hamilton. To find the films, I need relations linked with the screenwriter.
+Helper function : getRelation['donald_hamilton']
+[User]
+Execution result :
+Relations_list["donald_hamilton"] = ['~written_by']
+************************************Iteration:4***********************************
+Statement : To get the films written by Donald Hamilton, I need to explore the graph with the screenwriter and related relations.
+Helper function : exploreKG['donald_hamilton']=['~written_by']
+[User]
+Execution result :
+['donald_hamilton', '~written_by', 'the_violent_men'], ['donald_hamilton', '~written_by', 'the_big_country'], ['donald_hamilton', '~written_by', 'the_ambushers'], ['donald_hamilton', '~written_by', 'the_silencers'], ['donald_hamilton', '~written_by', 'the_wrecking_crew']
+************************************Iteration:5***********************************
+Statement : Now I get the films written by Donald Hamilton. The films written by Donald Hamilton are 'The Violent Men', 'The Big Country', 'The Ambushers', 'The Silencers', and 'The Wrecking Crew'.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['the_ambushers', 'written_by', 'donald_hamilton'], ['donald_hamilton', '~written_by', 'the_violent_men'], ['donald_hamilton', '~written_by', 'the_big_country'], ['donald_hamilton', '~written_by', 'the_ambushers'], ['donald_hamilton', '~written_by', 'the_silencers'], ['donald_hamilton', '~written_by', 'the_wrecking_crew']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["the_ambushers"] = ['release_year', 'has_genre', 'starred_actors', 'written_by']
+Relations_list["donald_hamilton"] = ['~written_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['the_ambushers', 'written_by', 'donald_hamilton'], ['donald_hamilton', '~written_by', 'the_violent_men'], ['donald_hamilton', '~written_by', 'the_big_country'], ['donald_hamilton', '~written_by', 'the_ambushers'], ['donald_hamilton', '~written_by', 'the_silencers'], ['donald_hamilton', '~written_by', 'the_wrecking_crew']]CASE COUNT:3
+[User]
+Execution result :
+Done!!

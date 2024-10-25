@@ -1,0 +1,161 @@
+
+
+
+Qid:20
+Question :Who were the cast members in movies helmed by the director of [Flickering Lights]?GT entity:['Flickering Lights']
+************************************Iteration:0***********************************
+Statement : I need the relations linked with the given entity.
+Helper function : getRelation['Flickering Lights']
+[User]
+Execution result :
+Relations_list["flickering_lights"] = ['has_tags', 'in_language', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+************************************Iteration:1***********************************
+Statement : First, to solve the claim, I have to know the director of the film 'Flickering Lights'.
+Helper function : exploreKG['Flickering Lights']=['directed_by']
+[User]
+Execution result :
+['flickering_lights', 'directed_by', 'anders_thomas_jensen']
+************************************Iteration:2***********************************
+Statement : Now I can answer the claim. The director of 'Flickering Lights' is Anders Thomas Jensen.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['flickering_lights', 'directed_by', 'anders_thomas_jensen']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["flickering_lights"] = ['has_tags', 'in_language', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['flickering_lights', 'directed_by', 'anders_thomas_jensen']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim. Try to look relation '~directed_by' of anders_thomas_jensen to find the films he directed, and then relation 'starred_actors' of those films to find the actors.
+************************************Iteration:3***********************************
+Statement : Okay, I need films directed by Anders Thomas Jensen. To find the films, I need relations linked with the director.
+Helper function : getRelation['anders_thomas_jensen']
+[User]
+Execution result :
+Relations_list["anders_thomas_jensen"] = ['~has_tags', '~directed_by', '~written_by']
+************************************Iteration:4***********************************
+Statement : To get the films directed by Anders Thomas Jensen, I need to explore the graph with the director and related relations.
+Helper function : exploreKG['anders_thomas_jensen']=['~directed_by']
+[User]
+Execution result :
+['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"]
+************************************Iteration:5***********************************
+Statement : According to the evidence, Anders Thomas Jensen directed 'Flickering Lights', 'The Green Butchers', and "Adam's Apples".
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['flickering_lights', 'directed_by', 'anders_thomas_jensen'], ['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"]]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["flickering_lights"] = ['has_tags', 'in_language', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["anders_thomas_jensen"] = ['~has_tags', '~directed_by', '~written_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['flickering_lights', 'directed_by', 'anders_thomas_jensen'], ['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"]]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim about who starred in films directed by Anders Thomas Jensen. Try to look at the relation 'starred_actors' of 'the_green_butchers' and the relation 'starred_actors' of "adam's_apples".
+************************************Iteration:6***********************************
+Statement : Alright. We need information about the actors in the films directed by Anders Thomas Jensen.
+Helper function : exploreKG['the_green_butchers']=['starred_actors'] ## exploreKG["adam's_apples"]=['starred_actors']
+[User]
+Execution result :
+['the_green_butchers', 'starred_actors', 'mads_mikkelsen'], ['the_green_butchers', 'starred_actors', 'line_kruse'], ['the_green_butchers', 'starred_actors', 'nikolaj_lie_kaas']
+["adam's_apples", 'starred_actors', 'mads_mikkelsen'], ["adam's_apples", 'starred_actors', 'ulrich_thomsen']
+************************************Iteration:7***********************************
+Statement : Now I get the actors in the films directed by Anders Thomas Jensen. The answer to the claim is as follows:
+['Mads Mikkelsen', 'Line Kruse', 'Nikolaj Lie Kaas', 'Ulrich Thomsen']
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['flickering_lights', 'directed_by', 'anders_thomas_jensen'], ['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"], ['the_green_butchers', 'starred_actors', 'mads_mikkelsen'], ['the_green_butchers', 'starred_actors', 'line_kruse'], ['the_green_butchers', 'starred_actors', 'nikolaj_lie_kaas'], ["adam's_apples", 'starred_actors', 'mads_mikkelsen'], ["adam's_apples", 'starred_actors', 'ulrich_thomsen']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["flickering_lights"] = ['has_tags', 'in_language', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["anders_thomas_jensen"] = ['~has_tags', '~directed_by', '~written_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['flickering_lights', 'directed_by', 'anders_thomas_jensen'], ['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"], ['the_green_butchers', 'starred_actors', 'mads_mikkelsen'], ['the_green_butchers', 'starred_actors', 'line_kruse'], ['the_green_butchers', 'starred_actors', 'nikolaj_lie_kaas'], ["adam's_apples", 'starred_actors', 'mads_mikkelsen'], ["adam's_apples", 'starred_actors', 'ulrich_thomsen']]CASE COUNT:3
+[User]
+Execution result :
+Done!!
+
+
+Qid:40
+Question :Who are the directors of movies that share the same writers as [Trust]?GT entity:['Trust']
+************************************Iteration:0***********************************
+Statement : I need the relations linked with the given entity.
+Helper function : getRelation['Trust']
+[User]
+Execution result :
+Relations_list["trust"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+************************************Iteration:1***********************************
+Statement : First, to solve the claim, I have to know the writers of the movie 'Trust'.
+Helper function : exploreKG['Trust']=['written_by']
+[User]
+Execution result :
+['trust', 'written_by', 'robert_festinger'], ['trust', 'written_by', 'andy_bellin'], ['trust', 'written_by', 'hal_hartley']
+************************************Iteration:2***********************************
+Statement : Now I can answer the claim. The writers of the movie 'Trust' are Robert Festinger, Andy Bellin, and Hal Hartley.
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['trust', 'written_by', 'robert_festinger'], ['trust', 'written_by', 'andy_bellin'], ['trust', 'written_by', 'hal_hartley']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["trust"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['trust', 'written_by', 'robert_festinger'], ['trust', 'written_by', 'andy_bellin'], ['trust', 'written_by', 'hal_hartley']]CASE COUNT:1
+[User]
+Execution result :
+: We need more information to answer the claim. Try to look relation '~written_by' of robert_festinger, relation '~written_by' of andy_bellin, and relation '~written_by' of hal_hartley to find the films they wrote. Then, look for the relation 'directed_by' of those films to find their directors.
+************************************Iteration:3***********************************
+Statement : Okay, I need films written by Robert Festinger, Andy Bellin, and Hal Hartley. To find the films, I need relations linked with the writers.
+Helper function : getRelation['robert_festinger'] ## getRelation['andy_bellin'] ## getRelation['hal_hartley']
+[User]
+Execution result :
+Relations_list["robert_festinger"] = ['~written_by']
+Relations_list["andy_bellin"] = ['~written_by']
+Relations_list["hal_hartley"] = ['~has_tags', '~directed_by', '~written_by']
+************************************Iteration:4***********************************
+Statement : To get the films written by Robert Festinger and Andy Bellin, I need to explore the graph with each writer and related relations.
+Helper function : exploreKG['robert_festinger']=['~written_by'] ## exploreKG['andy_bellin']=['~written_by']
+[User]
+Execution result :
+['robert_festinger', '~written_by', 'in_the_bedroom'], ['robert_festinger', '~written_by', 'trust']
+['andy_bellin', '~written_by', 'lovelace'], ['andy_bellin', '~written_by', 'trust']
+************************************Iteration:5***********************************
+Statement : To get the directors of the movies written by Robert Festinger and Andy Bellin, I need to find the relation 'directed_by' of these films.
+Helper function : getRelation['in_the_bedroom'] ## getRelation['trust'] ## getRelation['lovelace']
+[User]
+Execution result :
+Relations_list["in_the_bedroom"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["trust"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["lovelace"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+************************************Iteration:6***********************************
+Statement : To get the directors of the movies written by Robert Festinger and Andy Bellin, I need to explore the graph with each film and related relations.
+Helper function : exploreKG['in_the_bedroom']=['directed_by'] ## exploreKG['trust']=['directed_by'] ## exploreKG['lovelace']=['directed_by']
+[User]
+Execution result :
+['in_the_bedroom', 'directed_by', 'todd_field']
+['trust', 'directed_by', 'david_schwimmer'], ['trust', 'directed_by', 'hal_hartley']
+['lovelace', 'directed_by', 'rob_epstein'], ['lovelace', 'directed_by', 'jeffrey_friedman']
+************************************Iteration:7***********************************
+Statement : Now I get the directors of the movies written by Robert Festinger and Andy Bellin. The answer to the claim is as follows:
+- For Robert Festinger's movie 'In the Bedroom': Todd Field
+- For Andy Bellin's movie 'Trust': David Schwimmer, Hal Hartley
+- For Andy Bellin's movie 'Lovelace': Rob Epstein, Jeffrey Friedman
+
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['trust', 'written_by', 'robert_festinger'], ['trust', 'written_by', 'andy_bellin'], ['trust', 'written_by', 'hal_hartley'], ['robert_festinger', '~written_by', 'in_the_bedroom'], ['robert_festinger', '~written_by', 'trust'], ['andy_bellin', '~written_by', 'lovelace'], ['andy_bellin', '~written_by', 'trust'], ['in_the_bedroom', 'directed_by', 'todd_field'], ['trust', 'directed_by', 'david_schwimmer'], ['trust', 'directed_by', 'hal_hartley'], ['lovelace', 'directed_by', 'rob_epstein'], ['lovelace', 'directed_by', 'jeffrey_friedman']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["trust"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["robert_festinger"] = ['~written_by']
+Relations_list["andy_bellin"] = ['~written_by']
+Relations_list["hal_hartley"] = ['~has_tags', '~directed_by', '~written_by']
+Relations_list["in_the_bedroom"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["trust"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Relations_list["lovelace"] = ['has_tags', 'written_by', 'release_year', 'starred_actors', 'has_genre', 'directed_by']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['trust', 'written_by', 'robert_festinger'], ['trust', 'written_by', 'andy_bellin'], ['trust', 'written_by', 'hal_hartley'], ['robert_festinger', '~written_by', 'in_the_bedroom'], ['robert_festinger', '~written_by', 'trust'], ['andy_bellin', '~written_by', 'lovelace'], ['andy_bellin', '~written_by', 'trust'], ['in_the_bedroom', 'directed_by', 'todd_field'], ['trust', 'directed_by', 'david_schwimmer'], ['trust', 'directed_by', 'hal_hartley'], ['lovelace', 'directed_by', 'rob_epstein'], ['lovelace', 'directed_by', 'jeffrey_friedman']]CASE COUNT:3
+[User]
+Execution result :
+Done!!

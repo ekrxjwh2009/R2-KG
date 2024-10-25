@@ -255,7 +255,7 @@ if __name__ == "__main__":
     parser.add_argument("subagent", type=str, default="7shot")
     args = parser.parse_args()
     
-    save_path = f"./result_1by1_with_subagent_4o"
+    save_path = f"./result_1by1_with_subagent_3.5"
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     

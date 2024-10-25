@@ -179,7 +179,14 @@ def getRelations(helper_str):
     except:
         return state,"You gave wrong format of getRelations() function. Follow the format of examples."
 
-
+def exploreKGs(helper_str):
+    triples= []
+    result_prompt = ''
+    try: 
+        ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
+        relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+    
+    
 def exploreKGs(helper_str):
     triples= []
     result_prompt = ''
