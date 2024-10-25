@@ -40,7 +40,7 @@ class OpenAIBot:
 
         try:
             # Make a request to the API using the chat-based endpoint with conversation context
-            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.3, top_p = 0.1)
+            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.0, top_p = 0.1)
             # Extract the response
             #print(response)
             assistant_response = response.choices[0].message.content.strip()
@@ -260,7 +260,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     #save_path = f"./result"
-    save_path = f"result_{args.type}_{args.model}_maxiter_{args.num_iter}"
+    save_path = f"result_{args.type}_{args.model}_maxiter_{args.num_iter}_multicalls_temp0"
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     
@@ -318,9 +318,10 @@ if __name__ == "__main__":
                 
                 f.write(f"\n\n\nQid:{qid}\nQuestion :{q}")
                 f.write(f"GT entity:{entities}")
+                print(f"Paraphrased Claim:{q}")
                 print(f"GT entity:{entities}")
                 
-                prompt = prompts.main_agent_1by1_with_sub.replace('<<<<CLAIM>>>>', q).replace('<<<<GT_ENTITY>>>', str(entities))
+                prompt = prompts.main_agent_with_sub.replace('<<<<CLAIM>>>>', q).replace('<<<<GT_ENTITY>>>', str(entities))
                 
                 prediction, iter_num = reasoning(question,prompt, label,f, sub_prompt)
                 iter_num_list.append(iter_num)
@@ -328,7 +329,7 @@ if __name__ == "__main__":
             
                 f.close()
                 
-        print(f"Answer list:{answer_list}")         
+        #print(f"Answer list:{answer_list}")         
         ###############ensemble
         abs_cnt, co_cnt, wr_cnt =0,0,0
         for pred in answer_list:

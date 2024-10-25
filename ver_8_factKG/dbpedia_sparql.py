@@ -342,9 +342,10 @@ def getTriplesFromLeafNode(leafNode, dataset = "all"):
             
             triples.append(triple_elem)
     except:
-        print(leafNode)
+        #print(leafNode)
         # print(query)
         # exit(0)
+        pass
     
     # Convert each inner list to a tuple and use a set to remove duplicates
     unique_list = list(set(tuple(i) for i in triples))
@@ -384,9 +385,10 @@ def getTriplesFromEntity(entity, dataset = "all"):
             triples.append(triple_elem)
             # print(triple_elem)
     except:
-        print(entity)
+        #print(entity)
         # print(query)
         # exit(0)
+        pass
     
     # Convert each inner list to a tuple and use a set to remove duplicates
     unique_list = list(set(tuple(i) for i in triples))

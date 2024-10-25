@@ -478,20 +478,33 @@ Helper function : exploreKG["\"Punjab, Pakistan\""]=['location']) ## exploreKG["
 [User]
 Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
 [ChatGPT]
-Statement : There are many airports in 'Punjab, Pakistan', and the operator of 'Jinnah_International_Airport' is 'Pakistan_Civil_Aviation_Authority'. Here, we have to find the proper relation to find the operator of the airports.
-Helper function : getRelation['Allama_Iqbal_International_Airport'] ## getRelation['Faisalabad_International_Airport'] ## getRelation('Multan_International_Airport')
+Statement : According to the triples, Allama_Iqbal_International_Airport, Faisalabad_International_Airport,Multan_International_Airport are located in the Punjab, Pakistan. So the claim is true.
+Helper function : Verification[]
 [User]
-Execution result : Relation_list['Allama_Iqbal_International_Airport'] = ['operator', 'operatingOrganisation', 'hub'], Relation_list['Faisalabad_International_Airport'] = ['operator', 'owner'], Relation_list('Multan_International_Airport') = ['operator', 'owner']
+Execution result : You need more information to verify the claim. Try to look triples of Jinnah_International_Airport linked by 'operator', 'ownerOper'
 [ChatGPT]
-Statement : To find the operator of the airports, I need to explore the graph for each airport.
+Statement : Also, to find the government agency of 'Jinnah_International_Airport', look triples linked by 'operator', 'ownerOper'.
+Helper function : exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
+[User]
+Execution result : ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
+[ChatGPT]
+Statement : There are three aiports in Punjab, Pakistan. We need relations of those three airpots. First,let's look Allama_Iqbal_International_Airport's relations.
+Helper function : getRelation['Allama_Iqbal_International_Airport'] ## getRelation['Faisalabad_International_Airport'] ## getRelation['FMultan_International_Airport']
+[User]
+Execution result : 
+Relation_list['Allama_Iqbal_International_Airport'] = ['operator', 'operatingOrganisation', 'hub']
+Relation_list['Faisalabad_International_Airport'] = ['operator', 'owner']
+Relation_list('Multan_International_Airport') = ['operator', 'owner']
+[ChatGPT]
+Statement : To find the operator of the airports, I need to explore the graph for each airports related to operator.
 Helper function : exploreKG['Allama_Iqbal_International_Airport']=['operator', 'operatingOrganisation'] ## exploreKG['Faisalabad_International_Airport']=['operator'] ## exploreKG['Multan_International_Airport']=['operator']
 [User]
 Execution result : ['Allama_Iqbal_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Allama_Iqbal_International_Airport', 'operatingOrganisation', 'Pakistan_Civil_Aviation_Authority'], ['Faisalabad_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Multan_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
 [ChatGPT]
 Statement : Since all of the airports' operator is government agency 'Pakistan_Civil_Aviation_Authority' and also the operator of 'Jinnah International Airport', the claim is True.
 Helper function : Verification[]
-[User]
-Execution result : True
+
+
 
 Example 2)
 Claim: Tim Brooke-Taylor starred as a fictional character, which was first aired on 10/03/1983 and was broadcast by STV.
@@ -511,7 +524,7 @@ Execution result : ["\"1983-10-03\"", '~firstAired', 'Terrahawks'], ["\"1983-10-
 Statement : There is the fictional character 'Bananaman' which satisfy for first aired date and broadcast company.
 Helper function : Verification[]
 [User]
-Execution result : It is impossible to determine the claim because information about the fictional character created by Joe Quesada being broadcast and starred cannot be found in the triple sets. Try to look relation '~starring' linked with Tim_Brooke-Taylor.
+Execution result : You need more information to verify the claim. Try to look relation '~starring' linked with Tim_Brooke-Taylor.
 [ChatGPT]
 Statement : Alright. We need information about Tim_Brooke-Taylor to verify the claim.
 Helper function : exploreKG["Tim_Brooke-Taylor"]=['~starring']
@@ -520,8 +533,7 @@ Execution result : ['Tim_Brooke-Taylor', '~starring', 'How_to_Irritate_People'],
 [ChatGPT]
 Statement : There is the fictional character 'Bananaman' which satisfy all the information in the claim.
 Helper function : Verification[]
-[User]
-Execution result : True
+
 
 Example 3)
 Claim: Samsung is located in São Paulo.
@@ -550,8 +562,6 @@ Execution result : ['São_Paulo', '~capital', 'São_Paulo_Province'], ['São_Pau
 [ChatGPT]
 Statement : Since we cannot verify "São_Paulo" is located in 'Korea' or 'Seoul' by execution result, given claim is False.
 Helper function : Verifiation[]
-[User]
-Execution result : False
 
 
 Now, it's your turn. Your response must have same form with upper examples.

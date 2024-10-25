@@ -11,8 +11,8 @@ client = OpenAI(api_key=openai.api_key)
 
 def paraphrase(claim):
     
-    engine="gpt-3.5-turbo-0125"
-    #engine = "gpt-4o-mini-2024-07-18"
+    #engine="gpt-3.5-turbo-0125"
+    engine = "gpt-4o-mini-2024-07-18"
 
     conversation = [{"role": "system", "content": "You are a helpful assistant."}]
     prompt = prompts.paraphrase_prompt.replace('<<<<CLAIM>>>>', claim)
@@ -22,7 +22,7 @@ def paraphrase(claim):
         try :  
             response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.1, top_p = 0.1)
             assistant_response = response.choices[0].message.content.strip()
-            print(assistant_response)
+            #print(assistant_response)
 
             pattern = r'\d+\.\s*(.*)'
             matches = re.findall(pattern, assistant_response)

@@ -1,0 +1,9 @@
+
+
+
+Total sample:39, Total_Correct:19, Total_Wrong:0, Total_abstain:20
+mrtric1:0.48717948717948717
+ mertric2:1.0
+ metric3:1.0avg iter:8.76923076923077
+ max_iter:14
+ min_iter:2
