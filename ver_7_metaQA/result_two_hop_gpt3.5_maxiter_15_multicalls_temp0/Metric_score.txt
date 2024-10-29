@@ -1,0 +1,9 @@
+
+
+
+Total sample:100, Total_Correct:46.89500846516569, Total_Wrong:4.503113553113553, Total_abstain:7
+mrtric1:0.93
+ mertric2:0.5042474028512439
+ metric3:0.45582682701131333avg iter:6.12
+ max_iter:14
+ min_iter:4
