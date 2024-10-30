@@ -98,17 +98,16 @@ You can use below helper functions to find the evidence for finding labels.
 <Helper functions>
 1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
 2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
-3.Verification[]: If you can answer the claim with enought evidence, call this function. If [User] requires more information, you need to collect more triples in following steps.
+3.Verification[]: Call you think you collected enough evidence to answer the claim. 
+Based on the evidence gathered so far, [User] will answer labels of the claim. If [User] think the evidence is insufficient, [User] will ask you to collect more evidence. If [User] say the evidence is insufficient, continue the evidence collection process using a different helper function.
 
 You must follow the exact format of the given helper function.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
 You have to use proper helper functions to find proper information to verify the given claim.
-Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement : and Helper function : ' task.
-Importantly, you have to use inverse relation if you need. For example, if you want to find films starred by certain actors (when only actors were given), you have to use 'starred_actors' relation.
-
-Here are some examples.
+Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Importantly, Do not change the format of the entity or relation including '~'.
 
 Example 1)
 Claim: what genres do the films that share actors with [Man of Steel] fall under?
@@ -125,12 +124,7 @@ Helper function : exploreKG['Man of Steel']=['starred_actors']
 [User]
 Execution result : ['Man of Steel', 'starred_actors', 'michael_shannon'], ['Man of Steel', 'starred_actors', 'henry_cavill'], ['Man of Steel', 'starred_actors', 'amy_adams'], ['Man of Steel', 'starred_actors', 'diane_lane']
 [ChatGPT]
-Statemernt : Now I can answer the claim. The starred_actors of Man of Steel are michael_shannon,henry_cavill,amy_adams,diane_lane.
-Helper function : Verification[]
-[User]
-Execution result : Evidence is not enough to answer the genres of the films of share actors of Man of Steel. Try to look around the these "michael_shannon, henry_cavill, amy_adams, diane_lane" stars.
-[ChatGPT]
-Statement : Okay, I need films starred by previous given actors. To find the films, I need relations linked with the actors.
+Statement : Now, I need films starred by michael_shannon, henry_cavill, amy_adams, diane_lane. To find the films, I need relations linked with the actors.
 Helper function : getRelation['michael_shannon'] ## getRelation['henry_cavill'] ## getRelation['amy_adams'] ## getRelation['diane_lane']
 [User]
 Execution result : Relation_list['michael_shannon'] = ['has_tags', 'starred_actors'], Relation_list['henry_cavill'] = ['starred_actors'], Relation_list['amy_adams'] = ['has_tags', 'starred_actors'], Relation_list['diane_lane'] = ['has_tags', 'starred_actors']
@@ -222,8 +216,8 @@ Given entity: <<<<GT_ENTITY>>>>
 
 sub_prompt = """
 You are the evaluator. I will show you a claim and a triple set extracted from a graph. 
-Based on the given triple set and relation list of each entity, find the proper labels for given question.
-If given triple sets are lack of information to verify the claim, give the the combination of entity and relation you need. You can refer the given relations list and choosed what relation information is more needed.
+Based on the given triple set and relation list of each entity, find proper labels for given question.
+If given triple sets are lack of information to verify the claim, give the the combination of entity and relation you need. You can refer the given relations list and choose what relation information is more needed.
 The triple set takes the form [Head, Relation, Tail], which means 'Head's Relation is Tail.' 
 If the relation starts with '~', it indicates a reverse relation, meaning 'Tail's relation is head.' 
 The following cases may arise: Choose one option from 'Executable ([list of labels])' or 'Not executable(Insufficient evidence)'.
@@ -232,7 +226,7 @@ Refer to the explanations of the two options below to answer the Statement and E
 
 
 <Cases> 
-1. If the triple sets are sufficient to determine the True/False of the claim --> Executable ([list of labels])
+1. If there is a sufficient triple set to answer the question, you must select all possible answers if multiple answers seem possible --> Executable ([list of possible answers])
 2. If the triple set is insufficient or ambiguos to determine the True/False of the claim --> Not executable (Insufficient evidence) 
 
 <Example 1>
@@ -303,6 +297,16 @@ Statement :  We need more information to answer the release time of the movies. 
 Evaluation : Not executable (Insufficient evidence)
 
 
+<Example 5>
+[User]
+Claim : In which films did [Roger Perry] perform as an actor?GT entity:['Roger Perry']?
+Triple sets : ['roger_perry', '~starred_actors', 'the_thing_with_two_heads']
+Relations of Entity :
+Relations_list["roger_perry"] = ['~starred_actors']
+[ChatGPT]
+Statement : The starred actors of the thing with two heads are roger perry.
+Evaluation : Executable(['roger_perry'])
+
 Now, it's your turn. Continue your 'Statement and Evaluation' task. Response must have same form with upper examples.
 [User]
 Claim : <<<<CLAIM>>>>
@@ -322,14 +326,14 @@ Claim : which movies have the same screenwriter of [The Ambushers]?
 [ChatGPT]
 1. Which films share the same screenwriter as [The Ambushers]?
 2. Which other movies were written by the screenwriter of [The Ambushers]?
-3. Could you identify the films that have the same screenwriter as [The Ambushers]?
+3. which movies have the same screenwriter of [The Ambushers]?
 
 <Example 2>
 [User]
 Claim : who are the actors in the films written by [John Travis]?
 [ChatGPT]
 1. Which actors appear in films written by [John Travis]?
-2. Could you provide the names of actors featured in movies scripted by [John Travis]?
+2. who are the actors in the films written by [John Travis]?
 3. Who are the cast members in the movies authored by screenwriter [John Travis]?
 
 <Example 3>
@@ -337,7 +341,7 @@ Claim : who are the actors in the films written by [John Travis]?
 Claim : what films does [Faye Wong] appear in?
 [ChatGPT]
 1. In which films does [Faye Wong] appear?
-2. Could you list the movies featuring [Faye Wong]?
+2. what films does [Faye Wong] appear in?
 3. Which films include [Faye Wong] in the cast?
 
 <Example 4>
@@ -345,7 +349,7 @@ Claim : what films does [Faye Wong] appear in?
 Claim : what is the primary language in the film [Blackboards]?
 [ChatGPT]
 1. What is the main language spoken in the film [Blackboards]?
-2. Could you identify the primary language used in [Blackboards]?
+2. what is the primary language in the film [Blackboards]?
 3. Which language is predominantly featured in the movie [Blackboards]?
 
 <Example 5>
@@ -353,7 +357,7 @@ Claim : what is the primary language in the film [Blackboards]?
 Claim : the films written by [Scott Lobdell] were released in which years?
 [ChatGPT]
 1. In which years were the films written by [Scott Lobdell] released?
-2. Could you provide the release years for movies authored by [Scott Lobdell]?
+2. the films written by [Scott Lobdell] were released in which years?
 3. What are the release years of the films scripted by [Scott Lobdell]?
 
 <Example 6>
@@ -362,22 +366,22 @@ Claim : who are the writers that the directors of their films also directed [Aga
 [ChatGPT]
 1. Which writers have collaborated with directors who also directed [Agatha]?
 2. Who are the writers whose films were directed by directors who directed [Agatha]?
-3. Could you identify the writers whose works were directed by the directors of [Agatha]?
+3. who are the writers that the directors of their films also directed [Agatha]?
 
 <Example 7>
 [User]
 Claim : what are the languages spoken in the films whose actors also appear in [Pascali's Island]?
 [ChatGPT]
-1. Which languages are spoken in films featuring actors who also appear in [Pascali's Island]?
-2. Could you list the languages used in movies that include actors from [Pascali's Island]?
-3. What languages are spoken in the films that feature the same actors as [Pascali's Island]?
+1. In which languages are the films spoken where the actors also star in [Pascali's Island]?
+2. Which languages are spoken in other films with the same actors from [Pascali's Island]?
+3. what are the languages spoken in the films whose actors also appear in [Pascali's Island]?
 
 <Example 8>
 [User]
 Claim : when were the movies written by [Phillip Borsos] released?
 [ChatGPT]
 1. In which years were the movies written by [Phillip Borsos] released?
-2. Could you provide the release years for films authored by [Phillip Borsos]?
+2. when were the movies written by [Phillip Borsos] released?
 3. What are the release dates of the movies scripted by [Phillip Borsos]?
 
 Now, it's your turn. Continue your paraphrasing task. Response must have same form with upper examples.

@@ -51,7 +51,7 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
                     #sub_response = "We don't have enough evidence to verify the claim. You must extract more information from the graph data."
                     sub_response = sub_statement
                     case =1
-                    prediction = None
+                    prediction = sub_result
                     break
                 elif "(Complex claim)" in sub_result:
                     sub_response = "Done!! Abstain"
@@ -62,6 +62,7 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
                     sub_response = "Done!!"
                     prediction = sub_result.split('[')[1].split(']')[0][1:-1]
                     case = 3
+                    print(f"PREDICTION:{prediction}")
                     break  # Ensure the loop exits
 
             except Exception as e:

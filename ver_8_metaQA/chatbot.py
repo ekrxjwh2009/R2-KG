@@ -57,13 +57,13 @@ class OpenAIBot:
             print(f"OpenAI API returned an API Error: {e}")
             return f"OpenAI API returned an API Error: {e}"
             
-def reasoning(claim,initial_prompt, label, f, sub_prompt):
+def reasoning(claim,initial_prompt, label, f, sub_prompt, iter_limit):
             
-    engine="gpt-3.5-turbo-0125"         
-    #engine = "gpt-4o-mini-2024-07-18"
+    #engine="gpt-3.5-turbo-0125"         
+    engine = "gpt-4o-mini-2024-07-18"
     chatbot = OpenAIBot(engine, client)
 
-    iter_limit=15
+    
     gold_set =[]
     gold_relations =''
     for i in range(iter_limit):
@@ -133,8 +133,8 @@ def client_answer(claim,response, label, gold_set,gold_relations,f, sub_prompt):
         elif 'Verification' in helper_str:
             sub_answer, case, result = verification(claim,gold_set,gold_relations,f, sub_prompt)
             prompt += "\n" +sub_answer
-            
-            f.write(f"CASE COUNT:{case}")
+            prompt += "\n" + result
+            f.write(f"\nCASE COUNT:{case}\nSUB_RESPONSE{prompt}\nREAL LABEL:{label}")
             #return prompt, prediction, []
         else:
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
@@ -159,8 +159,8 @@ def split_functions(response):
     prompt=''
     try:
         response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
-        functions = response.split("Helper function : ")[1]
+        statement = response.split("Statement")[1].split("Helper function")[0]
+        functions = response.split("Helper function")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
         else :
@@ -291,7 +291,6 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", type=str, default="one_hop")
-    #parser.add_argument("--subagent", type=str, default="7shot")
     parser.add_argument("--num_iter", type = int, default = "15")
     parser.add_argument("--model", type = str, default= "gpt-3.5-turbo")
     args = parser.parse_args()
@@ -304,14 +303,7 @@ if __name__ == "__main__":
         file_pth = "/home/smjo/share_code/metaqa/data/threehop_test_set.jsonl"
     else:
         print("wrong argument")
-    ''''
-    if args.subagent == '7shot' : sub_prompt = prompts.sub_agent_7shot
-    elif args.subagent == '2option' : sub_prompt = prompts.sub_agent_2option
-    elif args.subagent == '2option_V2' : sub_prompt = prompts.sub_agent_2option_v2
-    elif args.subagent == '2option_beta' : sub_prompt = prompts.sub_agent_2option_beta
-    else:
-        print("Wrong argument")
-    '''
+
     sub_prompt = prompts.sub_prompt
 
     #save_path = f"./result"
@@ -365,7 +357,7 @@ if __name__ == "__main__":
                 
                 prompt = prompts.main_agent_with_sub.replace('<<<<CLAIM>>>>', q).replace('<<<<GT_ENTITY>>>', str(entities))
                 
-                prediction, iter_num = reasoning(question,prompt, label,f, sub_prompt)
+                prediction, iter_num = reasoning(question,prompt, label,f, sub_prompt, iter_limit = args.num_iter)
                 iter_num_list.append(iter_num)
                 predict_dict[p]=prediction
             
