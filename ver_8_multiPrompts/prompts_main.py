@@ -1,0 +1,600 @@
+pr_1 = """
+Your task is finding proper labels for given claim based on the graph data without your base knowledge.
+You can use one of the helper functions below to find the evidence for finding labels.
+
+Helper Functions
+1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
+2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
+3.Verification[]: If you can judge the claim as True or False give the answer. If [User] requires more information, you need to collect more triples in following steps.
+
+You must follow the exact format of the given helper function.
+
+Now, I will give you a claim and Given Entity that you can refer to.
+However, some of the entities needed in verification are not included in Given Entity.
+You have to use proper helper functions to find proper information to verify the given claim.
+Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Importantly, Do not change the format of the entity or relation including '~'.
+
+Example 1)
+Claim: The airport in Punjab, Pakistan is operated by the government agency of the Jinnah International Airport.
+Given entity: ["\"Punjab, Pakistan\"", "Jinnah_International_Airport"]
+
+[ChatGPT]
+Statement : I need to look around the the given entities. First, I need the relation list linked to Punjab, Pakistan
+Helper function : getRelation["\"Punjab, Pakistan\""] 
+[User]
+Execution result : Relation_list["\"Punjab, Pakistan\""] = ['s', 'divdab', 'state', '~location', 'birthPlace', 'placeOfBirth', 'rdf-schema#label', 'deathPlace', 'placeOfDeath', 'origin', 'mapCaption', 'country']
+ChatGPT]
+Statement : I need to look around the the given entities. Now, I need the relation list linked to Jinnah_International_Airport
+Helper function : getRelation["Jinnah_International_Airport"]
+[User]
+Execution result : Relation_list("Jinnah_International_Airport") = ['statYear', 'website', 'elevationF', 'stat2Data', 'r2LengthM', 'r1Number', 'stat1Data', '~targetAirport', 'icao', '~secondaryHubs', 'stat3Header', 'stat2Header', '~hubs', 'operator', 'imageWidth', 'airportManager', '~hubAirport', 'iata', 'type', 'r2Number', 'city', 'ownerOper', 'name', 'metricRwy', 'elevationM', 'hub', 'hypernym', '~headquarter', '~bases', '~origin', 'stat1Header', 'image2Width', 'runwayLength', 'icaoLocationIdentifier', 'owner', 'homepage', '22-rdf-syntax-ns#type', '~stopover', 'r1Surface', 'r1LengthM', 'subject', 'runwayDesignation', 'rdf-schema#label', '~wikiPageRedirects', 'image', 'stat3Data', '~location', 'location', '~target', '~headquarters', 'r2Surface', 'elevation', 'iataLocationIdentifier', 'runwaySurface', 'r2LengthF', 'r1LengthF', 'cityServed']
+[ChatGPT]
+Statement : Now, to find the airport located in Punjab, I need to explore the graph with "Punjab, Pakistan" related to location.     and related relations. Also, to find the government agency of 'Jinnah_International_Airport', I need to explore the graph too.
+Helper function : exploreKG["\"Punjab, Pakistan\""]=['~location'])
+[User]
+Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], 
+[ChatGPT]
+Statement : According to the triples, Allama_Iqbal_International_Airport, Faisalabad_International_Airport,Multan_International_Airport are located in the Punjab, Pakistan. So the claim is true.
+Helper function : Verification[]
+[User]
+Execution result : You need more information to verify the claim. Try to look triples of Jinnah_International_Airport linked by 'operator', 'ownerOper'
+[ChatGPT]
+Statement : Also, to find the government agency of 'Jinnah_International_Airport', look triples linked by 'operator', 'ownerOper'.
+Helper function : exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
+[User]
+Execution result : ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
+[ChatGPT]
+Statement : There are three aiports in Punjab, Pakistan. We need relations of those three airpots. First,let's look Allama_Iqbal_International_Airport's relations.
+Helper function : getRelation['Allama_Iqbal_International_Airport']
+[User]
+Execution result : 
+Relation_list['Allama_Iqbal_International_Airport'] = ['operator', 'operatingOrganisation', 'hub']
+[ChatGPT]
+Statement : Next,let's look Faisalabad_International_Airport's relations.
+Helper function : getRelation['Faisalabad_International_Airport']
+[User]
+Execution result : 
+Relation_list['Faisalabad_International_Airport'] = ['operator', 'owner']
+[ChatGPT]
+Statement : Next,let's look Multan_International_Airport's relations.
+Helper function : getRelation['FMultan_International_Airport']
+[User]
+Execution result : 
+Relation_list('Multan_International_Airport') = ['operator', 'owner']
+[ChatGPT]
+Statement : To find the operator of the airports, I need to explore the graph for each airports related to operator.
+Helper function : exploreKG['Allama_Iqbal_International_Airport']=['operator', 'operatingOrganisation'] 
+[User]
+Execution result : ['Allama_Iqbal_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Allama_Iqbal_International_Airport', 'operatingOrganisation', 'Pakistan_Civil_Aviation_Authority']
+[ChatGPT]
+Statement : Now, let's check the operator of Faisalabad_International_Airport
+Helper function : exploreKG['Faisalabad_International_Airport']=['operator']
+[User]
+Execution result : ['Faisalabad_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
+[ChatGPT]
+Statement : Now, let's check the operator of Multan_International_Airport
+Helper function : exploreKG['Multan_International_Airport']=['operator']
+[User]
+Execution result :['Multan_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
+[ChatGPT]
+Statement : Since all of the airports' operator is government agency 'Pakistan_Civil_Aviation_Authority' and also the operator of 'Jinnah International Airport', the claim is True.
+Helper function : Verification[]
+
+
+Example 2)
+Claim: Tim Brooke-Taylor starred as a fictional character, which was first aired on 10/03/1983 and was broadcast by STV.
+Given entity: ["\"1983-10-03\"", "\"STV\"", "Tim_Brooke-Taylor"]
+
+[ChatGPT]
+Statement : First, I need relations linked to Tim_Brooke-Taylor
+Helper function : getRelation["Tim_Brooke-Taylor"]
+[User]
+Execution result : 
+Relation_list('Tim_Brooke-Taylor') = ['birthName', '~voice', '~caption', '~author', 'hypernym', '22-rdf-syntax-ns#type', 'name', 'surname', 'placeOfBirth', 'description', 'genre', 'notableWork', 'dateOfBirth', 'birthDate', 'honorificSuffix', 'shortDescription', 'subject', 'title', 'nationality', '~before', '~voices', 'imdbId', 'spouse', 'rdf-schema#label', 'birthPlace', '~writer', '~after', 'years', 'givenName', 'birthYear', '~starring', '~creator', 'active']
+[ChatGPT]
+Statemnt : I need relation linked to 1983-10-03.
+Helper function : getRelation["\"1983-10-03\""] 
+[User]
+Execution result : 
+Relation_list["\"1983-10-03\""] = ['~deathDate', '~activeYearsStartDate', '~added', '~dateOfDeath', '~date', '~years', '~termStart', '~start', '~birthDate', '~establishedDate', '~released', '~openingDate', '~foundingDate', '~age', '~releaseDate', '~originalairdate', '~firstAired', '~dateOfBirth']
+[ChatGPT]
+Statemnt : I need relation linked to STV.
+Helper function : getRelation["\"STV\""] 
+[User]
+Execution result : 
+Relation_list["\"STV\""] = ['~title', '~sisterNames', '~tv', '~formerName', '~code', '~owner', '~undp', '~distributor', '~name', '~alt', '~formerNames', '~callLetters', '~iataLocationIdentifier', '~rdf-schema#label', '~agencyStationCode', '~callSign', '~broadcastedBy', '~channel', '~iata']
+[ChatGPT]
+Statement : To get the starred information about Tim Brooke-Taylor, I need triples linked with '~starring' with Tim Brooke-Taylor.
+Helper function : exploreKG["Tim_Brooke-Taylor"]=['~starring']
+[User]
+Execution result:
+['Tim_Brooke-Taylor', '~starring', 'How_to_Irritate_People'], ['Tim_Brooke-Taylor', '~starring', 'Broaden_Your_Mind'], ['Tim_Brooke-Taylor', '~starring', 'ISIRTA_songs'], ['Tim_Brooke-Taylor', '~starring', 'What_the_Dickens'], ['Tim_Brooke-Taylor', '~starring', 'Bananaman']
+[ChatGPT]
+Statement : From the triples, Tim Brooke Taylor starred on How_to_Irritate_People,Broaden_Your_Mind,ISIRTA_songs,What_the_Dickens,Bananaman. Now, let's check the first aired date of each program.
+Helper function : exploreKG["\"1983-10-03\""]=['~firstAired'] 
+[User]
+Execution reuslt:
+["\"1983-10-03\"", '~firstAired', 'Terrahawks'], ["\"1983-10-03\"", '~firstAired', 'Scarecrow_and_Mrs._King'], ["\"1983-10-03\"", '~firstAired', 'Orm_and_Cheep'], ["\"1983-10-03\"", '~firstAired', 'Watch_Mr._Wizard'], ["\"1983-10-03\"", '~firstAired', 'Where_in_the_World_(UK_game_show)'], ["\"1983-10-03\"", '~firstAired', 'Go_(game_show)'], ['"1983-10-03"', '~firstAired', 'Bananaman']
+[ChatGPT]
+Statement : From the triples, Bananman was first aired on 1983-10-03 which satisfy the claim. Now, I need to check if the Bananaman broadcast by STV.
+Helper function : exploreKG["\"STV\""]=['~broadcastedBy', '~channel']
+[User]
+Execution reuslt : 
+["\"STV\"", '~broadcastedBy', 'Bananaman'], ["\"STV\"", '~channel', 'Brain_Box']
+[ChatGPT]
+Statement : According to the triples, Bananman broadcast by STV and first starred on 1983-10-03 and Tim Brooke Taylor starred on. So the claim is True.
+Helper function : Verification[]
+
+
+Example 3)
+Claim: Samsung is located in São Paulo.
+Given entity: ["Samsung", "São_Paulo"]
+
+[ChatGPT]
+Statement : First, I need information about Samsung.
+Helper function : getRelation["Samsung"]
+[User]
+Execution result : 
+Relation_list["Samsung"] = ['numEmployees', 'keyPeople', 'industry', 'type', 'hypernym', 'subsidiary', 'logo', 'subject', 'foundation', 'product', '22-rdf-syntax-ns#type', 'name', 'netIncome', 'foundingDate', 'rdf-schema#label', 'revenue', 'homepage', 'subsid', 'location', 'foundingYear', 'keyPerson', 'products', 'numberOfEmployees']
+[ChatGPT]
+Statement : To know the location of Samsung, I need triples linked by 'location' with Samsung.
+Helper function : exploreKG["Samsung"]=['location']
+[User]
+Execution result :
+['Samsung', 'location', 'Korea'], ['Samsung', 'location', 'Seoul']
+[ChatGPT]
+Statement : According to the triples, Samsung is locate in Korea and Seoul. To check the relation with São Paulo, I need information about São Paulo.
+Helper function : getRelation["São_Paulo"] 
+[User]
+Execution result :
+Relation_list["São_Paulo"] = ['imageCaption', 'coordinatesRegion', '22-rdf-syntax-ns#type', '~capital', 'areaCityKm', 'establishedTitle', '~west', 'motto', '~before', 'populationRank', 'float', 'foundingDate', '~locationTown', 'subdivisionType', '~finalAssembly', 'populationTotalRanking', 'rainfall', '~location']
+[ChatGPT]
+Statement : Let's check what are located in São Paulo.
+Helper function : exploreKG["São_Paulo"]=['~location']
+[User]
+Execution result :
+['São_Paulo', '~location', '2009_Santos_FC_season'], ['São_Paulo', '~location', 'Vanguarda_Agro']
+[ChatGPT]
+Statement : It is not clear that Samsung is located in São Paulo. Let's check if "São_Paulo" is located in 'Korea' or 'Seoul'.I have to find the related location of "São_Paulo".
+Helper function : exploreKG["São_Paulo"]=['~capital', '~locationTown', '~location']
+[User]
+Execution result : ['São_Paulo', '~capital', 'São_Paulo_Province'], ['São_Paulo', '~locationTown', 'Ibirapuera_Auditorium], ['São_Paulo', '~location', '1972_São_Paulo_FC_season'], ['São_Paulo', '~location', '2013–14_in_Swiss_football']
+[ChatGPT]
+Statement : Since we cannot verify "São_Paulo" is located in 'Korea' or 'Seoul' by execution result, given claim is False.
+Helper function : Verifiation[]
+
+
+
+Now, it's your turn. Your response must have same form with upper examples.
+Claim: <<<<CLAIM>>>>
+Given entity: <<<<GT_ENTITY>>>>
+
+"""
+
+pr_2 = """ 
+Your task is finding proper labels for given claim based on the graph data without your base knowledge.
+You can use one of the helper functions below to find the evidence for finding labels.
+
+Helper Functions
+1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
+2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
+3.Verification[]: If you can judge the claim as True or False give the answer. If [User] requires more information, you need to collect more triples in following steps.
+
+You must follow the exact format of the given helper function.
+
+Now, I will give you a claim and Given Entity that you can refer to.
+However, some of the entities needed in verification are not included in Given Entity.
+You have to use proper helper functions to find proper information to verify the given claim.
+Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Importantly, Do not change the format of the entity or relation including '~'.
+
+
+Example 1)
+Claim: Yea he was born in Zaoyang, Hubei
+Given entity: ["Zaoyang", "Hubei"]
+[ChatGPT]
+Statement : First, I need to look around the given entities. I will start by getting the relation list linked to Zaoyang.
+Helper function : getRelation["Zaoyang"]
+[User]
+Execution result :
+Relations_list["Zaoyang"] = ['augRecordLowC', 'decLowC', 'aprRecordHighC', 'yearLowC', 'junMeanC', 'unitPrecipitationDays', 'novLowC', 'longm', 'julRecordLowC', 'areaTotal', '~place', 'decHighC', 'mayLowC', 'febMeanC', 'julMeanC', 'marMeanC', 'precipitationColour', 'junHighC', 'novPrecipitationDays', 'marRecordLowC', 'febRecordLowC', 'sepRecordLowC', 't', 'octRecordHighC', 'octPrecipitationMm', 'aprLowC', 'junPrecipitationMm', 'singleLine', 'yearHighC', 'aprPrecipitationDays', 'yearPrecipitationMm', 'subdivisionType', 'mayPrecipitationMm', 'mayHighC', 'populationDensityKm', 'augLowC', 'janPrecipitationDays', '~location', 'julRecordHighC', 'janMeanC', 'source', 'marRecordHighC', 'yearMeanC', 'rdf-schema#label', 'timeZone', 'settlementType', 'populationAsOf', 'unitPref', 'sepHighC', 'timezone', 'isPartOf', 'location', 'octMeanC', 'latns', 'febLowC', '~text', 'febPrecipitationDays', '~isPartOf', 'augMeanC', 'junLowC', 'sepPrecipitationDays', 'mayRecordHighC', '22-rdf-syntax-ns#type', 'sepMeanC', 'latm', '~subdivisionName', 'coordinatesRegion', 'febPrecipitationMm', 'PopulatedPlace/areaTotal', 'marPrecipitationMm', 'janLowC', 'febRecordHighC', 'decPrecipitationDays', 'julPrecipitationDays', 'aprMeanC', 'longd', 'mayMeanC', 'aprHighC', 'novRecordLowC', 'utcOffset', 'octPrecipitationDays', 'augRecordHighC', 'sepPrecipitationMm', 'decPrecipitationMm', 'populationTotal', 'hypernym', 'decMeanC', 'novMeanC', '~birthPlace', 'febHighC', 'subject', 'latd', 'sepLowC', 'novHighC', 'novRecordHighC', 'janRecordLowC', '~placeOfBirth', 'pushpinMap', 'augPrecipitationDays', '~wikiPageRedirects', 'julLowC', 'mayRecordLowC', 's', 'julHighC', 'pushpinMapCaption', 'longew', 'marHighC', 'junPrecipitationDays', 'sepRecordHighC', 'type', 'octHighC', 'janPrecipitationMm', 'mayPrecipitationDays', 'marPrecipitationDays', 'octLowC', 'augHighC', 'marLowC', 'subdivisionName', 'julPrecipitationMm', 'octRecordLowC', 'janRecordHighC', 'junRecordLowC', 'decRecordLowC', 'p', 'junRecordHighC', 'janHighC', 'pushpinLabelPosition', 'novPrecipitationMm', 'metricFirst', 'coordinatesDisplay', 'decRecordHighC', 'aprPrecipitationMm', 'areaTotalKm', 'augPrecipitationMm', 'aprRecordLowC', '~location']
+[ChatGPT]
+Statement : Now, I need to look around the given entities. I will get the relation list linked to Hubei.
+Helper function : getRelation["Hubei"]
+[User]
+Execution result :
+Relations_list["Hubei"] = ['popyear', '~placeOfDeath', 'south', '~territory', 'owl#differentFrom', '~routeStart', '~locale', '~capital', '~place', 'nationalities', 'prefectures', 'gdprank', '~spokenIn', '~core#subject', '~title', 'tl', 't', '~cityServed', 'psp', 'southwest', 'hdi', 'width', 'gdpyear', 'isoabbrev', 'largestcity', 'y', '~location', 'capital', '~southeast', '~origins', 'northeast', 'hdirank', 'latitude', 'rdf-schema#label', 'name', '~northwest', 'townships', '~north', 'latns', 'governor', '~headquarter', 'rdf-schema#seeAlso', '~ground', '~isPartOf', 'value', '~terminusA', 'gdp', 'gdppercapitarank', 'arearank', '~name', 'pop', '~stadium', 'southeast', '~headquarters', '22-rdf-syntax-ns#type', 'color', 'l', '~subdivisionName', 'dialects', 'align', 'popdensityKm', 'longitude', '~deathPlace', 'secretary', 'administrationtype', 'pinyin', 'longd', 'popdensityrank', 'areaKm', '~ancestry', 'englishname', 'map', 'hypernym', '~locatedInArea', 'mapsize', 'gdppercapita', 'abbrevpinyin', '~garrison', '~residence', '~assembly', '~winnerOrigin', '~birthPlace', 'poprank', 'subject', '~city', '~areasAffected', '~south', 'latd', '~mouthRegion', '~owl#differentFrom', 'poj', '~rdf-schema#seeAlso', '~placeOfBirth', 'label', '~wikiPageRedirects', 'direction', '~office', 's', 'caption', '~state', 'image', 'centre', '~southwest', 'c', 'longew', 'w', '~locationCity', '~region', 'hdiyear', 'north', '~province', 'chinesename', 'j', 'northwest', 'counties', '~hometown', 'labels', 'originofname', 'p', '~routeJunction', 'hdicat', 'website', '~t', '~prov', '~place', '~pop', '~pushpinMap', '~centre', '~residence', '~rdf-schema#label', '~namerom', '~deathPlace', '~name', '~placeOfBirth', '~province', '~region']
+[ChatGPT]
+Statement : To verify the claim, I need to explore the graph for Zaoyang to find any relation with '~birthPlace' or '~placeOfBirth'.
+Helper function : exploreKG["Zaoyang"]=['~birthPlace', '~placeOfBirth']
+[User]
+Execution result :
+['Zaoyang', '~birthPlace', 'Nie_Haisheng'], ['Zaoyang', '~placeOfBirth', 'Nie_Haisheng']
+[ChatGPT]
+Statement : According to the triples, Nie Haisheng was born in Zaoyang. However, the claim does not specify who "he" refers to. To verify the claim, I need to check if Zaoyang is part of Hubei. I will explore the graph for Zaoyang to find any relation with '~isPartOf'.
+Helper function : exploreKG["Zaoyang"]=['~isPartOf']
+[User]
+Execution result :
+['Zaoyang', '~isPartOf', 'Xiangyang'], ['Zaoyang', '~isPartOf', 'Hubei']
+Statement : According to the triples, Zaoyang is part of Hubei. Therefore, the claim that "he was born in Zaoyang, Hubei" is consistent with the information provided. The claim is True.
+Helper function : Verification[]
+
+Example 2)
+Claim: An airport, which is operated by the Aktieselskab organisation, has a runway that's 2,776 long and is named 10L/28R.
+Given entity: ["Aktieselskab", "\"2776.73\"", "\"10L/28R\""]
+[ChatGPT]
+Statement : First, I need to find the relations linked to the entity 'Aktieselskab'.
+Helper function : getRelation['Aktieselskab']
+[User]
+Execution result :
+Relations_list["Aktieselskab"] = ['rdf-schema#label', '~wikiPageRedirects', '~type', '~wikiPageDisambiguates', 'subject', '~operator', '~operatingOrganisation', 'hypernym']
+[ChatGPT]
+Statement : To find the airport operated by the Aktieselskab organisation, I need to explore the graph with 'Aktieselskab' related to '~operator' and '~operatingOrganisation'.
+Helper function : exploreKG['Aktieselskab']=['~operator', '~operatingOrganisation']
+[User]
+Execution result :
+['Aktieselskab', '~operatingOrganisation', 'Aarhus_Airport']
+[ChatGPT]
+Statement : Now, I need to find the relations linked to 'Aarhus_Airport' to check the runway information.
+Helper function : getRelation['Aarhus_Airport']
+[User]
+Execution result :
+Relations_list["Aarhus_Airport"] = ['iata', 'imageWidth', '~wikiPageRedirects', 'longd', 'lats', 'runwaySurface', '~wikiPageDisambiguates', 'pushpinMapCaption', 'longm', 'longew', 'type', 'rdf-schema#label', 'iataLocationIdentifier', 'footnotes', 'r2LengthM', 'name', 'r2Number', 'pushpinLabel', 'location', 'elevation', 'runwayName', 'r1Surface', 'r1LengthF', 'hypernym', 'latns', 'elevationF', 'r1Number', 'icao', 'operator', 'longs', 'runwayDesignation', 'cityServed', 'runwayLength', 'r2Surface', 'stat1Data', 'r2LengthF', 'city', 'elevationM', 'subject', 'homepage', 'elevationAboveTheSeaLevel', '22-rdf-syntax-ns#type', 'metricRwy', 'latd', 'latm', 'pushpinLabelPosition', 'operatingOrganisation', 'coordinatesRegion', 'statYear', 'r1LengthM', 'pushpinMap', 'website', 'icaoLocationIdentifier', 'stat1Header']
+[ChatGPT]
+Statement : To verify the runway information, I need to explore the graph for 'Aarhus_Airport' related to 'r1Number', 'r1LengthM', and 'r2Number', 'r2LengthM'.
+Helper function : exploreKG['Aarhus_Airport']=['r1Number', 'r1LengthM', 'r2Number', 'r2LengthM']
+[User]
+Execution result :
+['Aarhus_Airport', 'r1Number', '"10"'], ['Aarhus_Airport', 'r1LengthM', '"2777"'], ['Aarhus_Airport', 'r2Number', '"10"'], ['Aarhus_Airport', 'r2LengthM', '"2702"']
+[ChatGPT]
+Statement : The runway length of 'Aarhus_Airport' is 2777 meters, which is close to the given length of 2776.73, but the runway name '10L/28R' does not match the available runway numbers '10'. Therefore, the claim is False.
+Helper function : Verification[]
+[User]
+Execution result :
+We need more information for verification. Try to look relation 'runwaySurface, runwayName' of Aarhus_Airport and the relation 'hypernym' of Aktieselskab.
+[ChatGPT]
+Statement : To gather more information, I will explore the graph for 'Aarhus_Airport' related to 'runwaySurface' and 'runwayName'.
+Helper function : exploreKG['Aarhus_Airport']=['runwaySurface', 'runwayName']
+[User]
+Execution result :
+['Aarhus_Airport', 'runwayName', '"10L/28R"'], ['Aarhus_Airport', 'runwayName', '"10R/28L"']
+[ChatGPT]
+Statement : The exploration shows that 'Aktieselskab' is indeed the operating organisation for 'Aarhus_Airport'. Given that 'Aarhus_Airport' has a runway named '10L/28R' and a length close to 2776.73 meters, the claim is True.
+Helper function : Verification[]
+
+
+Example 3)
+Claim: Alan Frew is a solo singer born in Shahabad, Hardoi.
+Given entity: ["\"solo_singer\"", "Alan_Frew", "Shahabad,_Hardoi"]
+[ChatGPT]
+Statement : First, I need to gather information about Alan Frew.
+Helper function : getRelation["Alan_Frew"]
+[User]
+Execution result :
+Relations_list["Alan_Frew"] = ['label', 'caption', 'birthPlace', 'associatedActs', '~bandMember', 'birthDate', 'associatedBand', 'rdf-schema#label', 'associatedMusicalArtist', 'birthYear', 'yearsActive', 'surname', 'name', '~writer', 'instrument', 'dateOfBirth', 'hypernym', 'recordLabel', 'activeYearsStartYear', 'background', 'hometown', 'description', '~currentMembers', 'subject', 'homepage', 'genre', '22-rdf-syntax-ns#type', 'origin', 'placeOfBirth', 'occupation', 'shortDescription', 'website', 'givenName']
+[chatGPT]
+Statement : To verify if Alan Frew is a solo singer and his birthplace, I need to explore the graph for Alan Frew related to 'birthPlace' and 'occupation'.
+Helper function : exploreKG["Alan_Frew"]=['birthPlace', 'occupation']
+[User]
+Execution result :
+['Alan_Frew', 'birthPlace', 'Coatbridge'], ['Alan_Frew', 'birthPlace', '"Coatbridge, Scotland, Great Britain, United Kingdom"'], ['Alan_Frew', 'birthPlace', 'United_Kingdom'], ['Alan_Frew', 'birthPlace', 'Scotland'], ['Alan_Frew', 'occupation', 'Public_speaking'], ['Alan_Frew', 'occupation', '"Singer, Musician, Author and Public Speaker"'], ['Alan_Frew', 'occupation', 'Musician']
+[ChatGPT]
+Statement : According to the triples, Alan Frew's birthplace is Coatbridge, Scotland, Great Britain, United Kingdom, and his occupations include Singer, Musician, Author, and Public Speaker. Now, I need to gather information about Shahabad, Hardoi to verify the claim.
+Helper function : getRelation["Shahabad,_Hardoi"]
+[User]
+Execution result :
+Relations_list["Shahabad,_Hardoi"] = ['~wikiPageRedirects', 'otherName', 'country', 'caption', 'longd', '~wikiPageDisambiguates', 'populationFemale', 'demographics1Title', 'pushpinMapCaption', 'title', 'float', 'utcOffset', 'longew', 'areaRank', 'demographicsType', 'rdf-schema#label', 'timeZone', 'settlementType', 'populationAsOf', 'synonym', 'unitPref', 'name', 'postalCode', 'timezone', 'isPartOf', 'populationTotal', 'elevation', 'titlebar', 'hypernym', 'latns', 'nativeName', 'subdivisionName', 'founder', 'left', 'postalCodeType', '~birthPlace', 'namedFor', 'elevationM', 'subject', 'homepage', 'demographics1Info', '22-rdf-syntax-ns#type', 'latd', 'subdivisionType', 'pushpinLabelPosition', 'right', 'registrationPlate', 'coordinatesDisplay', 'pushpinMap', 'website', 'populationDensityKm', 'populationMale']
+[ChatGPT]
+Statement : Since the previous exploration did not yield relevant information, I will explore the graph for Shahabad, Hardoi related to 'subdivisionName' to verify its location.
+Helper function : exploreKG["Shahabad,_Hardoi"]=['subdivisionName']
+[User]
+Execution result :
+['Shahabad,_Hardoi', 'subdivisionName', 'Uttar_Pradesh'], ['Shahabad,_Hardoi', 'subdivisionName', 'Hardoi_district']
+[ChatGPT]
+Statement : According to the triples, Shahabad, Hardoi is part of Uttar Pradesh and Hardoi district in India. Since Alan Frew's birthplace is Coatbridge, Scotland, Great Britain, United Kingdom, and not Shahabad, Hardoi, the claim is False.
+Helper function : verification[]
+
+Now, it's your turn. Your response must have same form with upper examples.
+Claim: <<<<CLAIM>>>>
+Given entity: <<<<GT_ENTITY>>>>
+"""
+
+pr_3 = """ 
+Your task is finding proper labels for given claim based on the graph data without your base knowledge.
+You can use one of the helper functions below to find the evidence for finding labels.
+
+Helper Functions
+1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
+2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
+3.Verification[]: If you can judge the claim as True or False give the answer. If [User] requires more information, you need to collect more triples in following steps.
+
+You must follow the exact format of the given helper function.
+
+Now, I will give you a claim and Given Entity that you can refer to.
+However, some of the entities needed in verification are not included in Given Entity.
+You have to use proper helper functions to find proper information to verify the given claim.
+Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Importantly, Do not change the format of the entity or relation including '~'.
+
+Example 1)
+Claim: Question :He also had a successor, Hans von Raumer!
+Given entity : ["Hans_von_Raumer"]
+[ChatGPT]
+Statement : First, I need to find the relations linked to Hans_von_Raumer to gather more information about his role or position.
+Helper function : getRelation["Hans_von_Raumer"]
+[User]
+Execution result :
+Relations_list["Hans_von_Raumer"] = ['office', 'birthPlace', 'party', 'birthDate', 'rdf-schema#label', 'name', 'deathPlace', 'predecessor', 'profession', 'hypernym', 'deathDate', 'chancellor', 'termStart', 'successor', 'termEnd', 'subject', 'termPeriod', '22-rdf-syntax-ns#type', 'president']
+[ChatGPT]
+Statement : To verify the claim, I need to explore the graph to find out who Hans von Raumer succeeded. I will look into the 'successor' relation.
+Helper function : exploreKG["Hans_von_Raumer"]=['successor']
+[User]
+Execution result :
+['Hans_von_Raumer', 'successor', 'Gustav_Bauer'], ['Hans_von_Raumer', 'successor', 'Joseph_Koeth']
+Statement : According to the triples, Hans von Raumer had successors named Gustav Bauer and Joseph Koeth. This supports the claim that he had a successor. Therefore, the claim is True.
+Helper function : Verification[]
+
+
+Example 2)
+Claim:Yes, Billy Fitzpatrick used to have a nickname.
+Given entity : ["Billy_Fitzpatrick"]
+[ChatGPT]
+Statement : First, I need to find the relations linked to Billy_Fitzpatrick to gather information about any nickname.
+Helper function : getRelation["Billy_Fitzpatrick"]
+[User]
+Execution result :
+Relations_list["Billy_Fitzpatrick"] = ['activeYearsEndYear', 'clprovince', 'after', 'province', 'birthPlace', 'title', '~goals', 'code', 'icposition', 'nickname', 'club', 'birthDate', 'clyears', 'rdf-schema#label', 'irish', 'before', 'fullname', 'birthYear', 'county', 'surname', 'name', 'icprovince', 'icyears', 'team', 'feet', 'sport', 'dateOfBirth', 'hypernym', 'icallireland', 'nick', 'activeYearsStartYear', 'counties', 'clcounty', 'inches', 'description', 'subject', '22-rdf-syntax-ns#type', '~after', 'placeOfBirth', 'allstars', 'occupation', '~before', 'shortDescription', '~captain', 'years', 'icapps(points)_', 'givenName', 'clallireland']
+[ChatGPT]
+Statement : To verify if Billy Fitzpatrick used to have a nickname, I need to explore the graph for the 'nickname' relation.
+Helper function : exploreKG["Billy_Fitzpatrick"]=['nickname']
+[User]
+Execution result :
+['Billy_Fitzpatrick', 'nickname', '"Fitz"']
+[ChatGPT]
+Statement : According to the triple, Billy Fitzpatrick had the nickname "Fitz". Therefore, the claim is True.
+Helper function : Verification[]
+
+
+Example 3)
+Claim : The Greater Britain Movement leader was John Tyndall
+Given entity : ["Greater_Britain_Movement", "John_Tyndall_(politician)"]
+[ChatGPT]
+Statement : First, I need to explore the relations linked to the Greater Britain Movement.
+Helper function : getRelation['Greater_Britain_Movement']
+[User]
+Execution result :
+Relations_list["Greater_Britain_Movement"] = ['~party', 'studentWing', 'dissolved', 'newspaper', '~wikiPageDisambiguates', 'founded', 'rdf-schema#label', 'ideology', 'name', 'headquarters', 'predecessor', 'leader', 'successor', 'founder', 'formationYear', 'subject', 'headquarter', '22-rdf-syntax-ns#type', 'extinctionYear']
+[ChatGPT]
+Statement : To verify the claim, I need to explore the graph for the Greater Britain Movement related to the 'leader'.
+Helper function : exploreKG['Greater_Britain_Movement']=['leader']
+[User]
+Execution result :
+['Greater_Britain_Movement', 'leader', 'John_Tyndall_(politician)']
+[ChatGPT]
+Statement : According to the triple, the leader of the Greater Britain Movement was John Tyndall. Therefore, the claim is True.
+Helper function : Verification[]
+
+Now, it's your turn. Your response must have same form with upper examples.
+Claim: <<<<CLAIM>>>>
+Given entity: <<<<GT_ENTITY>
+
+
+"""
+
+pr_4 = """
+Your task is finding proper labels for given claim based on the graph data without your base knowledge.
+You can use one of the helper functions below to find the evidence for finding labels.
+
+Helper Functions
+1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
+2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
+3.Verification[]: If you can judge the claim as True or False give the answer. If [User] requires more information, you need to collect more triples in following steps.
+
+You must follow the exact format of the given helper function.
+
+Now, I will give you a claim and Given Entity that you can refer to.
+However, some of the entities needed in verification are not included in Given Entity.
+You have to use proper helper functions to find proper information to verify the given claim.
+Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Importantly, Do not change the format of the entity or relation including '~'.
+
+
+Example 1)
+Claim : 110 Lydia has an apoapsis of 440756000.0 kilometres and travels at an average speed of 20.78 kmps.
+Given entity : ["\"4.40756E8\"", "\"17.99\"", "110_Lydia"]
+[ChatGPT]
+Statement : First, I need to gather information about the entity '110_Lydia'.
+Helper function : getRelation['110_Lydia']
+[User]
+Execution result :
+Relations_list["110_Lydia"] = ['semimajor', 'period', 'eccentricity', 'absoluteMagnitude', 'apoapsis', 'dimensions', 'Planet/periapsis', 'singleTemperature', 'meanAnomaly', 'namedAfter', 'discovered', 'perihelion', 'mpCategory', 'bgcolour', 'Planet/temperature', '22-rdf-syntax-ns#type', 'aphelion', 'averageSpeed', 'spectralType', 'rotationPeriod', 'surfaceGrav', 'hypernym', 'absMagnitude', 'rdf-schema#label', 'escapeVelocity', 'name', '~wikiPageDisambiguates', 'epoch', 'argPeri', 'Planet/mass', 'discovery', 'caption', 'Planet/apoapsis', 'Planet/averageSpeed', '~wikiPageRedirects', 'avgSpeed', 'rotation', 'Planet/orbitalPeriod', 'albedo', 'mass', 'physicalCharacteristics', 'subject', 'periapsis', 'discoverer', 'orbitalPeriod', 'inclination', 'temperature', 'ascNode']
+[ChatGPT]
+Statement : To verify the claim, I need to explore the graph for '110_Lydia' related to 'apoapsis' and 'averageSpeed'.
+Helper function : exploreKG['110_Lydia']=['apoapsis', 'averageSpeed']
+[User]
+Execution result :
+['110_Lydia', 'apoapsis', '"440756000.0 (kilometres)"'], ['110_Lydia', 'averageSpeed', '"17.99 (kilometrePerSeconds)"']
+[ChatGPT]
+Statement : According to the triples, 110 Lydia has an apoapsis of 440756000.0 kilometres and travels at an average speed of 17.99 kmps. Therefore, the claim is not supported.
+Helper function : Verification[]
+
+
+Example 2)
+Claim : The ship from Buenos Aires was built by Russel Brothers
+Given Entity: ["Buenos_Aires", "Russel_Brothers"]
+[ChatGPT]
+Statement : First, I need to find the relations linked to the entity 'Buenos_Aires'.
+Helper function : getRelation['Buenos_Aires']
+[User]
+Execution result :
+Relations_list["Buenos_Aires"] = ['~hostCity', '~recorded', '~rd1t6Loc', '~club', 'decMeanC', 'augRecordHighC', 'yearRecordHighC', 'aprLowC', 'PopulatedPlace/areaTotal', 'marHighC', 'establishedTitle', '~region', 'areaWaterKm', 'populationAsOf', 'decdSun', 'julPrecipitationDays', 'marPrecipitationMm', '~2rpt1Loc', '~rd3t2Loc', 'areaMetro', 'longd', 'juldSun', 'latm', '~cities', '~hometown', 'sepPrecipitationMm', 's', '~billed', '~birthPlace', '~designation', '~restingPlace', '~location', 'junPrecipitationMm', '~country', 'junHumidity', '~locationCity', '~spokenIn', 'mayPrecipitationDays', '~body', 'imageFlag', 'jundSun', 'sepMeanC', 'julHighC', '~l', '~regionServed', 'marMeanC', '~destinations', '~foundationPlace', 'areaMetroKm', '~award', '~works', 'novPrecipitationDays', 'decLowC', '~battle', 'areaUrbanSqMi', 'rdf-schema#label', 'populationRank', 'julHumidity', 'name', '~headquarters', '~venue', '~core#subject', 'novHumidity', 'align', '~residence', '~zone', '~metroArea', 'junRecordLowC', '~occupation', '~rd2t3Loc', 'maydSun', '~cityOrRegion', 'marHumidity', 'octRecordLowC', 'areaWaterSqMi', '~beltwayCity', 'maySun', 'marSun', 'janRecordLowC', '~champions', '~city', 'febSun', 'mapsize', '~terminusA', 'imageCaption', 'novHighC', 'PopulatedPlace/areaMetro', 'aprRecordHighC', 'julSun', 'coordinatesRegion', 'latd', 'mayHumidity', 'imageSkyline', '~wikiPageDisambiguates', 'decPrecipitationDays', 'augHighC', 'yearMeanC', 'precipitationColour', 'novRecordLowC', 'sepHighC', '~largestSettlement', '~assembly', '~ruAmateurclubs', 'decHumidity', '~rd1t8Loc', '~deathDate', 'julPrecipitationMm', '~rd1t1Loc', 'homepage', 'augRecordLowC', '~rd2t4Loc', '~ground', 'aprHumidity', 'subject', '~rd2t1Loc', '~recordLocation', 'marRecordLowC', '~areaServed', '~stadium', 'aprPrecipitationDays', 'octLowC', 'novRecordHighC', 'establishedDate', '~placeOfDeath', '~rd4t2Loc', 'd', 'octPrecipitationMm', 'sepdSun', 'aprHighC', 'populationMetro', '~state', 'febRecordHighC', '~shipNamesake', 'sepRecordLowC', '~before', 'timezone', 'janPrecipitationMm', 'b', '~popplace', 'augHumidity', 'areaMagnitude', '~isPartOf', 'singleLine', 'novdSun', 'areaTotalKm', 'decSun', 'areaLand', '~recordedIn', 'blankInfo', 'areaLandKm', 'aprPrecipitationMm', 'elevationM', '~locatedInArea', 'blankName', 'augdSun', '~ci', 'aprdSun', 'sepPrecipitationDays', 'octHighC', 'title', 'marPrecipitationDays', '~hqLocationCity', 'imagesize', '~subdivisionName', '~start', '~owl#differentFrom', 'aprSun', '~rdf-schema#seeAlso', '~rd1t3Loc', '~birthplace', '~place', 'octMeanC', 'augMeanC', 'populationTotal', '~mayorCity', 'areaMetroSqMi', 'image', 'febHighC', 'julRecordLowC', '~locale', 'junSun', '~education', '~wikiPageRedirects', 'febPrecipitationDays', '~routeStart', 'janHighC', 'q', '~homeport', 'febMeanC', '~destination', '~premierePlace', '~targetAirport', '~based', '~metropolitan', 'decHighC', '~largestvictory', '22-rdf-syntax-ns#type', 'commons', '~province', 'hypernym', '~after', '~cityServed', 'octSun', '~space', 'augPrecipitationMm', '~shipRoute', 'governingBody', 'pushpinMap', 'febPrecipitationMm', 'governmentType', 'longm', '~garrison', 'novMeanC', 'janMeanC', '~origin', 'source', 'julLowC', 'janLowC', 'junMeanC', 'decRecordHighC', 'leaderTitle', '~populationPlace', 'junHighC', 'metricFirst', '~data', 'sepRecordHighC', '~borough', 'longs', 'sepLowC', '~headquarter', 'rdf-schema#seeAlso', 'mayLowC', 'novPrecipitationMm', 'areaTotal', 'alt', 'longew', 'janRecordHighC', 'novLowC', 'febdSun', 'latns', 'aprMeanC', 'junLowC', '~rd1t4Loc', '~born', 'janHumidity', 'sepSun', '~rd3t1Loc', 'collapsed', 'yearLowC', '~locations', 'location', '~locationTown', 'febLowC', '~foundedPlace', 'yearPrecipitationDays', 'caption', 'direction', 'width', 'octHumidity', 'junRecordHighC', 'mayMeanC', 'yearSun', '~rd1t7Loc', 'mayRecordLowC', 'wikt', 'sepHumidity', '~area', '~shipFate', '~leadersSeat', 'janSun', 'augSun', 'date', 'novSun', '~address', 'jandSun', '~rd5t1Loc', 'mapCaption', 'febRecordLowC', 'yeardSun', 'populationTotalRanking', 'julRecordHighC', 'imageShield', 'coordinatesDisplay', 'mayPrecipitationMm', 'leader', 'lats', '~locationCountry', 'decRecordLowC', 'yearRecordLowC', '~placeOfBirth', 'country', '~meetingPlace', '~rd1t5Loc', 'marRecordHighC', 'junPrecipitationDays', 'subdivisionType', 'mayRecordHighC', 'decPrecipitationMm', 'mardSun', 'areaWaterPercent', 'mayHighC', '~accreditation', 'yearHighC', 'populationDensityKm', 'height', '~rd3t3Loc', 'octRecordHighC', 'areaUrbanKm', '~rd2t5Loc', 'yearHumidity', 'areaCode', 'octdSun', 'populationDemonym', '~deathPlace', '~fightingOutOf', 'yearPrecipitationMm', '~homeTown', '~broadcastArea', '~rd2t2Loc', 'elevation', '~realCapital', 'leaderName', '~rd1t2Loc', 'marLowC', 'nick', 'voy', '~homeState', 'aprRecordLowC', 'timeZone', '~areas', '~capital', 'augPrecipitationDays', '~blank1NameSec', '~sedeFinale', 'janPrecipitationDays', 'augLowC', '~constituency', '~productions', 'octPrecipitationDays', 'officialName', 'v', 'febHumidity', '~foundation', 'nickname', 'utcOffset', '~owner', 'n', 'julMeanC', '~territory', 'areaLandSqMi', '~worldPlace', '~1rpt2Loc']
+[ChatGPT]
+Statement : Now, I need to find the relations linked to the entity 'Russel_Brothers'.
+Helper function : getRelation['Russel_Brothers']
+[User]
+Execution result :
+Relations_list["Russel_Brothers"] = ['~wikiPageRedirects', '22-rdf-syntax-ns#type', 'subject', '~builder', '~shipBuilder', 'hypernym', 'rdf-schema#label']
+[ChatGPT]
+Statement : To verify if Russel Brothers built a ship, I need to explore the graph for 'Russel_Brothers' related to '~builder' and '~shipBuilder'.
+Helper function : exploreKG['Russel_Brothers']=['~builder', '~shipBuilder']
+[User]
+Execution result :
+['Russel_Brothers', '~shipBuilder', 'William_Lyon_Mackenzie_(fireboat)'], ['Russel_Brothers', '~shipBuilder', 'Radium_Express_(ship)']
+[ChatGPT]
+Statement : According to the triples, Russel Brothers built the ships 'William Lyon Mackenzie (fireboat)' and 'Radium Express (ship)'. Now, I need to find if any of these ships are related to Buenos Aires. I will explore the graph for 'William_Lyon_Mackenzie_(fireboat)' and 'Radium_Express_(ship)' related to any location or origin.
+Helper function : getRelation['William_Lyon_Mackenzie_(fireboat)']
+[User]
+Execution result :
+Relations_list["William_Lyon_Mackenzie_(fireboat)"] = ['cost', 'shipCountry', 'shipDraft', 'shipType', 'shipTonnage', 'shipOriginalCost', 'length', 'operator', 'shipStatus', 'shipYardNumber', 'shipMaidenVoyage', 'shipBuilder', 'homeport', '22-rdf-syntax-ns#type', 'shipNickname', 'shipBeam', 'shipFlag', 'shipOperator', 'type', 'hypernym', 'builder', 'shipLaunch', 'shipComplement', 'rdf-schema#label', 'shipAwarded', 'shipChristened', 'shipOutOfService', 'country', 'name', 'shipDisplacement', 'shipSpeed', 'shipNotes', 'owner', 'shipCrew', 'shipReinstated', 'shipNamesake', 'status', 'shipCommissioned', 'shipInService', 'shipCompleted', '~wikiPageRedirects', 'shipAcquired', 'shipLength', 'MeanOfTransportation/length', 'subject', 'nick', 'shipIceClass', 'shipName', 'shipHomeport', 'shipPropulsion', 'shipLaunched', 'shipOwner', 'topSpeed', 'shipLaidDown', 'shipDepth', 'shipSponsor', 'shipOrdered']
+[ChatGPT]
+Statement : I will now explore the graph for 'William_Lyon_Mackenzie_(fireboat)' related to 'shipHomeport' and 'shipCountry' to check for any connection to Buenos Aires.
+Helper function : exploreKG['William_Lyon_Mackenzie_(fireboat)']=['shipHomeport', 'shipCountry']
+[User]
+Execution result :
+['William_Lyon_Mackenzie_(fireboat)', 'shipHomeport', 'Toronto'], ['William_Lyon_Mackenzie_(fireboat)', 'shipCountry', 'Toronto'], ['William_Lyon_Mackenzie_(fireboat)', 'shipCountry', 'Ontario']
+[ChatGPT]
+Statement : The ship 'William Lyon Mackenzie (fireboat)' has its homeport in Toronto and is associated with Toronto and Ontario, not Buenos Aires. Now, I will explore the graph for 'Radium_Express_(ship)' related to any location or origin.
+Helper function : getRelation['Radium_Express_(ship)']
+[User]
+Execution result :
+Relations_list["Radium_Express_(ship)"] = ['shipCountry', 'shipTonsBurthen', 'length', 'operator', 'shipBuilder', '22-rdf-syntax-ns#type', 'shipBeam', 'shipOperator', 'hypernym', 'builder', 'rdf-schema#label', '~wikiPageDisambiguates', 'shipSpeed', 'shipDisplacement', 'name', 'shipPower', 'shipCommissioned', 'shipCompleted', '~wikiPageRedirects', 'MeanOfTransportation/length', 'subject', 'shipLaunched', 'shipName', 'shipLaidDown']
+[ChatGPT]
+Statement : I will now explore the graph for 'Radium_Express_(ship)' related to 'shipCountry' to check for any connection to Buenos Aires.
+Helper function : exploreKG['Radium_Express_(ship)']=['shipCountry']
+[User]
+Execution result :
+['Radium_Express_(ship)', 'shipCountry', '"Canada"']
+[ChatGPT]
+Statement : Now, the country that made the ship is Canada and Ontario. Let's see if the Buenos Aires are related to the Canada or Ontario.
+Helper function : exploreKG['Buenos_Aires']=['country','~locationCity', '~capital', '~shipRoute', '~shipFate', '~shipNamesake']
+[User]
+Execution result :
+[['Buenos_Aires', '~locationCity', 'Banco_de_la_Nación_Argentina'], ['Buenos_Aires', '~locationCity', 'Unidad_de_Gestión_Operativa_Mitre_Sarmiento'], ['Buenos_Aires', '~locationCity', 'Fábrica_de_Armas_Halcón'], ['Buenos_Aires', '~locationCity', 'Trident_Music'], ['Buenos_Aires', '~locationCity', 'Hispano-Argentina'], ['Buenos_Aires', '~locationCity', 'Metrovías'], ['Buenos_Aires', '~locationCity', 'Solvay_Indupa'], ['Buenos_Aires', '~locationCity', 'Cris_Morena_Group'], ['Buenos_Aires', '~locationCity', 'Operadora_Ferroviaria_Sociedad_del_Estado'], ['Buenos_Aires', '~locationCity', 'Buenos_Aires_Central_Post_Office'], ['Buenos_Aires', '~locationCity', 'Metropolitano'], ['Buenos_Aires', '~locationCity', 'Katz_Editores'], ['Buenos_Aires', '~locationCity', 'Fnbox'], ['Buenos_Aires', '~locationCity', 'Grupo_Arcor'], ['Buenos_Aires', '~locationCity', 'NGD_Studios'], ['Buenos_Aires', '~locationCity', 'Signia_(sportswear)'], ['Buenos_Aires', '~locationCity', 'MercadoLibre.com'], ['Buenos_Aires', '~locationCity', 'Belgrano_Cargas'], ['Buenos_Aires', '~locationCity', 'Renault_Argentina'], ['Buenos_Aires', '~locationCity', 'YPF'], ['Buenos_Aires', '~locationCity', 'Turner_International_Argentina'], ['Buenos_Aires', '~locationCity', 'Editorial_Ivrea'], ['Buenos_Aires', '~locationCity', 'Illusion_Studios'], ['Buenos_Aires', '~locationCity', 'Torre_Bouchard'], ['Buenos_Aires', '~locationCity', 'Motomel'], ['Buenos_Aires', '~locationCity', 'Trenes_Argentinos_Cargas_y_Logística'], ['Buenos_Aires', '~locationCity', 'Administración_de_Infraestructuras_Ferroviarias_Sociedad_del_Estado'], ['Buenos_Aires', '~locationCity', 'Mundo_Sano'], ['Buenos_Aires', '~capital', 'Argentina'], ['Buenos_Aires', '~capital', 'State_of_Buenos_Aires'], ['Buenos_Aires', '~capital', 'Viceroyalty_of_the_Río_de_la_Plata'], ['Buenos_Aires', '~capital', 'United_Provinces_of_the_River_Plate'], ['Buenos_Aires', '~shipRoute', 'SS_Duilio'], ['Buenos_Aires', '~shipRoute', 'HSC_Francisco'], ['Buenos_Aires', '~shipRoute', 'HSC_Silvia_Ana_L'], ['Buenos_Aires', '~shipRoute', 'HMT_Aragon'], ['Buenos_Aires', '~shipFate', 'HMHS_Ebani'], ['Buenos_Aires', '~shipNamesake', "Chilean_frigate_O'Higgins_(1816)"], ['Buenos_Aires', '~shipNamesake', 'ARA_Buenos_Aires']]
+[ChatGPT]
+Statement : According to the triples, Buenos Aires is located in Argentina, and there is no direct relation between Argentina and Canada or Ontario. So the claim is not supported.
+Helper function : Verification[]
+
+
+Example 3)
+Claim : It has a straight 6 engine and is manufactured in Orrville
+Given entity : ['Straight-six_engine', 'Orrville,_Ohio']
+[ChatGPT]
+Statement : First, I need to gather information about the entity 'Straight-six_engine'.
+Helper function : getRelation['Straight-six_engine']
+[User]
+Execution result :
+Relations_list["Straight-six_engine"] = ['~wikiPageRedirects', '~configuration', '~engines', '~data', '~cylindercount', '~type', '~core#subject', '~engineType', '~engine', 'subject', '~enginetype', '22-rdf-syntax-ns#type', 'rdf-schema#seeAlso', '~eng1Type', 'hypernym', '~typeOfProp', 'rdf-schema#label', '~class']
+[ChatGPT]
+Statement : Now, I need to gather information about the entity 'Orrville,_Ohio'.
+Helper function : getRelation['Orrville,_Ohio']
+[User]
+Execution result :
+Relations_list["Orrville,_Ohio"] = ['imageCaption', 'PopulatedPlace/areaTotal', 'areaWater', 'populationTotal', 'latd', 'areaWaterKm', 'populationAsOf', 'imageSkyline', '~wikiPageDisambiguates', 'PopulatedPlace/populationDensity', '~wikiPageRedirects', 'longd', 'elevationFt', '~routeStart', 'latm', 'mapCaption', 'blank1Name', '~hometown', 'settlementType', 'timezoneDst', 'coordinatesDisplay', '22-rdf-syntax-ns#type', '~birthPlace', '~placeOfBirth', 'postalCode', 'hypernym', 'country', 'homepage', 'unitPref', '~location', 'popEstAsOf', 'postalCodeType', 'subdivisionType', 'longm', 'subject', 'populationDensityKm', '~nearestCity', '~foundationPlace', 'leaderTitle', 'areaCode', 'website', 'rdf-schema#label', 'name', 'elevation', 'leaderName', 'populationDensitySqMi', 'mapSize', 'populationDensity', 'blank1Info', 'areaTotal', 'longew', 'timeZone', 'timezone', 'imageMap', 'latns', '~residence', 'motto', 'utcOffsetDst', 'areaTotalKm', 'areaLand', 'blankInfo', 'areaWaterSqMi', 'areaLandKm', 'areaTotalSqMi', 'officialName', 'imageSize', 'elevationM', 'subdivisionName', 'blankName', 'utcOffset', 'isPartOf', 'coordinatesType', '~city', 'areaLandSqMi', 'populationEst', '~hqLocationCity', 'mapsize']
+[ChatGPT]
+Statement : To verify the claim, I need to explore the graph for 'Straight-six_engine' to find any relation with '~manufactured' or similar terms that indicate manufacturing location.
+Helper function : exploreKG['Straight-six_engine']=['~engine', '~engineType']
+[User]
+Execuution result :
+['Straight-six_engine', '~engine', 'Chevrolet_El_Camino'], ['Straight-six_engine', '~engine', 'BMW_Z4_(E89)'], ['Straight-six_engine', '~engine', 'BMW_7_Series_(F01)'], ['Straight-six_engine', '~engine', 'Sterling_Bullet'], ['Straight-six_engine', '~engine', 'Volvo_Sharpnose'], ['Straight-six_engine', '~engine', 'Holden_Monaro'], ['Straight-six_engine', '~engine', 'Ford_F-Series_first_generation'], ['Straight-six_engine', '~engine', 'SS_90'], ['Straight-six_engine', '~engine', 'Volvo_TR670_Series'], ['Straight-six_engine', '~engine', 'Jeep_Cherokee_(XJ)'], ['Straight-six_engine', '~engine', 'Fiat_527'], ['Straight-six_engine', '~engine', 'Volvo_LV66-series'], ['Straight-six_engine', '~engine', 'Marcos_GT'], ['Straight-six_engine', '~engine', 'Dodge_Power_Wagon'], ['Straight-six_engine', '~engine', 'Chevrolet_C/K'], ['Straight-six_engine', '~engine', 'Volvo_V70'], ['Straight-six_engine', '~engine', 'Alfa_Romeo_6C'], ['Straight-six_engine', '~engine', 'Scania_OmniExpress'], ['Straight-six_engine', '~engine', '1955_Dodge'], ['Straight-six_engine', '~engine', 'Nissan_Patrol'], ['Straight-six_engine', '~engine', 'Volvo_S60'], ['Straight-six_engine', '~engine', 'Alvis_Speed_25'], ['Straight-six_engine', '~engine', 'Chevrolet_Greenbrier'], ['Straight-six_engine', '~engine', 'Opel_Admiral'], ['Straight-six_engine', '~engine', 'Fiat_1800/2100'], ['Straight-six_engine', '~engine', 'Dodge_Charger_(B-body)'], ['Straight-six_engine', '~engine', 'Volvo_XC90'], ['Straight-six_engine', '~engine', 'Volvo_LV60-series'], ['Straight-six_engine', '~engine', 'Jeep_CJ'], ['Straight-six_engine', '~engine', 'Chevrolet_Task_Force'], ['Straight-six_engine', '~engine', 'Nash-Healey'], ['Straight-six_engine', '~engine', 'Mercedes-Benz_W180'], ['Straight-six_engine', '~engine', 'Mercedes-Benz_C-Class_(W202)'], ['Straight-six_engine', '~engine', 'Toyota_Land_Cruiser'], ['Straight-six_engine', '~engine', 'Pontiac_Firebird'], ['Straight-six_engine', '~engine', 'AMC_Ambassador'], ['Straight-six_engine', '~engine', 'BMW_7_Series'], ['Straight-six_engine', '~engine', 'Chevrolet_K5_Blazer'], ['Straight-six_engine', '~engine', 'BMW_X4'], ['Straight-six_engine', '~engine', 'Plymouth_Barracuda'], ['Straight-six_engine', '~engine', 'BMW_303'], ['Straight-six_engine', '~engine', 'Volvo_S80'], ['Straight-six_engine', '~engine', 'Ford_Torino'], ['Straight-six_engine', '~engine', 'Steyr_120_Super,_Steyr_125_Super,_Steyr_220'], ['Straight-six_engine', '~engine', 'Nissan_Skyline'], ['Straight-six_engine', '~engine', 'TVR_M_Series'], ['Straight-six_engine', '~engine', 'Nissan_President'], ['Straight-six_engine', '~engine', 'Talbot_105'], ['Straight-six_engine', '~engine', 'GMC_Sprint_/_Caballero'], ['Straight-six_engine', '~engine', 'Ford_F-Series_fourth_generation'], ['Straight-six_engine', '~engine', 'Chevrolet_Impala'], ['Straight-six_engine', '~engine', 'Fiat_525'], ['Straight-six_engine', '~engine', 'Opel_Kapitän'], ['Straight-six_engine', '~engine', 'Land_Rover_Defender'], ['Straight-six_engine', '~engine', 'BMW_7_Series_(E38)'], ['Straight-six_engine', '~engine', 'Nissan_Maxima'], ['Straight-six_engine', '~engine', 'Volvo_LV76-series'], ['Straight-six_engine', '~engine', 'Ford_Maverick_(Americas)'], ['Straight-six_engine', '~engine', 'Pontiac_Chieftain'], ['Straight-six_engine', '~engine', 'Hudson_Hornet'], ['Straight-six_engine', '~engine', 'Jeep_Comanche'], ['Straight-six_engine', '~engine', 'Nissan_Skyline_GT-R'], ['Straight-six_engine', '~engine', 'Volvo_200_Series'], ['Straight-six_engine', '~engine', 'Dodge_D_Series'], ['Straight-six_engine', '~engine', 'Toyota_Crown'], ['Straight-six_engine', '~engine', 'PT-76'], ['Straight-six_engine', '~engine', 'Jeep_Wagoneer_(SJ)'], ['Straight-six_engine', '~engine', 'Nissan_300ZX'], ['Straight-six_engine', '~engine', 'Morris_Six_(1928)'], ['Straight-six_engine', '~engine', 'Toyota_Soarer'], ['Straight-six_engine', '~engine', 'Chevrolet_Advance_Design'], ['Straight-six_engine', '~engine', 'BMW_Z3'], ['Straight-six_engine', '~engine', 'Vauxhall_20-60'], ['Straight-six_engine', '~engine', 'Daimler_DE'], ['Straight-six_engine', '~engine', 'Rolls-Royce_Silver_Ghost']
+[ChatGPT]
+Statement : Since the exploration of 'Straight-six_engine' did not provide information about its manufacturing location, I will explore the graph for 'Orrville,_Ohio' to find any relation with '~manufactured' or similar terms that indicate manufacturing activities.
+Helper function : exploreKG['Orrville,_Ohio']=['~foundationPlace', '~hqLocationCity']
+[User]
+Execution result : 
+['Orrville,_Ohio', '~hqLocationCity', 'The_J.M._Smucker_Company']
+[ChatGPT]
+Statement : According to the triples, there is not direct relation between J.M. Suucker Company and motors that have straight six engine. So the claim is not supported.
+Helper function : Verification[]
+[User]
+Execution result :'Orrville, Ohio' is the headquarters location for 'The J.M. Smucker Company'. We need more information about J.M. Smucker company to check if the comapany manufactured one of those vehicles that have straight six engines.
+[ChatGPT]
+Statement : Okay, let's look what relations are linked with J.M. Smucker company.
+Helper function : getRelation['The_J.M._Smucker_Company']
+[User]
+Execution reuslt : Relation_list['The_J.M._Smucker_Company'] = ['foundedBy', 'slogan', 'foundingYear', '22-rdf-syntax-ns#type', 'hypernym', 'logo', 'hqLocationCountry', 'foundation', 'homepage', 'type', '~owner', 'logoSize', 'name', 'founder', '~wikiPageRedirects', '~currentowner', 'subject', 'rdf-schema#label', 'foundationPlace', '~owningCompany', 'hqLocationCity']
+[ChatGPT]
+Statement : Let's look around J.M Smucker Company to find the vehicles make by this company.
+Helper function : exploreKG['The_J.M._Smucker_Company']=['foundedBy', 'logo', '~owner', 'name', 'subject', '~owningCompany',  'hypernym']
+[User]
+Execution result :[['The_J.M._Smucker_Company', 'logo', '"File:Smuckers logo.svg"'], ['The_J.M._Smucker_Company', '~owner', 'Meow_Mix'], ['The_J.M._Smucker_Company', 'name', '"The J.M. Smucker Company"']]\
+[ChatGPt]
+Statement : There is no evidence that J.M Smucker Company is motor or vehicle manufacturer. Which means that the claim is not supported.
+Helper function : Verification[]
+
+
+Now, it's your turn. Your response must have same form with upper examples.
+Claim: <<<<CLAIM>>>>
+Given entity: <<<<GT_ENTITY>
+"""
+
+
+
+
+
+
+
+Examples="""
+Example 1)
+Claim : 11264 Claudiomaccone has the epoch date of 26 November 2005 and the orbital period is 1513.722 days.
+Given entity : ["\"1.30786e+08\"", "11264_Claudiomaccone", "\"2005-11-26\""]
+[ChatGPT]
+Statement : First, I need to gather information about the entity '11264_Claudiomaccone'.
+Helper function : getRelation['11264_Claudiomaccone']
+[User]
+Execution result :
+Relations_list["11264_Claudiomaccone"] = ['semimajor', 'period', 'density', 'eccentricity', 'absoluteMagnitude', 'apoapsis', 'dimensions', 'Planet/periapsis', 'singleTemperature', 'meanAnomaly', 'altNames', 'discovered', 'namedAfter', 'perihelion', 'mpCategory', 'Planet/temperature', '22-rdf-syntax-ns#type', 'aphelion', 'averageSpeed', 'rotationPeriod', 'spectralType', 'surfaceGrav', 'formerName', 'hypernym', 'absMagnitude', 'rdf-schema#label', 'escapeVelocity', 'name', 'epoch', 'argPeri', 'background', 'Planet/apoapsis', 'Planet/averageSpeed', 'rotation', 'Planet/orbitalPeriod', 'width', 'avgSpeed', 'albedo', 'mass', 'subject', 'periapsis', 'discoverer', 'orbitalPeriod', 'inclination', 'temperature', 'ascNode']
+[ChatGPT]
+Statement : To verify the claim, I need to explore the graph for '11264_Claudiomaccone' related to 'epoch' and 'orbitalPeriod'.
+Helper function : exploreKG['11264_Claudiomaccone']=['epoch', 'orbitalPeriod']
+[User]
+Execution result :
+['11264_Claudiomaccone', 'epoch', '"2005-11-26"'], ['11264_Claudiomaccone', 'orbitalPeriod', '"1513.722 (days)"']
+[ChatGPT]
+Statement : According to the triples, 11264 Claudiomaccone has an epoch date of 26 November 2005 and an orbital period of 1513.722 days. Therefore, the claim is True.
+Helper function : Verification[]
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+samples = """
+{"question_id": 17833, "question": "its orbital period of 1202.846 days; its epoch date is the 26th of November 2005.", "types": ["coll:model", "num2", "multi hop"], "entity_set": ["\"1.03926e+08\"", "\"2005-11-26\""], "evidence": {"\"1.03926e+08\"": [["~orbitalPeriod", "epoch"]], "\"2005-11-26\"": [["~epoch", "orbitalPeriod"]]}, "Label": [true]}
+{"question_id": 31119, "question": "Yea he was born in Zaoyang, Hubei.", "types": ["coll:model", "num2", "multi hop"], "entity_set": ["Zaoyang", "Hubei"], "evidence": {"Zaoyang": [["~birthPlace", "birthPlace"]], "Hubei": [["~birthPlace", "birthPlace"]]}, "Label": [true]}
+{"question_id": 31191, "question": "An airport, which is operated by the Aktieselskab organisation, has a runway that's 2,776 long and is named 10L/28R.", "types": ["written", "num3", "multi hop"], "entity_set": ["Aktieselskab", "\"2776.73\"", "\"10L/28R\""], "evidence": {"\"2776.73\"": [["~runwayLength", "operator"], ["~runwayLength", "runwayDesignation"]], "Aktieselskab": [["~operator", "runwayLength"], ["~operator", "runwayDesignation"]], "\"10L/28R\"": [["~runwayDesignation", "runwayLength"], ["~runwayDesignation", "operator"]]}, "Label": [true]}
+{"question_id": 31297, "question": "Appleton International airport is located in a town, which is part of Dale, Wisconsin, located in the U.S.A.", "types": ["written", "num3", "multi hop"], "entity_set": ["United_States", "Appleton_International_Airport", "Dale,_Wisconsin"], "evidence": {"Appleton_International_Airport": [["location", "isPartOf"], ["location", "country"]], "Dale,_Wisconsin": [["~isPartOf", "~location"], ["~isPartOf", "country"]], "United_States": [["~country", "~location"], ["~country", "isPartOf"]]}, "Label": [true]}
+
+{"question_id": 10329, "question": "Alan Frew is a solo singer born in Shahabad, Hardoi.", "types": ["coll:model", "num2", "substitution", "multi claim"], "entity_set": ["\"solo_singer\"", "Alan_Frew", "Shahabad,_Hardoi"], "evidence": {"Alan_Frew": [["birthPlace"], ["background"]], "\"solo_singer\"": [["~background"]], "Shahabad,_Hardoi": [["~birthPlace"]]}, "Label": [false]}
+{"question_id": 10393, "question": "Alex Day is Luk thang which is derived from house music.", "types": ["coll:model", "num2", "substitution", "multi claim"], "entity_set": ["House_music", "Alex_Day", "Luk_thung"], "evidence": {"Alex_Day": [["genre"]], "House_music": [["~derivative"]], "Luk_thung": [["derivative"], ["~genre"]]}, "Label": [false]}
+{"question_id": 23348, "question": "Ch'unch'uni is located in Tirstrup Denmark where they speak Danish.", "types": ["coll:model", "num4", "substitution", "multi claim"], "entity_set": ["Tirstrup", "Danish_language", "Denmark", "Ch'unch'uni"], "evidence": {"Tirstrup": [["country"], ["~location"]], "Denmark": [["language"], ["~country"]], "Danish_language": [["~language"]], "Ch'unch'uni": [["location"]]}, "Label": [false]}
+{"question_id": 23363, "question": "Eelpout Festival is found in Tirstrup, Denmark where Menderes Türel is its leader.", "types": ["written", "num4", "substitution", "multi claim"], "entity_set": ["Tirstrup", "Denmark", "Menderes_Türel", "Eelpout_Festival"], "evidence": {"Tirstrup": [["country"], ["~location"]], "Denmark": [["leaderName"], ["~country"]], "Menderes_Türel": [["~leaderName"]], "Eelpout_Festival": [["location"]]}, "Label": [false]}
+
+
+{"question_id": 29, "question": "He also had a successor, Hans von Raumer!", "types": ["coll:model", "existence"], "entity_set": ["Hans_von_Raumer"], "evidence": {"Hans_von_Raumer": [["successor"]]}, "Label": [true]}
+{"question_id": 477, "question": "Yes, Billy Fitzpatrick used to have a nickname.", "types": ["coll:model", "existence"], "entity_set": ["Billy_Fitzpatrick"], "evidence": {"Billy_Fitzpatrick": [["nickname"]]}, "Label": [true]}
+{"question_id": 70763, "question": "I wish that If only Jiří Paroubek was a prime minister.", "types": ["coll:presup", "existence"], "entity_set": ["Jiří_Paroubek"], "evidence": {"Jiří_Paroubek": [["~primeMinister"]]}, "Label": [true]}
+{"question_id": 70861, "question": "Do you have a spouse? Vernon Kay did not.", "types": ["coll:model", "negation", "existence"], "entity_set": ["Vernon_Kay"], "evidence": {"Vernon_Kay": [["spouse"]]}, "Label": [false]}
+
+
+{"question_id": 3522, "question": "Yes, the child of Moses was called Amram.", "types": ["coll:model", "num1", "substitution"], "entity_set": ["Moses", "Amram"], "evidence": {"Moses": [["child"]], "Amram": [["~child"]]}, "Label": [false]}
+{"question_id": 3760, "question": "The Greater Britain Movement leader was John Tyndall.", "types": ["coll:model", "num1", "substitution"], "entity_set": ["Greater_Britain_Movement", "John_Tyndall_(politician)"], "evidence": {"Greater_Britain_Movement": [["leader"]], "John_Tyndall_(politician)": [["~leader"]]}, "Label": [false]}
+{"question_id": 3921, "question": "Yep, Parmanand Jha is also the successor of Tek Bahadur Gurung.", "types": ["coll:model", "num1", "substitution"], "entity_set": ["Tek_Bahadur_Gurung", "Parmanand_Jha"], "evidence": {"Tek_Bahadur_Gurung": [["successor"]], "Parmanand_Jha": [["~successor"]]}, "Label": [false]}
+{"question_id": 48327, "question": "I heard A.C. Cesena's ground is located in Italy.", "types": ["coll:model", "num1"], "entity_set": ["A.C._Cesena", "Italy"], "evidence": {"A.C._Cesena": [["ground"]], "Italy": [["~ground"]]}, "Label": [true]}
+
+{"question_id": 53021, "question": "11264 Claudiomaccone has the epoch date of 26 November 2005 and the orbital period is 1513.722 days.", "types": ["written", "num2", "multi claim"], "entity_set": ["\"1.30786e+08\"", "11264_Claudiomaccone", "\"2005-11-26\""], "evidence": {"11264_Claudiomaccone": [["epoch"], ["orbitalPeriod"]], "\"2005-11-26\"": [["~epoch"]], "\"1.30786e+08\"": [["~orbitalPeriod"]]}, "Label": [true]}
+{"question_id": 52996, "question": "110 Lydia has an apoapsis of 440756000.0 kilometres and travels at an average speed of 17.99 kmps.", "types": ["written", "num2", "multi claim"], "entity_set": ["\"4.40756E8\"", "\"17.99\"", "110_Lydia"], "evidence": {"110_Lydia": [["Planet/averageSpeed"], ["Planet/apoapsis"]], "\"17.99\"": [["~Planet/averageSpeed"]], "\"4.40756E8\"": [["~Planet/apoapsis"]]}, "Label": [true]}
+{"question_id": 64448, "question": "The ship from Buenos Aires was built by Russel Brothers.", "types": ["coll:model", "num4", "substitution", "multi hop"], "entity_set": ["Buenos_Aires", "Russel_Brothers"], "evidence": {"Buenos_Aires": [["~capital", "~country", "builder"]], "Russel_Brothers": [["~builder", "country", "capital"]]}, "Label": [false]}
+{"question_id": 64455, "question": "It has a straight 6 engine and is manufactured in Orrville, Ohio.", "types": ["coll:model", "num4", "substitution", "multi hop"], "entity_set": ["Straight-six_engine", "Orrville,_Ohio"], "evidence": {"Straight-six_engine": [["~engine", "manufacturer", "foundationPlace"]], "Orrville,_Ohio": [["~foundationPlace", "~manufacturer", "engine"]]}, "Label": [false]}
+
+
+
+"""
