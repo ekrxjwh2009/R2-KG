@@ -216,8 +216,8 @@ Given entity: <<<<GT_ENTITY>>>>
 
 sub_prompt = """
 You are the evaluator. I will show you a claim and a triple set extracted from a graph. 
-Based on the given triple set and relation list of each entity, find the proper labels for given question.
-If given triple sets are lack of information to verify the claim, give the the combination of entity and relation you need. You can refer the given relations list and choosed what relation information is more needed.
+Based on the given triple set and relation list of each entity, find proper labels for given question.
+If given triple sets are lack of information to verify the claim, give the the combination of entity and relation you need. You can refer the given relations list and choose what relation information is more needed.
 The triple set takes the form [Head, Relation, Tail], which means 'Head's Relation is Tail.' 
 If the relation starts with '~', it indicates a reverse relation, meaning 'Tail's relation is head.' 
 The following cases may arise: Choose one option from 'Executable ([list of labels])' or 'Not executable(Insufficient evidence)'.
@@ -226,7 +226,7 @@ Refer to the explanations of the two options below to answer the Statement and E
 
 
 <Cases> 
-1. If the triple sets are sufficient to determine the True/False of the claim --> Executable ([list of labels])
+1. If there is a sufficient triple set to answer the question, you must select all possible answers if multiple answers seem possible --> Executable ([list of possible answers])
 2. If the triple set is insufficient or ambiguos to determine the True/False of the claim --> Not executable (Insufficient evidence) 
 
 <Example 1>

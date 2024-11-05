@@ -11,6 +11,7 @@ import re
 import dbpedia_sparql as db
 import prompts
 import subagent as sa
+import prompts_main
 
 
 ###################ADD###########################
@@ -57,8 +58,9 @@ class OpenAIBot:
             
 def reasoning(claim,initial_prompt, label, f, sub_prompt):
             
-    engine="gpt-3.5-turbo-0125"         
+    #engine="gpt-3.5-turbo-0125"         
     #engine = "gpt-4o-mini-2024-07-18"
+    engine = "gpt-4o-2024-08-06"
     chatbot = OpenAIBot(engine, client)
 
     iter_limit=30
@@ -255,7 +257,7 @@ if __name__ == "__main__":
     parser.add_argument("subagent", type=str, default="7shot")
     args = parser.parse_args()
     
-    save_path = f"./result_1by1_with_subagent_3.5"
+    save_path = f"./example_shot"
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     
@@ -265,7 +267,8 @@ if __name__ == "__main__":
     label_set_dict = {}
     types_dict ={}
     
-    with open("/home/smjo/share_code/factkg/data/extracted_dev_set.jsonl") as f:
+    
+    with open("/home/smjo/share_code/factkg/data/extracted_train_set.jsonl") as f:
         for line in f:
             if not line:
                 continue
@@ -280,12 +283,14 @@ if __name__ == "__main__":
 
     total_correct, total_abs,total_wrong =0,0,0
     
-    if args.type == 'existence': qid_list = sample_number.existence
-    elif args.type =="num1" : qid_list = sample_number.num1
-    elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
-    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
-    else:
-        print("Wrong argument")
+    # if args.type == 'existence': qid_list = sample_number.existence
+    # elif args.type =="num1" : qid_list = sample_number.num1
+    # elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
+    # elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
+    # else:
+    #     print("Wrong argument")
+    
+    qid_list = [10393, 23348, 23363]
     
     if args.subagent == '7shot' : sub_prompt = prompts.sub_agent_7shot
     if args.subagent == '2option' : sub_prompt = prompts.sub_agent_2option
@@ -309,7 +314,7 @@ if __name__ == "__main__":
             print(f"GT entity:{entities}")
             
             prompt = prompts.main_agent_1by1_with_sub.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
-            
+
             prediction, iter_num = reasoning(question,prompt, label,f, sub_prompt)
             abs, correct, wrong= score(str(prediction), str(label[0]),f)
             total_correct += correct

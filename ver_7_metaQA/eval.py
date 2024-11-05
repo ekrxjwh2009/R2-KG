@@ -2,7 +2,7 @@ import csv
 import re
 import argparse
 
-def score(predict, label):
+def score_easy(predict, label):
     per_score = len(label)
     abs, correct, wrong =0,0,0
     if 'abstain' in str(predict).lower():
@@ -12,10 +12,10 @@ def score(predict, label):
         new_pred_list, new_label_list = [],[]
         predict_list = predict.split(', ')
         for pred in predict_list:
-            pred_tmp = re.sub(r"[^a-zA-Z0-9]", "", pred.lower())
+            pred_tmp = re.sub('[-=+,#/\?:^.@*\"※ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', pred.lower())
             new_pred_list.append(pred_tmp)
         for lab in label:
-            lab_tmp = re.sub(r"[^a-zA-Z0-9]", "", lab.lower())
+            lab_tmp = re.sub('[-=+,#/\?:^.@*\"※ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', lab.lower())
             new_label_list.append(lab_tmp)
 
         for new_pred in new_pred_list:
@@ -28,12 +28,40 @@ def score(predict, label):
     
     return abs, correct, wrong
 
+def score_hard(predict, label):
+    per_score = len(label)
+    abs, correct, wrong =0,0,0
+
+    if 'abstain' in str(predict).lower():
+        abs+=1
+
+    else:
+        new_pred_list, new_label_list = [],[]
+        predict_list = predict.split(', ')
+        for pred in predict_list:
+            pred_tmp = re.sub(r"[^a-zA-Z0-9]", "",pred.lower())
+            new_pred_list.append(pred_tmp)
+        for lab in label:
+            lab_tmp = re.sub(r"[^a-zA-Z0-9]", "", lab.lower())
+            new_label_list.append(lab_tmp)
+        print(new_label_list)
+        print(new_pred_list)
+        for new_pred in new_pred_list:
+            if new_pred in new_label_list:
+                correct = 1/per_score
+            else:
+                wrong += 1/per_score
+                    
+    
+    return abs, correct, wrong
+
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--result_pth", type=str, default="two_hop")
 args = parser.parse_args()
-result_pth = f"./result_{args.result_pth}_gpt3.5_maxiter_15_multicalls_temp0/only_result.csv"
+#result_pth = f"./result_{args.result_pth}_gpt3.5_maxiter_15_multicalls_temp0/only_result.csv"
+result_pth ="/home/smjo/KG-gpt2/ver_7_metaQA/result_two_hop_gpt3.5_maxiter_15_multicalls_temp0/only_result.csv"
 
 total_sample,at_least_correct,total_abs, at_least_wrong =0,0,0, 0
 with open(result_pth, newline='') as csvfile:
@@ -41,7 +69,7 @@ with open(result_pth, newline='') as csvfile:
     for row in spamreader:
         predict = row[3]
         label = row[4].split(', ')
-        abs, correct, wrong = score(predict, label)
+        abs, correct, wrong = score_hard(predict, label)
         total_sample += 1
         at_least_correct +=correct
         at_least_wrong += wrong
