@@ -283,14 +283,13 @@ if __name__ == "__main__":
 
     total_correct, total_abs,total_wrong =0,0,0
     
-    # if args.type == 'existence': qid_list = sample_number.existence
-    # elif args.type =="num1" : qid_list = sample_number.num1
-    # elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
-    # elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
-    # else:
-    #     print("Wrong argument")
+    if args.type == 'existence': qid_list = sample_number.existence
+    elif args.type =="num1" : qid_list = sample_number.num1
+    elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
+    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
+    else:
+        print("Wrong argument")
     
-    qid_list = [10393, 23348, 23363]
     
     if args.subagent == '7shot' : sub_prompt = prompts.sub_agent_7shot
     if args.subagent == '2option' : sub_prompt = prompts.sub_agent_2option
@@ -313,7 +312,7 @@ if __name__ == "__main__":
             f.write(f"GT entity:{entities}")
             print(f"GT entity:{entities}")
             
-            prompt = prompts.main_agent_1by1_with_sub.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
+            prompt = prompts_main.pr_2.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
 
             prediction, iter_num = reasoning(question,prompt, label,f, sub_prompt)
             abs, correct, wrong= score(str(prediction), str(label[0]),f)

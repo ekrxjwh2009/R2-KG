@@ -1,0 +1,30 @@
+
+
+
+Qid:16
+Question :Alberto João Jardim had a spouse.GT entity:['Alberto_João_Jardim']
+************************************Iteration:0***********************************
+Statement : First, I need to find the relations linked to Alberto João Jardim.  
+Helper function : getRelation['Alberto_João_Jardim']
+[User]
+Execution result :
+Relations_list["Alberto_João_Jardim"] = ['22-rdf-syntax-ns#type', 'termPeriod', 'birthPlace', 'birthDate', 'dateOfBirth', 'birthYear', '~afterElection', '~wikiPageDisambiguates', 'rdf-schema#label', 'surname', 'termEnd', 'spouse', 'hypernym', 'predecessor', 'successor', '~successor', 'title', 'description', '~leader', 'subject', 'name', '~beforeElection', 'termStart', 'nationality', 'party', 'religion', 'shortDescription', 'givenName', 'almaMater', '~wikiPageRedirects', 'orderInOffice', 'years', 'placeOfBirth', '~firstLeader', 'office', 'order', '~predecessor', 'vicepresident']
+************************************Iteration:1***********************************
+Statement : To check if Alberto João Jardim had a spouse, I need to explore the graph for the relation 'spouse' linked to Alberto João Jardim.  
+Helper function : exploreKG['Alberto_João_Jardim']=['spouse']
+[User]
+Execution result :
+['Alberto_João_Jardim', 'spouse', '"Maria Ângela Andrade Martins"']
+************************************Iteration:2***********************************
+Statement : According to the triples, Alberto João Jardim has a spouse named "Maria Ângela Andrade Martins". Therefore, the claim is True.  
+Helper function : Verification[]
+GOLD SET!!!!!!!!!!!!!!!!!!!!!!
+[['Alberto_João_Jardim', 'spouse', '"Maria Ângela Andrade Martins"']]
+GOLD RELATIONS!!!!!!!!!!!!!!!!
+
+Relations_list["Alberto_João_Jardim"] = ['22-rdf-syntax-ns#type', 'termPeriod', 'birthPlace', 'birthDate', 'dateOfBirth', 'birthYear', '~afterElection', '~wikiPageDisambiguates', 'rdf-schema#label', 'surname', 'termEnd', 'spouse', 'hypernym', 'predecessor', 'successor', '~successor', 'title', 'description', '~leader', 'subject', 'name', '~beforeElection', 'termStart', 'nationality', 'party', 'religion', 'shortDescription', 'givenName', 'almaMater', '~wikiPageRedirects', 'orderInOffice', 'years', 'placeOfBirth', '~firstLeader', 'office', 'order', '~predecessor', 'vicepresident']
+Final Evidence!!!!!!!!!!!!!!!!!!!!!!
+[['Alberto_João_Jardim', 'spouse', '"Maria Ângela Andrade Martins"']]CASE COUNT:3
+[User]
+Execution result :
+Done!! True

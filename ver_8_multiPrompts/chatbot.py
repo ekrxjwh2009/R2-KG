@@ -240,7 +240,7 @@ def verification(claim,gold_set,gold_relations,f, sub_prompt):
 def score(predict, label):
     abs, correct, wrong =0,0,0
     #f.write(f"predict:{predict.lower()}, lable:{label.lower()}")
-    print(f"predict:{predict.lower()}, lable:{label.lower()}")
+    print(f"Scoring!!!!!!predict:{predict.lower()}, label:{label.lower()}")
     if 'abstain' in predict.lower():
         abs+=1
     elif predict.lower() == label.lower():
