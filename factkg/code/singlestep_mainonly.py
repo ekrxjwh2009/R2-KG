@@ -9,6 +9,7 @@ import numpy as np
 import re
 import dbpedia_sparql as db
 import subagent as sa
+from dotenv import load_dotenv
 from unified_prompts.accurate_prompt.factkg_prompt import main_agent2
 from unified_prompts.accurate_prompt.factkg_prompt import main_agent3
 
@@ -190,8 +191,17 @@ Given entity: <<<<GT_ENTITY>>>>
 """
 
 
-openai.api_key = "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"
-client = OpenAI(api_key=openai.api_key)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(current_dir))
+sys.path.append(root_dir)
+load_dotenv()
+
+# GITIGNORE WHEN MAKING REPO PUBLIC
+openai.api_key = os.getenv('OPENAI_KEY')
+
+client = OpenAI(
+    api_key = os.getenv('OPENAI_KEY')
+)
 
 class OpenAIBot:
     def __init__(self, engine, client, temperature, top_p):

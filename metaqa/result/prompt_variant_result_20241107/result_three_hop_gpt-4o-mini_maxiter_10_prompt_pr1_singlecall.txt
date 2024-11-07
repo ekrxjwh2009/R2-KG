@@ -1,0 +1,236 @@
+
+
+
+Qid:20
+Question :who starred films for the director of [Flickering Lights]?GT entity:['Flickering Lights']
+************************************Iteration:0***********************************
+Statement: I need the relations linked with the given entity.  
+Helper function: getRelation('Flickering Lights')
+[User]
+Execution result: 
+Relation_list(Flickering Lights) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the director of 'Flickering Lights', I need to explore the graph with the given entity and related relations.  
+Helper function: exploreKG('Flickering Lights')=['directed_by']
+[User]
+Execution result: 
+['flickering_lights', 'directed_by', 'anders_thomas_jensen']
+************************************Iteration:2***********************************
+Statement: Now I get the director of 'Flickering Lights'. The director is 'anders_thomas_jensen'. Next, I need to find the films starred by the director 'anders_thomas_jensen'. I will first find the relations linked with 'anders_thomas_jensen'.  
+Helper function: getRelation('anders_thomas_jensen')
+[User]
+Execution result: 
+Relation_list(anders_thomas_jensen) = ['~has_tags', '~directed_by', '~written_by']
+************************************Iteration:3***********************************
+Statement: Now, I need to find the films starred by the director 'anders_thomas_jensen'. I will explore the graph using the inverse relation.  
+Helper function: exploreKG('anders_thomas_jensen')=['~directed_by']
+[User]
+Execution result: 
+['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"]
+************************************Iteration:4***********************************
+Statement: Now I have found the films directed by 'anders_thomas_jensen', which are ['the_green_butchers', "adam's_apples"]. Next, I need to find the starred actors in these films. I will start with the film 'the_green_butchers'.  
+Helper function: getRelation('the_green_butchers')
+[User]
+Execution result: 
+Relation_list(the_green_butchers) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:5***********************************
+Statement: Now, I need to find the starred actors in the film 'the_green_butchers'.  
+Helper function: exploreKG('the_green_butchers')=['starred_actors']
+[User]
+Execution result: 
+['the_green_butchers', 'starred_actors', 'line_kruse'], ['the_green_butchers', 'starred_actors', 'mads_mikkelsen'], ['the_green_butchers', 'starred_actors', 'nikolaj_lie_kaas']
+************************************Iteration:6***********************************
+Statement: Now I have found the starred actors in the film 'the_green_butchers', which are ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas']. Next, I will find the starred actors in the film "adam's_apples".  
+Helper function: getRelation("adam's_apples")
+[User]
+Execution result: 
+Relation_list(adam's_apples) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:7***********************************
+Statement: Now, I need to find the starred actors in the film "adam's_apples".  
+Helper function: exploreKG("adam's_apples")=['starred_actors']
+[User]
+Execution result: 
+["adam's_apples", 'starred_actors', 'ulrich_thomsen'], ["adam's_apples", 'starred_actors', 'mads_mikkelsen']
+************************************Iteration:8***********************************
+Statement: Now I have found the starred actors in the film "adam's_apples", which are ['ulrich_thomsen', 'mads_mikkelsen']. Combining the starred actors from both films, I have the following list: ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'ulrich_thomsen']. The answer to the claim is as follows.  
+Helper function: Verification(['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'ulrich_thomsen'])
+[User]
+Execution result: 
+Done!!Prediction:['line_kruse', 'ulrich_thomsen', 'mads_mikkelsen', 'nikolaj_lie_kaas']
+Real label:['Mads Mikkelsen', 'Ulrich Thomsen', 'Line Kruse', 'Nikolaj Lie Kaas']
+Correct!
+score: 1.0, 0
+
+Total sample:1, Total_Correct:1.0, Total_Wrong:0, Total_abstain:0metric1:1.0, metric2:1.0, metric3 :1.0avg iter:9.0
+ max_iter:9
+ min_iter:9
+
+
+Qid:40
+Question :who are the directors of films whose writers also wrote [Trust]?GT entity:['Trust']
+************************************Iteration:0***********************************
+Statement: I need the relations linked with the given entity.  
+Helper function: getRelation('Flickering Lights')
+[User]
+Execution result: 
+Relation_list(Flickering Lights) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the director of 'Flickering Lights', I need to explore the graph with the given entity and related relations.  
+Helper function: exploreKG('Flickering Lights')=['directed_by']
+[User]
+Execution result: 
+['flickering_lights', 'directed_by', 'anders_thomas_jensen']
+************************************Iteration:2***********************************
+Statement: Now I get the director of 'Flickering Lights'. The director is 'anders_thomas_jensen'. Next, I need to find the films starred by the director 'anders_thomas_jensen'. Let's find the relations connected to 'anders_thomas_jensen'.  
+Helper function: getRelation('anders_thomas_jensen')
+[User]
+Execution result: 
+Relation_list(anders_thomas_jensen) = ['~has_tags', '~directed_by', '~written_by']
+************************************Iteration:3***********************************
+Statement: Now, I need to find the films starred by the director 'anders_thomas_jensen'. I will explore the graph using the inverse relation.  
+Helper function: exploreKG('anders_thomas_jensen')=['~directed_by']
+[User]
+Execution result: 
+['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"]
+************************************Iteration:4***********************************
+Statement: Now I have found the films directed by 'anders_thomas_jensen', which are ['the_green_butchers', 'flickering_lights', "adam's_apples"]. Next, I need to find the starred actors in these films. Let's start with the film 'the_green_butchers'.  
+Helper function: getRelation('the_green_butchers')
+[User]
+Execution result: 
+Relation_list(the_green_butchers) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:5***********************************
+Statement: Now, I need to find the starred actors in the film 'the_green_butchers'.  
+Helper function: exploreKG('the_green_butchers')=['starred_actors']
+[User]
+Execution result: 
+['the_green_butchers', 'starred_actors', 'line_kruse'], ['the_green_butchers', 'starred_actors', 'mads_mikkelsen'], ['the_green_butchers', 'starred_actors', 'nikolaj_lie_kaas']
+************************************Iteration:6***********************************
+Statement: Now I have found the starred actors in the film 'the_green_butchers', which are ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas']. Next, I will find the starred actors in the film "adam's_apples".  
+Helper function: getRelation("adam's_apples")
+[User]
+Execution result: 
+Relation_list(adam's_apples) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:7***********************************
+Statement: Now, I need to find the starred actors in the film "adam's_apples".  
+Helper function: exploreKG("adam's_apples")=['starred_actors']
+[User]
+Execution result: 
+["adam's_apples", 'starred_actors', 'ulrich_thomsen'], ["adam's_apples", 'starred_actors', 'mads_mikkelsen']
+************************************Iteration:8***********************************
+Statement: Now I have found the starred actors in the film "adam's_apples", which are ['ulrich_thomsen', 'mads_mikkelsen']. Next, I will combine all the unique starred actors from the films directed by 'anders_thomas_jensen', which are ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'ulrich_thomsen']. The final list of starred actors is ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'ulrich_thomsen'].  
+Helper function: Verification(['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'ulrich_thomsen'])
+[User]
+Execution result: 
+Done!!Prediction:['line_kruse', 'ulrich_thomsen', 'mads_mikkelsen', 'nikolaj_lie_kaas']
+Real label:['Jeffrey Friedman', 'Rob Epstein', 'Todd Field', 'Hal Hartley']
+Wrong
+score: 0, 1.0
+
+Total sample:2, Total_Correct:1.0, Total_Wrong:1.0, Total_abstain:0metric1:1.0, metric2:0.5, metric3 :0avg iter:9.0
+ max_iter:9
+ min_iter:9
+
+
+Qid:60
+Question :when did the films directed by the [Return of the Fly] director release?GT entity:['Return of the Fly']
+************************************Iteration:0***********************************
+Statement: I need the relations linked with the given entity.  
+Helper function: getRelation('Flickering Lights')
+[User]
+Execution result: 
+Relation_list(Flickering Lights) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the director of 'Flickering Lights', I need to explore the graph with the given entity and related relations.  
+Helper function: exploreKG('Flickering Lights')=['directed_by']
+[User]
+Execution result: 
+['flickering_lights', 'directed_by', 'anders_thomas_jensen']
+************************************Iteration:2***********************************
+Statement: Now I get the director of 'Flickering Lights'. The director is 'anders_thomas_jensen'. Next, I need to find the films starred by the director 'anders_thomas_jensen'. Let's find the relations for this director.  
+Helper function: getRelation('anders_thomas_jensen')
+[User]
+Execution result: 
+Relation_list(anders_thomas_jensen) = ['~has_tags', '~directed_by', '~written_by']
+************************************Iteration:3***********************************
+Statement: Now, I need to find the films starred by the director 'anders_thomas_jensen'. I will explore the graph using the inverse relation.  
+Helper function: exploreKG('anders_thomas_jensen')=['~directed_by']
+[User]
+Execution result: 
+['anders_thomas_jensen', '~directed_by', 'the_green_butchers'], ['anders_thomas_jensen', '~directed_by', 'flickering_lights'], ['anders_thomas_jensen', '~directed_by', "adam's_apples"]
+************************************Iteration:4***********************************
+Statement: Now I have found the films directed by 'anders_thomas_jensen', which are ['the_green_butchers', 'flickering_lights', "adam's_apples"]. Next, I need to find the starred actors for each of these films. Let's start with the film 'the_green_butchers'.  
+Helper function: getRelation('the_green_butchers')
+[User]
+Execution result: 
+Relation_list(the_green_butchers) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:5***********************************
+Statement: Now, I need to find the starred actors in the film 'the_green_butchers'.  
+Helper function: exploreKG('the_green_butchers')=['starred_actors']
+[User]
+Execution result: 
+['the_green_butchers', 'starred_actors', 'line_kruse'], ['the_green_butchers', 'starred_actors', 'mads_mikkelsen'], ['the_green_butchers', 'starred_actors', 'nikolaj_lie_kaas']
+************************************Iteration:6***********************************
+Statement: Now I have found the starred actors in the film 'the_green_butchers', which are ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas']. Next, I need to find the starred actors for the film 'flickering_lights'.  
+Helper function: getRelation('flickering_lights')
+[User]
+Execution result: 
+Relation_list(flickering_lights) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:7***********************************
+Statement: Now, I need to find the starred actors in the film 'flickering_lights'.  
+Helper function: exploreKG('flickering_lights')=['starred_actors']
+[User]
+Execution result: 
+['flickering_lights', 'starred_actors', 'søren_pilmark'], ['flickering_lights', 'starred_actors', 'ulrich_thomsen'], ['flickering_lights', 'starred_actors', 'mads_mikkelsen'], ['flickering_lights', 'starred_actors', 'nikolaj_lie_kaas']
+************************************Iteration:8***********************************
+Statement: Now I have found the starred actors in the film 'flickering_lights', which are ['søren_pilmark', 'ulrich_thomsen', 'mads_mikkelsen', 'nikolaj_lie_kaas']. Next, I need to find the starred actors for the film "adam's_apples".  
+Helper function: getRelation("adam's_apples")
+[User]
+Execution result: 
+Relation_list(adam's_apples) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:9***********************************
+Statement: Now, I need to find the starred actors in the film "adam's_apples".  
+Helper function: exploreKG("adam's_apples")=['starred_actors']
+[User]
+Execution result: 
+["adam's_apples", 'starred_actors', 'ulrich_thomsen'], ["adam's_apples", 'starred_actors', 'mads_mikkelsen']
+************************************Iteration:10***********************************
+Statement: Now I have found the starred actors in the film "adam's_apples", which are ['ulrich_thomsen', 'mads_mikkelsen']. 
+
+Now, I will compile all the unique actors who starred in the films directed by 'anders_thomas_jensen'. The actors are:
+- From 'the_green_butchers': ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas']
+- From 'flickering_lights': ['søren_pilmark', 'ulrich_thomsen', 'mads_mikkelsen', 'nikolaj_lie_kaas']
+- From "adam's_apples": ['ulrich_thomsen', 'mads_mikkelsen']
+
+The unique actors are: ['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'søren_pilmark', 'ulrich_thomsen'].
+
+The answer to the claim is as follows.  
+Helper function: Verification(['line_kruse', 'mads_mikkelsen', 'nikolaj_lie_kaas', 'søren_pilmark', 'ulrich_thomsen'])
+abstain!
+score: 0, 0
+
+Total sample:3, Total_Correct:1.0, Total_Wrong:1.0, Total_abstain:1metric1:0.6666666666666666, metric2:0.5, metric3 :0avg iter:9.333333333333334
+ max_iter:10
+ min_iter:9
+
+
+Qid:80
+Question :the films written by the screenwriter of [Last Night] were directed by who?GT entity:['Last Night']
+************************************Iteration:0***********************************
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Flickering Lights')
+[User]
+Execution result: 
+Relation_list(Flickering Lights) = ['has_tags', 'has_genre', 'release_year', 'starred_actors', 'written_by', 'in_language', 'directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the director of 'Flickering Lights', I need to explore the graph with the given entity and related relations.
+Helper function: exploreKG('Flickering Lights')=['directed_by']
+[User]
+Execution result: 
+['flickering_lights', 'directed_by', 'anders_thomas_jensen']
+************************************Iteration:2***********************************
+Statement: Now I get the director of 'Flickering Lights', which is 'anders_thomas_jensen'. Next, I need to find the films directed by 'anders_thomas_jensen'. Let's find the relations for this director.
+Helper function: getRelation('anders_thomas_jensen')
+[User]
+Execution result: 
+Relation_list(anders_thomas_jensen) = ['~has_tags', '~directed_by', '~written_by']
+************************************Iteration:3***********************************

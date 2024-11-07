@@ -442,9 +442,6 @@ Claim: <<<<CLAIM>>>>
 Given entity: <<<<GT_ENTITY>>>>
 """
 
-openai.api_key = "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"
-client = OpenAI(api_key=openai.api_key)
-
 class OpenAIBot:
     def __init__(self, engine, client):
         # Initialize conversation with a system message
