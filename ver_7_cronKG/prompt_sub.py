@@ -135,8 +135,8 @@ Evalution : Not executable(Insufficient evidence)
 
 Now, it's your turn. Continue your 'Statement and Evaluation' task. Response must have same form with upper examples.
 [User]
-Claim : <<<<CLAIM>>>>
-Triple set : <<<<Triple set>>>>
+Question : <<<<CLAIM>>>>
+Triple sets : <<<<Triple set>>>>
 Relations of Entity : <<<<GOLD RELATIONS>>>>
 """
 

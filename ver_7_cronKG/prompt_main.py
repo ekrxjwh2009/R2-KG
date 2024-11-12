@@ -5,7 +5,7 @@ You can use below helper functions to find the evidence for finding labels.
 <Helper functions>
 1. getRelation[entity]: Returns the list of relations connected to the entities.
 2. exploreKG[entity]=[list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
-3. Verification[]: After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
+3. Verification[]: After getting enough evidence after exploreKG() helper function and if verification can be done, call this function.
 
 You must follow the exact format of the given helper function.
 
@@ -100,7 +100,7 @@ You can use below helper functions to find the evidence for finding labels.
 <Helper functions>
 1. getRelation[entity]: Returns the list of relations connected to the entities.
 2. exploreKG[entity]=[list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
-3. Verification[]: After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
+3. Verification[]: After getting enough evidence after exploreKG() helper function and if verification can be done, call this function.
 
 You must follow the exact format of the given helper function.
 
@@ -197,7 +197,7 @@ You can use below helper functions to find the evidence for finding labels.
 <Helper functions>
 1. getRelation[entity]: Returns the list of relations connected to the entities.
 2. exploreKG[entity]=[list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
-3. Verification[]: After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
+3. Verification[]: After getting enough evidence after exploreKG() helper function and if verification can be done, call this function.
 
 You must follow the exact format of the given helper function.
 

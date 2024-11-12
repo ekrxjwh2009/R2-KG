@@ -94,8 +94,8 @@ def split_functions(response):
     prompt=''
     try:
         response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
-        functions = response.split("Helper function : ")[1]
+        statement = response.split("Statement : ")[0].split("Helper function")[0]
+        functions = response.split("Helper function")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
         else :
@@ -220,20 +220,28 @@ def verification(claim,gold_set,gold_relations,f, sub_prompt):
 def score(predict, label,f):
     per_score = len(label)
     abs, correct, wrong =0,0,0
-    print(f"predict:{predict}\nlabel:{label}")
+    
     if 'abstain' in str(predict).lower():
         abs+=1
 
     else:
         new_pred_list, new_label_list = [],[]
-        predict_list = predict.split(', ')
+        predict_list = predict.strip().split(',')
         for pred in predict_list:
             pred_tmp = re.sub(r"[^a-zA-Z0-9]", "", pred.lower())
+            pred_tmp = pred_tmp.strip()
             new_pred_list.append(pred_tmp)
         for lab in label:
-            lab_tmp = re.sub(r"[^a-zA-Z0-9]", "", lab.lower())
-            new_label_list.append(lab_tmp)
+            if type(lab)==int:
+                lab_tmp = f'{lab}'
+                new_label_list.append(lab_tmp)
+                continue
+            else:
+                lab_tmp = re.sub(r"[^a-zA-Z0-9]", "", lab.lower())
+                lab_tmp = lab_tmp.strip()
+                new_label_list.append(lab_tmp)
 
+        print(f"predict:{new_pred_list}\nlabel:{new_label_list}")
         for new_pred in new_pred_list:
             if new_pred in new_label_list:
                 correct = 1/per_score
@@ -339,11 +347,23 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     parser.add_argument("type", type=str, default="before_after")
+    parser.add_argument("prompt", type=str, default='pr_1')
     args = parser.parse_args()
     
-    sub_prompt = prompt_sub.pr_1
+    if args.prompt =='pr_1': 
+        sub_prompt = prompt_sub.pr_1 
+        main_prompt = prompt_main.pr_1
+        save_path = f"./result_pr1"
+    elif args.prompt =='pr_2': 
+        sub_prompt = prompt_sub.pr_2
+        main_prompt = prompt_main.pr_2
+        save_path = f"./result_pr2"
+    else : 
+        sub_prompt = prompt_sub.pr_3
+        main_prompt = prompt_main.pr_3
+        save_path = f"./result_pr3"
+        
     
-    save_path = f"./result"
     question_path = f"/home/smjo/KG-gpt2_cronKG/CronQA_data/wikidata_big/questions/{args.type}.json"
     if not os.path.exists(save_path):
         os.mkdir(save_path)
@@ -362,10 +382,12 @@ if __name__ == "__main__":
     
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
-    qid_list = [20 * i for i in range(10)]
+    qid_list = [20*i for i in range(50)]
     
-    with open(os.path.join(save_path, f"result_{args.type}.txt"),'w') as f:
+    with open(os.path.join(save_path, f"result_{args.type}.txt"),'a') as f:
         for qid in qid_list:
+            if qid <= 440 :
+                continue
             print(f"Qid:{qid}")
             question = qa_list[qid]['question']
             label = qa_list[qid]['answers']
@@ -374,19 +396,19 @@ if __name__ == "__main__":
             f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
             f.write(f"GT entity:{entities}")
             
-            prompt = prompt_main.pr_1.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+            prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
             
             prediction, iter_num = reasoning(question, prompt, label,f,sub_prompt,KG = full_KG)
             
-            abs, correct, wrong= score(str(prediction), str(label[0]),f)
+            abs, correct, wrong= score(str(prediction), label,f)
             total_correct += correct
             total_wrong += wrong
             total_abs += abs
             iter_num_list.append(iter_num)
             
-            ff = open(os.path.join(save_path, f"only_result.csv"),'a')
+            ff = open(os.path.join(save_path, f"only_result_{args.type}.csv"),'a')
             writer= csv.writer(ff)
-            writer.writerow([qid, str(prediction), str(label[0])])
+            writer.writerow([qid, prediction, label])
             ff.close()
 
             
