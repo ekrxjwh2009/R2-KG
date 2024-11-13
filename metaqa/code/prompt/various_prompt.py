@@ -8,7 +8,7 @@ You can use below helper functions to find the evidence for finding labels.
 2. exploreKG(entity) = [list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
 3. Verification([list of entities]): After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
 
-You must follow the exact format of the given helper function.
+You must follow the exact format of the given helper function. You can use multiple helper functions in one step by using '##' between functions.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
@@ -120,7 +120,7 @@ You can use below helper functions to find the evidence for finding labels.
 2. exploreKG(entity) = [list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
 3. Verification([list of entities]): After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
 
-You must follow the exact format of the given helper function.
+You must follow the exact format of the given helper function. You can use multiple helper functions in one step by using '##' between functions.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
@@ -239,8 +239,8 @@ Execution result:
 ['callas_forever', 'release_year', '2002']
 [ChatGPT]
 Statement: Now I get the release year of the movies directed by the director of 'The Champ'. The answer of the claim is as follows.
-[1928, 1932, 1934, 1940, 1943, 1946, 1948, 1949, 1952, 1956, 1964, 1966, 1969, 1970, 1981, 1986, 1990, 1996, 2000, 2002, 2005, 2009, 2011, 2014]
-Helper function: Verification([1928, 1932, 1934, 1940, 1943, 1946, 1948, 1949, 1952, 1956, 1964, 1966, 1969, 1970, 1981, 1986, 1990, 1996, 2000, 2002, 2005, 2009, 2011, 2014])
+['1928', '1932', '1934', '1940', '1943', '1946', '1948', '1949', '1952', '1956', '1964', '1966', '1969', '1970', '1981', '1986', '1990', '1996', '2000', '2002', '2005', '2009', '2011', '2014']
+Helper function: Verification(['1928', '1932', '1934', '1940', '1943', '1946', '1948', '1949', '1952', '1956', '1964', '1966', '1969', '1970', '1981', '1986', '1990', '1996', '2000', '2002', '2005', '2009', '2011', '2014'])
 
 Example 3)
 Claim: what film genre is [Crazy Safari]?
@@ -278,7 +278,7 @@ You can use below helper functions to find the evidence for finding labels.
 2. exploreKG(entity) = [list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
 3. Verification([list of entities]): After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
 
-You must follow the exact format of the given helper function.
+You must follow the exact format of the given helper function. You can use multiple helper functions in one step by using '##' between functions.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
@@ -289,7 +289,7 @@ Importantly, you have to use inverse relation if you need. For example, if you w
 Here are some examples.
 
 Example 1)
-Claim: when was [Waiting for Happiness] released
+Claim: when was [Waiting for Happiness] released?
 Given Entity: ['Waiting for Happiness']
 
 [ChatGPT]
@@ -360,7 +360,37 @@ Execution result:
 ['Ender's Game', 'written_by', 'orson_scott_card'], ['Ender's Game', 'written_by', 'gavin_hood']
 [ChatGPT]
 Statement: Now I get the writers of "Ender's Game". I need the proper relation to find the films written by the "Ender's Game" writers.
-Helper function: getRelation('the_legend_of_hercules')
+Helper function: getRelation('orson_scott_card') ## getRelation('gavin_hood')
+[User]
+Execution result: 
+Relation_list('orson_scott_card') = ['~written_by', '~has_tags']
+Relation_list('gavin_hood') = ['~written_by', '~directed_by', '~has_tags']
+[ChatGPT]
+Statement: To find the films written by the "Ender's Game" writers, I need to explore the graph with the given entity and related relations.
+Helper function: exploreKG('orson_scott_card')=['~written_by'] ## exploreKG('gavin_hood')=['~written_by']
+[User]
+Execution result: 
+['gavin_hood', '~written_by', 'tsotsi']
+[ChatGPT]
+Statement: Now I get the films written by the "Ender's Game" writers. Now, I need to find the release year of the films.
+Helper function: getRelation('tsotsi')
+[User]
+Execution result: 
+Relation_list('tsotsi') = ['directed_by', 'release_year', 'has_tags', 'written_by']
+[ChatGPT]
+Statement: To find the release year of the films written by the "Ender's Game" writers, I need to explore the graph with the given entity and related relations.
+Helper function: exploreKG('tsotsi')=['release_year']
+[User]
+Execution result: 
+['tsotsi', 'release_year', '2005']
+[ChatGPT]
+Statement: Now I get the release year of the films written by the "Ender's Game" writers. The answer of the claim is as follows.
+['2005']
+Helper function: Verification(['2005'])
+
+Now, it's your turn. Your response must have same form with upper examples.
+Claim: <<<<CLAIM>>>>
+Given entity: <<<<GT_ENTITY>>>>
 """
 
 pr3 = """
@@ -372,7 +402,7 @@ You can use below helper functions to find the evidence for finding labels.
 2. exploreKG(entity) = [list of relations]: Returns the corresponding tail entities in graph data starts from single entity in given entity and given relation.
 3. Verification([list of entities]): After getting enough evidence after exploreKG() helper function and if verification can be done, call this function with labels.
 
-You must follow the exact format of the given helper function.
+You must follow the exact format of the given helper function. You can use multiple helper functions in one step by using '##' between functions.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
@@ -492,6 +522,10 @@ Execution result:
 Statement: Now I get the movie that Diane Kurys was the director for. The answer of the claim is as follows.
 ['peppermint_soda', 'entre_nous']
 Helper function: Verification(['peppermint_soda', 'entre_nous'])
+
+Now, it's your turn. Your response must have same form with upper examples.
+Claim: <<<<CLAIM>>>>
+Given entity: <<<<GT_ENTITY>>>>
 """
 
 pr1_singlecall = """
