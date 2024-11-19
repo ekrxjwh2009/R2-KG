@@ -9,48 +9,20 @@ from collections import defaultdict
 import pickle
 import re
 import prompt_oneAgent
+from models import OpenAIBot
 
-openai.api_key = "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"
-client = OpenAI(api_key=openai.api_key)
+#openai.api_key = "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"
+#client = OpenAI(api_key=openai.api_key)
 
-class OpenAIBot:
-    def __init__(self,engine, client):
-        # Initialize conversation with a system message
-        self.conversation = [{"role": "system", "content": "You are a helpful assistant."}]
-        self.engine = engine
-        self.client = client
-    def add_message(self, role, content):
-        # Adds a message to the conversation.
-
-        self.conversation.append({"role": role, "content": content})
-    def generate_response(self, prompt):
-        # Add user prompt to conversation
-        self.add_message("user", prompt)
-
-        try:
-            # Make a request to the API using the chat-based endpoint with conversation context
-            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.3, top_p = 0.1)
-            # Extract the response
-            #print(response)
-            assistant_response = response.choices[0].message.content.strip()
 
             
-            # Add assistant response to conversation
-            self.add_message("assistant", assistant_response)
-            # Return the response
-            return assistant_response
-        #except:
-        #    print('Error Generating Response!')
-        except openai.APIError as e:
-            #Handle API error here, e.g. retry or log
-            print(f"OpenAI API returned an API Error: {e}")
-            return f"OpenAI API returned an API Error: {e}"
+def reasoning(model, engine, claim, initial_prompt, label, f,KG):
             
-def reasoning(claim,initial_prompt, label, f,KG):
-            
-    #engine="gpt-3.5-turbo-0125"         
-    engine = "gpt-4o-mini-2024-07-18"
-    chatbot = OpenAIBot(engine, client)
+    #engine="gpt-3.5-turbo-0125"  
+    if model =="gpt" : engine="gpt-4o-mini-2024-07-18"
+    elif model=='mixtral': engine = "open-mixtral-8x22b"
+
+    chatbot = OpenAIBot(model,engine)
 
     iter_limit=15
     gold_set =[]
@@ -351,22 +323,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("type", type=str, default="before_after")
     parser.add_argument("prompt", type=str, default='pr_1')
+    parser.add_argument("model", type = str, default="mixtral")
+    parser.add_argument("engine", type=str, default="mixtral-8x22b")
     args = parser.parse_args()
     
     if args.prompt =='pr_1': 
         main_prompt = prompt_oneAgent.pr_1
-        save_path = f"./result_pr1_oneAgent"
+        save_path = f"./result/{args.model}/result_pr1_oneAgent"
     elif args.prompt =='pr_2': 
         main_prompt = prompt_oneAgent.pr_2
-        save_path = f"./result_pr2_oneAgent"
+        save_path = f"./result/{args.model}/result_pr2_oneAgent"
     else : 
         main_prompt = prompt_oneAgent.pr_3
-        save_path = f"./result_pr3_oneAgent"
+        save_path = f"./result/{args.model}/result_pr3_oneAgent"
+    
         
     
     question_path = f"/home/smjo/KG-gpt2_cronKG/CronQA_data/wikidata_big/questions/{args.type}.json"
     if not os.path.exists(save_path):
-        os.mkdir(save_path)
+        os.makedirs(save_path)
     
     
     full_KG, entid2txt_dict, relid2txt_dict = make_data()
@@ -382,7 +357,7 @@ if __name__ == "__main__":
     
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
-    qid_list = [20*i for i in range(50)]
+    qid_list = [20*i for i in range(10)]
     
     with open(os.path.join(save_path, f"result_{args.type}.txt"),'a') as f:
         for qid in qid_list:
@@ -397,7 +372,7 @@ if __name__ == "__main__":
             
             prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
             
-            prediction, iter_num = reasoning(question, prompt, label,f, KG = full_KG)
+            prediction, iter_num = reasoning(args.model, args.engine, question, prompt, label,f, KG = full_KG)
             
             abs, correct, wrong= score(str(prediction), label,f)
             total_correct += correct
