@@ -44,8 +44,8 @@ def vllm_response(message: list, model=None, temperature=0.7, top_p=0.9, max_tok
         return res.choices[0].message.content
     except Exception as e:
         print(e)
-        time.sleep(time_gap.get(model, 3) * 2)
-        return vllm_response(messages, model, temperature, max_tokens)
+        # time.sleep(time_gap.get(model, 3) * 2)
+        # return vllm_response(message, model, temperature, max_tokens)
 
 if __name__ == '__main__':
     model_name = "Qwen/Qwen2.5-14B-Instruct"

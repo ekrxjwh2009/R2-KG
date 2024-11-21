@@ -20,7 +20,9 @@ pip install python-dotenv
 ### VLLM Serving Code
 - 대괄호가 씌워져 있는 parameter의 경우 상황에 따라 자주 바뀌기 때문에 상황에 맞게 parameter 수정 후 대괄호 제거 후 실행
 ```
-CUDA_VISIBLE_DEVICES=[6,7] python -m vllm.entrypoints.openai.api_server --model meta-llama/Meta-Llama-3.1-8B-Instruct --load-format safetensors --max-model-len 8192 --download-dir /nfs_data_storage/huggingface --tensor-parallel-size [2] --port [8043] --dtype bfloat16 --chat-template ./tool_chat_template_llama3.1_json.jinja
+CUDA_VISIBLE_DEVICES=[6,7] python -m vllm.entrypoints.openai.api_server --model meta-llama/Meta-Llama-3.1-8B-Instruct \
+                            --load-format safetensors --max-model-len 8192 --download-dir /nfs_data_storage/huggingface \
+                            --tensor-parallel-size [2] --port [8043] --dtype bfloat16 --chat-template ./tool_chat_template_llama3.1_json.jinja
 ```
-- 실행 시 "http://143.248.157.130:8044/v1" url로 요청 가능
+- 실행 시 "http://server_url:server_port/v1" url로 요청 가능
 - test code : /model.py
