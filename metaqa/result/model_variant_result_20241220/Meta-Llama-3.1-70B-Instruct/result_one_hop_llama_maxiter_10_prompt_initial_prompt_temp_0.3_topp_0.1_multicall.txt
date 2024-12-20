@@ -1,0 +1,3776 @@
+
+
+
+Qid:20
+Question :what does [Hiromi Nagasaku] star in?GT entity:['Hiromi Nagasaku']
+************************************Iteration:0***********************************
+Wrong
+score: 0, 5.0
+
+Total sample:1, Total_Correct:0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0
+metric3 :-5.0
+avg iter:0.0
+max_iter:0
+min_iter:0
+
+
+Qid:40
+Question :what movies did [Caroline Aaron] star in?GT entity:['Caroline Aaron']
+************************************Iteration:0***********************************
+Wrong
+score: 0, 5.0
+
+Total sample:2, Total_Correct:0, Total_Wrong:10.0, Total_abstain:0
+metric1:1.0
+metric2:0
+metric3 :-5.0
+avg iter:0.0
+max_iter:0
+min_iter:0
+
+
+Qid:60
+Question :what movies did [Paul Lynde] act in?GT entity:['Paul Lynde']
+************************************Iteration:0***********************************
+Wrong
+score: 0, 5.0
+
+Total sample:3, Total_Correct:0, Total_Wrong:15.0, Total_abstain:0
+metric1:1.0
+metric2:0
+metric3 :-5.0
+avg iter:0.0
+max_iter:0
+min_iter:0
+
+
+Qid:80
+Question :what films does [Julian Sands] appear in?GT entity:['Julian Sands']
+************************************Iteration:0***********************************
+Wrong
+score: 0, 0.8333333333333333
+
+Total sample:4, Total_Correct:0, Total_Wrong:15.833333333333334, Total_abstain:0
+metric1:1.0
+metric2:0
+metric3 :-3.9583333333333335
+avg iter:0.0
+max_iter:0
+min_iter:0
+
+
+Qid:100
+Question :what movies was [Roger Perry] an actor in?GT entity:['Roger Perry']
+************************************Iteration:0***********************************
+Wrong
+score: 0, 5.0
+
+Total sample:5, Total_Correct:0, Total_Wrong:20.833333333333336, Total_abstain:0
+metric1:1.0
+metric2:0
+metric3 :-4.166666666666667
+avg iter:0.0
+max_iter:0
+min_iter:0
+
+
+Qid:120
+Question :what movies did [Beatriz Batarda] act in?GT entity:['Beatriz Batarda']
+************************************Iteration:0***********************************
+Wrong
+score: 0, 5.0
+
+Total sample:6, Total_Correct:0, Total_Wrong:25.833333333333336, Total_abstain:0
+metric1:1.0
+metric2:0
+metric3 :-4.305555555555556
+avg iter:0.0
+max_iter:0
+min_iter:0
+
+
+Qid:140
+Question :what films did [Leigh McCormack] star in?GT entity:['Leigh McCormack']
+************************************Iteration:0***********************************
+
+
+Qid:20
+Question :what does [Hiromi Nagasaku] star in?GT entity:['Hiromi Nagasaku']
+************************************Iteration:0***********************************
+
+
+Qid:20
+Question :what does [Hiromi Nagasaku] star in?GT entity:['Hiromi Nagasaku']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Hiromi Nagasaku')
+[User]
+Execution result: 
+Relation_list('Hiromi Nagasaku') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Hiromi Nagasaku' starred, I need to explore the graph from 'Hiromi Nagasaku' with related relations.
+Helper function: exploreKG('Hiromi Nagasaku')=['~starred_actors']
+[User]
+Execution result: 
+['hiromi_nagasaku', '~starred_actors', 'doppelganger']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Hiromi Nagasaku'. The answer of the claim is as follows.
+['doppelganger']
+Helper function: Verification(['doppelganger'])
+[User]
+Execution result: 
+Done!!
+Prediction:['doppelganger']
+Real label:['Doppelganger']
+Correct!
+score: 1.0, 0
+
+Total sample:1, Total_Correct:1.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:40
+Question :what movies did [Caroline Aaron] star in?GT entity:['Caroline Aaron']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Caroline Aaron')
+[User]
+Execution result: 
+Relation_list('Caroline Aaron') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Caroline Aaron' starred, I need to explore the graph from 'Caroline Aaron' with related relations. Since the relation is '~starred_actors', I will use 'starred_actors' as the relation to explore the graph.
+Helper function: exploreKG('Caroline Aaron')=['~starred_actors']
+[User]
+Execution result: 
+['caroline_aaron', '~starred_actors', 'a_modern_affair']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Caroline Aaron'. The answer of the claim is as follows.
+['a_modern_affair']
+Helper function: Verification(['a_modern_affair'])
+[User]
+Execution result: 
+Done!!
+Prediction:['a_modern_affair']
+Real label:['A Modern Affair']
+Correct!
+score: 1.0, 0
+
+Total sample:2, Total_Correct:2.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:60
+Question :what movies did [Paul Lynde] act in?GT entity:['Paul Lynde']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Paul Lynde')
+[User]
+Execution result: 
+Relation_list('Paul Lynde') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Paul Lynde' acted in, I need to explore the graph from 'Paul Lynde' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Paul Lynde')=['~starred_actors']
+[User]
+Execution result: 
+['paul_lynde', '~starred_actors', 'the_villain']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Paul Lynde' acted in. The answer of the claim is as follows.
+['the_villain']
+Helper function: Verification(['the_villain'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_villain']
+Real label:['The Villain']
+Correct!
+score: 1.0, 0
+
+Total sample:3, Total_Correct:3.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:80
+Question :what films does [Julian Sands] appear in?GT entity:['Julian Sands']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Julian Sands')
+[User]
+Execution result: 
+Relation_list('Julian Sands') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Julian Sands' starred, I need to explore the graph from 'Julian Sands' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Julian Sands')=['~starred_actors']
+[User]
+Execution result: 
+['julian_sands', '~starred_actors', 'the_medallion'], ['julian_sands', '~starred_actors', 'blood_and_bone'], ['julian_sands', '~starred_actors', 'the_killing_fields'], ['julian_sands', '~starred_actors', 'boxing_helena'], ['julian_sands', '~starred_actors', 'warlock'], ['julian_sands', '~starred_actors', 'gothic']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Julian Sands'. The answer of the claim is as follows.
+['the_medallion', 'blood_and_bone', 'the_killing_fields', 'boxing_helena', 'warlock', 'gothic']
+Helper function: Verification(['the_medallion', 'blood_and_bone', 'the_killing_fields', 'boxing_helena', 'warlock', 'gothic'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_medallion', 'blood_and_bone', 'the_killing_fields', 'boxing_helena', 'warlock', 'gothic']
+Real label:['The Killing Fields', 'The Medallion', 'Blood and Bone', 'Warlock', 'Boxing Helena', 'Gothic']
+Correct!
+score: 0.9999999999999999, 0
+
+Total sample:4, Total_Correct:4.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:100
+Question :what movies was [Roger Perry] an actor in?GT entity:['Roger Perry']
+************************************Iteration:0***********************************
+
+
+Qid:20
+Question :what does [Hiromi Nagasaku] star in?GT entity:['Hiromi Nagasaku']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Hiromi Nagasaku')
+[User]
+Execution result: 
+Relation_list('Hiromi Nagasaku') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Hiromi Nagasaku' starred, I need to explore the graph from 'Hiromi Nagasaku' with related relations.
+Helper function: exploreKG('Hiromi Nagasaku')=['~starred_actors']
+[User]
+Execution result: 
+['hiromi_nagasaku', '~starred_actors', 'doppelganger']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Hiromi Nagasaku'. The answer of the claim is as follows.
+['doppelganger']
+Helper function: Verification(['doppelganger'])
+[User]
+Execution result: 
+Done!!
+Prediction:['doppelganger']
+Real label:['Doppelganger']
+Correct!
+score: 1.0, 0
+
+Total sample:1, Total_Correct:1.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:40
+Question :what movies did [Caroline Aaron] star in?GT entity:['Caroline Aaron']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Caroline Aaron')
+[User]
+Execution result: 
+Relation_list('Caroline Aaron') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Caroline Aaron' starred, I need to explore the graph from 'Caroline Aaron' with related relations. Since the relation is '~starred_actors', I will use 'starred_actors' as the relation to explore the graph.
+Helper function: exploreKG('Caroline Aaron')=['~starred_actors']
+[User]
+Execution result: 
+['caroline_aaron', '~starred_actors', 'a_modern_affair']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Caroline Aaron'. The answer of the claim is as follows.
+['a_modern_affair']
+Helper function: Verification(['a_modern_affair'])
+[User]
+Execution result: 
+Done!!
+Prediction:['a_modern_affair']
+Real label:['A Modern Affair']
+Correct!
+score: 1.0, 0
+
+Total sample:2, Total_Correct:2.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:60
+Question :what movies did [Paul Lynde] act in?GT entity:['Paul Lynde']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Paul Lynde')
+[User]
+Execution result: 
+Relation_list('Paul Lynde') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Paul Lynde' acted in, I need to explore the graph from 'Paul Lynde' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Paul Lynde')=['~starred_actors']
+[User]
+Execution result: 
+['paul_lynde', '~starred_actors', 'the_villain']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Paul Lynde' acted in. The answer of the claim is as follows.
+['the_villain']
+Helper function: Verification(['the_villain'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_villain']
+Real label:['The Villain']
+Correct!
+score: 1.0, 0
+
+Total sample:3, Total_Correct:3.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:80
+Question :what films does [Julian Sands] appear in?GT entity:['Julian Sands']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Julian Sands')
+[User]
+Execution result: 
+Relation_list('Julian Sands') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Julian Sands' starred, I need to explore the graph from 'Julian Sands' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Julian Sands')=['~starred_actors']
+[User]
+Execution result: 
+['julian_sands', '~starred_actors', 'gothic'], ['julian_sands', '~starred_actors', 'the_killing_fields'], ['julian_sands', '~starred_actors', 'the_medallion'], ['julian_sands', '~starred_actors', 'warlock'], ['julian_sands', '~starred_actors', 'boxing_helena'], ['julian_sands', '~starred_actors', 'blood_and_bone']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Julian Sands'. The answer of the claim is as follows.
+['gothic', 'the_killing_fields', 'the_medallion', 'warlock', 'boxing_helena', 'blood_and_bone']
+Helper function: Verification(['gothic', 'the_killing_fields', 'the_medallion', 'warlock', 'boxing_helena', 'blood_and_bone'])
+[User]
+Execution result: 
+Done!!
+Prediction:['gothic', 'the_medallion', 'the_killing_fields', 'warlock', 'boxing_helena', 'blood_and_bone']
+Real label:['The Killing Fields', 'The Medallion', 'Blood and Bone', 'Warlock', 'Boxing Helena', 'Gothic']
+Correct!
+score: 0.9999999999999999, 0
+
+Total sample:4, Total_Correct:4.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:100
+Question :what movies was [Roger Perry] an actor in?GT entity:['Roger Perry']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Roger Perry')
+[User]
+Execution result: 
+Relation_list('Roger Perry') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Roger Perry' starred in, I need to explore the graph from 'Roger Perry' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Roger Perry')=['~starred_actors']
+[User]
+Execution result: 
+['roger_perry', '~starred_actors', 'the_thing_with_two_heads']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Roger Perry'. The answer of the claim is as follows.
+['the_thing_with_two_heads']
+Helper function: Verification(['the_thing_with_two_heads'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_thing_with_two_heads']
+Real label:['The Thing with Two Heads']
+Correct!
+score: 1.0, 0
+
+Total sample:5, Total_Correct:5.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:120
+Question :what movies did [Beatriz Batarda] act in?GT entity:['Beatriz Batarda']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Beatriz Batarda')
+[User]
+Execution result: 
+Relation_list('Beatriz Batarda') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Beatriz Batarda' starred, I need to explore the graph from 'Beatriz Batarda' with related relations. Since the relation is '~starred_actors', I will use 'starred_actors' as the relation to explore the graph.
+Helper function: exploreKG('Beatriz Batarda')=['~starred_actors']
+[User]
+Execution result: 
+['beatriz_batarda', '~starred_actors', 'alice']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Beatriz Batarda'. The answer of the claim is as follows.
+['alice']
+Helper function: Verification(['alice'])
+[User]
+Execution result: 
+Done!!
+Prediction:['alice']
+Real label:['Alice']
+Correct!
+score: 1.0, 0
+
+Total sample:6, Total_Correct:6.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:140
+Question :what films did [Leigh McCormack] star in?GT entity:['Leigh McCormack']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Leigh McCormack')
+[User]
+Execution result: 
+Relation_list('Leigh McCormack') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Leigh McCormack' starred in, I need to explore the graph from 'Leigh McCormack' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Leigh McCormack')=['~starred_actors']
+[User]
+Execution result: 
+['leigh_mccormack', '~starred_actors', 'the_long_day_closes']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Leigh McCormack'. The answer of the claim is as follows.
+['the_long_day_closes']
+Helper function: Verification(['the_long_day_closes'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_long_day_closes']
+Real label:['The Long Day Closes']
+Correct!
+score: 1.0, 0
+
+Total sample:7, Total_Correct:7.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:160
+Question :what does [Edward Chapman] act in?GT entity:['Edward Chapman']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Edward Chapman')
+[User]
+Execution result: 
+Relation_list('Edward Chapman') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Edward Chapman' starred, I need to explore the graph from 'Edward Chapman' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Edward Chapman')=['~starred_actors']
+[User]
+Execution result: 
+['edward_chapman', '~starred_actors', 'murder!']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Edward Chapman'. The answer of the claim is as follows.
+['murder!']
+Helper function: Verification(['murder!'])
+[User]
+Execution result: 
+Done!!
+Prediction:['murder!']
+Real label:['Murder!']
+Correct!
+score: 1.0, 0
+
+Total sample:8, Total_Correct:8.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:180
+Question :what films did [Carmen Duncan] act in?GT entity:['Carmen Duncan']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Carmen Duncan')
+[User]
+Execution result: 
+Relation_list('Carmen Duncan') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Carmen Duncan' starred, I need to explore the graph from 'Carmen Duncan' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Carmen Duncan')=['~starred_actors']
+[User]
+Execution result: 
+['carmen_duncan', '~starred_actors', 'harlequin']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Carmen Duncan'. The answer of the claim is as follows.
+['harlequin']
+Helper function: Verification(['harlequin'])
+[User]
+Execution result: 
+Done!!
+Prediction:['harlequin']
+Real label:['Harlequin']
+Correct!
+score: 1.0, 0
+
+Total sample:9, Total_Correct:9.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:200
+Question :what films did [Yaya DaCosta] act in?GT entity:['Yaya DaCosta']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Yaya DaCosta')
+[User]
+Execution result: 
+Relation_list('Yaya DaCosta') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Yaya DaCosta' starred, I need to explore the graph from 'Yaya DaCosta' with related relations.
+Helper function: exploreKG('Yaya DaCosta')=['~starred_actors']
+[User]
+Execution result: 
+['yaya_dacosta', '~starred_actors', 'take_the_lead']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Yaya DaCosta'. The answer of the claim is as follows.
+['take_the_lead']
+Helper function: Verification(['take_the_lead'])
+[User]
+Execution result: 
+Done!!
+Prediction:['take_the_lead']
+Real label:['Take the Lead']
+Correct!
+score: 1.0, 0
+
+Total sample:10, Total_Correct:10.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:220
+Question :what films did [Jerry Stiller] star in?GT entity:['Jerry Stiller']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Jerry Stiller')
+[User]
+Execution result: 
+Relation_list('Jerry Stiller') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Jerry Stiller' starred in, I need to explore the graph from 'Jerry Stiller' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Jerry Stiller')=['~starred_actors']
+[User]
+Execution result: 
+['jerry_stiller', '~starred_actors', 'the_independent'], ['jerry_stiller', '~starred_actors', 'stag'], ['jerry_stiller', '~starred_actors', 'the_ritz'], ['jerry_stiller', '~starred_actors', 'the_heartbreak_kid'], ['jerry_stiller', '~starred_actors', 'hot_pursuit']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Jerry Stiller'. The answer of the claim is as follows.
+['the_independent', 'stag', 'the_ritz', 'the_heartbreak_kid', 'hot_pursuit']
+Helper function: Verification(['the_independent', 'stag', 'the_ritz', 'the_heartbreak_kid', 'hot_pursuit'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_independent', 'stag', 'the_ritz', 'the_heartbreak_kid', 'hot_pursuit']
+Real label:['The Heartbreak Kid', 'Hot Pursuit', 'The Ritz', 'The Independent', 'Stag']
+Correct!
+score: 1.0, 0
+
+Total sample:11, Total_Correct:11.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:240
+Question :what does [Jenna Fischer] star in?GT entity:['Jenna Fischer']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Jenna Fischer')
+[User]
+Execution result: 
+Relation_list('Jenna Fischer') = ['~written_by', '~directed_by', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Jenna Fischer' starred, I need to explore the graph from 'Jenna Fischer' with related relations. Since the relation '~starred_actors' is an inverse relation, I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Jenna Fischer')=['~starred_actors']
+[User]
+Execution result: 
+['jenna_fischer', '~starred_actors', 'hall_pass'], ['jenna_fischer', '~starred_actors', 'lollilove']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Jenna Fischer'. The answer of the claim is as follows.
+['hall_pass', 'lollilove']
+Helper function: Verification(['hall_pass', 'lollilove'])
+[User]
+Execution result: 
+Done!!
+Prediction:['hall_pass', 'lollilove']
+Real label:['Hall Pass', 'LolliLove']
+Correct!
+score: 1.0, 0
+
+Total sample:12, Total_Correct:12.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:260
+Question :what films does [Alan Ormsby] appear in?GT entity:['Alan Ormsby']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Alan Ormsby')
+[User]
+Execution result: 
+Relation_list('Alan Ormsby') = ['~written_by', '~directed_by', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Alan Ormsby' appears in, I need to explore the graph from 'Alan Ormsby' with related relations. Since 'Alan Ormsby' is an actor, I will use '~starred_actors' relation.
+Helper function: exploreKG('Alan Ormsby')=['~starred_actors']
+[User]
+Execution result: 
+['alan_ormsby', '~starred_actors', "children_shouldn't_play_with_dead_things"]
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Alan Ormsby' appears in. The answer of the claim is as follows.
+["children_shouldn't_play_with_dead_things"]
+Helper function: Verification(["children_shouldn't_play_with_dead_things"])
+[User]
+Execution result: 
+Done!!
+Prediction:["children_shouldn't_play_with_dead_things"]
+Real label:["Children Shouldn't Play with Dead Things"]
+Correct!
+score: 1.0, 0
+
+Total sample:13, Total_Correct:13.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:280
+Question :what films did [Sam Parsonson] star in?GT entity:['Sam Parsonson']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Sam Parsonson')
+[User]
+Execution result: 
+Relation_list('Sam Parsonson') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Sam Parsonson' starred, I need to explore the graph from 'Sam Parsonson' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Sam Parsonson')=['~starred_actors']
+[User]
+Execution result: 
+['sam_parsonson', '~starred_actors', 'coffin_rock']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Sam Parsonson'. The answer of the claim is as follows.
+['coffin_rock']
+Helper function: Verification(['coffin_rock'])
+[User]
+Execution result: 
+Done!!
+Prediction:['coffin_rock']
+Real label:['Coffin Rock']
+Correct!
+score: 1.0, 0
+
+Total sample:14, Total_Correct:14.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:300
+Question :[Kirby Dick] appears in which movies?GT entity:['Kirby Dick']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Kirby Dick')
+[User]
+Execution result: 
+Relation_list('Kirby Dick') = ['~has_tags', '~written_by', '~directed_by', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Kirby Dick' appears in, I need to explore the graph from 'Kirby Dick' with related relations. Since 'Kirby Dick' is an actor, I will use the inverse relation '~starred_actors' to find the films.
+Helper function: exploreKG('Kirby Dick')=['~starred_actors']
+[User]
+Execution result: 
+['kirby_dick', '~starred_actors', 'the_invisible_war']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Kirby Dick' appears in. The answer of the claim is as follows.
+['the_invisible_war']
+Helper function: Verification(['the_invisible_war'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_invisible_war']
+Real label:['The Invisible War']
+Correct!
+score: 1.0, 0
+
+Total sample:15, Total_Correct:15.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:320
+Question :what movies was [Betty Hutton] an actor in?GT entity:['Betty Hutton']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Betty Hutton')
+[User]
+Execution result: 
+Relation_list('Betty Hutton') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Betty Hutton' starred, I need to explore the graph from 'Betty Hutton' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Betty Hutton')=['~starred_actors']
+[User]
+Execution result: 
+['betty_hutton', '~starred_actors', 'the_greatest_show_on_earth'], ['betty_hutton', '~starred_actors', "the_miracle_of_morgan's_creek"], ['betty_hutton', '~starred_actors', 'the_perils_of_pauline'], ['betty_hutton', '~starred_actors', 'annie_get_your_gun']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Betty Hutton'. The answer of the claim is as follows.
+['the_greatest_show_on_earth', 'the_miracle_of_morgan\'s_creek', 'the_perils_of_pauline', 'annie_get_your_gun']
+Helper function: Verification(['the_greatest_show_on_earth', 'the_miracle_of_morgan\'s_creek', 'the_perils_of_pauline', 'annie_get_your_gun'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_greatest_show_on_earth', 'the_perils_of_pauline', "the_miracle_of_morgan's_creek", 'annie_get_your_gun']
+Real label:['The Greatest Show on Earth', "The Miracle of Morgan's Creek", 'Annie Get Your Gun', 'The Perils of Pauline']
+Correct!
+score: 1.0, 0
+
+Total sample:1, Total_Correct:1.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:340
+Question :what films does [Sonakshi Sinha] appear in?GT entity:['Sonakshi Sinha']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Sonakshi Sinha')
+[User]
+Execution result: 
+Relation_list('Sonakshi Sinha') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Sonakshi Sinha' starred, I need to explore the graph from 'Sonakshi Sinha' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Sonakshi Sinha')=['~starred_actors']
+[User]
+Execution result: 
+['sonakshi_sinha', '~starred_actors', 'dabangg_2'], ['sonakshi_sinha', '~starred_actors', 'action_jackson']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Sonakshi Sinha'. The answer of the claim is as follows.
+['dabangg_2', 'action_jackson']
+Helper function: Verification(['dabangg_2', 'action_jackson'])
+[User]
+Execution result: 
+Done!!
+Prediction:['dabangg_2', 'action_jackson']
+Real label:['Dabangg 2', 'Action Jackson']
+Correct!
+score: 1.0, 0
+
+Total sample:2, Total_Correct:2.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:360
+Question :what movies was [Marla Gibbs] an actor in?GT entity:['Marla Gibbs']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Marla Gibbs')
+[User]
+Execution result: 
+Relation_list('Marla Gibbs') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Marla Gibbs' starred in, I need to explore the graph from 'Marla Gibbs' with related relations. Since the relation is '~starred_actors', I will use 'starred_actors' as the relation to explore the graph.
+Helper function: exploreKG('Marla Gibbs')=['~starred_actors']
+[User]
+Execution result: 
+['marla_gibbs', '~starred_actors', 'the_meteor_man']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Marla Gibbs'. The answer of the claim is as follows.
+['the_meteor_man']
+Helper function: Verification(['the_meteor_man'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_meteor_man']
+Real label:['The Meteor Man']
+Correct!
+score: 1.0, 0
+
+Total sample:3, Total_Correct:3.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0
+max_iter:3
+min_iter:3
+
+
+Qid:380
+Question :what films did [Ted Knight] act in?GT entity:['Ted Knight']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Ted Knight')
+[User]
+Execution result: 
+Relation_list('Ted Knight') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Ted Knight' acted in, I need to explore the graph from 'Ted Knight' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Ted Knight')=['~starred_actors']
+[User]
+Execution result: 
+['ted_knight', '~starred_actors', 'caddyshack']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Ted Knight' acted in. However, to provide a complete answer, I need to check if there are any other films that 'Ted Knight' acted in. Since I already got the relation list in the first step, I will use the inverse relation again to find more films.
+Helper function: exploreKG('Ted Knight')=['~starred_actors']
+[User]
+Execution result: 
+************************************Iteration:3***********************************
+Statement: It seems like there are no more films that 'Ted Knight' acted in. The answer of the claim is as follows.
+['caddyshack']
+Helper function: Verification(['caddyshack'])
+[User]
+Execution result: 
+Done!!
+Prediction:['caddyshack']
+Real label:['Caddyshack']
+Correct!
+score: 1.0, 0
+
+Total sample:4, Total_Correct:4.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.25
+max_iter:4
+min_iter:3
+
+
+Qid:400
+Question :what movies did [Edwige Fenech] act in?GT entity:['Edwige Fenech']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Edwige Fenech')
+[User]
+Execution result: 
+Relation_list('Edwige Fenech') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Edwige Fenech' starred, I need to explore the graph from 'Edwige Fenech' with related relations.
+Helper function: exploreKG('Edwige Fenech')=['~starred_actors']
+[User]
+Execution result: 
+['edwige_fenech', '~starred_actors', 'your_vice_is_a_locked_room_and_only_i_have_the_key']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Edwige Fenech'. The answer of the claim is as follows.
+['your_vice_is_a_locked_room_and_only_i_have_the_key']
+Helper function: Verification(['your_vice_is_a_locked_room_and_only_i_have_the_key'])
+[User]
+Execution result: 
+Done!!
+Prediction:['your_vice_is_a_locked_room_and_only_i_have_the_key']
+Real label:['Your Vice Is a Locked Room and Only I Have the Key']
+Correct!
+score: 1.0, 0
+
+Total sample:5, Total_Correct:5.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.2
+max_iter:4
+min_iter:3
+
+
+Qid:420
+Question :what movies did [Mark Hamill] act in?GT entity:['Mark Hamill']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Mark Hamill')
+[User]
+Execution result: 
+Relation_list('Mark Hamill') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the movies that 'Mark Hamill' acted in, I need to explore the graph from 'Mark Hamill' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the movies.
+Helper function: exploreKG('Mark Hamill')=['~starred_actors']
+[User]
+Execution result: 
+['mark_hamill', '~starred_actors', 'the_big_red_one'], ['mark_hamill', '~starred_actors', 'the_night_the_lights_went_out_in_georgia'], ['mark_hamill', '~starred_actors', 'slipstream'], ['mark_hamill', '~starred_actors', 'corvette_summer']
+************************************Iteration:2***********************************
+Statement: Now I get the movies that 'Mark Hamill' acted in. The answer of the claim is as follows.
+['the_big_red_one', 'the_night_the_lights_went_out_in_georgia', 'slipstream', 'corvette_summer']
+Helper function: Verification(['the_big_red_one', 'the_night_the_lights_went_out_in_georgia', 'slipstream', 'corvette_summer'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_big_red_one', 'the_night_the_lights_went_out_in_georgia', 'slipstream', 'corvette_summer']
+Real label:['The Big Red One', 'Corvette Summer', 'Slipstream', 'The Night the Lights Went Out in Georgia']
+Correct!
+score: 1.0, 0
+
+Total sample:6, Total_Correct:6.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.1666666666666665
+max_iter:4
+min_iter:3
+
+
+Qid:440
+Question :what movies did [Harris Yulin] act in?GT entity:['Harris Yulin']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Harris Yulin')
+[User]
+Execution result: 
+Relation_list('Harris Yulin') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Harris Yulin' acted in, I need to explore the graph from 'Harris Yulin' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Harris Yulin')=['~starred_actors']
+[User]
+Execution result: 
+['harris_yulin', '~starred_actors', 'a_short_history_of_decay']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Harris Yulin' acted in. The answer of the claim is as follows.
+['a_short_history_of_decay']
+Helper function: Verification(['a_short_history_of_decay'])
+[User]
+Execution result: 
+Done!!
+Prediction:['a_short_history_of_decay']
+Real label:['A Short History of Decay']
+Correct!
+score: 1.0, 0
+
+Total sample:7, Total_Correct:7.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.142857142857143
+max_iter:4
+min_iter:3
+
+
+Qid:460
+Question :[Rémy Girard] appears in which movies?GT entity:['Rémy Girard']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Rémy Girard')
+[User]
+Execution result: 
+Relation_list('Rémy Girard') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Rémy Girard' starred, I need to explore the graph from 'Rémy Girard' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Rémy Girard')=['~starred_actors']
+[User]
+Execution result: 
+['rémy_girard', '~starred_actors', 'father_and_guns']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Rémy Girard'. The answer of the claim is as follows.
+['father_and_guns']
+Helper function: Verification(['father_and_guns'])
+[User]
+Execution result: 
+Done!!
+Prediction:['father_and_guns']
+Real label:['Father and Guns']
+Correct!
+score: 1.0, 0
+
+Total sample:8, Total_Correct:8.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.125
+max_iter:4
+min_iter:3
+
+
+Qid:480
+Question :what movies was [Sissy Spacek] an actor in?GT entity:['Sissy Spacek']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Sissy Spacek')
+[User]
+Execution result: 
+Relation_list('Sissy Spacek') = ['~starred_actors', '~has_tags']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Sissy Spacek' starred, I need to explore the graph from 'Sissy Spacek' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Sissy Spacek')=['~starred_actors']
+[User]
+Execution result: 
+['sissy_spacek', '~starred_actors', 'blast_from_the_past'], ['sissy_spacek', '~starred_actors', 'lake_city'], ['sissy_spacek', '~starred_actors', 'the_long_walk_home'], ['sissy_spacek', '~starred_actors', 'missing'], ['sissy_spacek', '~starred_actors', 'in_the_bedroom'], ['sissy_spacek', '~starred_actors', "'night,_mother"], ['sissy_spacek', '~starred_actors', 'badlands'], ['sissy_spacek', '~starred_actors', 'get_low'], ['sissy_spacek', '~starred_actors', "coal_miner's_daughter"], ['sissy_spacek', '~starred_actors', 'raggedy_man'], ['sissy_spacek', '~starred_actors', 'the_straight_story'], ['sissy_spacek', '~starred_actors', 'the_river'], ['sissy_spacek', '~starred_actors', 'the_grass_harp'], ['sissy_spacek', '~starred_actors', 'four_christmases'], ['sissy_spacek', '~starred_actors', '3_women'], ['sissy_spacek', '~starred_actors', 'an_american_haunting'], ['sissy_spacek', '~starred_actors', 'carrie']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Sissy Spacek'. The answer of the claim is as follows.
+Helper function: Verification(['blast_from_the_past', 'lake_city', 'the_long_walk_home', 'missing', 'in_the_bedroom', "'night,_mother", 'badlands', 'get_low', "coal_miner's_daughter", 'raggedy_man', 'the_straight_story', 'the_river', 'the_grass_harp', 'four_christmases', '3_women', 'an_american_haunting', 'carrie'])
+[User]
+Execution result: 
+Done!!
+Prediction:['blast_from_the_past', 'lake_city', 'the_long_walk_home', 'missing', 'in_the_bedroom', "'night,_mother", 'badlands', 'get_low', "coal_miner's_daughter", 'raggedy_man', 'the_straight_story', 'the_river', 'the_grass_harp', 'four_christmases', '3_women', 'an_american_haunting', 'carrie']
+Real label:['Carrie', 'The Straight Story', 'Blast from the Past', 'Four Christmases', 'Badlands', 'In the Bedroom', 'An American Haunting', 'Get Low', "Coal Miner's Daughter", 'Missing', '3 Women', 'The River', 'The Grass Harp', 'The Long Walk Home', "'night, Mother", 'Raggedy Man', 'Lake City']
+Correct!
+score: 1.0, 0
+
+Total sample:9, Total_Correct:9.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.111111111111111
+max_iter:4
+min_iter:3
+
+
+Qid:500
+Question :what films does [Ken Marshall] appear in?GT entity:['Ken Marshall']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Ken Marshall')
+[User]
+Execution result: 
+Relation_list('Ken Marshall') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Ken Marshall' starred, I need to explore the graph from 'Ken Marshall' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I need to use 'starred_actors' to find the films.
+Helper function: exploreKG('Ken Marshall')=['~starred_actors']
+[User]
+Execution result: 
+['ken_marshall', '~starred_actors', 'krull']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Ken Marshall'. The answer of the claim is as follows.
+['krull']
+Helper function: Verification(['krull'])
+[User]
+Execution result: 
+Done!!
+Prediction:['krull']
+Real label:['Krull']
+Correct!
+score: 1.0, 0
+
+Total sample:10, Total_Correct:10.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.1
+max_iter:4
+min_iter:3
+
+
+Qid:520
+Question :what movies was [Nanette Newman] an actor in?GT entity:['Nanette Newman']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Nanette Newman')
+[User]
+Execution result: 
+Relation_list('Nanette Newman') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Nanette Newman' starred, I need to explore the graph from 'Nanette Newman' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Nanette Newman')=['~starred_actors']
+[User]
+Execution result: 
+['nanette_newman', '~starred_actors', 'the_stepford_wives']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Nanette Newman'. The answer of the claim is as follows.
+['the_stepford_wives']
+Helper function: Verification(['the_stepford_wives'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_stepford_wives']
+Real label:['The Stepford Wives']
+Correct!
+score: 1.0, 0
+
+Total sample:11, Total_Correct:11.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.090909090909091
+max_iter:4
+min_iter:3
+
+
+Qid:540
+Question :what does [Claude Lelouch] act in?GT entity:['Claude Lelouch']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Claude Lelouch')
+[User]
+Execution result: 
+Relation_list('Claude Lelouch') = ['~written_by', '~directed_by', '~has_tags', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Claude Lelouch' acted in, I need to explore the graph from 'Claude Lelouch' with related relations. Since 'Claude Lelouch' is an actor, I will use '~starred_actors' relation.
+Helper function: exploreKG('Claude Lelouch')=['~starred_actors']
+[User]
+Execution result: 
+['claude_lelouch', '~starred_actors', 'happy_new_year']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Claude Lelouch' acted in. The answer of the claim is as follows.
+['happy_new_year']
+Helper function: Verification(['happy_new_year'])
+[User]
+Execution result: 
+Done!!
+Prediction:['happy_new_year']
+Real label:['Happy New Year']
+Correct!
+score: 1.0, 0
+
+Total sample:12, Total_Correct:12.0, Total_Wrong:0, Total_abstain:0
+metric1:1.0
+metric2:1.0
+metric3 :1.0
+avg iter:3.0833333333333335
+max_iter:4
+min_iter:3
+
+
+Qid:560
+Question :what does [Branko Tomovic] appear in?GT entity:['Branko Tomovic']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Branko Tomovic')
+[User]
+Execution result: 
+Relation_list('Branko Tomovic') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Branko Tomovic' starred, I need to explore the graph from 'Branko Tomovic' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Branko Tomovic')=['~starred_actors']
+[User]
+Execution result: 
+['branko_tomovic', '~starred_actors', 'entity']
+************************************Iteration:2***********************************
+Statement: It seems like the result is not specific enough. I need more information about the entity that 'Branko Tomovic' starred in. To get more information, I need the relation list actually linked with the entity.
+Helper function: getRelation('entity')
+[User]
+Execution result: 
+Relation_list('entity') = ['written_by', 'directed_by', 'release_year', 'has_genre', 'starred_actors']
+************************************Iteration:3***********************************
+Statement: Now, I need to find the specific entity that 'Branko Tomovic' starred in. Since the relation is '~starred_actors', I will use this inverse relation to find the films. However, I need to explore the graph with the entity and related relations to get more information.
+Helper function: exploreKG('entity')=['written_by', 'directed_by', 'release_year', 'has_genre', 'starred_actors']
+[User]
+Execution result: 
+['entity', 'written_by', 'steve_stone'], ['entity', 'directed_by', 'steve_stone'], ['entity', 'release_year', '2012'], ['entity', 'has_genre', 'thriller'], ['entity', 'starred_actors', 'charlotte_riley'], ['entity', 'starred_actors', 'dervla_kirwan']
+************************************Iteration:4***********************************
+Statement: Now, I have more information about the entity that 'Branko Tomovic' starred in. However, I still don't have the title of the entity. I need to explore the graph with the entity and related relations to get the title.
+Helper function: exploreKG('entity')=['~starred_actors']
+[User]
+Execution result: 
+************************************Iteration:5***********************************
+Statement: It seems like the result is empty. However, I can try to find the title of the entity using the information I have. Since I have the director, release year, and genre, I can try to find the title using the director.
+Helper function: exploreKG('steve_stone')=['written_by']
+[User]
+Execution result: 
+************************************Iteration:6***********************************
+Statement: It seems like the result is empty. However, I can try to find the title of the entity using the information I have. Since I have the director, release year, and genre, I can try to find the title using the director and release year.
+Helper function: exploreKG('steve_stone')=['directed_by'] ## getRelation('2012')
+[User]
+Execution result: 
+Relation_list('2012') = ['release_year', 'written_by', 'directed_by', '~release_year', 'has_tags', 'starred_actors']
+************************************Iteration:7***********************************
+Statement: Now, I need to find the films released in 2012 that 'Steve Stone' directed. To get the films, I need to explore the graph with 'Steve Stone' and related relations.
+Helper function: exploreKG('steve_stone')=['directed_by'] ## exploreKG('2012')=['~release_year']
+[User]
+Execution result: 
+['2012', '~release_year', 'safety_not_guaranteed'], ['2012', '~release_year', 'thy_womb'], ['2012', '~release_year', 'the_tall_man'], ['2012', '~release_year', 'john_carter'], ['2012', '~release_year', 'the_invisible_war'], ['2012', '~release_year', '2-headed_shark_attack'], ['2012', '~release_year', 'tooth_fairy_2'], ['2012', '~release_year', 'nobody_walks'], ['2012', '~release_year', 'teddy_bear'], ['2012', '~release_year', 'best_man_down'], ['2012', '~release_year', 'a_thousand_words'], ['2012', '~release_year', 'in_their_skin'], ['2012', '~release_year', 'columbus_circle'], ['2012', '~release_year', 'the_guilt_trip'], ['2012', '~release_year', 'the_hypnotist'], ['2012', '~release_year', 'a_fantastic_fear_of_everything'], ['2012', '~release_year', 'prometheus'], ['2012', '~release_year', 'neighboring_sounds'], ['2012', '~release_year', 'tangled_ever_after'], ['2012', '~release_year', 'act_of_valor'], ['2012', '~release_year', 'john_dies_at_the_end'], ['2012', '~release_year', 'dracula_3d'], ['2012', '~release_year', 'the_iran_job'], ['2012', '~release_year', 'mushrooming'], ['2012', '~release_year', 'the_devil_inside'], ['2012', '~release_year', 'lincoln'], ['2012', '~release_year', 'think_like_a_man'], ['2012', '~release_year', '7_boxes'], ['2012', '~release_year', 'fire_with_fire'], ['2012', '~release_year', 'the_girl'], ['2012', '~release_year', 'goats'], ['2012', '~release_year', 'the_watch'], ['2012', '~release_year', 'snow_white_and_the_huntsman'], ['2012', '~release_year', 'the_babymakers'], ['2012', '~release_year', 'stolen'], ['2012', '~release_year', 'offender'], ['2012', '~release_year', 'brake'], ['2012', '~release_year', 'my_way'], ['2012', '~release_year', 'red_dawn'], ['2012', '~release_year', 'sparkle'], ['2012', '~release_year', 'the_iceman'], ['2012', '~release_year', 'a_late_quartet'], ['2012', '~release_year', 'the_factory'], ['2012', '~release_year', 'the_baytown_outlaws'], ['2012', '~release_year', 'out_in_the_dark'], ['2012', '~release_year', 'dangerous_liaisons'], ['2012', '~release_year', 'to_the_wonder'], ['2012', '~release_year', 'the_brass_teapot'], ['2012', '~release_year', 'lockout'], ['2012', '~release_year', 'kahaani'], ['2012', '~release_year', 'red_hook_summer'], ['2012', '~release_year', 'sinister'], ['2012', '~release_year', 'how_to_survive_a_plague'], ['2012', '~release_year', 'taken_2'], ['2012', '~release_year', 'mansome'], ['2012', '~release_year', 'now_is_good'], ['2012', '~release_year', 'white_frog'], ['2012', '~release_year', 'this_means_war'], ['2012', '~release_year', 'seven_psychopaths'], ['2012', '~release_year', 'foreign_letters'], ['2012', '~release_year', 'clip'], ['2012', '~release_year', 'chained'], ['2012', '~release_year', 'crave'], ['2012', '~release_year', 'skyfall'], ['2012', '~release_year', 'chimpanzee'], ['2012', '~release_year', 'black_rock'], ['2012', '~release_year', 'the_paperboy'], ['2012', '~release_year', 'project_x'], ['2012', '~release_year', 'bel_ami'], ['2012', '~release_year', 'no_one_lives'], ['2012', '~release_year', 'bigfoot'], ['2012', '~release_year', 'what_if...'], ['2012', '~release_year', 'girl_most_likely'], ['2012', '~release_year', 'small_apartments'], ['2012', '~release_year', 'premium_rush'], ['2012', '~release_year', 'paperman'], ['2012', '~release_year', 'not_suitable_for_children'], ['2012', '~release_year', 'the_house_i_live_in'], ['2012', '~release_year', 'at_any_price'], ['2012', '~release_year', 'great_expectations'], ['2012', '~release_year', 'battleship'], ['2012', '~release_year', 'buddies'], ['2012', '~release_year', 'four_horsemen'], ['2012', '~release_year', 'post_tenebras_lux'], ['2012', '~release_year', 'the_artist_and_the_model'], ['2012', '~release_year', 'crossfire_hurricane'], ['2012', '~release_year', "won't_back_down"], ['2012', '~release_year', 'man_on_a_ledge'], ['2012', '~release_year', 'war_witch'], ['2012', '~release_year', 'how_to_make_money_selling_drugs'], ['2012', '~release_year', 'flight'], ['2012', '~release_year', 'the_reluctant_fundamentalist'], ['2012', '~release_year', 'on_the_road'], ['2012', '~release_year', 'smashed'], ['2012', '~release_year', 'king_kelly'], ['2012', '~release_year', 'winning_streak'], ['2012', '~release_year', 'hyde_park_on_hudson'], ['2012', '~release_year', 'a_dark_truth'], ['2012', '~release_year', 'hello_i_must_be_going'], ['2012', '~release_year', 'deadfall'], ['2012', '~release_year', 'maniac'], ['2012', '~release_year', 'for_a_good_time,_call...'], ['2012', '~release_year', 'reality'], ['2012', '~release_year', 'total_recall'], ['2012', '~release_year', 'family_way'], ['2012', '~release_year', 'house_at_the_end_of_the_street'], ['2012', '~release_year', 'about_cherry'], ['2012', '~release_year', 'emperor'], ['2012', '~release_year', 'passion'], ['2012', '~release_year', 'the_body'], ['2012', '~release_year', 'two_lives'], ['2012', '~release_year', 'the_amazing_spider-man'], ['2012', '~release_year', 'step_up_revolution'], ['2012', '~release_year', 'lawless'], ['2012', '~release_year', 'moonrise_kingdom'], ['2012', '~release_year', 'the_punk_syndrome'], ['2012', '~release_year', 'alex_cross'], ['2012', '~release_year', 'resolution'], ['2012', '~release_year', 'transit'], ['2012', '~release_year', 'lore'], ['2012', '~release_year', 'the_bourne_legacy'], ['2012', '~release_year', 'pusher'], ['2012', '~release_year', 'like_someone_in_love'], ['2012', '~release_year', 'smiley'], ['2012', '~release_year', 'the_do-deca-pentathlon'], ['2012', '~release_year', "tim_and_eric's_billion_dollar_movie"], ['2012', '~release_year', 'call_me_kuchu'], ['2012', '~release_year', 'chernobyl_diaries'], ['2012', '~release_year', 'superman_vs._the_elite'], ['2012', '~release_year', 'get_the_gringo'], ['2012', '~release_year', 'grassroots'], ['2012', '~release_year', 'luv'], ['2012', '~release_year', 'laurence_anyways'], ['2012', '~release_year', 'the_giant_mechanical_man'], ['2012', '~release_year', 'the_lords_of_salem'], ['2012', '~release_year', 'beware_of_mr._baker'], ['2012', '~release_year', 'something_in_the_air'], ['2012', '~release_year', 'nazis_at_the_center_of_the_earth'], ['2012', '~release_year', 'detention_of_the_dead'], ['2012', '~release_year', 'scary_or_die'], ['2012', '~release_year', 'the_hunger_games'], ['2012', '~release_year', 'the_man_who_laughs'], ['2012', '~release_year', 'cockneys_vs_zombies'], ['2012', '~release_year', 'naked_harbour'], ['2012', '~release_year', 'the_dictator'], ['2012', '~release_year', 'the_perks_of_being_a_wallflower'], ['2012', '~release_year', 'crawlspace'], ['2012', '~release_year', 'still_mine'], ['2012', '~release_year', 'simon_killer'], ['2012', '~release_year', 'the_fitzgerald_family_christmas'], ['2012', '~release_year', 'careless_love'], ['2012', '~release_year', 'the_sessions'], ['2012', '~release_year', 'big_miracle'], ['2012', '~release_year', 'playing_for_keeps'], ['2012', '~release_year', 'bullet_to_the_head'], ['2012', '~release_year', 'vamps'], ['2012', '~release_year', 'the_floating_castle'], ['2012', '~release_year', 'into_the_white'], ['2012', '~release_year', 'the_master'], ['2012', '~release_year', 'inescapable'], ['2012', '~release_year', 'apostle_peter_and_the_last_supper'], ['2012', '~release_year', 'darkest_night'], ['2012', '~release_year', 'hit_and_run'], ['2012', '~release_year', 'forgetting_the_girl'], ['2012', '~release_year', 'the_package'], ['2012', '~release_year', 'the_odd_life_of_timothy_green'], ['2012', '~release_year', 'end_of_watch'], ['2012', '~release_year', 'jack_reacher'], ['2012', '~release_year', '30_beats'], ['2012', '~release_year', 'being_flynn'], ['2012', '~release_year', 'piranha_3dd'], ['2012', '~release_year', 'white_elephant'], ['2012', '~release_year', 'happiness_never_comes_alone'], ['2012', '~release_year', 'here_comes_the_boom'], ['2012', '~release_year', 'museum_hours'], ['2012', '~release_year', 'barfi!'], ['2012', '~release_year', 'the_mooring'], ['2012', '~release_year', 'arbitrage'], ['2012', '~release_year', "you_ain't_seen_nothin'_yet"], ['2012', '~release_year', 'cheerful_weather_for_the_wedding'], ['2012', '~release_year', 'a_hijacking'], ['2012', '~release_year', 'tabu'], ['2012', '~release_year', 'bad_ass'], ['2012', '~release_year', 'hope_springs'], ['2012', '~release_year', 'stitches'], ['2012', '~release_year', 'k-11'], ['2012', '~release_year', 'secrets_of_eden'], ['2012', '~release_year', '21_jump_street'], ['2012', '~release_year', 'purge'], ['2012', '~release_year', 'student_of_the_year'], ['2012', '~release_year', 'breaking_wind'], ['2012', '~release_year', 'starlet'], ['2012', '~release_year', 'mirror_mirror'], ['2012', '~release_year', 'byzantium'], ['2012', '~release_year', 'extracted'], ['2012', '~release_year', 'promised_land'], ['2012', '~release_year', 'the_words'], ['2012', '~release_year', 'imaginaerum'], ['2012', '~release_year', 'iron_sky'], ['2012', '~release_year', 'bloody_bloody_bible_camp'], ['2012', '~release_year', 'the_raven'], ['2012', '~release_year', 'the_newest_pledge'], ['2012', '~release_year', 'revenge_for_jolly!'], ['2012', '~release_year', "boy_eating_the_bird's_food"], ['2012', '~release_year', 'camille_rewinds'], ['2012', '~release_year', 'would_you_rather'], ['2012', '~release_year', 'silver_linings_playbook'], ['2012', '~release_year', 'paulette'], ['2012', '~release_year', 'excision'], ['2012', '~release_year', "sun_don't_shine"], ['2012', '~release_year', 'aftershock'], ['2012', '~release_year', 'this_is_40'], ['2012', '~release_year', 'life_of_pi'], ['2012', '~release_year', 'lesson_of_the_evil'], ['2012', '~release_year', 'game_change'], ['2012', '~release_year', 'the_players'], ['2012', '~release_year', 'marfa_girl'], ['2012', '~release_year', 'the_impossible'], ['2012', '~release_year', 'a_christmas_story_2'], ['2012', '~release_year', 'the_revisionaries'], ['2012', '~release_year', 'the_avengers'], ['2012', '~release_year', 'ted'], ['2012', '~release_year', 'american_mary'], ['2012', '~release_year', 'thanks_for_sharing'], ['2012', '~release_year', 'vanishing_waves'], ['2012', '~release_year', 'beasts_of_the_southern_wild'], ['2012', '~release_year', 'i_do'], ['2012', '~release_year', 'stuck_in_love'], ['2012', '~release_year', 'girls_against_boys'], ['2012', '~release_year', 'rise_of_the_guardians'], ['2012', '~release_year', 'men_in_black_3'], ['2012', '~release_year', 'sleepwalk_with_me'], ['2012', '~release_year', 'in_the_fog'], ['2012', '~release_year', 'my_father_and_the_man_in_black'], ['2012', '~release_year', 'the_possession'], ['2012', '~release_year', 'hitchcock'], ['2012', '~release_year', 'fat_kid_rules_the_world'], ['2012', '~release_year', 'foodfight!'], ['2012', '~release_year', "midnight's_children"], ['2012', '~release_year', 'love_and_other_troubles'], ['2012', '~release_year', 'secret_of_the_wings'], ['2012', '~release_year', 'upside_down'], ['2012', '~release_year', 'citadel'], ['2012', '~release_year', 'antiviral'], ['2012', '~release_year', 'supporting_characters'], ['2012', '~release_year', 'the_apparition'], ['2012', '~release_year', 'the_man_with_the_iron_fists'], ['2012', '~release_year', 'darling_companion'], ['2012', '~release_year', 'the_bay'], ['2012', '~release_year', 'english_vinglish'], ['2012', '~release_year', 'love_is_all_you_need'], ['2012', '~release_year', 'cleanskin'], ['2012', '~release_year', 'dabangg_2'], ['2012', '~release_year', 'wanderlust'], ['2012', '~release_year', 'call_girl'], ['2012', '~release_year', 'the_magic_of_belle_isle'], ['2012', '~release_year', 'ruby_sparks'], ['2012', '~release_year', 'spring_breakers'], ['2012', '~release_year', 'imagine'], ['2012', '~release_year', 'amour'], ['2012', '~release_year', 'struck_by_lightning'], ['2012', '~release_year', 'any_day_now'], ['2012', '~release_year', 'sadako_3d'], ['2012', '~release_year', 'errors_of_the_human_body'], ['2012', '~release_year', 'the_letter'], ['2012', '~release_year', 'barabbas'], ['2012', '~release_year', 'cloud_atlas'], ['2012', '~release_year', 'middle_of_nowhere'], ['2012', '~release_year', 'paan_singh_tomar'], ['2012', '~release_year', 'the_motel_life'], ['2012', '~release_year', 'beyond_the_hills'], ['2012', '~release_year', 'yossi'], ['2012', '~release_year', 'the_dinosaur_project'], ['2012', '~release_year', 'the_three_stooges'], ['2012', '~release_year', 'for_ellen'], ['2012', '~release_year', 'the_expendables_2'], ['2012', '~release_year', 'agent_vinod'], ['2012', '~release_year', 'palme'], ['2012', '~release_year', 'kauwboy'], ['2012', '~release_year', 'mental'], ['2012', '~release_year', 'the_end_of_love'], ['2012', '~release_year', 'the_world_before_her'], ['2012', '~release_year', 'wrong'], ['2012', '~release_year', 'my_brother_the_devil'], ['2012', '~release_year', 'three_worlds'], ['2012', '~release_year', 'eat_sleep_die'], ['2012', '~release_year', "the_devil's_carnival"], ['2012', '~release_year', 'hannah_arendt'], ['2012', '~release_year', 'broken'], ['2012', '~release_year', 'keep_the_lights_on'], ['2012', '~release_year', 'kon-tiki'], ['2012', '~release_year', 'filly_brown'], ['2012', '~release_year', 'the_lorax'], ['2012', '~release_year', 'alter_egos'], ['2012', '~release_year', 'parental_guidance'], ['2012', '~release_year', 'the_pact'], ['2012', '~release_year', 'the_we_and_the_i'], ['2012', '~release_year', 'the_abcs_of_death'], ['2012', '~release_year', 'here_comes_the_devil'], ['2012', '~release_year', 'interview_with_a_hitman'], ['2012', '~release_year', 'a_fairly_odd_christmas'], ['2012', '~release_year', "what's_in_a_name?"], ['2012', '~release_year', 'chasing_ice'], ['2012', '~release_year', 'two_little_boys'], ['2012', '~release_year', 'young_and_wild'], ['2012', '~release_year', 'the_battery'], ['2012', '~release_year', "it's_a_disaster"], ['2012', '~release_year', 'lol'], ['2012', '~release_year', '2_days_in_new_york'], ['2012', '~release_year', 'argo'], ['2012', '~release_year', 'the_central_park_five'], ['2012', '~release_year', 'bettie_page_reveals_all'], ['2012', '~release_year', 'the_sapphires'], ['2012', '~release_year', 'red_tails'], ['2012', '~release_year', 'drug_war'], ['2012', '~release_year', 'wolf_children'], ['2012', '~release_year', 'sexual_chronicles_of_a_french_family'], ['2012', '~release_year', "what_to_expect_when_you're_expecting"], ['2012', '~release_year', 'cockpit'], ['2012', '~release_year', 'red_lights'], ['2012', '~release_year', 'the_cabin_in_the_woods'], ['2012', '~release_year', 'searching_for_sugar_man'], ['2012', '~release_year', 'frances_ha'], ['2012', '~release_year', 'rock_of_ages'], ['2012', '~release_year', 'the_deep'], ['2012', '~release_year', 'consuming_spirits'], ['2012', '~release_year', 'people_like_us'], ['2012', '~release_year', 'me_and_you'], ['2012', '~release_year', 'xingu'], ['2012', '~release_year', 'magic_mike'], ['2012', '~release_year', 'fun_size'], ['2012', '~release_year', 'mann_tut_was_mann_kann'], ['2012', '~release_year', '100_bloody_acres'], ['2012', '~release_year', 'california_solo'], ['2012', '~release_year', 'fill_the_void'], ['2012', '~release_year', 'somebody_up_there_likes_me'], ['2012', '~release_year', 'gimme_the_loot'], ['2012', '~release_year', 'safe_house'], ['2012', '~release_year', 'i_am_bruce_lee'], ['2012', '~release_year', 'death_by_china'], ['2012', '~release_year', "the_pervert's_guide_to_ideology"], ['2012', '~release_year', 'housefull_2'], ['2012', '~release_year', 'gambit'], ['2012', '~release_year', 'apartment_1303_3d'], ['2012', '~release_year', 'gallowwalkers'], ['2012', '~release_year', 'lay_the_favorite'], ['2012', '~release_year', 'crooked_arrows'], ['2012', '~release_year', 'measuring_the_world'], ['2012', '~release_year', "jayne_mansfield's_car"], ['2012', '~release_year', 'shadow_dancer'], ['2012', '~release_year', 'the_collection'], ['2012', '~release_year', 'hello_herman'], ['2012', '~release_year', 'dragon_eyes'], ['2012', '~release_year', 'the_seasoning_house'], ['2012', '~release_year', 'much_ado_about_nothing'], ['2012', '~release_year', 'to_the_arctic_3d'], ['2012', '~release_year', 'maximum_conviction'], ['2012', '~release_year', 'beyond_outrage'], ['2012', '~release_year', 'mud'], ['2012', '~release_year', 'save_the_date'], ['2012', '~release_year', 'grabbers'], ['2012', '~release_year', 'paranorman'], ['2012', '~release_year', 'love,_marilyn'], ['2012', '~release_year', 'barricade'], ['2012', '~release_year', 'safe'], ['2012', '~release_year', 'a_glimpse_inside_the_mind_of_charles_swan_iii'], ['2012', '~release_year', 'rise_of_the_zombies'], ['2012', '~release_year', 'the_other_son'], ['2012', '~release_year', 'anna_karenina'], ['2012', '~release_year', 'the_barrens'], ['2012', '~release_year', 'django_unchained'], ['2012', '~release_year', 'bekas'], ['2012', '~release_year', 'the_fourth_state'], ['2012', '~release_year', 'one_in_the_chamber'], ['2012', '~release_year', 'zero_dark_thirty'], ['2012', '~release_year', 'the_campaign'], ['2012', '~release_year', 'the_first_time'], ['2012', '~release_year', 'any_questions_for_ben?'], ['2012', '~release_year', 'chasing_mavericks'], ['2012', '~release_year', 'jesus_henry_christ'], ['2012', '~release_year', 'silent_night'], ['2012', '~release_year', 'killing_them_softly'], ['2012', '~release_year', 'seeking_a_friend_for_the_end_of_the_world'], ['2012', '~release_year', 'electrick_children'], ['2012', '~release_year', 'not_fade_away'], ['2012', '~release_year', 'les_misérables'], ['2012', '~release_year', 'the_comedy'], ['2012', '~release_year', 'ace_attorney'], ['2012', '~release_year', 'in_the_house'], ['2012', '~release_year', 'storage_24'], ['2012', '~release_year', 'the_wall'], ['2012', '~release_year', 'the_cold_light_of_day'], ['2012', '~release_year', 'piranhaconda'], ['2012', '~release_year', 'the_suicide_shop'], ['2012', '~release_year', 'savages'], ['2012', '~release_year', 'the_end'], ['2012', '~release_year', 'joker'], ['2012', '~release_year', 'rurouni_kenshin'], ['2012', '~release_year', 'to_rome_with_love'], ['2012', '~release_year', 'trouble_with_the_curve'], ['2012', '~release_year', 'eden'], ['2012', '~release_year', 'dark_shadows'], ['2012', '~release_year', 'stories_we_tell'], ['2012', '~release_year', 'rust_and_bone'], ['2012', '~release_year', 'vicky_donor'], ['2012', '~release_year', 'the_patience_stone'], ['2012', '~release_year', 'ethel'], ['2012', '~release_year', 'paranormal_activity_4'], ['2012', '~release_year', "dead_man's_burden"], ['2012', '~release_year', 'blackbird'], ['2012', '~release_year', 'the_dark_knight_rises'], ['2012', '~release_year', 'branded'], ['2012', '~release_year', 'meeting_evil'], ['2012', '~release_year', 'v/h/s'], ['2012', '~release_year', "wyatt_earp's_revenge"], ['2012', '~release_year', 'i_declare_war'], ['2012', '~release_year', 'the_conspiracy'], ['2012', '~release_year', 'a_royal_affair'], ['2012', '~release_year', 'quartet'], ['2012', '~release_year', 'the_vow'], ['2012', '~release_year', 'guns,_girls_and_gambling'], ['2012', '~release_year', 'border_run'], ['2012', '~release_year', '7_days_in_havana'], ['2012', '~release_year', 'what_richard_did'], ['2012', '~release_year', 'come_out_and_play'], ['2012', '~release_year', 'radio_rebel'], ['2012', '~release_year', 'farewell,_my_queen'], ['2012', '~release_year', 'arthur_newman'], ['2012', '~release_year', 'joyful_noise'], ['2012', '~release_year', 'the_broken_circle_breakdown'], ['2012', '~release_year', 'the_story_of_luke'], ['2012', '~release_year', 'the_thompsons'], ['2012', '~release_year', 'blue_like_jazz'], ['2012', '~release_year', 'erased'], ['2012', '~release_year', 'bending_the_rules'], ['2012', '~release_year', 'side_by_side'], ['2012', '~release_year', 'sightseers'], ['2012', '~release_year', 'the_hunt'], ['2012', '~release_year', 'tai_chi_hero'], ['2012', '~release_year', 'frankenweenie'], ['2012', '~release_year', 'travelling_salesman'], ['2012', '~release_year', 'wreck-it_ralph'], ['2012', '~release_year', 'one_for_the_money'], ['2012', '~release_year', 'the_summit'], ['2012', '~release_year', 'wrath_of_the_titans'], ['2012', '~release_year', 'dark_tide'], ['2012', '~release_year', 'shanghai_calling'], ['2012', '~release_year', 'hotel_transylvania'], ['2012', '~release_year', 'the_forger'], ['2012', '~release_year', 'the_five-year_engagement'], ['2012', '~release_year', 'holy_motors'], ['2012', '~release_year', 'sushi_girl'], ['2012', '~release_year', 'the_sweeney'], ['2012', '~release_year', 'my_awkward_sexual_adventure'], ['2012', '~release_year', 'free_samples'], ['2012', '~release_year', 'unconditional'], ['2012', '~release_year', 'soldiers_of_fortune'], ['2012', '~release_year', 'what_maisie_knew'], ['2012', '~release_year', 'bachelorette'], ['2012', '~release_year', 'mr._pip'], ['2012', '~release_year', 'sister'], ['2012', '~release_year', 'contraband'], ['2012', '~release_year', 'looper'], ['2012', '~release_year', 'liberal_arts'], ['2012', '~release_year', 'barbara'], ['2012', '~release_year', 'disconnect'], ['2012', '~release_year', 'zarafa'], ['2012', '~release_year', 'american_reunion'], ['2012', '~release_year', "that's_my_boy"], ['2012', '~release_year', 'the_company_you_keep'], ['2012', '~release_year', 'grave_encounters_2'], ['2012', '~release_year', 'no'], ['2012', '~release_year', 'gone'], ['2012', '~release_year', "sofia's_last_ambulance"], ['2012', '~release_year', 'lola_versus'], ['2012', '~release_year', 'dredd'], ['2012', '~release_year', 'chronicle'], ['2012', '~release_year', 'blood'], ['2012', '~release_year', 'the_woman_in_black'], ['2012', '~release_year', 'the_lucky_one'], ['2012', '~release_year', 'girl_in_progress'], ['2012', '~release_year', 'cosmopolis'], ['2012', '~release_year', 'populaire'], ['2012', '~release_year', 'i_belong'], ['2012', '~release_year', "madea's_witness_protection"], ['2012', '~release_year', 'pitch_perfect'], ['2012', '~release_year', 'price_check'], ['2012', '~release_year', 'our_children'], ['2012', '~release_year', 'the_haunting_of_helena'], ['2012', '~release_year', 'entity'], ['2012', '~release_year', 'shanghai'], ['2012', '~release_year', 'the_scapegoat'], ['2012', '~release_year', 'brave'], ['2012', '~release_year', 'renoir'], ['2012', '~release_year', 'tiger_eyes'], ['2012', '~release_year', 'stand_up_guys'], ['2012', '~release_year', 'the_lesser_blessed'], ['2012', '~release_year', 'heroine'], ['2012', '~release_year', 'caesar_must_die'], ['2012', '~release_year', 'the_citizen'], ['2012', '~release_year', 'compliance'], ['2012', '~release_year', 'filmistaan']
+************************************Iteration:8***********************************
+Wrong
+score: 0, 5.0
+
+Total sample:13, Total_Correct:12.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9230769230769231
+metric3 :0.5384615384615384
+avg iter:3.4615384615384617
+max_iter:8
+min_iter:3
+
+
+Qid:580
+Question :what movies was [Cung Le] an actor in?GT entity:['Cung Le']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Cung Le')
+[User]
+Execution result: 
+Relation_list('Cung Le') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Cung Le' starred, I need to explore the graph from 'Cung Le' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Cung Le')=['~starred_actors']
+[User]
+Execution result: 
+['cung_le', '~starred_actors', 'dragon_eyes']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Cung Le'. The answer of the claim is as follows.
+['dragon_eyes']
+Helper function: Verification(['dragon_eyes'])
+[User]
+Execution result: 
+Done!!
+Prediction:['dragon_eyes']
+Real label:['Dragon Eyes']
+Correct!
+score: 1.0, 0
+
+Total sample:14, Total_Correct:13.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9285714285714286
+metric3 :0.5714285714285714
+avg iter:3.4285714285714284
+max_iter:8
+min_iter:3
+
+
+Qid:600
+Question :what does [Esther Furst] appear in?GT entity:['Esther Furst']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Esther Furst')
+[User]
+Execution result: 
+Relation_list('Esther Furst') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Esther Furst' starred, I need to explore the graph from 'Esther Furst' with related relations. Since the relation is '~starred_actors', I will use 'starred_actors' as the relation to explore the graph.
+Helper function: exploreKG('Esther Furst')=['~starred_actors']
+[User]
+Execution result: 
+['esther_furst', '~starred_actors', 'ring_of_terror']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Esther Furst'. The answer of the claim is as follows.
+['ring_of_terror']
+Helper function: Verification(['ring_of_terror'])
+[User]
+Execution result: 
+Done!!
+Prediction:['ring_of_terror']
+Real label:['Ring of Terror']
+Correct!
+score: 1.0, 0
+
+Total sample:15, Total_Correct:14.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9333333333333333
+metric3 :0.6
+avg iter:3.4
+max_iter:8
+min_iter:3
+
+
+Qid:620
+Question :what films did [Tia Texada] act in?GT entity:['Tia Texada']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Tia Texada')
+[User]
+Execution result: 
+Relation_list('Tia Texada') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Tia Texada' starred in, I need to explore the graph from 'Tia Texada' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Tia Texada')=['~starred_actors']
+[User]
+Execution result: 
+['tia_texada', '~starred_actors', 'spartan']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Tia Texada'. The answer of the claim is as follows.
+['spartan']
+Helper function: Verification(['spartan'])
+[User]
+Execution result: 
+Done!!
+Prediction:['spartan']
+Real label:['Spartan']
+Correct!
+score: 1.0, 0
+
+Total sample:16, Total_Correct:15.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9375
+metric3 :0.625
+avg iter:3.375
+max_iter:8
+min_iter:3
+
+
+Qid:640
+Question :what movies was [Mía Maestro] an actor in?GT entity:['Mía Maestro']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Mía Maestro')
+[User]
+Execution result: 
+Relation_list('Mía Maestro') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Mía Maestro' starred, I need to explore the graph from 'Mía Maestro' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Mía Maestro')=['~starred_actors']
+[User]
+Execution result: 
+['mía_maestro', '~starred_actors', 'the_speed_of_thought']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Mía Maestro'. The answer of the claim is as follows.
+['the_speed_of_thought']
+Helper function: Verification(['the_speed_of_thought'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_speed_of_thought']
+Real label:['The Speed of Thought']
+Correct!
+score: 1.0, 0
+
+Total sample:17, Total_Correct:16.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9411764705882353
+metric3 :0.6470588235294118
+avg iter:3.3529411764705883
+max_iter:8
+min_iter:3
+
+
+Qid:660
+Question :what films did [Thomas Mann] act in?GT entity:['Thomas Mann']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Thomas Mann')
+[User]
+Execution result: 
+Relation_list('Thomas Mann') = ['~starred_actors', '~written_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Thomas Mann' acted in, I need to explore the graph from 'Thomas Mann' with related relations. Since 'Thomas Mann' is an actor, I will use '~starred_actors' relation.
+Helper function: exploreKG('Thomas Mann')=['~starred_actors']
+[User]
+Execution result: 
+['thomas_mann', '~starred_actors', 'project_x']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Thomas Mann' acted in. The answer of the claim is as follows.
+['project_x']
+Helper function: Verification(['project_x'])
+[User]
+Execution result: 
+Done!!
+Prediction:['project_x']
+Real label:['Project X']
+Correct!
+score: 1.0, 0
+
+Total sample:18, Total_Correct:17.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9444444444444444
+metric3 :0.6666666666666666
+avg iter:3.3333333333333335
+max_iter:8
+min_iter:3
+
+
+Qid:680
+Question :what does [Stephen Mendillo] star in?GT entity:['Stephen Mendillo']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Stephen Mendillo')
+[User]
+Execution result: 
+Relation_list('Stephen Mendillo') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Stephen Mendillo' starred, I need to explore the graph from 'Stephen Mendillo' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Stephen Mendillo')=['~starred_actors']
+[User]
+Execution result: 
+['stephen_mendillo', '~starred_actors', 'city_of_hope']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Stephen Mendillo'. The answer of the claim is as follows.
+['city_of_hope']
+Helper function: Verification(['city_of_hope'])
+[User]
+Execution result: 
+Done!!
+Prediction:['city_of_hope']
+Real label:['City of Hope']
+Correct!
+score: 1.0, 0
+
+Total sample:19, Total_Correct:18.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9473684210526315
+metric3 :0.6842105263157895
+avg iter:3.3157894736842106
+max_iter:8
+min_iter:3
+
+
+Qid:700
+Question :what movies did [Albert Hall] act in?GT entity:['Albert Hall']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Albert Hall')
+[User]
+Execution result: 
+Relation_list('Albert Hall') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Albert Hall' acted in, I need to explore the graph from 'Albert Hall' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Albert Hall')=['~starred_actors']
+[User]
+Execution result: 
+['albert_hall', '~starred_actors', 'malcolm_x'], ['albert_hall', '~starred_actors', 'rookie_of_the_year']
+************************************Iteration:2***********************************
+Statement: Now I get the films that 'Albert Hall' acted in. The answer of the claim is as follows.
+['malcolm_x', 'rookie_of_the_year']
+Helper function: Verification(['malcolm_x', 'rookie_of_the_year'])
+[User]
+Execution result: 
+Done!!
+Prediction:['malcolm_x', 'rookie_of_the_year']
+Real label:['Malcolm X', 'Rookie of the Year']
+Correct!
+score: 1.0, 0
+
+Total sample:20, Total_Correct:19.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.95
+metric3 :0.7
+avg iter:3.3
+max_iter:8
+min_iter:3
+
+
+Qid:720
+Question :what does [Betsy Blair] appear in?GT entity:['Betsy Blair']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Betsy Blair')
+[User]
+Execution result: 
+Relation_list('Betsy Blair') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Betsy Blair' starred, I need to explore the graph from 'Betsy Blair' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Betsy Blair')=['~starred_actors']
+[User]
+Execution result: 
+['betsy_blair', '~starred_actors', 'all_night_long'], ['betsy_blair', '~starred_actors', 'il_grido']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Betsy Blair'. The answer of the claim is as follows.
+['all_night_long', 'il_grido']
+Helper function: Verification(['all_night_long', 'il_grido'])
+[User]
+Execution result: 
+Done!!
+Prediction:['all_night_long', 'il_grido']
+Real label:['Il Grido', 'All Night Long']
+Correct!
+score: 1.0, 0
+
+Total sample:21, Total_Correct:20.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9523809523809523
+metric3 :0.7142857142857143
+avg iter:3.2857142857142856
+max_iter:8
+min_iter:3
+
+
+Qid:740
+Question :what movies did [Rory Culkin] star in?GT entity:['Rory Culkin']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Rory Culkin')
+[User]
+Execution result: 
+Relation_list('Rory Culkin') = ['~starred_actors', '~has_tags']
+************************************Iteration:1***********************************
+Statement: Now, to find the movies that 'Rory Culkin' starred in, I need to explore the graph from 'Rory Culkin' with related relations. Since the relation is '~starred_actors', I will use this relation to find the movies.
+Helper function: exploreKG('Rory Culkin')=['~starred_actors']
+[User]
+Execution result: 
+['rory_culkin', '~starred_actors', 'you_can_count_on_me'], ['rory_culkin', '~starred_actors', 'mean_creek'], ['rory_culkin', '~starred_actors', 'signs'], ['rory_culkin', '~starred_actors', 'down_in_the_valley'], ['rory_culkin', '~starred_actors', 'lymelife']
+************************************Iteration:2***********************************
+Statement: Now I get the movies starred by 'Rory Culkin'. The answer of the claim is as follows.
+['you_can_count_on_me', 'mean_creek', 'signs', 'down_in_the_valley', 'lymelife']
+Helper function: Verification(['you_can_count_on_me', 'mean_creek', 'signs', 'down_in_the_valley', 'lymelife'])
+[User]
+Execution result: 
+Done!!
+Prediction:['you_can_count_on_me', 'mean_creek', 'signs', 'down_in_the_valley', 'lymelife']
+Real label:['Signs', 'Mean Creek', 'You Can Count on Me', 'Down in the Valley', 'Lymelife']
+Correct!
+score: 1.0, 0
+
+Total sample:22, Total_Correct:21.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9545454545454546
+metric3 :0.7272727272727273
+avg iter:3.272727272727273
+max_iter:8
+min_iter:3
+
+
+Qid:760
+Question :what movies did [Lance Armstrong] star in?GT entity:['Lance Armstrong']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Lance Armstrong')
+[User]
+Execution result: 
+Relation_list('Lance Armstrong') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Lance Armstrong' starred in, I need to explore the graph from 'Lance Armstrong' with related relations. Since the relation is '~starred_actors', I will use this inverse relation to find the films.
+Helper function: exploreKG('Lance Armstrong')=['~starred_actors']
+[User]
+Execution result: 
+['lance_armstrong', '~starred_actors', 'the_armstrong_lie']
+************************************Iteration:2***********************************
+Statement: Now I get the film starred by 'Lance Armstrong'. The answer of the claim is as follows.
+['the_armstrong_lie']
+Helper function: Verification(['the_armstrong_lie'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_armstrong_lie']
+Real label:['The Armstrong Lie']
+Correct!
+score: 1.0, 0
+
+Total sample:23, Total_Correct:22.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9565217391304348
+metric3 :0.7391304347826086
+avg iter:3.260869565217391
+max_iter:8
+min_iter:3
+
+
+Qid:780
+Question :what movies did [Season Hubley] act in?GT entity:['Season Hubley']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Season Hubley')
+[User]
+Execution result: 
+Relation_list('Season Hubley') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Season Hubley' starred, I need to explore the graph from 'Season Hubley' with related relations.
+Helper function: exploreKG('Season Hubley')=['~starred_actors']
+[User]
+Execution result: 
+['season_hubley', '~starred_actors', 'vice_squad'], ['season_hubley', '~starred_actors', 'hardcore']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Season Hubley'. The answer of the claim is as follows.
+['vice_squad', 'hardcore']
+Helper function: Verification(['vice_squad', 'hardcore'])
+[User]
+Execution result: 
+Done!!
+Prediction:['vice_squad', 'hardcore']
+Real label:['Hardcore', 'Vice Squad']
+Correct!
+score: 1.0, 0
+
+Total sample:24, Total_Correct:23.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9583333333333334
+metric3 :0.75
+avg iter:3.25
+max_iter:8
+min_iter:3
+
+
+Qid:800
+Question :what movies was [Margaret Cho] an actor in?GT entity:['Margaret Cho']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Margaret Cho')
+[User]
+Execution result: 
+Relation_list('Margaret Cho') = ['~starred_actors', '~has_tags', '~written_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the movies that 'Margaret Cho' starred in, I need to explore the graph from 'Margaret Cho' with related relations. Since the relation is '~starred_actors', I will use 'starred_actors' as the relation to find the movies.
+Helper function: exploreKG('Margaret Cho')=['~starred_actors']
+[User]
+Execution result: 
+['margaret_cho', '~starred_actors', "i'm_the_one_that_i_want"], ['margaret_cho', '~starred_actors', "it's_my_party"]
+************************************Iteration:2***********************************
+Statement: Now I get the movies starred by 'Margaret Cho'. The answer of the claim is as follows.
+["i'm_the_one_that_i_want", "it's_my_party"]
+Helper function: Verification(["i'm_the_one_that_i_want", "it's_my_party"])
+[User]
+Execution result: 
+Done!!
+Prediction:["i'm_the_one_that_i_want", "it's_my_party"]
+Real label:["It's My Party", "I'm the One That I Want"]
+Correct!
+score: 1.0, 0
+
+Total sample:25, Total_Correct:24.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.96
+metric3 :0.76
+avg iter:3.24
+max_iter:8
+min_iter:3
+
+
+Qid:820
+Question :what films did [Joe Silver] act in?GT entity:['Joe Silver']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Joe Silver')
+[User]
+Execution result: 
+Relation_list('Joe Silver') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Joe Silver' acted in, I need to explore the graph from 'Joe Silver' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I need to find the films that have 'Joe Silver' as an actor.
+Helper function: exploreKG('Joe Silver')=['~starred_actors']
+[User]
+Execution result: 
+['joe_silver', '~starred_actors', 'rabid']
+************************************Iteration:2***********************************
+Statement: Now I get the film that 'Joe Silver' acted in. The answer of the claim is as follows.
+['rabid']
+Helper function: Verification(['rabid'])
+[User]
+Execution result: 
+Done!!
+Prediction:['rabid']
+Real label:['Rabid']
+Correct!
+score: 1.0, 0
+
+Total sample:26, Total_Correct:25.0, Total_Wrong:5.0, Total_abstain:0
+metric1:1.0
+metric2:0.9615384615384616
+metric3 :0.7692307692307693
+avg iter:3.230769230769231
+max_iter:8
+min_iter:3
+
+
+Qid:840
+Question :[Roger Moore] appears in which movies?GT entity:['Roger Moore']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Roger Moore')
+[User]
+Execution result: 
+Relation_list('Roger Moore') = ['~starred_actors', '~has_tags']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Roger Moore' starred, I need to explore the graph from 'Roger Moore' with related relations. Since the relation is '~starred_actors', which is an inverse relation, it means 'Roger Moore' is the object of the relation, so I need to find the subjects (films) that have 'Roger Moore' as the object.
+Helper function: exploreKG('Roger Moore')=['~starred_actors']
+[User]
+Execution result: 
+['roger_moore', '~starred_actors', 'moonraker'], ['roger_moore', '~starred_actors', 'the_cannonball_run'], ['roger_moore', '~starred_actors', 'the_man_with_the_golden_gun'], ['roger_moore', '~starred_actors', "the_man_who_wouldn't_die"], ['roger_moore', '~starred_actors', 'live_and_let_die'], ['roger_moore', '~starred_actors', 'the_sea_wolves'], ['roger_moore', '~starred_actors', 'the_spy_who_loved_me'], ['roger_moore', '~starred_actors', 'the_wild_geese'], ['roger_moore', '~starred_actors', 'for_your_eyes_only'], ['roger_moore', '~starred_actors', 'interrupted_melody'], ['roger_moore', '~starred_actors', 'escape_to_athena'], ['roger_moore', '~starred_actors', 'octopussy'], ['roger_moore', '~starred_actors', 'gold'], ['roger_moore', '~starred_actors', 'the_naked_face'], ['roger_moore', '~starred_actors', 'the_quest'], ['roger_moore', '~starred_actors', 'the_man_who_haunted_himself'], ['roger_moore', '~starred_actors', 'a_view_to_a_kill']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Roger Moore'. The answer of the claim is as follows.
+['moonraker', 'the_cannonball_run', 'the_man_with_the_golden_gun', 'the_man_who_wouldnt_die', 'live_and_let_die', 'the_sea_wolves', 'the_spy_who_loved_me', 'the_wild_geese', 'for_your_eyes_only', 'interrupted_melody', 'escape_to_athena', 'octopussy', 'gold', 'the_naked_face', 'the_quest', 'the_man_who_haunted_himself', 'a_view_to_a_kill']
+Helper function: Verification(['moonraker', 'the_cannonball_run', 'the_man_with_the_golden_gun', 'the_man_who_wouldnt_die', 'live_and_let_die', 'the_sea_wolves', 'the_spy_who_loved_me', 'the_wild_geese', 'for_your_eyes_only', 'interrupted_melody', 'escape_to_athena', 'octopussy', 'gold', 'the_naked_face', 'the_quest', 'the_man_who_haunted_himself', 'a_view_to_a_kill'])
+[User]
+Execution result: 
+Done!!
+Prediction:['a_view_to_a_kill', 'moonraker', 'the_cannonball_run', 'the_man_with_the_golden_gun', 'live_and_let_die', 'the_sea_wolves', 'the_spy_who_loved_me', 'the_wild_geese', 'for_your_eyes_only', 'interrupted_melody', 'escape_to_athena', 'octopussy', 'gold', 'the_naked_face', 'the_quest', 'the_man_who_haunted_himself', 'the_man_who_wouldnt_die']
+Real label:['The Spy Who Loved Me', 'Octopussy', 'Live and Let Die', 'The Man with the Golden Gun', 'For Your Eyes Only', 'Moonraker', 'A View to a Kill', 'The Cannonball Run', 'The Quest', 'The Wild Geese', 'Escape to Athena', 'The Sea Wolves', 'Gold', 'The Man Who Haunted Himself', 'Interrupted Melody', 'The Naked Face', "The Man Who Wouldn't Die"]
+Correct!
+score: 0.9411764705882354, 0.058823529411764705
+
+Total sample:27, Total_Correct:25.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9607843137254902
+metric3 :0.7734204793028323
+avg iter:3.2222222222222223
+max_iter:8
+min_iter:3
+
+
+Qid:860
+Question :what films did [Paul Robeson] star in?GT entity:['Paul Robeson']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Paul Robeson')
+[User]
+Execution result: 
+Relation_list('Paul Robeson') = ['~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Paul Robeson' starred, I need to explore the graph from 'Paul Robeson' with related relations. Since the relation is '~starred_actors', it means the relation is inverse, so I will use 'starred_actors' to find the films.
+Helper function: exploreKG('Paul Robeson')=['~starred_actors']
+[User]
+Execution result: 
+['paul_robeson', '~starred_actors', "king_solomon's_mines"], ['paul_robeson', '~starred_actors', 'the_proud_valley'], ['paul_robeson', '~starred_actors', 'song_of_freedom'], ['paul_robeson', '~starred_actors', 'the_emperor_jones'], ['paul_robeson', '~starred_actors', 'big_fella']
+************************************Iteration:2***********************************
+Statement: Now I get the films starred by 'Paul Robeson'. The answer of the claim is as follows.
+["king_solomon's_mines", 'the_proud_valley', 'song_of_freedom', 'the_emperor_jones', 'big_fella']
+Helper function: Verification(["king_solomon's_mines", 'the_proud_valley', 'song_of_freedom', 'the_emperor_jones', 'big_fella'])
+[User]
+Execution result: 
+Done!!
+Prediction:["king_solomon's_mines", 'the_proud_valley', 'song_of_freedom', 'the_emperor_jones', 'big_fella']
+Real label:["King Solomon's Mines", 'The Emperor Jones', 'The Proud Valley', 'Song of Freedom', 'Big Fella']
+Correct!
+score: 1.0, 0
+
+Total sample:28, Total_Correct:26.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9621848739495799
+metric3 :0.7815126050420168
+avg iter:3.2142857142857144
+max_iter:8
+min_iter:3
+
+
+Qid:880
+Question :which movie was [John Pasquin] the director for?GT entity:['John Pasquin']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('John Pasquin')
+[User]
+Execution result: 
+Relation_list('John Pasquin') = ['~directed_by', '~has_tags']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'John Pasquin' directed, I need to explore the graph from 'John Pasquin' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to find the films.
+Helper function: exploreKG('John Pasquin')=['~directed_by']
+[User]
+Execution result: 
+['john_pasquin', '~directed_by', 'joe_somebody'], ['john_pasquin', '~directed_by', 'jungle_2_jungle'], ['john_pasquin', '~directed_by', 'the_santa_clause']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'John Pasquin'. The answer of the claim is as follows.
+['joe_somebody', 'jungle_2_jungle', 'the_santa_clause']
+Helper function: Verification(['joe_somebody', 'jungle_2_jungle', 'the_santa_clause'])
+[User]
+Execution result: 
+Done!!
+Prediction:['joe_somebody', 'jungle_2_jungle', 'the_santa_clause']
+Real label:['The Santa Clause', 'Jungle 2 Jungle', 'Joe Somebody']
+Correct!
+score: 1.0, 0
+
+Total sample:29, Total_Correct:27.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9634888438133874
+metric3 :0.7890466531440162
+avg iter:3.206896551724138
+max_iter:8
+min_iter:3
+
+
+Qid:900
+Question :what movies did [Sidney Sheldon] direct?GT entity:['Sidney Sheldon']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Sidney Sheldon')
+[User]
+Execution result: 
+Relation_list('Sidney Sheldon') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the movies that 'Sidney Sheldon' directed, I need to explore the graph from 'Sidney Sheldon' with related relations. Since 'directed_by' relation is inverse, I will use '~directed_by' relation.
+Helper function: exploreKG('Sidney Sheldon')=['~directed_by']
+[User]
+Execution result: 
+['sidney_sheldon', '~directed_by', 'dream_wife']
+************************************Iteration:2***********************************
+Statement: Now I get the movies directed by 'Sidney Sheldon'. The answer of the claim is as follows.
+['dream_wife']
+Helper function: Verification(['dream_wife'])
+[User]
+Execution result: 
+Done!!
+Prediction:['dream_wife']
+Real label:['Dream Wife']
+Correct!
+score: 1.0, 0
+
+Total sample:30, Total_Correct:28.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9647058823529412
+metric3 :0.7960784313725491
+avg iter:3.2
+max_iter:8
+min_iter:3
+
+
+Qid:920
+Question :which films did [George C. Wolfe] direct?GT entity:['George C. Wolfe']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('George C. Wolfe')
+[User]
+Execution result: 
+Relation_list('George C. Wolfe') = ['~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'George C. Wolfe' directed, I need to explore the graph from 'George C. Wolfe' with related relations. Since the relation is '~directed_by', I will use this inverse relation to find the films.
+Helper function: exploreKG('George C. Wolfe')=['~directed_by']
+[User]
+Execution result: 
+['george_c._wolfe', '~directed_by', "you're_not_you"]
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'George C. Wolfe'. The answer of the claim is as follows.
+['you\'re_not_you']
+Helper function: Verification(['you\'re_not_you'])
+[User]
+Execution result: 
+Done!!
+Prediction:["you're_not_you"]
+Real label:["You're Not You"]
+Correct!
+score: 1.0, 0
+
+Total sample:31, Total_Correct:29.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9658444022770398
+metric3 :0.8026565464895635
+avg iter:3.193548387096774
+max_iter:8
+min_iter:3
+
+
+Qid:940
+Question :what movies did [David Mandel] direct?GT entity:['David Mandel']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('David Mandel')
+[User]
+Execution result: 
+Relation_list('David Mandel') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the movies that 'David Mandel' directed, I need to explore the graph from 'David Mandel' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('David Mandel')=['~directed_by']
+[User]
+Execution result: 
+['david_mandel', '~directed_by', 'eurotrip']
+************************************Iteration:2***********************************
+Statement: Now I get the movies directed by 'David Mandel'. The answer of the claim is as follows.
+['eurotrip']
+Helper function: Verification(['eurotrip'])
+[User]
+Execution result: 
+Done!!
+Prediction:['eurotrip']
+Real label:['EuroTrip']
+Correct!
+score: 1.0, 0
+
+Total sample:32, Total_Correct:30.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9669117647058824
+metric3 :0.8088235294117647
+avg iter:3.1875
+max_iter:8
+min_iter:3
+
+
+Qid:960
+Question :which films did [Nora Ephron] direct?GT entity:['Nora Ephron']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Nora Ephron')
+[User]
+Execution result: 
+Relation_list('Nora Ephron') = ['~written_by', '~directed_by', '~has_tags']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Nora Ephron' directed, I need to explore the graph from 'Nora Ephron' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Nora Ephron')=['~directed_by']
+[User]
+Execution result: 
+['nora_ephron', '~directed_by', 'sleepless_in_seattle'], ['nora_ephron', '~directed_by', "you've_got_mail"], ['nora_ephron', '~directed_by', 'michael'], ['nora_ephron', '~directed_by', 'this_is_my_life'], ['nora_ephron', '~directed_by', 'lucky_numbers'], ['nora_ephron', '~directed_by', 'bewitched'], ['nora_ephron', '~directed_by', 'mixed_nuts']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Nora Ephron'. The answer of the claim is as follows.
+['sleepless_in_seattle', "you've_got_mail", 'michael', 'this_is_my_life', 'lucky_numbers', 'bewitched', 'mixed_nuts']
+Helper function: Verification(['sleepless_in_seattle', "you've_got_mail", 'michael', 'this_is_my_life', 'lucky_numbers', 'bewitched', 'mixed_nuts'])
+[User]
+Execution result: 
+Done!!
+Prediction:['sleepless_in_seattle', "you've_got_mail", 'this_is_my_life', 'lucky_numbers', 'bewitched', 'michael', 'mixed_nuts']
+Real label:["You've Got Mail", 'Sleepless in Seattle', 'Bewitched', 'Michael', 'Lucky Numbers', 'Mixed Nuts', 'This Is My Life']
+Correct!
+score: 0.9999999999999998, 0
+
+Total sample:33, Total_Correct:31.941176470588236, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9679144385026738
+metric3 :0.8146167557932263
+avg iter:3.1818181818181817
+max_iter:8
+min_iter:3
+
+
+Qid:980
+Question :what films did [John Emerson] direct?GT entity:['John Emerson']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('John Emerson')
+[User]
+Execution result: 
+Relation_list('John Emerson') = ['~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'John Emerson' directed, I need to explore the graph from 'John Emerson' with related relations. Since the relation is '~directed_by', I will use this inverse relation to find the films.
+Helper function: exploreKG('John Emerson')=['~directed_by']
+[User]
+Execution result: 
+['john_emerson', '~directed_by', 'the_mystery_of_the_leaping_fish']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'John Emerson'. The answer of the claim is as follows.
+['the_mystery_of_the_leaping_fish']
+Helper function: Verification(['the_mystery_of_the_leaping_fish'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_mystery_of_the_leaping_fish']
+Real label:['The Mystery of the Leaping Fish']
+Correct!
+score: 1.0, 0
+
+Total sample:34, Total_Correct:32.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9688581314878891
+metric3 :0.820069204152249
+avg iter:3.176470588235294
+max_iter:8
+min_iter:3
+
+
+Qid:1000
+Question :[Henry Jaglom] directed which movies?GT entity:['Henry Jaglom']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Henry Jaglom')
+[User]
+Execution result: 
+Relation_list('Henry Jaglom') = ['~written_by', '~directed_by', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Henry Jaglom' directed, I need to explore the graph from 'Henry Jaglom' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Henry Jaglom')=['~directed_by']
+[User]
+Execution result: 
+['henry_jaglom', '~directed_by', 'a_safe_place'], ['henry_jaglom', '~directed_by', 'irene_in_time'], ['henry_jaglom', '~directed_by', 'venice/venice'], ['henry_jaglom', '~directed_by', 'festival_in_cannes'], ['henry_jaglom', '~directed_by', 'last_summer_in_the_hamptons'], ['henry_jaglom', '~directed_by', 'déjà_vu']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Henry Jaglom'. The answer of the claim is as follows.
+['a_safe_place', 'irene_in_time', 'venice/venice', 'festival_in_cannes', 'last_summer_in_the_hamptons', 'déjà_vu']
+Helper function: Verification(['a_safe_place', 'irene_in_time', 'venice/venice', 'festival_in_cannes', 'last_summer_in_the_hamptons', 'déjà_vu'])
+[User]
+Execution result: 
+Done!!
+Prediction:['a_safe_place', 'irene_in_time', 'venice/venice', 'festival_in_cannes', 'last_summer_in_the_hamptons', 'déjà_vu']
+Real label:['Déjà Vu', 'A Safe Place', 'Festival in Cannes', 'Last Summer in the Hamptons', 'Venice/Venice', 'Irene in Time']
+Correct!
+score: 0.9999999999999999, 0
+
+Total sample:35, Total_Correct:33.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9697478991596638
+metric3 :0.8252100840336134
+avg iter:3.1714285714285713
+max_iter:8
+min_iter:3
+
+
+Qid:1020
+Question :which films did [Jim Rash] direct?GT entity:['Jim Rash']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Jim Rash')
+[User]
+Execution result: 
+Relation_list('Jim Rash') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Jim Rash' directed, I need to explore the graph from 'Jim Rash' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Jim Rash')=['~directed_by']
+[User]
+Execution result: 
+['jim_rash', '~directed_by', 'the_way_way_back']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Jim Rash'. The answer of the claim is as follows.
+['the_way_way_back']
+Helper function: Verification(['the_way_way_back'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_way_way_back']
+Real label:['The Way Way Back']
+Correct!
+score: 1.0, 0
+
+Total sample:36, Total_Correct:34.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9705882352941175
+metric3 :0.8300653594771241
+avg iter:3.1666666666666665
+max_iter:8
+min_iter:3
+
+
+Qid:1040
+Question :[Mikel Conrad] was the director of which films?GT entity:['Mikel Conrad']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Mikel Conrad')
+[User]
+Execution result: 
+Relation_list('Mikel Conrad') = ['~starred_actors', '~directed_by', '~written_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Mikel Conrad' directed, I need to explore the graph from 'Mikel Conrad' with related relations. Since 'directed_by' relation is inverse, I will use '~directed_by' relation.
+Helper function: exploreKG('Mikel Conrad')=['~directed_by']
+[User]
+Execution result: 
+['mikel_conrad', '~directed_by', 'the_flying_saucer']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Mikel Conrad'. The answer of the claim is as follows.
+['the_flying_saucer']
+Helper function: Verification(['the_flying_saucer'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_flying_saucer']
+Real label:['The Flying Saucer']
+Correct!
+score: 1.0, 0
+
+Total sample:37, Total_Correct:35.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.971383147853736
+metric3 :0.8346581875993639
+avg iter:3.1621621621621623
+max_iter:8
+min_iter:3
+
+
+Qid:1060
+Question :what did [Giuliano Montaldo] direct?GT entity:['Giuliano Montaldo']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Giuliano Montaldo')
+[User]
+Execution result: 
+Relation_list('Giuliano Montaldo') = ['~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Giuliano Montaldo' directed, I need to explore the graph from 'Giuliano Montaldo' with related relations. Since the relation is '~directed_by', I will use this inverse relation to find the films.
+Helper function: exploreKG('Giuliano Montaldo')=['~directed_by']
+[User]
+Execution result: 
+['giuliano_montaldo', '~directed_by', 'machine_gun_mccain']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Giuliano Montaldo'. The answer of the claim is as follows.
+['machine_gun_mccain']
+Helper function: Verification(['machine_gun_mccain'])
+[User]
+Execution result: 
+Done!!
+Prediction:['machine_gun_mccain']
+Real label:['Machine Gun McCain']
+Correct!
+score: 1.0, 0
+
+Total sample:38, Total_Correct:36.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9721362229102166
+metric3 :0.8390092879256965
+avg iter:3.1578947368421053
+max_iter:8
+min_iter:3
+
+
+Qid:1080
+Question :which films did [Gary Entin] direct?GT entity:['Gary Entin']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Gary Entin')
+[User]
+Execution result: 
+Relation_list('Gary Entin') = ['~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Gary Entin' directed, I need to explore the graph from 'Gary Entin' with related relations. Since the relation is '~directed_by', I will use this inverse relation to find the films.
+Helper function: exploreKG('Gary Entin')=['~directed_by']
+[User]
+Execution result: 
+['gary_entin', '~directed_by', 'geography_club']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Gary Entin'. The answer of the claim is as follows.
+['geography_club']
+Helper function: Verification(['geography_club'])
+[User]
+Execution result: 
+Done!!
+Prediction:['geography_club']
+Real label:['Geography Club']
+Correct!
+score: 1.0, 0
+
+Total sample:39, Total_Correct:37.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9728506787330315
+metric3 :0.8431372549019606
+avg iter:3.1538461538461537
+max_iter:8
+min_iter:3
+
+
+Qid:1100
+Question :what was [Lewis R. Foster] the director of?GT entity:['Lewis R. Foster']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Lewis R. Foster')
+[User]
+Execution result: 
+Relation_list('Lewis R. Foster') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Lewis R. Foster' directed, I need to explore the graph from 'Lewis R. Foster' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Lewis R. Foster')=['~directed_by']
+[User]
+Execution result: 
+['lewis_r._foster', '~directed_by', 'the_last_outpost']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Lewis R. Foster'. The answer of the claim is as follows.
+['the_last_outpost']
+Helper function: Verification(['the_last_outpost'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_last_outpost']
+Real label:['The Last Outpost']
+Correct!
+score: 1.0, 0
+
+Total sample:40, Total_Correct:38.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9735294117647058
+metric3 :0.8470588235294116
+avg iter:3.15
+max_iter:8
+min_iter:3
+
+
+Qid:1120
+Question :what films did [Scott Thurman] direct?GT entity:['Scott Thurman']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Scott Thurman')
+[User]
+Execution result: 
+Relation_list('Scott Thurman') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Scott Thurman' directed, I need to explore the graph from 'Scott Thurman' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Scott Thurman')=['~directed_by']
+[User]
+Execution result: 
+['scott_thurman', '~directed_by', 'the_revisionaries']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Scott Thurman'. The answer of the claim is as follows.
+['the_revisionaries']
+Helper function: Verification(['the_revisionaries'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_revisionaries']
+Real label:['The Revisionaries']
+Correct!
+score: 1.0, 0
+
+Total sample:41, Total_Correct:39.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9741750358680057
+metric3 :0.8507890961262552
+avg iter:3.1463414634146343
+max_iter:8
+min_iter:3
+
+
+Qid:1140
+Question :which movie was [Savage Steve Holland] the director for?GT entity:['Savage Steve Holland']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Savage Steve Holland')
+[User]
+Execution result: 
+Relation_list('Savage Steve Holland') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Savage Steve Holland' directed, I need to explore the graph from 'Savage Steve Holland' with related relations. Since the relation is inverse, I will use '~directed_by' to find the films.
+Helper function: exploreKG('Savage Steve Holland')=['~directed_by']
+[User]
+Execution result: 
+['savage_steve_holland', '~directed_by', 'one_crazy_summer']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Savage Steve Holland'. The answer of the claim is as follows.
+['one_crazy_summer']
+Helper function: Verification(['one_crazy_summer'])
+[User]
+Execution result: 
+Done!!
+Prediction:['one_crazy_summer']
+Real label:['One Crazy Summer']
+Correct!
+score: 1.0, 0
+
+Total sample:42, Total_Correct:40.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9747899159663864
+metric3 :0.8543417366946777
+avg iter:3.142857142857143
+max_iter:8
+min_iter:3
+
+
+Qid:1160
+Question :what movies did [Nelson McCormick] direct?GT entity:['Nelson McCormick']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Nelson McCormick')
+[User]
+Execution result: 
+Relation_list('Nelson McCormick') = ['~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the movies that 'Nelson McCormick' directed, I need to explore the graph from 'Nelson McCormick' with related relations. Since the relation is '~directed_by', I will use this inverse relation to find the movies.
+Helper function: exploreKG('Nelson McCormick')=['~directed_by']
+[User]
+Execution result: 
+['nelson_mccormick', '~directed_by', 'the_stepfather'], ['nelson_mccormick', '~directed_by', 'prom_night']
+************************************Iteration:2***********************************
+Statement: Now I get the movies directed by 'Nelson McCormick'. The answer of the claim is as follows.
+['the_stepfather', 'prom_night']
+Helper function: Verification(['the_stepfather', 'prom_night'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_stepfather', 'prom_night']
+Real label:['Prom Night', 'The Stepfather']
+Correct!
+score: 1.0, 0
+
+Total sample:43, Total_Correct:41.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.975376196990424
+metric3 :0.8577291381668946
+avg iter:3.13953488372093
+max_iter:8
+min_iter:3
+
+
+Qid:1180
+Question :what is a film directed by [Assaf Bernstein]?GT entity:['Assaf Bernstein']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Assaf Bernstein')
+[User]
+Execution result: 
+Relation_list('Assaf Bernstein') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Assaf Bernstein' directed, I need to explore the graph from 'Assaf Bernstein' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Assaf Bernstein')=['~directed_by']
+[User]
+Execution result: 
+['assaf_bernstein', '~directed_by', 'the_debt']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Assaf Bernstein'. The answer of the claim is as follows.
+['the_debt']
+Helper function: Verification(['the_debt'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_debt']
+Real label:['The Debt']
+Correct!
+score: 1.0, 0
+
+Total sample:44, Total_Correct:42.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9759358288770053
+metric3 :0.8609625668449197
+avg iter:3.1363636363636362
+max_iter:8
+min_iter:3
+
+
+Qid:1200
+Question :[Jay Anania] directed which movies?GT entity:['Jay Anania']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Jay Anania')
+[User]
+Execution result: 
+Relation_list('Jay Anania') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Jay Anania' directed, I need to explore the graph from 'Jay Anania' with related relations. Since 'directed_by' is the relation we are interested in, we will use its inverse relation '~directed_by' to find the films.
+Helper function: exploreKG('Jay Anania')=['~directed_by']
+[User]
+Execution result: 
+['jay_anania', '~directed_by', 'the_letter']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Jay Anania'. The answer of the claim is as follows.
+['the_letter']
+Helper function: Verification(['the_letter'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_letter']
+Real label:['The Letter']
+Correct!
+score: 1.0, 0
+
+Total sample:45, Total_Correct:43.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9764705882352941
+metric3 :0.8640522875816992
+avg iter:3.1333333333333333
+max_iter:8
+min_iter:3
+
+
+Qid:1220
+Question :which movies did [Greg Mottola] direct?GT entity:['Greg Mottola']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Greg Mottola')
+[User]
+Execution result: 
+Relation_list('Greg Mottola') = ['~written_by', '~directed_by', '~has_tags']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Greg Mottola' directed, I need to explore the graph from 'Greg Mottola' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Greg Mottola')=['~directed_by']
+[User]
+Execution result: 
+['greg_mottola', '~directed_by', 'the_daytrippers'], ['greg_mottola', '~directed_by', 'clear_history'], ['greg_mottola', '~directed_by', 'paul'], ['greg_mottola', '~directed_by', 'adventureland'], ['greg_mottola', '~directed_by', 'superbad']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Greg Mottola'. The answer of the claim is as follows.
+['the_daytrippers', 'clear_history', 'paul', 'adventureland', 'superbad']
+Helper function: Verification(['the_daytrippers', 'clear_history', 'paul', 'adventureland', 'superbad'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_daytrippers', 'clear_history', 'paul', 'adventureland', 'superbad']
+Real label:['Superbad', 'Paul', 'Adventureland', 'Clear History', 'The Daytrippers']
+Correct!
+score: 1.0, 0
+
+Total sample:46, Total_Correct:44.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9769820971867007
+metric3 :0.8670076726342709
+avg iter:3.130434782608696
+max_iter:8
+min_iter:3
+
+
+Qid:1240
+Question :which films did [Kazui Nihonmatsu] direct?GT entity:['Kazui Nihonmatsu']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Kazui Nihonmatsu')
+[User]
+Execution result: 
+Relation_list('Kazui Nihonmatsu') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Kazui Nihonmatsu' directed, I need to explore the graph from 'Kazui Nihonmatsu' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Kazui Nihonmatsu')=['~directed_by']
+[User]
+Execution result: 
+['kazui_nihonmatsu', '~directed_by', 'the_x_from_outer_space']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Kazui Nihonmatsu'. The answer of the claim is as follows.
+['the_x_from_outer_space']
+Helper function: Verification(['the_x_from_outer_space'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_x_from_outer_space']
+Real label:['The X from Outer Space']
+Correct!
+score: 1.0, 0
+
+Total sample:47, Total_Correct:45.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9774718397997496
+metric3 :0.8698372966207758
+avg iter:3.127659574468085
+max_iter:8
+min_iter:3
+
+
+Qid:1260
+Question :[Sandy Tung] directed which movies?GT entity:['Sandy Tung']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Sandy Tung')
+[User]
+Execution result: 
+Relation_list('Sandy Tung') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Sandy Tung' directed, I need to explore the graph from 'Sandy Tung' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Sandy Tung')=['~directed_by']
+[User]
+Execution result: 
+['sandy_tung', '~directed_by', 'across_the_tracks']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Sandy Tung'. The answer of the claim is as follows.
+['across_the_tracks']
+Helper function: Verification(['across_the_tracks'])
+[User]
+Execution result: 
+Done!!
+Prediction:['across_the_tracks']
+Real label:['Across the Tracks']
+Correct!
+score: 1.0, 0
+
+Total sample:48, Total_Correct:46.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9779411764705882
+metric3 :0.872549019607843
+avg iter:3.125
+max_iter:8
+min_iter:3
+
+
+Qid:1280
+Question :what films did [Daisy von Scherler Mayer] direct?GT entity:['Daisy von Scherler Mayer']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Daisy von Scherler Mayer')
+[User]
+Execution result: 
+Relation_list('Daisy von Scherler Mayer') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Daisy von Scherler Mayer' directed, I need to explore the graph from 'Daisy von Scherler Mayer' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Daisy von Scherler Mayer')=['~directed_by']
+[User]
+Execution result: 
+['daisy_von_scherler_mayer', '~directed_by', 'the_guru'], ['daisy_von_scherler_mayer', '~directed_by', 'party_girl']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Daisy von Scherler Mayer'. The answer of the claim is as follows.
+['the_guru', 'party_girl']
+Helper function: Verification(['the_guru', 'party_girl'])
+[User]
+Execution result: 
+Done!!
+Prediction:['party_girl', 'the_guru']
+Real label:['The Guru', 'Party Girl']
+Correct!
+score: 1.0, 0
+
+Total sample:49, Total_Correct:47.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.978391356542617
+metric3 :0.8751500600240094
+avg iter:3.122448979591837
+max_iter:8
+min_iter:3
+
+
+Qid:1300
+Question :what was [Henning Carlsen] the director of?GT entity:['Henning Carlsen']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Henning Carlsen')
+[User]
+Execution result: 
+Relation_list('Henning Carlsen') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Henning Carlsen' directed, I need to explore the graph from 'Henning Carlsen' with related relations. Since 'directed_by' relation is inverse, I will use '~directed_by' relation.
+Helper function: exploreKG('Henning Carlsen')=['~directed_by']
+[User]
+Execution result: 
+['henning_carlsen', '~directed_by', 'hunger'], ['henning_carlsen', '~directed_by', 'pan']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Henning Carlsen'. The answer of the claim is as follows.
+['hunger', 'pan']
+Helper function: Verification(['hunger', 'pan'])
+[User]
+Execution result: 
+Done!!
+Prediction:['hunger', 'pan']
+Real label:['Hunger', 'Pan']
+Correct!
+score: 1.0, 0
+
+Total sample:50, Total_Correct:48.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9788235294117646
+metric3 :0.8776470588235292
+avg iter:3.12
+max_iter:8
+min_iter:3
+
+
+Qid:1320
+Question :which movies did [Marina de Van] direct?GT entity:['Marina de Van']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Marina de Van')
+[User]
+Execution result: 
+Relation_list('Marina de Van') = ['~written_by', '~directed_by', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Marina de Van' directed, I need to explore the graph from 'Marina de Van' with related relations. Since the relation is inverse, I will use '~directed_by'.
+Helper function: exploreKG('Marina de Van')=['~directed_by']
+[User]
+Execution result: 
+['marina_de_van', '~directed_by', 'in_my_skin'], ['marina_de_van', '~directed_by', 'dark_touch'], ['marina_de_van', '~directed_by', "don't_look_back"]
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Marina de Van'. The answer of the claim is as follows.
+['in_my_skin', 'dark_touch', "don't_look_back"]
+Helper function: Verification(['in_my_skin', 'dark_touch', "don't_look_back"])
+[User]
+Execution result: 
+Done!!
+Prediction:['in_my_skin', 'dark_touch', "don't_look_back"]
+Real label:["Don't Look Back", 'In My Skin', 'Dark Touch']
+Correct!
+score: 1.0, 0
+
+Total sample:51, Total_Correct:49.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9792387543252594
+metric3 :0.8800461361014993
+avg iter:3.1176470588235294
+max_iter:8
+min_iter:3
+
+
+Qid:1340
+Question :[Jamie Thraves] directed which movies?GT entity:['Jamie Thraves']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Jamie Thraves')
+[User]
+Execution result: 
+Relation_list('Jamie Thraves') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Jamie Thraves' directed, I need to explore the graph from 'Jamie Thraves' with related relations. Since 'directed_by' is the relation we are interested in, we will use its inverse relation '~directed_by' to find the films.
+Helper function: exploreKG('Jamie Thraves')=['~directed_by']
+[User]
+Execution result: 
+['jamie_thraves', '~directed_by', 'the_cry_of_the_owl']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Jamie Thraves'. The answer of the claim is as follows.
+['the_cry_of_the_owl']
+Helper function: Verification(['the_cry_of_the_owl'])
+[User]
+Execution result: 
+Done!!
+Prediction:['the_cry_of_the_owl']
+Real label:['The Cry of the Owl']
+Correct!
+score: 1.0, 0
+
+Total sample:52, Total_Correct:50.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9796380090497737
+metric3 :0.8823529411764705
+avg iter:3.1153846153846154
+max_iter:8
+min_iter:3
+
+
+Qid:1360
+Question :[Eugene Corr] was the director of which films?GT entity:['Eugene Corr']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Eugene Corr')
+[User]
+Execution result: 
+Relation_list('Eugene Corr') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Eugene Corr' directed, I need to explore the graph from 'Eugene Corr' with related relations. Since 'directed_by' is the relation we are interested in, we will use its inverse relation '~directed_by' to find the films.
+Helper function: exploreKG('Eugene Corr')=['~directed_by']
+[User]
+Execution result: 
+['eugene_corr', '~directed_by', 'desert_bloom']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Eugene Corr'. The answer of the claim is as follows.
+['desert_bloom']
+Helper function: Verification(['desert_bloom'])
+[User]
+Execution result: 
+Done!!
+Prediction:['desert_bloom']
+Real label:['Desert Bloom']
+Correct!
+score: 1.0, 0
+
+Total sample:53, Total_Correct:51.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9800221975582686
+metric3 :0.8845726970033295
+avg iter:3.1132075471698113
+max_iter:8
+min_iter:3
+
+
+Qid:1380
+Question :which films did [Yoshikazu Yasuhiko] direct?GT entity:['Yoshikazu Yasuhiko']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Yoshikazu Yasuhiko')
+[User]
+Execution result: 
+Relation_list('Yoshikazu Yasuhiko') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Yoshikazu Yasuhiko' directed, I need to explore the graph from 'Yoshikazu Yasuhiko' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Yoshikazu Yasuhiko')=['~directed_by']
+[User]
+Execution result: 
+['yoshikazu_yasuhiko', '~directed_by', 'venus_wars']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Yoshikazu Yasuhiko'. The answer of the claim is as follows.
+['venus_wars']
+Helper function: Verification(['venus_wars'])
+[User]
+Execution result: 
+Done!!
+Prediction:['venus_wars']
+Real label:['Venus Wars']
+Correct!
+score: 1.0, 0
+
+Total sample:54, Total_Correct:52.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9803921568627451
+metric3 :0.886710239651416
+avg iter:3.111111111111111
+max_iter:8
+min_iter:3
+
+
+Qid:1400
+Question :what is a film directed by [Matthew Barney]?GT entity:['Matthew Barney']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Matthew Barney')
+[User]
+Execution result: 
+Relation_list('Matthew Barney') = ['~written_by', '~directed_by', '~starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Matthew Barney' directed, I need to explore the graph from 'Matthew Barney' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Matthew Barney')=['~directed_by']
+[User]
+Execution result: 
+['matthew_barney', '~directed_by', 'destricted'], ['matthew_barney', '~directed_by', 'drawing_restraint_9']
+************************************Iteration:2***********************************
+Statement: Now I get the films directed by 'Matthew Barney'. The answer of the claim is as follows.
+['destricted', 'drawing_restraint_9']
+Helper function: Verification(['destricted', 'drawing_restraint_9'])
+[User]
+Execution result: 
+Done!!
+Prediction:['destricted', 'drawing_restraint_9']
+Real label:['Destricted', 'Drawing Restraint 9']
+Correct!
+score: 1.0, 0
+
+Total sample:55, Total_Correct:53.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9807486631016042
+metric3 :0.8887700534759357
+avg iter:3.109090909090909
+max_iter:8
+min_iter:3
+
+
+Qid:1420
+Question :what is a film directed by [Ana Kokkinos]?GT entity:['Ana Kokkinos']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Ana Kokkinos')
+[User]
+Execution result: 
+Relation_list('Ana Kokkinos') = ['~written_by', '~directed_by']
+************************************Iteration:1***********************************
+Statement: Now, to find the films that 'Ana Kokkinos' directed, I need to explore the graph from 'Ana Kokkinos' with related relations. Since the relation is '~directed_by', I will use 'directed_by' as the relation to explore the graph.
+Helper function: exploreKG('Ana Kokkinos')=['~directed_by']
+[User]
+Execution result: 
+['ana_kokkinos', '~directed_by', 'head_on']
+************************************Iteration:2***********************************
+Statement: Now I get the film directed by 'Ana Kokkinos'. The answer of the claim is as follows.
+['head_on']
+Helper function: Verification(['head_on'])
+[User]
+Execution result: 
+Done!!
+Prediction:['head_on']
+Real label:['Head On']
+Correct!
+score: 1.0, 0
+
+Total sample:56, Total_Correct:54.94117647058823, Total_Wrong:5.0588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9810924369747899
+metric3 :0.8907563025210082
+avg iter:3.107142857142857
+max_iter:8
+min_iter:3
+
+
+Qid:1440
+Question :the movie [School for Scoundrels] starred who?GT entity:['School for Scoundrels']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('School for Scoundrels')
+[User]
+Execution result: 
+Relation_list('School for Scoundrels') = ['release_year', 'directed_by', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'School for Scoundrels', I need to explore the graph from 'School for Scoundrels' with related relations.
+Helper function: exploreKG('School for Scoundrels')=['starred_actors']
+[User]
+Execution result: 
+['school_for_scoundrels', 'starred_actors', 'jon_heder'], ['school_for_scoundrels', 'starred_actors', 'billy_bob_thornton'], ['school_for_scoundrels', 'starred_actors', 'ian_carmichael']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'School for Scoundrels'. The answer of the claim is as follows.
+['jon_heder', 'billy_bob_thornton', 'ian_carmichael']
+Helper function: Verification(['jon_heder', 'billy_bob_thornton', 'ian_carmichael'])
+[User]
+Execution result: 
+Done!!
+Prediction:['jon_heder', 'billy_bob_thornton', 'ian_carmichael']
+Real label:['Billy Bob Thornton', 'Jon Heder']
+Correct!
+score: 1.0, 0.5
+
+Total sample:57, Total_Correct:55.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.981424148606811
+metric3 :0.8839009287925695
+avg iter:3.1052631578947367
+max_iter:8
+min_iter:3
+
+
+Qid:1460
+Question :who acted in [Jiminy Glick in Lalawood]?GT entity:['Jiminy Glick in Lalawood']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Jiminy Glick in Lalawood')
+[User]
+Execution result: 
+Relation_list('Jiminy Glick in Lalawood') = ['release_year', 'written_by', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Jiminy Glick in Lalawood', I need to explore the graph from 'Jiminy Glick in Lalawood' with related relations.
+Helper function: exploreKG('Jiminy Glick in Lalawood')=['starred_actors']
+[User]
+Execution result: 
+['jiminy_glick_in_lalawood', 'starred_actors', 'martin_short']
+************************************Iteration:2***********************************
+Statement: Now I get the actor of 'Jiminy Glick in Lalawood'. The answer of the claim is as follows.
+['martin_short']
+Helper function: Verification(['martin_short'])
+[User]
+Execution result: 
+Done!!
+Prediction:['martin_short']
+Real label:['Martin Short']
+Correct!
+score: 1.0, 0
+
+Total sample:58, Total_Correct:56.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9817444219066936
+metric3 :0.8859026369168356
+avg iter:3.103448275862069
+max_iter:8
+min_iter:3
+
+
+Qid:1480
+Question :who stars in [The Rescuers Down Under]?GT entity:['The Rescuers Down Under']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('The Rescuers Down Under')
+[User]
+Execution result: 
+Relation_list('The Rescuers Down Under') = ['release_year', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'The Rescuers Down Under', I need to explore the graph from 'The Rescuers Down Under' with related relations.
+Helper function: exploreKG('The Rescuers Down Under')=['starred_actors']
+[User]
+Execution result: 
+['the_rescuers_down_under', 'starred_actors', 'eva_gabor'], ['the_rescuers_down_under', 'starred_actors', 'bob_newhart'], ['the_rescuers_down_under', 'starred_actors', 'john_candy']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'The Rescuers Down Under'. The answer of the claim is as follows.
+['eva_gabor', 'bob_newhart', 'john_candy']
+Helper function: Verification(['eva_gabor', 'bob_newhart', 'john_candy'])
+[User]
+Execution result: 
+Done!!
+Prediction:['eva_gabor', 'bob_newhart', 'john_candy']
+Real label:['John Candy', 'Bob Newhart', 'Eva Gabor']
+Correct!
+score: 1.0, 0
+
+Total sample:59, Total_Correct:57.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9820538384845463
+metric3 :0.8878364905284146
+avg iter:3.1016949152542375
+max_iter:8
+min_iter:3
+
+
+Qid:1500
+Question :who are the actors in [Kiki's Delivery Service]?GT entity:["Kiki's Delivery Service"]
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation("Kiki's Delivery Service")
+[User]
+Execution result: 
+Relation_list('Kiki's Delivery Service') = ['release_year', 'written_by', 'in_language', 'directed_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Kiki's Delivery Service', I need to explore the graph from 'Kiki's Delivery Service' with related relations.
+Helper function: exploreKG('Kiki's Delivery Service')=['starred_actors']
+[User]
+Execution result: 
+["kiki's_delivery_service", 'starred_actors', 'kappei_yamaguchi'], ["kiki's_delivery_service", 'starred_actors', 'minami_takayama'], ["kiki's_delivery_service", 'starred_actors', 'rei_sakuma']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Kiki's Delivery Service'. The answer of the claim is as follows.
+['kappei_yamaguchi', 'minami_takayama', 'rei_sakuma']
+Helper function: Verification(['kappei_yamaguchi', 'minami_takayama', 'rei_sakuma'])
+[User]
+Execution result: 
+Done!!
+Prediction:['kappei_yamaguchi', 'minami_takayama', 'rei_sakuma']
+Real label:['Kappei Yamaguchi', 'Rei Sakuma', 'Minami Takayama']
+Correct!
+score: 1.0, 0
+
+Total sample:60, Total_Correct:58.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9823529411764705
+metric3 :0.889705882352941
+avg iter:3.1
+max_iter:8
+min_iter:3
+
+
+Qid:1520
+Question :who starred in [Blonde Ambition]?GT entity:['Blonde Ambition']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Blonde Ambition')
+[User]
+Execution result: 
+Relation_list('Blonde Ambition') = ['release_year', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Blonde Ambition', I need to explore the graph from 'Blonde Ambition' with related relations.
+Helper function: exploreKG('Blonde Ambition')=['starred_actors']
+[User]
+Execution result: 
+['blonde_ambition', 'starred_actors', 'luke_wilson'], ['blonde_ambition', 'starred_actors', 'jessica_simpson']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Blonde Ambition'. The answer of the claim is as follows.
+['luke_wilson', 'jessica_simpson']
+Helper function: Verification(['luke_wilson', 'jessica_simpson'])
+[User]
+Execution result: 
+Done!!
+Prediction:['luke_wilson', 'jessica_simpson']
+Real label:['Luke Wilson', 'Jessica Simpson']
+Correct!
+score: 1.0, 0
+
+Total sample:61, Total_Correct:59.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9826422372227579
+metric3 :0.8915139826422371
+avg iter:3.098360655737705
+max_iter:8
+min_iter:3
+
+
+Qid:1540
+Question :who stars in [City of Joy]?GT entity:['City of Joy']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('City of Joy')
+[User]
+Execution result: 
+Relation_list('City of Joy') = ['release_year', 'directed_by', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'City of Joy', I need to explore the graph from 'City of Joy' with related relations.
+Helper function: exploreKG('City of Joy')=['starred_actors']
+[User]
+Execution result: 
+['city_of_joy', 'starred_actors', 'patrick_swayze'], ['city_of_joy', 'starred_actors', 'om_puri'], ['city_of_joy', 'starred_actors', 'shabana_azmi']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'City of Joy'. The answer of the claim is as follows.
+['patrick_swayze', 'om_puri', 'shabana_azmi']
+Helper function: Verification(['patrick_swayze', 'om_puri', 'shabana_azmi'])
+[User]
+Execution result: 
+Done!!
+Prediction:['patrick_swayze', 'om_puri', 'shabana_azmi']
+Real label:['Patrick Swayze', 'Om Puri', 'Shabana Azmi']
+Correct!
+score: 1.0, 0
+
+Total sample:62, Total_Correct:60.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9829222011385199
+metric3 :0.8932637571157495
+avg iter:3.096774193548387
+max_iter:8
+min_iter:3
+
+
+Qid:1560
+Question :the film [Tokyo Zombie] starred which actors?GT entity:['Tokyo Zombie']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Tokyo Zombie')
+[User]
+Execution result: 
+Relation_list('Tokyo Zombie') = ['release_year', 'in_language', 'has_tags', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Tokyo Zombie', I need to explore the graph from 'Tokyo Zombie' with related relations.
+Helper function: exploreKG('Tokyo Zombie')=['starred_actors']
+[User]
+Execution result: 
+['tokyo_zombie', 'starred_actors', 'erika_okuda'], ['tokyo_zombie', 'starred_actors', 'tadanobu_asano']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Tokyo Zombie'. The answer of the claim is as follows.
+['erika_okuda', 'tadanobu_asano']
+Helper function: Verification(['erika_okuda', 'tadanobu_asano'])
+[User]
+Execution result: 
+Done!!
+Prediction:['erika_okuda', 'tadanobu_asano']
+Real label:['Tadanobu Asano', 'Erika Okuda']
+Correct!
+score: 1.0, 0
+
+Total sample:63, Total_Correct:61.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9831932773109243
+metric3 :0.8949579831932772
+avg iter:3.0952380952380953
+max_iter:8
+min_iter:3
+
+
+Qid:1580
+Question :who stars in [Paris Belongs to Us]?GT entity:['Paris Belongs to Us']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Paris Belongs to Us')
+[User]
+Execution result: 
+Relation_list('Paris Belongs to Us') = ['release_year', 'written_by', 'in_language', 'directed_by', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Paris Belongs to Us', I need to explore the graph from 'Paris Belongs to Us' with related relations.
+Helper function: exploreKG('Paris Belongs to Us')=['starred_actors']
+[User]
+Execution result: 
+['paris_belongs_to_us', 'starred_actors', 'betty_schneider']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Paris Belongs to Us'. The answer of the claim is as follows.
+['betty_schneider']
+Helper function: Verification(['betty_schneider'])
+[User]
+Execution result: 
+Done!!
+Prediction:['betty_schneider']
+Real label:['Betty Schneider']
+Correct!
+score: 1.0, 0
+
+Total sample:64, Total_Correct:62.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.9834558823529411
+metric3 :0.8965992647058822
+avg iter:3.09375
+max_iter:8
+min_iter:3
+
+
+Qid:1600
+Question :who starred in [Exam]?GT entity:['Exam']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Exam')
+[User]
+Execution result: 
+Relation_list('Exam') = ['directed_by', 'release_year', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Exam', I need to explore the graph from 'Exam' with related relations.
+Helper function: exploreKG('Exam')=['starred_actors']
+[User]
+Execution result: 
+['exam', 'starred_actors', 'gemma_chan'], ['exam', 'starred_actors', 'adar_beck'], ['exam', 'starred_actors', 'john_lloyd_fillingham'], ['exam', 'starred_actors', 'nathalie_cox']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Exam'. The answer of the claim is as follows.
+['gemma_chan', 'adar_beck', 'john_lloyd_fillingham', 'nathalie_cox']
+Helper function: Verification(['gemma_chan', 'adar_beck', 'john_lloyd_fillingham', 'nathalie_cox'])
+[User]
+Execution result: 
+Done!!
+Prediction:['gemma_chan', 'adar_beck', 'john_lloyd_fillingham', 'nathalie_cox']
+Real label:['Nathalie Cox', 'Adar Beck', 'Gemma Chan', 'John Lloyd Fillingham']
+Correct!
+score: 1.0, 0
+
+Total sample:65, Total_Correct:63.94117647058823, Total_Wrong:5.5588235294117645, Total_abstain:0
+metric1:1.0
+metric2:0.983710407239819
+metric3 :0.8981900452488687
+avg iter:3.0923076923076924
+max_iter:8
+min_iter:3
+
+
+Qid:1620
+Question :who stars in [The Escapist]?GT entity:['The Escapist']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('The Escapist')
+[User]
+Execution result: 
+Relation_list('The Escapist') = ['release_year', 'directed_by', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'The Escapist', I need to explore the graph from 'The Escapist' with related relations.
+Helper function: exploreKG('The Escapist')=['starred_actors']
+[User]
+Execution result: 
+['the_escapist', 'starred_actors', 'seu_jorge'], ['the_escapist', 'starred_actors', 'brian_cox'], ['the_escapist', 'starred_actors', 'andy_serkis'], ['the_escapist', 'starred_actors', 'damian_lewis'], ['the_escapist', 'starred_actors', 'jonny_lee_miller'], ['the_escapist', 'starred_actors', 'gary_lewis'], ['the_escapist', 'starred_actors', 'joseph_fiennes']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'The Escapist'. The answer of the claim is as follows.
+['seu_jorge', 'brian_cox', 'andy_serkis', 'damian_lewis', 'jonny_lee_miller', 'gary_lewis', 'joseph_fiennes']
+Helper function: Verification(['seu_jorge', 'brian_cox', 'andy_serkis', 'damian_lewis', 'jonny_lee_miller', 'gary_lewis', 'joseph_fiennes'])
+[User]
+Execution result: 
+Done!!
+Prediction:['seu_jorge', 'brian_cox', 'andy_serkis', 'damian_lewis', 'jonny_lee_miller', 'gary_lewis', 'joseph_fiennes']
+Real label:['Andy Serkis', 'Jonny Lee Miller', 'Gary Lewis']
+Correct!
+score: 1.0, 1.3333333333333333
+
+Total sample:66, Total_Correct:64.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9839572192513368
+metric3 :0.8795306001188354
+avg iter:3.090909090909091
+max_iter:8
+min_iter:3
+
+
+Qid:1640
+Question :who stars in [Light Sleeper]?GT entity:['Light Sleeper']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Light Sleeper')
+[User]
+Execution result: 
+Relation_list('Light Sleeper') = ['directed_by', 'release_year', 'written_by', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Light Sleeper', I need to explore the graph from 'Light Sleeper' with related relations.
+Helper function: exploreKG('Light Sleeper')=['starred_actors']
+[User]
+Execution result: 
+['light_sleeper', 'starred_actors', 'willem_dafoe'], ['light_sleeper', 'starred_actors', 'susan_sarandon'], ['light_sleeper', 'starred_actors', 'dana_delany']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Light Sleeper'. The answer of the claim is as follows.
+['willem_dafoe', 'susan_sarandon', 'dana_delany']
+Helper function: Verification(['willem_dafoe', 'susan_sarandon', 'dana_delany'])
+[User]
+Execution result: 
+Done!!
+Prediction:['willem_dafoe', 'susan_sarandon', 'dana_delany']
+Real label:['Willem Dafoe', 'Susan Sarandon', 'Dana Delany']
+Correct!
+score: 1.0, 0
+
+Total sample:67, Total_Correct:65.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9841966637401228
+metric3 :0.8813286508633303
+avg iter:3.08955223880597
+max_iter:8
+min_iter:3
+
+
+Qid:1660
+Question :who stars in [Amazing Grace and Chuck]?GT entity:['Amazing Grace and Chuck']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Amazing Grace and Chuck')
+[User]
+Execution result: 
+Relation_list('Amazing Grace and Chuck') = ['release_year', 'directed_by', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Amazing Grace and Chuck', I need to explore the graph from 'Amazing Grace and Chuck' with related relations.
+Helper function: exploreKG('Amazing Grace and Chuck')=['starred_actors']
+[User]
+Execution result: 
+['amazing_grace_and_chuck', 'starred_actors', 'jamie_lee_curtis'], ['amazing_grace_and_chuck', 'starred_actors', 'gregory_peck']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Amazing Grace and Chuck'. The answer of the claim is as follows.
+['jamie_lee_curtis', 'gregory_peck']
+Helper function: Verification(['jamie_lee_curtis', 'gregory_peck'])
+[User]
+Execution result: 
+Done!!
+Prediction:['gregory_peck', 'jamie_lee_curtis']
+Real label:['Jamie Lee Curtis', 'Gregory Peck']
+Correct!
+score: 1.0, 0
+
+Total sample:68, Total_Correct:66.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9844290657439446
+metric3 :0.883073817762399
+avg iter:3.088235294117647
+max_iter:8
+min_iter:3
+
+
+Qid:1680
+Question :who are the actors in [Earthlings]?GT entity:['Earthlings']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Earthlings')
+[User]
+Execution result: 
+Relation_list('Earthlings') = ['release_year', 'written_by', 'directed_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Earthlings', I need to explore the graph from 'Earthlings' with related relations.
+Helper function: exploreKG('Earthlings')=['starred_actors']
+[User]
+Execution result: 
+['earthlings', 'starred_actors', 'joaquin_phoenix']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Earthlings'. The answer of the claim is as follows.
+['joaquin_phoenix']
+Helper function: Verification(['joaquin_phoenix'])
+[User]
+Execution result: 
+Done!!
+Prediction:['joaquin_phoenix']
+Real label:['Joaquin Phoenix']
+Correct!
+score: 1.0, 0
+
+Total sample:69, Total_Correct:67.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9846547314578005
+metric3 :0.8847684001136686
+avg iter:3.0869565217391304
+max_iter:8
+min_iter:3
+
+
+Qid:1700
+Question :the movie [It's Always Fair Weather] starred who?GT entity:["It's Always Fair Weather"]
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation("It's Always Fair Weather")
+[User]
+Execution result: 
+Relation_list('It's Always Fair Weather') = ['written_by', 'directed_by', 'release_year', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'It's Always Fair Weather', I need to explore the graph from 'It's Always Fair Weather' with related relations.
+Helper function: exploreKG("It's Always Fair Weather")=['starred_actors']
+[User]
+Execution result: 
+["it's_always_fair_weather", 'starred_actors', 'dolores_gray'], ["it's_always_fair_weather", 'starred_actors', 'cyd_charisse'], ["it's_always_fair_weather", 'starred_actors', 'gene_kelly'], ["it's_always_fair_weather", 'starred_actors', 'dan_dailey']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'It's Always Fair Weather'. The answer of the claim is as follows.
+['dolores_gray', 'cyd_charisse', 'gene_kelly', 'dan_dailey']
+Helper function: Verification(['dolores_gray', 'cyd_charisse', 'gene_kelly', 'dan_dailey'])
+[User]
+Execution result: 
+Done!!
+Prediction:['cyd_charisse', 'dolores_gray', 'gene_kelly', 'dan_dailey']
+Real label:['Gene Kelly', 'Cyd Charisse', 'Dan Dailey', 'Dolores Gray']
+Correct!
+score: 1.0, 0
+
+Total sample:70, Total_Correct:68.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9848739495798319
+metric3 :0.8864145658263305
+avg iter:3.085714285714286
+max_iter:8
+min_iter:3
+
+
+Qid:1720
+Question :who acted in [Boogie Woogie]?GT entity:['Boogie Woogie']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Boogie Woogie')
+[User]
+Execution result: 
+Relation_list('Boogie Woogie') = ['release_year', 'written_by', 'directed_by', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Boogie Woogie', I need to explore the graph from 'Boogie Woogie' with related relations.
+Helper function: exploreKG('Boogie Woogie')=['starred_actors']
+[User]
+Execution result: 
+['boogie_woogie', 'starred_actors', 'danny_huston'], ['boogie_woogie', 'starred_actors', 'gillian_anderson'], ['boogie_woogie', 'starred_actors', 'heather_graham'], ['boogie_woogie', 'starred_actors', 'alan_cumming']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Boogie Woogie'. The answer of the claim is as follows.
+['danny_huston', 'gillian_anderson', 'heather_graham', 'alan_cumming']
+Helper function: Verification(['danny_huston', 'gillian_anderson', 'heather_graham', 'alan_cumming'])
+[User]
+Execution result: 
+Done!!
+Prediction:['danny_huston', 'heather_graham', 'gillian_anderson', 'alan_cumming']
+Real label:['Danny Huston', 'Heather Graham', 'Gillian Anderson', 'Alan Cumming']
+Correct!
+score: 1.0, 0
+
+Total sample:71, Total_Correct:69.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9850869925434962
+metric3 :0.888014360673847
+avg iter:3.084507042253521
+max_iter:8
+min_iter:3
+
+
+Qid:1740
+Question :who are the actors in [We Need to Talk About Kevin]?GT entity:['We Need to Talk About Kevin']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('We Need to Talk About Kevin')
+[User]
+Execution result: 
+Relation_list('We Need to Talk About Kevin') = ['release_year', 'written_by', 'directed_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'We Need to Talk About Kevin', I need to explore the graph from 'We Need to Talk About Kevin' with related relations.
+Helper function: exploreKG('We Need to Talk About Kevin')=['starred_actors']
+[User]
+Execution result: 
+['we_need_to_talk_about_kevin', 'starred_actors', 'tilda_swinton']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'We Need to Talk About Kevin'. The answer of the claim is as follows.
+['tilda_swinton']
+Helper function: Verification(['tilda_swinton'])
+[User]
+Execution result: 
+Done!!
+Prediction:['tilda_swinton']
+Real label:['Tilda Swinton']
+Correct!
+score: 1.0, 0
+
+Total sample:72, Total_Correct:70.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9852941176470588
+metric3 :0.8895697167755992
+avg iter:3.0833333333333335
+max_iter:8
+min_iter:3
+
+
+Qid:1760
+Question :the movie [Black Cadillac] starred who?GT entity:['Black Cadillac']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Black Cadillac')
+[User]
+Execution result: 
+Relation_list('Black Cadillac') = ['written_by', 'directed_by', 'release_year', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Black Cadillac', I need to explore the graph from 'Black Cadillac' with related relations.
+Helper function: exploreKG('Black Cadillac')=['starred_actors']
+[User]
+Execution result: 
+['black_cadillac', 'starred_actors', 'shane_johnson'], ['black_cadillac', 'starred_actors', 'randy_quaid'], ['black_cadillac', 'starred_actors', 'josh_hammond'], ['black_cadillac', 'starred_actors', 'jason_dohring']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Black Cadillac'. The answer of the claim is as follows.
+['shane_johnson', 'randy_quaid', 'josh_hammond', 'jason_dohring']
+Helper function: Verification(['shane_johnson', 'randy_quaid', 'josh_hammond', 'jason_dohring'])
+[User]
+Execution result: 
+Done!!
+Prediction:['shane_johnson', 'randy_quaid', 'josh_hammond', 'jason_dohring']
+Real label:['Randy Quaid', 'Jason Dohring', 'Shane Johnson', 'Josh Hammond']
+Correct!
+score: 1.0, 0
+
+Total sample:73, Total_Correct:71.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9854955680902497
+metric3 :0.8910824603814128
+avg iter:3.0821917808219177
+max_iter:8
+min_iter:3
+
+
+Qid:1780
+Question :who are the actors in [Interrupted Melody]?GT entity:['Interrupted Melody']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Interrupted Melody')
+[User]
+Execution result: 
+Relation_list('Interrupted Melody') = ['written_by', 'directed_by', 'release_year', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Interrupted Melody', I need to explore the graph from 'Interrupted Melody' with related relations.
+Helper function: exploreKG('Interrupted Melody')=['starred_actors']
+[User]
+Execution result: 
+['interrupted_melody', 'starred_actors', 'eleanor_parker'], ['interrupted_melody', 'starred_actors', 'roger_moore'], ['interrupted_melody', 'starred_actors', 'glenn_ford'], ['interrupted_melody', 'starred_actors', 'cecil_kellaway']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Interrupted Melody'. The answer of the claim is as follows.
+['eleanor_parker', 'roger_moore', 'glenn_ford', 'cecil_kellaway']
+Helper function: Verification(['eleanor_parker', 'roger_moore', 'glenn_ford', 'cecil_kellaway'])
+[User]
+Execution result: 
+Done!!
+Prediction:['eleanor_parker', 'glenn_ford', 'cecil_kellaway', 'roger_moore']
+Real label:['Roger Moore', 'Eleanor Parker', 'Glenn Ford', 'Cecil Kellaway']
+Correct!
+score: 1.0, 0
+
+Total sample:74, Total_Correct:72.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.985691573926868
+metric3 :0.8925543190249072
+avg iter:3.081081081081081
+max_iter:8
+min_iter:3
+
+
+Qid:1800
+Question :the film [Story of a Love Affair] starred which actors?GT entity:['Story of a Love Affair']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Story of a Love Affair')
+[User]
+Execution result: 
+Relation_list('Story of a Love Affair') = ['release_year', 'written_by', 'in_language', 'directed_by', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Story of a Love Affair', I need to explore the graph from 'Story of a Love Affair' with related relations.
+Helper function: exploreKG('Story of a Love Affair')=['starred_actors']
+[User]
+Execution result: 
+['story_of_a_love_affair', 'starred_actors', 'ferdinando_sarmi'], ['story_of_a_love_affair', 'starred_actors', 'massimo_girotti']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Story of a Love Affair'. The answer of the claim is as follows.
+['ferdinando_sarmi', 'massimo_girotti']
+Helper function: Verification(['ferdinando_sarmi', 'massimo_girotti'])
+[User]
+Execution result: 
+Done!!
+Prediction:['ferdinando_sarmi', 'massimo_girotti']
+Real label:['Massimo Girotti', 'Ferdinando Sarmi']
+Correct!
+score: 1.0, 0
+
+Total sample:75, Total_Correct:73.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9858823529411764
+metric3 :0.8939869281045751
+avg iter:3.08
+max_iter:8
+min_iter:3
+
+
+Qid:1820
+Question :who acted in the movie [Killer Klowns from Outer Space]?GT entity:['Killer Klowns from Outer Space']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Killer Klowns from Outer Space')
+[User]
+Execution result: 
+Relation_list('Killer Klowns from Outer Space') = ['release_year', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Killer Klowns from Outer Space', I need to explore the graph from 'Killer Klowns from Outer Space' with related relations.
+Helper function: exploreKG('Killer Klowns from Outer Space')=['starred_actors']
+[User]
+Execution result: 
+['killer_klowns_from_outer_space', 'starred_actors', 'grant_cramer'], ['killer_klowns_from_outer_space', 'starred_actors', 'suzanne_snyder']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Killer Klowns from Outer Space'. The answer of the claim is as follows.
+['grant_cramer', 'suzanne_snyder']
+Helper function: Verification(['grant_cramer', 'suzanne_snyder'])
+[User]
+Execution result: 
+Done!!
+Prediction:['grant_cramer', 'suzanne_snyder']
+Real label:['Suzanne Snyder', 'Grant Cramer']
+Correct!
+score: 1.0, 0
+
+Total sample:76, Total_Correct:74.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9860681114551083
+metric3 :0.8953818369453044
+avg iter:3.0789473684210527
+max_iter:8
+min_iter:3
+
+
+Qid:1840
+Question :who acted in [Angel Eyes]?GT entity:['Angel Eyes']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Angel Eyes')
+[User]
+Execution result: 
+Relation_list('Angel Eyes') = ['release_year', 'directed_by', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Angel Eyes', I need to explore the graph from 'Angel Eyes' with related relations.
+Helper function: exploreKG('Angel Eyes')=['starred_actors']
+[User]
+Execution result: 
+['angel_eyes', 'starred_actors', 'jennifer_lopez'], ['angel_eyes', 'starred_actors', 'jeremy_sisto'], ['angel_eyes', 'starred_actors', 'jim_caviezel']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Angel Eyes'. The answer of the claim is as follows.
+['jennifer_lopez', 'jeremy_sisto', 'jim_caviezel']
+Helper function: Verification(['jennifer_lopez', 'jeremy_sisto', 'jim_caviezel'])
+[User]
+Execution result: 
+Done!!
+Prediction:['jennifer_lopez', 'jeremy_sisto', 'jim_caviezel']
+Real label:['Jim Caviezel', 'Jennifer Lopez', 'Jeremy Sisto']
+Correct!
+score: 1.0, 0
+
+Total sample:77, Total_Correct:75.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9862490450725745
+metric3 :0.8967405143875732
+avg iter:3.0779220779220777
+max_iter:8
+min_iter:3
+
+
+Qid:1860
+Question :who stars in [The Living Daylights]?GT entity:['The Living Daylights']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('The Living Daylights')
+[User]
+Execution result: 
+Relation_list('The Living Daylights') = ['release_year', 'written_by', 'has_tags', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'The Living Daylights', I need to explore the graph from 'The Living Daylights' with related relations.
+Helper function: exploreKG('The Living Daylights')=['starred_actors']
+[User]
+Execution result: 
+['the_living_daylights', 'starred_actors', 'timothy_dalton']
+************************************Iteration:2***********************************
+Statement: Now I get the actor of 'The Living Daylights'. The answer of the claim is as follows.
+['timothy_dalton']
+Helper function: Verification(['timothy_dalton'])
+[User]
+Execution result: 
+Done!!
+Prediction:['timothy_dalton']
+Real label:['Timothy Dalton']
+Correct!
+score: 1.0, 0
+
+Total sample:78, Total_Correct:76.94117647058823, Total_Wrong:6.8921568627450975, Total_abstain:0
+metric1:1.0
+metric2:0.9864253393665158
+metric3 :0.8980643539467069
+avg iter:3.076923076923077
+max_iter:8
+min_iter:3
+
+
+Qid:1880
+Question :who acted in [Emma]?GT entity:['Emma']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Emma')
+[User]
+Execution result: 
+Relation_list('Emma') = ['release_year', 'directed_by', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Emma', I need to explore the graph from 'Emma' with related relations.
+Helper function: exploreKG('Emma')=['starred_actors']
+[User]
+Execution result: 
+['emma', 'starred_actors', 'kate_beckinsale'], ['emma', 'starred_actors', 'marie_dressler'], ['emma', 'starred_actors', 'gwyneth_paltrow'], ['emma', 'starred_actors', 'alan_cumming'], ['emma', 'starred_actors', 'mark_strong']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Emma'. The answer of the claim is as follows.
+['kate_beckinsale', 'marie_dressler', 'gwyneth_paltrow', 'alan_cumming', 'mark_strong']
+Helper function: Verification(['kate_beckinsale', 'marie_dressler', 'gwyneth_paltrow', 'alan_cumming', 'mark_strong'])
+[User]
+Execution result: 
+Done!!
+Prediction:['kate_beckinsale', 'marie_dressler', 'gwyneth_paltrow', 'alan_cumming', 'mark_strong']
+Real label:['Marie Dressler']
+Correct!
+score: 1.0, 4.0
+
+Total sample:79, Total_Correct:77.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.986597170513775
+metric3 :0.8487217671878878
+avg iter:3.0759493670886076
+max_iter:8
+min_iter:3
+
+
+Qid:1900
+Question :the film [You Don't Know Jack] starred which actors?GT entity:["You Don't Know Jack"]
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation("You Don't Know Jack")
+[User]
+Execution result: 
+Relation_list('You Don't Know Jack') = ['release_year', 'directed_by', 'has_tags', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'You Don't Know Jack', I need to explore the graph from 'You Don't Know Jack' with related relations.
+Helper function: exploreKG('You Don't Know Jack')=['starred_actors']
+[User]
+Execution result: 
+["you_don't_know_jack", 'starred_actors', 'al_pacino']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'You Don't Know Jack'. The answer of the claim is as follows.
+['al_pacino']
+Helper function: Verification(['al_pacino'])
+[User]
+Execution result: 
+Done!!
+Prediction:['al_pacino']
+Real label:['Al Pacino']
+Correct!
+score: 1.0, 0
+
+Total sample:80, Total_Correct:78.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.9867647058823529
+metric3 :0.8506127450980392
+avg iter:3.075
+max_iter:8
+min_iter:3
+
+
+Qid:1920
+Question :who acted in the movie [Son of Batman]?GT entity:['Son of Batman']
+************************************Iteration:0***********************************
+Statement: I need the relations linked with the given entity.
+Helper function: getRelation('Son of Batman')
+[User]
+Execution result: 
+Relation_list('Son of Batman') = ['written_by', 'release_year', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'Son of Batman', I need to explore the graph from 'Son of Batman' with related relations.
+Helper function: exploreKG('Son of Batman')=['starred_actors']
+[User]
+Execution result: 
+['son_of_batman', 'starred_actors', "jason_o'mara"]
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'Son of Batman'. The answer of the claim is as follows.
+['jason_o\'mara']
+Helper function: Verification(['jason_o\'mara'])
+[User]
+Execution result: 
+Done!!
+Prediction:["jason_o'mara"]
+Real label:["Jason O'Mara"]
+Correct!
+score: 1.0, 0
+
+Total sample:81, Total_Correct:79.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.9869281045751633
+metric3 :0.8524570321955942
+avg iter:3.074074074074074
+max_iter:8
+min_iter:3
+
+
+Qid:1940
+Question :who acted in [Breakdown]?GT entity:['Breakdown']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('Breakdown')
+[User]
+Execution result: 
+Relation_list('Breakdown') = ['release_year', 'written_by', 'directed_by', 'has_tags', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'Breakdown', I need to explore the graph from 'Breakdown' with related relations.
+Helper function: exploreKG('Breakdown')=['starred_actors']
+[User]
+Execution result: 
+['breakdown', 'starred_actors', 'kathleen_quinlan'], ['breakdown', 'starred_actors', 'kurt_russell']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'Breakdown'. The answer of the claim is as follows.
+['kathleen_quinlan', 'kurt_russell']
+Helper function: Verification(['kathleen_quinlan', 'kurt_russell'])
+[User]
+Execution result: 
+Done!!
+Prediction:['kathleen_quinlan', 'kurt_russell']
+Real label:['Kurt Russell', 'Kathleen Quinlan']
+Correct!
+score: 1.0, 0
+
+Total sample:82, Total_Correct:80.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.9870875179340028
+metric3 :0.8542563366810139
+avg iter:3.073170731707317
+max_iter:8
+min_iter:3
+
+
+Qid:1960
+Question :who acted in [The Other Side of Sunday]?GT entity:['The Other Side of Sunday']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('The Other Side of Sunday')
+[User]
+Execution result: 
+Relation_list('The Other Side of Sunday') = ['written_by', 'directed_by', 'release_year', 'in_language', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'The Other Side of Sunday', I need to explore the graph from 'The Other Side of Sunday' with related relations.
+Helper function: exploreKG('The Other Side of Sunday')=['starred_actors']
+[User]
+Execution result: 
+['the_other_side_of_sunday', 'starred_actors', 'marie_theisen'], ['the_other_side_of_sunday', 'starred_actors', 'bjørn_sundquist']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'The Other Side of Sunday'. The answer of the claim is as follows.
+['marie_theisen', 'bjørn_sundquist']
+Helper function: Verification(['marie_theisen', 'bjørn_sundquist'])
+[User]
+Execution result: 
+Done!!
+Prediction:['marie_theisen', 'bjørn_sundquist']
+Real label:['Bjørn Sundquist', 'Marie Theisen']
+Correct!
+score: 1.0, 0
+
+Total sample:83, Total_Correct:81.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.9872430900070871
+metric3 :0.856012284431845
+avg iter:3.072289156626506
+max_iter:8
+min_iter:3
+
+
+Qid:1980
+Question :the film [The Face of Love] starred which actors?GT entity:['The Face of Love']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('The Face of Love')
+[User]
+Execution result: 
+Relation_list('The Face of Love') = ['directed_by', 'written_by', 'release_year', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in 'The Face of Love', I need to explore the graph from 'The Face of Love' with related relations.
+Helper function: exploreKG('The Face of Love')=['starred_actors']
+[User]
+Execution result: 
+['the_face_of_love', 'starred_actors', 'annette_bening'], ['the_face_of_love', 'starred_actors', 'jess_weixler'], ['the_face_of_love', 'starred_actors', 'ed_harris'], ['the_face_of_love', 'starred_actors', 'robin_williams']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of 'The Face of Love'. The answer of the claim is as follows.
+['annette_bening', 'jess_weixler', 'ed_harris', 'robin_williams']
+Helper function: Verification(['annette_bening', 'jess_weixler', 'ed_harris', 'robin_williams'])
+[User]
+Execution result: 
+Done!!
+Prediction:['robin_williams', 'annette_bening', 'jess_weixler', 'ed_harris']
+Real label:['Ed Harris', 'Robin Williams', 'Annette Bening', 'Jess Weixler']
+Correct!
+score: 1.0, 0
+
+Total sample:84, Total_Correct:82.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.9873949579831932
+metric3 :0.8577264239028944
+avg iter:3.0714285714285716
+max_iter:8
+min_iter:3
+
+
+Qid:2000
+Question :the film [A Woman of Affairs] starred which actors?GT entity:['A Woman of Affairs']
+************************************Iteration:0***********************************
+Statement: I need to look around the the given entities. First, I need the relation list actually linked with the entity.
+Helper function: getRelation('A Woman of Affairs')
+[User]
+Execution result: 
+Relation_list('A Woman of Affairs') = ['release_year', 'directed_by', 'written_by', 'has_tags', 'has_genre', 'starred_actors']
+************************************Iteration:1***********************************
+Statement: Now, to find the actors in the film 'A Woman of Affairs', I need to explore the graph from 'A Woman of Affairs' with related relations.
+Helper function: exploreKG('A Woman of Affairs')=['starred_actors']
+[User]
+Execution result: 
+['a_woman_of_affairs', 'starred_actors', 'john_gilbert'], ['a_woman_of_affairs', 'starred_actors', 'lewis_stone'], ['a_woman_of_affairs', 'starred_actors', 'greta_garbo']
+************************************Iteration:2***********************************
+Statement: Now I get the actors of the film 'A Woman of Affairs'. The answer of the claim is as follows.
+['john_gilbert', 'lewis_stone', 'greta_garbo']
+Helper function: Verification(['john_gilbert', 'lewis_stone', 'greta_garbo'])
+[User]
+Execution result: 
+Done!!
+Prediction:['john_gilbert', 'lewis_stone', 'greta_garbo']
+Real label:['Greta Garbo', 'Lewis Stone', 'John Gilbert']
+Correct!
+score: 1.0, 0
+
+Total sample:85, Total_Correct:83.94117647058823, Total_Wrong:10.892156862745097, Total_abstain:0
+metric1:1.0
+metric2:0.9875432525951556
+metric3 :0.8594002306805075
+avg iter:3.070588235294118
+max_iter:8
+min_iter:3

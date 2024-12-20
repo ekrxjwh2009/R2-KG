@@ -1,0 +1,10 @@
+qid,correct,wrong,prediction,gt_label
+20,0,1.25,Error,"['Mads Mikkelsen', 'Ulrich Thomsen', 'Line Kruse', 'Nikolaj Lie Kaas']"
+40,0,0,Abstain,"['Jeffrey Friedman', 'Rob Epstein', 'Todd Field', 'Hal Hartley']"
+60,0,0,Abstain,"['1956', '1958']"
+80,0,0,Abstain,"['John Maybury', 'François Girard', 'Fernando Meirelles']"
+100,0,0,Abstain,"['1986', '1999', '2002', '2003', '2000', '2001', '2006', '2007', '2004', '2005', '2008', '2009', '2011']"
+120,0,0,Abstain,"['Action', 'Drama', 'Horror', 'Comedy']"
+140,0,0.1020408163265306,Error,"['Michael Almereyda', 'Adrian Grunberg', 'Roland Emmerich', 'Gillies MacKinnon', 'George Ogilvie', 'Peter Weir', 'John Badham', 'Tim Burstall', 'Sean Penn', 'Wim Wenders', 'Richard Donner', 'Roger Spottiswoode', 'Dean Semler', 'Barry Levinson', 'Jodie Foster', 'Mark Rydell', 'Jean Renoir', 'M. Night Shyamalan', 'Nick Cassavetes', 'Brian Helgeland', 'Tony Richardson', 'Nick Park', 'Luis Mandoki', 'Steve Miner', 'Robert Zemeckis', 'Gillian Armstrong', 'Franco Zeffirelli', 'Laurence Olivier', 'Ron Howard', 'John Gielgud', 'Pen Densham', 'Anthony Minghella', 'Peter Lord', 'Nancy Meyers', 'Lewis Milestone', 'Randall Wallace', 'Robert Rodriguez', 'Robert Towne', 'Jarmo Lampela', 'Martin Campbell', 'George Miller', 'Jeff Stanzler', 'Graham Baker', 'Robert Redford', 'Mel Gibson', 'Grigori Kozintsev', 'Roger Donaldson', 'Kenneth Branagh', 'Phil Joanou']"
+160,0,0,Abstain,"['Jay Sandrich', 'Peter Hewitt', 'Michael Ritchie', 'John Landis', 'William Friedkin', 'Stephen Herek', 'Ken Shapiro', 'Harold Ramis', 'George Roy Hill', 'Stephen Kessler', 'John Carpenter', 'Colin Higgins']"
+180,0,0,Abstain,"['1955', '1954']"

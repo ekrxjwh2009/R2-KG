@@ -1,0 +1,82 @@
+qid,prediction,gt_label
+WebQTest-31,Abstain,[None]
+WebQTest-54,['Nazi Germany'],['Nazi Germany']
+WebQTest-76,"['Benois Madonna', 'Portrait of a man in red chalk', 'Adoration of the Magi', ""Portrait of Isabella d'Este"", 'Horse and Rider', 'The Last Supper', 'Madonna of the Carnation', 'g.121yh91r', 'g.1213jb_b', 'g.120vt1gz', 'Lady with an Ermine', 'Madonna of the Yarnwinder', 'g.12215rxg', 'Madonna Litta', 'The Holy Infants Embracing', 'Portrait of a Musician', 'g.1224tf0c', ""Ginevra de' Benci"", 'St. John the Baptist', 'Annunciation', 'Medusa', 'Lucan portrait of Leonardo da Vinci', 'St. Jerome in the Wilderness', 'Madonna of Laroque', 'Leda and the Swan', 'Drapery for a Seated Figure', 'g.1239jd9p', 'Salvator Mundi', 'The Baptism of Christ', ""Leonardo's horse"", 'Virgin of the Rocks', 'Head of a Woman', 'g.12314dm1', 'Madonna and Child with St Joseph', 'Portrait of a Young Fiancée', 'Sala delle Asse', 'La belle ferronnière', 'The Virgin and Child with St. Anne', 'g.121wt37c', 'The Battle of Anghiari', 'g.1219sb0g', 'Mona Lisa', 'Bacchus', 'The Virgin and Child with St Anne and St John the Baptist', 'Vitruvian Man']","[""Portrait of Isabella d'Este"", '', '', 'Madonna and Child with St Joseph', '', '', '', '', '', '', '', 'Virgin of the Rocks', 'Horse and Rider', 'Sala delle Asse', 'Medusa', 'The Holy Infants Embracing', 'Vitruvian Man', 'St. Jerome in the Wilderness', 'Madonna of the Carnation', ""Ginevra de' Benci"", 'Virgin of the Rocks', 'La belle ferronnière', 'The Virgin and Child with St. Anne', 'Benois Madonna', 'Annunciation', 'Lady with an Ermine', 'Madonna Litta', ""Leonardo's horse"", 'Adoration of the Magi', 'Bacchus', 'Portrait of a Musician', 'The Virgin and Child with St Anne and St John the Baptist', 'St. John the Baptist', 'Madonna of the Yarnwinder', 'Portrait of a Young Fiancée', 'The Baptism of Christ', 'Drapery for a Seated Figure', 'Portrait of a man in red chalk', 'Madonna of Laroque', 'The Battle of Anghiari', 'Lucan portrait of Leonardo da Vinci', 'Head of a Woman', 'Salvator Mundi', 'Leda and the Swan', 'Mona Lisa', 'The Last Supper']"
+WebQTest-98,['Lyndon B. Johnson'],['Lyndon B. Johnson']
+WebQTest-122,['Salamanca'],['Salamanca']
+WebQTest-150,"['Spanish Language', 'Haitian Creole', 'Lucumi Language']","['Haitian Creole', 'Lucumi Language', 'Spanish Language']"
+WebQTest-173,"['Lithuania', 'Latvia', 'Estonia']","['Estonia', 'Latvia', 'Lithuania']"
+WebQTest-195,"['Fender Stratocaster', 'Rickenbacker 360/12']","['Fender Stratocaster', 'Rickenbacker 360/12']"
+WebQTest-218,['Europe'],['Europe']
+WebQTest-246,"['Neon lamp', 'Remote control', 'Induction motor', 'Alternating current', 'Three-phase electric power', 'Tesla coil', 'Wireless telegraphy']","['Neon lamp', 'Induction motor', 'Wireless telegraphy', 'Three-phase electric power', 'Tesla coil', 'Alternating current', 'Remote control']"
+WebQTest-268,['2003'],['2003–04 NBA season']
+WebQTest-298,"['1966', '1970', '1983']","['1983 World Series', '1970 World Series', '1966 World Series']"
+WebQTest-323,"['Rush', 'The Dark Tower', 'In the Heart of the Sea', 'Jay-Z: Made in America', 'Backdraft', ""Dr. Seuss' How the Grinch Stole Christmas"", 'The Lost Symbol', 'Ransom', 'Cinderella Man', 'The Paper', 'Far and Away', 'Willow', 'The Dilemma', 'Cotton Candy', 'Cocoon', 'Night Shift', 'Presidential Reunion', 'A Beautiful Mind', 'Grand Theft Auto', 'EDtv', 'Inferno', 'The Missing', 'The Da Vinci Code', 'Frost/Nixon', 'Gung Ho', 'Apollo 13', 'Angels & Demons', 'Parenthood', 'Splash']","['Apollo 13', 'Inferno', 'Willow', 'Splash', 'EDtv', 'Night Shift', 'Backdraft', 'Frost/Nixon', 'Grand Theft Auto', 'Far and Away', 'Cocoon', 'Ransom', 'Parenthood', 'The Missing', 'Cinderella Man', 'The Dark Tower', 'The Da Vinci Code', 'The Paper', 'Cotton Candy', 'Gung Ho', 'A Beautiful Mind', 'The Dilemma', 'The Lost Symbol', ""Dr. Seuss' How the Grinch Stole Christmas"", 'Angels & Demons', 'Presidential Reunion', 'Rush', 'Jay-Z: Made in America', 'In the Heart of the Sea']"
+WebQTest-349,"['Chicago Bulls', ""Duke Blue Devils men's basketball"", 'Los Angeles Lakers']","['Cleveland Cavaliers', 'Utah Jazz']"
+WebQTest-380,['Washington'],"['North America', 'Washington', 'United States of America', 'Cascade Range', 'Skamania County']"
+WebQTest-403,"['Kurdish languages', 'Turkish Language', 'Zaza language', 'Ladino Language', 'Arabic Language']","['Turkish Language', 'Zaza language', 'Ladino Language', 'Kurdish languages', 'Arabic Language']"
+WebQTest-428,"['Wisconsin', 'Nebraska', 'Iowa', 'Indiana', 'North Dakota', 'South Dakota', 'Ohio', 'Michigan', 'Illinois', 'Kansas', 'Missouri', 'Minnesota']","['Avenue of the Saints', 'West North Central States', 'East North Central States', 'Iowa', 'Illinois', 'Indiana', 'Kansas', 'Michigan', 'Missouri', 'Minnesota', 'Nebraska', 'North Dakota', 'Ohio', 'South Dakota', 'Wisconsin', 'Council Grove']"
+WebQTest-453,"['Spanish Language', 'Limonese Creole', 'Bribri Language', 'Jamaican Creole English Language']","['Bribri Language', 'Jamaican Creole English Language', 'Limonese Creole', 'Spanish Language']"
+WebQTest-479,['Oklahoma Sooners football'],['University of Oklahoma']
+WebQTest-509,"['Presidential system', 'Federal republic']","['Presidential system', 'Federal republic']"
+WebQTest-532,['Football'],['Football']
+WebQTest-559,"['Violin', 'Piano']","['Piano', 'Violin']"
+WebQTest-585,['England'],['England']
+WebQTest-612,['Carolina Panthers'],['Carolina Panthers']
+WebQTest-635,"['Terrance Henry Stoot', 'Kyle Broflovski', 'Doug Remer', 'Ticket Taker', 'Hermaphrodite', 'Taper Guy', 'Terrance', 'Tweek Tweak', 'Danny Glover', 'John McCain', 'Man toasting drinks at MCA outdoor bar', 'Former Columbine Student', 'Dave the Lighting Guy', 'Rom', 'Jimbo Kearn', 'Saddam Hussein', 'Kenny McCormick', 'Carlos', 'George Clooney', 'Wizard of Oz', 'James Humphries', 'Bill Gates', 'Ichabod Jones', 'Butters Stotch', 'Gerald Broflovski', 'Ethan Hawke']","['Kenny McCormick', 'Kyle Broflovski', 'Wizard of Oz', 'Terrance Henry Stoot', 'Gerald Broflovski', 'Bill Gates', 'Ethan Hawke', 'Chris', 'George Clooney', 'Danny Glover', 'Jimbo Kearn', 'Saddam Hussein', 'James Humphries', 'Former Columbine Student', 'Doug Remer', 'Hermaphrodite', 'Taper Guy', 'Kyle / Kenny / Jesus', 'Dave the Lighting Guy', 'Man toasting drinks at MCA outdoor bar', 'Ticket Taker']"
+WebQTest-657,['Lorraine Motel'],['Memphis']
+WebQTest-680,"['Club Atlético Independiente', 'Manchester City F.C.', 'Atlético Madrid', 'Argentina national football team']","['Manchester City F.C.', 'Argentina national football team', 'Club Atlético Independiente', 'Atlético Madrid']"
+WebQTest-704,Abstain,"['Film Producer', 'Adventurer', 'Film director', 'Ethnographer', 'Scientist', 'Cinematographer']"
+WebQTest-728,Abstain,"['Nancy Pelosi', 'John Boehner']"
+WebQTest-752,['Coca-Cola'],['Coca-Cola']
+WebQTest-775,Abstain,"['Imperial War Museum North', 'Urbis', 'Old Trafford', 'Whitworth Art Gallery', 'Manchester Art Gallery', 'Manchester Museum', 'Manchester Jewish Museum', 'Great Manchester Run', 'Chinatown, Manchester', 'Manchester Cathedral', 'The Moon Under Water, Manchester', 'Wheel of Manchester', 'Albert Hall, Manchester']"
+WebQTest-800,Abstain,['World War II']
+WebQTest-830,"['United States of America', 'Reading']",['Reading']
+WebQTest-857,"['Alabama', 'Georgia']","['Georgia', 'Alabama']"
+WebQTest-881,"['Chiraq', 'Goal II: Living the Dream', 'Even Money', 'Weapons', 'A Very School Gyrls Holla-Day', ""Love Don't Cost a Thing"", 'Day of the Dead', 'Shall We Dance?', 'Bobby', 'Monster House', 'Underclassman', 'Garfield: The Movie', 'The Adventures of Brer Rabbit', 'Men in Black II', ""Ball Don't Lie"", 'American Son', 'Roll Bounce', 'Drumline: A New Beat', 'Whatever It Takes', 'The Killing Room', 'Drumline']","['Chiraq', 'Garfield: The Movie', 'Even Money', 'American Son', 'Men in Black II', 'Shall We Dance?', ""Ball Don't Lie"", 'The Killing Room', 'Weapons', 'Underclassman', 'Roll Bounce', 'Monster House', 'Goal II: Living the Dream', 'Drumline', 'Bobby', ""Love Don't Cost a Thing"", 'Day of the Dead', 'Whatever It Takes', 'The Adventures of Brer Rabbit', 'A Very School Gyrls Holla-Day', 'Drumline: A New Beat']"
+WebQTest-903,Abstain,"['Belgium', 'Bulgaria', 'Bosnia and Herzegovina', 'Northern Cyprus', 'Turkey', 'Germany', 'Kazakhstan', 'Republic of Kosovo', 'Netherlands', 'Norway', 'Syria', 'United Kingdom', 'United States of America', 'Iraq', 'Canada', 'Sweden', 'France', 'Algeria', 'Austria', 'Azerbaijan', 'Kyrgyzstan', 'Denmark']"
+WebQTest-929,"['Frank O. McCord', 'John C. Lester', 'J. Calvin Jones', 'John B. Kennedy', 'Richard R. Reed', 'James R. Crowe']","['John C. Lester', 'John B. Kennedy', 'James R. Crowe', 'Frank O. McCord', 'Richard R. Reed', 'J. Calvin Jones']"
+WebQTest-957,"['Sioux language', 'French', 'English Language']","['English Language', 'Sioux language', 'French']"
+WebQTest-979,['Barbadian dollar'],['Barbadian dollar']
+WebQTest-1002,"['Michael Gambon', 'Richard Harris', 'Dane Farwell', 'Toby Regbo']","['Richard Harris', 'Michael Gambon', 'Toby Regbo', 'Dane Farwell']"
+WebQTest-1028,"['Michael Edwards', 'Nick Stahl', 'Christian Bale', 'Dalton Abbott', 'Edward Furlong']","['Christian Bale', 'Edward Furlong', 'Michael Edwards', 'Nick Stahl', 'Dalton Abbott']"
+WebQTest-1050,Abstain,['Meg Griffin']
+WebQTest-1077,['Russian Language'],"['Osetin Language', 'Chechen Language', 'Tatar Language', 'Azerbaijani language', 'Abaza Language', 'Mari language', 'Bashkir Language', 'Avar Language', 'Aghul language', 'Tsakhur Language', 'Tuvin Language', 'Moksha Language', 'Erzya Language', 'Kalmyk-Oirat Language', 'Kabardian Language', 'Adyghe Language', 'Rutul language', 'Lezgi Language', 'Ingush Language', 'Altai language', 'Crimean Turkish Language', 'Nogai Language', 'Dargwa Language', 'Komi language', 'Udmurt Language', 'Kumyk Language', 'Karachay-Balkar Language', 'Buryat language', 'Yakut Language', 'Russian Language', 'Tabassaran Language', 'Yiddish Language', 'Lak Language', 'Khakas Language', 'Ukrainian Language']"
+WebQTest-1099,['Brazil'],['Brazil national football team']
+WebQTest-1121,"['United we stand, divided we fall']","['United we stand, divided we fall']"
+WebQTest-1149,['2009-04-23 to 2010-07-10'],[None]
+WebQTest-1177,['Chula Vista High School'],['Chula Vista High School']
+WebQTest-1204,['Four Corners'],['Four Corners']
+WebQTest-1230,"['Christchurch Botanic Gardens', 'Lyttelton Timeball Station', 'Canterbury Museum, Christchurch', 'Christchurch Arts Centre', 'Cathedral Square, Christchurch', 'Ferrymead Heritage Park', 'International Antarctic Centre', 'Willowbank Wildlife Reserve, Christchurch', 'Air Force Museum of New Zealand', 'TranzAlpine']","['International Antarctic Centre', 'Ferrymead Heritage Park', 'Cathedral Square, Christchurch', 'Willowbank Wildlife Reserve, Christchurch', 'Christchurch Botanic Gardens', 'Christchurch Arts Centre', 'Air Force Museum of New Zealand', 'Canterbury Museum, Christchurch', 'TranzAlpine', 'Lyttelton Timeball Station']"
+WebQTest-1252,['Miranda Otto'],['Miranda Otto']
+WebQTest-1275,['Actor'],['Actor']
+WebQTest-1300,['London'],['Fulham']
+WebQTest-1323,"['Centennial Olympic Park', 'Six Flags Over Georgia', 'Fernbank Museum of Natural History', 'Peachtree Road Race', 'Atlanta Jewish Film Festival', 'Fox Theatre', 'Four Seasons Hotel Atlanta', 'Six Flags White Water', 'Martin Luther King, Jr. National Historic Site', 'Masquerade', 'Atlanta Cyclorama & Civil War Museum', 'Philips Arena', 'Atlanta Ballet', 'Arbor Place Mall', 'World of Coca-Cola', 'Zoo Atlanta', 'The Tabernacle', 'Georgia Aquarium', 'Variety Playhouse', 'Cobb Energy Performing Arts Centre', 'Georgia Dome', 'Woodruff Arts Center', 'Fernbank Science Center', 'Omni Coliseum', 'Hyatt Regency Atlanta', 'Turner Field', 'Georgia World Congress Center', 'CNN Center', 'Underground Atlanta', 'Margaret Mitchell House & Museum', 'Atlanta Marriott Marquis', 'Center for Puppetry Arts', 'Jimmy Carter Library and Museum', 'Atlanta Symphony Orchestra', 'Georgia State Capitol', 'Atlanta History Center']","['Atlanta Symphony Orchestra', 'Turner Field', 'Cobb Energy Performing Arts Centre', 'Four Seasons Hotel Atlanta', 'Underground Atlanta', 'Atlanta Marriott Marquis', 'Georgia World Congress Center', 'The Tabernacle', 'Peachtree Road Race', 'Georgia Aquarium', 'Georgia Dome', 'Philips Arena', 'Omni Coliseum', 'Hyatt Regency Atlanta', 'Centennial Olympic Park', 'Zoo Atlanta', 'Six Flags Over Georgia', 'Six Flags White Water', 'Atlanta Cyclorama & Civil War Museum', 'Georgia State Capitol', 'World of Coca-Cola', 'CNN Center', 'Fernbank Science Center', 'Fernbank Museum of Natural History', 'Fox Theatre', 'Woodruff Arts Center', 'Margaret Mitchell House & Museum', 'Martin Luther King, Jr. National Historic Site', 'Atlanta History Center', 'Variety Playhouse', 'Jimmy Carter Library and Museum', 'Masquerade', 'Arbor Place Mall', 'Atlanta Ballet', 'Center for Puppetry Arts', 'Atlanta Jewish Film Festival']"
+WebQTest-1344,['Missouri'],['Missouri']
+WebQTest-1370,['Paris'],['Paris']
+WebQTest-1396,['Sebastian Shaw'],"['Sebastian Shaw', 'David Prowse', 'James Earl Jones']"
+WebQTest-1426,"['Netherlands', 'Morocco', 'Utrecht']",['Utrecht']
+WebQTest-1455,['Brasília'],['Brasília']
+WebQTest-1479,['Golfer'],['Golfer']
+WebQTest-1503,['New York City'],['New York City']
+WebQTest-1531,"['West Africa', 'Africa']",['Africa']
+WebQTest-1555,['Parliament of Nepal'],[None]
+WebQTest-1575,"['Nexus S', 'Google Docs, Sheets, and Slides', 'Google Maps', 'Google Glass', 'Google Buzz', 'Nexus 7', 'Google Classroom', 'Nexus 10', 'Chromecast', 'Nexus One', 'Nexus Q', 'Apache Wave', 'Google Earth', 'Google Drive']","['Google Classroom', 'Google Drive', 'Apache Wave', 'Google Earth', 'Google Buzz', 'Google Docs, Sheets, and Slides', 'Nexus S', 'Google Glass', 'Nexus 7', 'Nexus Q', 'Nexus 10', 'Google Maps', 'Chromecast']"
+WebQTest-1603,"['Daozang', 'I Ching', 'Tao Te Ching', 'Zhuang Zhou']","['Zhuang Zhou', 'Tao Te Ching', 'I Ching', 'Daozang']"
+WebQTest-1625,"['33-Barreled Organ', 'Viola organista', 'Double hull', 'Triple Barrel Canon', 'Armored car', 'Ornithopter', 'Aerial Screw', 'Diving suit', 'Parachute', 'Anemometer']","['Anemometer', 'Diving suit', 'Ornithopter', 'Viola organista', 'Double hull', 'Parachute', 'Triple Barrel Canon', '33-Barreled Organ', 'Aerial Screw', 'Armored car']"
+WebQTest-1649,Abstain,[None]
+WebQTest-1671,Abstain,['Köping']
+WebQTest-1695,['1945'],[None]
+WebQTest-1721,"['Puquina Language', 'Aymara language', 'Quechuan languages', 'Ayacucho Quechua', 'Spanish Language', 'Omagua dialect', 'Waorani Language']","['Aymara language', 'Omagua dialect', 'Spanish Language', 'Ayacucho Quechua', 'Puquina Language', 'Waorani Language']"
+WebQTest-1742,"['Parliamentary system', 'Unitary state', 'Constitutional monarchy']","['Parliamentary system', 'Unitary state', 'Constitutional monarchy']"
+WebQTest-1767,"['Martin Luther King, Jr. National Historic Site']","['Martin Luther King, Jr. National Historic Site']"
+WebQTest-1791,['1440'],[None]
+WebQTest-1812,['Barbados'],['Saint Michael Parish']
+WebQTest-1839,['Central Time Zone'],['Central Time Zone']
+WebQTest-1866,['New York'],['New York']
+WebQTest-1889,['Al Gore'],['Al Gore']
+WebQTest-1912,"['heart attack', 'Pancreatic cancer']","['Pancreatic cancer', 'heart attack']"
+WebQTest-1937,Abstain,"['Sailor', 'Explorer']"
+WebQTest-1963,['Right guard'],['Right guard']
+WebQTest-1990,Abstain,['Nathan Lane']
+WebQTest-2011,['Bob Marley Mausoleum'],['Bob Marley Mausoleum']
