@@ -5,11 +5,13 @@ from mistralai import Mistral
 
 
 class OpenAIBot:
-    def __init__(self,model,engine):
+    def __init__(self,model,engine, temperature, top_p):
         # Initialize conversation with a system message
         self.conversation = [{"role": "system", "content": "You are a helpful assistant."}]
         self.model = model
         self.engine = engine
+        self.temp = temperature
+        self.top_p = top_p
         if self.model == "gpt":
             openai.api_key = "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"
             self.client = OpenAI(api_key=openai.api_key)
@@ -37,7 +39,7 @@ class OpenAIBot:
             # Make a request to the API using the chat-based endpoint with conversation context
             if self.model == "gpt":
                 
-                response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.3, top_p = 0.1)
+                response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= self.temp, top_p =  self.top_p)
                 assistant_response = response.choices[0].message.content.strip()
 
             elif self.model == "mixtral":

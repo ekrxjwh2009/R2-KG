@@ -38,7 +38,7 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
 
         
         try :  
-            response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.3, top_p = 0.1)
+            response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.95, top_p = 0.95)
             assistant_response = response.choices[0].message.content.strip()
             #print(assistant_response)
             

@@ -18,13 +18,15 @@ from models import OpenAIBot
             
 def reasoning(model, engine, claim, initial_prompt, label, f,KG):
             
-    #engine="gpt-3.5-turbo-0125"  
-    if model =="gpt" : engine="gpt-4o-mini-2024-07-18"
+      
+    if model =="gpt" : 
+        #engine="gpt-4o-mini-2024-07-18"
+        engine="gpt-3.5-turbo-0125"
     elif model=='mixtral': engine = "open-mixtral-8x22b"
 
-    chatbot = OpenAIBot(model,engine)
+    chatbot = OpenAIBot(model,engine, 0.95, 0.95)
 
-    iter_limit=15
+    iter_limit=10
     gold_set =[]
     gold_relations =''
     for i in range(iter_limit):
@@ -319,27 +321,20 @@ def parsing_question(question_path,entid2txt_dict,relid2txt_dict):
 
     
 if __name__ == "__main__":
-    
+    ### Multi Prompts
+    #python chatbot_oneAgent.py --type simple_entity --model gpt --engine gpt-3.5
     parser = argparse.ArgumentParser()
-    parser.add_argument("type", type=str, default="before_after")
-    parser.add_argument("prompt", type=str, default='pr_1')
-    parser.add_argument("model", type = str, default="mixtral")
-    parser.add_argument("engine", type=str, default="mixtral-8x22b")
+    parser.add_argument("--type", type=str, default="simple_entity")
+    #parser.add_argument("--prompt", type=str, default='pr_1')
+    parser.add_argument("--model", type = str, default="gpt-4o")
+    parser.add_argument("--engine", type=str, default="gpt-4o-mini")
     args = parser.parse_args()
     
-    if args.prompt =='pr_1': 
-        main_prompt = prompt_oneAgent.pr_1
-        save_path = f"./result/{args.model}/result_pr1_oneAgent"
-    elif args.prompt =='pr_2': 
-        main_prompt = prompt_oneAgent.pr_2
-        save_path = f"./result/{args.model}/result_pr2_oneAgent"
-    else : 
-        main_prompt = prompt_oneAgent.pr_3
-        save_path = f"./result/{args.model}/result_pr3_oneAgent"
-    
-        
+
+    prompt_list = [prompt_oneAgent.pr_1,prompt_oneAgent.pr_2, prompt_oneAgent.pr_3]
     
     question_path = f"/home/smjo/KG-gpt2_cronKG/CronQA_data/wikidata_big/questions/{args.type}.json"
+    save_path = f"./results/multi_Prompts/{args.engine}"
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     
@@ -357,53 +352,58 @@ if __name__ == "__main__":
     
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
-    qid_list = [20*i for i in range(10)]
+    qid_list = [10*i for i in range(100)]
     
-    with open(os.path.join(save_path, f"result_{args.type}.txt"),'a') as f:
-        for qid in qid_list:
+    for pr_id,main_prompt in enumerate(prompt_list):
 
-            print(f"Qid:{qid}")
-            question = qa_list[qid]['question']
-            label = qa_list[qid]['answers']
-            entities = qa_list[qid]['given_entities']
-            
-            f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-            f.write(f"GT entity:{entities}")
-            
-            prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
-            
-            prediction, iter_num = reasoning(args.model, args.engine, question, prompt, label,f, KG = full_KG)
-            
-            abs, correct, wrong= score(str(prediction), label,f)
-            total_correct += correct
-            total_wrong += wrong
-            total_abs += abs
-            iter_num_list.append(iter_num)
-            
-            ff = open(os.path.join(save_path, f"only_result_{args.type}.csv"),'a')
-            writer= csv.writer(ff)
-            writer.writerow([qid, prediction, label])
-            ff.close()
+        with open(os.path.join(save_path, f"result_{args.type}.txt"),'a') as f:
+            for qid in qid_list:
 
-            
-        total_sample = len(qid_list)
+                print(f"Qid:{qid}")
+                question = qa_list[qid]['question']
+                label = qa_list[qid]['answers']
+                entities = qa_list[qid]['given_entities']
+                
+                f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                f.write(f"GT entity:{entities}")
+                
+                prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+                
+                prediction, iter_num = reasoning(args.model, args.engine, question, prompt, label,f, KG = full_KG)
+                
+                abs, correct, wrong= score(str(prediction), label,f)
+                total_correct += correct
+                total_wrong += wrong
+                total_abs += abs
+                iter_num_list.append(iter_num)
+                
+                tmp_pth = os.path.join(save_path,f"{pr_id}")
+                if not os.path.exists(tmp_pth):
+                    os.mkdir(tmp_pth)
+                ff = open(os.path.join(tmp_pth, f"only_result_{args.type}.csv"),'a')
+                writer= csv.writer(ff)
+                writer.writerow([qid, prediction, label])
+                ff.close()
 
-        
-        if (total_sample - total_abs ) ==0 :
-            metric1=0
-        else:
-            metric1 = (total_sample - total_abs ) /  total_sample
-        if total_correct==0:
-            metric2 =0
-        else :
-            metric2 = total_correct/  (total_sample - total_abs)
-            
-        if (total_correct-total_wrong)==0 :
-            metric3 =0
-        else:
-            metric3 = (total_correct-total_wrong) / (total_sample - total_abs)
+                
+            total_sample = len(qid_list)
 
-        f.write(f"\n\n\nTotal sample:{total_sample}, Total_Correct:{total_correct}, Total_Wrong:{total_wrong}, Total_abstain:{total_abs}\n")
-        f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
-        f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
-    
+            '''
+            if (total_sample - total_abs ) ==0 :
+                metric1=0
+            else:
+                metric1 = (total_sample - total_abs ) /  total_sample
+            if total_correct==0:
+                metric2 =0
+            else :
+                metric2 = total_correct/  (total_sample - total_abs)
+                
+            if (total_correct-total_wrong)==0 :
+                metric3 =0
+            else:
+                metric3 = (total_correct-total_wrong) / (total_sample - total_abs)
+
+            f.write(f"\n\n\nTotal sample:{total_sample}, Total_Correct:{total_correct}, Total_Wrong:{total_wrong}, Total_abstain:{total_abs}\n")
+            f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
+            f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
+            '''

@@ -290,3 +290,85 @@ Given entity: <<<Entity set>>>
 Let's start the process.
 
 """
+
+paraphrase_prompt = """
+You are the paraphraser. Rewrite the following claim in a more formal tone, keeping the core idea intact.
+If the given claim has a colloquial style format, paraphrase it into written style format.
+Give three paraphrased sentences for given claim.
+
+<Example 1>
+[User]
+Claim : Freie Universität Berlin employed Wolf-Dieter Heilmeyer in the course of which years?
+[ChatGPT]
+1. During which years was Wolf-Dieter Heilmeyer employed by Freie Universität Berlin?
+2. What years encompass Wolf-Dieter Heilmeyer's period of employment at Freie Universität Berlin?
+3. Freie Universität Berlin employed Wolf-Dieter Heilmeyer during which specific years?
+
+
+<Example 2>
+[User]
+Claim : What person had been Governor of Connecticut before World War II?
+[ChatGPT]
+1. Who served as Governor of Connecticut in the period preceding World War II?
+2. Which individual held the position of Governor of Connecticut prior to the onset of World War II?
+3. Before the outbreak of World War II, who occupied the office of Governor of Connecticut?
+
+
+<Example 3>
+[User]
+Claim : Who were Governor of Idaho after Nazi Germany?
+[ChatGPT]
+1. Who assumed the role of Governor of Idaho following the fall of Nazi Germany?
+2. Which individuals served as Governor of Idaho in the post-Nazi Germany era?
+3. After the dissolution of Nazi Germany, who held the office of Governor of Idaho?
+
+
+<Example 4>
+[User]
+Claim : Who was Minister of Communications when Llin Golding, Baroness Golding was a Member of the 51st Parliament of the United Kingdom?
+[ChatGPT]
+1. During Llin Golding, Baroness Golding's tenure as a Member of the 51st Parliament of the United Kingdom, who held the position of Minister of Communications?
+2. Who occupied the role of Minister of Communications while Llin Golding, Baroness Golding, served in the 51st Parliament of the United Kingdom?
+3. When Llin Golding, Baroness Golding, was a member of the 51st Parliament, who was serving as the Minister of Communications?
+
+
+<Example 5>
+[User]
+Claim : Who was district attorney when J. D. Rees was the Member of the 31st Parliament of the United Kingdom?
+[ChatGPT]
+1. During J. D. Rees's tenure as a Member of the 31st Parliament of the United Kingdom, who served as district attorney?
+2. Who held the position of district attorney while J. D. Rees was a member of the 31st Parliament of the United Kingdom?
+3. While J. D. Rees was part of the 31st Parliament, who assumed the role of district attorney?
+
+
+<Example 6>
+[User]
+Claim : Before the 2004 Summer Olympics, who held member of the Riksdag's position?
+[ChatGPT]
+1. Prior to the 2004 Summer Olympics, who held a position as a member of the Riksdag?
+2. Who was a member of the Riksdag in the period leading up to the 2004 Summer Olympics?
+3. Before the 2004 Summer Olympics commenced, who occupied a position as a member of the Riksdag?
+
+
+<Example 7>
+[User]
+Claim : Who preceded David I of Scotland as monarch of Scotland?
+[ChatGPT]
+1. Who was the predecessor of David I of Scotland in the role of monarch?
+2. Which individual ascended the Scottish throne prior to David I of Scotland?
+3. Who held the position of monarch of Scotland before David I ascended to the throne?
+
+
+<Example 8>
+[User]
+Claim : When Godman Irvine was the Member of the 44th Parliament of the United Kingdom who was the member of the Cortes franquistas?
+[ChatGPT]
+1. During Godman Irvine's tenure as a Member of the 44th Parliament of the United Kingdom, who was serving as a member of the Cortes franquistas?
+2. While Godman Irvine was part of the 44th Parliament of the United Kingdom, who held membership in the Cortes franquistas?
+3. When Godman Irvine served in the 44th Parliament, who was a member of the Cortes franquistas?
+
+
+Now, it's your turn. Continue your paraphrasing task. Response must have same form with upper examples.
+[User]
+Claim : <<<<CLAIM>>>>
+"""
