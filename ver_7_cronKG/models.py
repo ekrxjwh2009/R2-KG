@@ -4,28 +4,53 @@ from openai import OpenAI
 from mistralai import Mistral
 
 
-class OpenAIBot:
-    def __init__(self,model,engine, temperature, top_p):
+###GPT 제외한 나머지 모델
+
+#time_gap = {}
+
+# Modify OpenAI's API key and API base to use vLLM's API server.
+VLLM_API_KEY = "EMPTY"
+#VLLM_API_BASE = "http://localhost:9123/v1"
+#vllm_client = OpenAI(api_key=VLLM_API_KEY, base_url=VLLM_API_BASE)
+
+
+
+
+class chatBot:
+    def __init__(self,model,temperature, top_p):
+        '''
         # Initialize conversation with a system message
+        assert model in [
+        "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    ]
+    time.sleep(time_gap.get(model, 3))
+'''
+        
+        
         self.conversation = [{"role": "system", "content": "You are a helpful assistant."}]
         self.model = model
-        self.engine = engine
-        self.temp = temperature
-        self.top_p = top_p
-        if self.model == "gpt":
-            openai.api_key = "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"
-            self.client = OpenAI(api_key=openai.api_key)
+        self.temp = temperature #base .95
+        self.top_p = top_p #base 0.95
+        self.max_tokens = 500
         
-        elif self.model == "mixtral":
-            mistral_api_key = "vqEwVLjtDQcL6zJTUj9Q1R6MKHNkuB6F"
-            self.client = Mistral(api_key=mistral_api_key)
+        if self.model == "mistral-large": 
+            self.VLLM_API_BASE = "vqEwVLjtDQcL6zJTUj9Q1R6MKHNkuB6F"
+            #self.VLLM_API_BASE = Mistral(api_key=self.api_key)
             
-        elif self.model == 'qwen':
-            qwen_api_key = ""
-            self.client = None
+        elif self.model == 'mistral-instruct' : ##mistral instruct small
+            self.VLLM_API_BASE = "http://143.248.157.51:8043/v1"
+            
+        elif self.model == 'qwen_2.5_32b': ##qwen2.5-32b
+            self.VLLM_API_BASE = "http://143.248.157.77:8043/v1"
+
+        elif self.model == 'qwen_2.5': ##qwen2.5-14b
+            self.VLLM_API_BASE == "http://143.248.157.68:8043/v1"
         
-        elif self.model == 'llama':
-            self.client = None
+        elif self.model == 'llama': ##llama3.1-70b
+            self.VLLM_API_BASE ="http://143.248.157.77:8044/v1"
+
+            
+        self.client = OpenAI(api_key=VLLM_API_KEY, base_url=self.VLLM_API_BASE)
             
     def add_message(self, role, content):
         # Adds a message to the conversation.
@@ -36,36 +61,22 @@ class OpenAIBot:
         self.add_message("user", prompt)
 
         try:
-            # Make a request to the API using the chat-based endpoint with conversation context
-            if self.model == "gpt":
-                
-                response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= self.temp, top_p =  self.top_p)
-                assistant_response = response.choices[0].message.content.strip()
+            res = self.client.chat.completions.create(
+                model=self.model,
+                messages=self.conversation,
+                temperature=self.temperature,
+                n=1,
+                max_tokens=self.max_tokens,
+            )
+            self.response =  res.choices[0].message.content
+        
+        except Exception as e:
+            print(e)
+            #time.sleep(time_gap.get(model, 3) * 2)
+            #return vllm_response(message, model, temperature, max_tokens)
+        self.add_message('assistant', self.response)
 
-            elif self.model == "mixtral":
-                
-                response = self.client.chat.complete(model= self.engine, messages=self.conversation, temperature= 0.3, top_p = 0.1)
-                assistant_response = response.choices[0].message.content.strip()
-            # Add assistant response to conversation
-            self.add_message("assistant", assistant_response)
-            # Return the response
-            return assistant_response
-
-        except openai.APIError as e:
-            #Handle API error here, e.g. retry or log
-            print(f"OpenAI API returned an API Error: {e}")
-            return f"OpenAI API returned an API Error: {e}"
-
-
-
-
-
-'''
-parser = argparse.ArgumentParser()
-parser.add_argument("type", type=str, default="before_after")
-parser.add_argument("prompt", type=str, default='pr_1')
-parser.add_argument("model", type = str, default="mixtral")
-parser.add_argument("engine", type=str, default="mixtral-8x22b")
-
-
-'''
+            
+model_name = "meta-llama/Meta-Llama-3-70B-Instruct"
+messages = [{"role": "user", "content": "What is your name?"}]
+response = chatBot(messages=messages, model=model_name)
