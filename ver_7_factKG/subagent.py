@@ -9,12 +9,12 @@ client = OpenAI(api_key=openai.api_key)
 
 def feedback(claim,gold_set,gold_relations,f,sub_prompt):
     
-    engine="gpt-3.5-turbo-0125"
+    #engine="gpt-3.5-turbo-0125"
     #engine = "gpt-4o-mini-2024-07-18"
-    #engine = "gpt-4o-2024-08-06"
+    engine = "gpt-4o-2024-08-06"
     
-    f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
-    f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    
+    #f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
+    #f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    
     final_evidence=[]
     
     
@@ -22,7 +22,7 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
         if tri not in final_evidence:
             final_evidence.append(tri)
       
-    f.write(f"\nFinal Evidence!!!!!!!!!!!!!!!!!!!!!!\n{final_evidence}")       
+    #f.write(f"\nFinal Evidence!!!!!!!!!!!!!!!!!!!!!!\n{final_evidence}")       
     
     conversation = [{"role": "system", "content": "You are a helpful assistant."}]
     prompt = sub_prompt.replace('<<<<CLAIM>>>>', claim).replace('<<<<Triple set>>>>', str(final_evidence)).replace('<<<<GOLD RELATIONS>>>>', gold_relations)
@@ -38,7 +38,7 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
 
         
         try :  
-            response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.3, top_p = 0.1)
+            response = client.chat.completions.create( model=engine, messages=conversation, temperature= 0.95, top_p = 0.95)
             assistant_response = response.choices[0].message.content.strip()
             print(assistant_response)
             

@@ -50,8 +50,8 @@ class OpenAIBot:
             
 def reasoning(claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
             
-    engine="gpt-3.5-turbo-0125"         
-    #engine = "gpt-4o-mini-2024-07-18"
+    #engine="gpt-3.5-turbo-0125"         
+    engine = "gpt-4o-2024-11-20"
     chatbot = OpenAIBot(engine, client)
 
    
@@ -347,9 +347,9 @@ if __name__ == "__main__":
     
     #python chatbot_2Agent.py --type time_join --prompt pr_1 --model gpt-3.5
     parser = argparse.ArgumentParser()
-    parser.add_argument("--type", type=str, default="time_join")
+    parser.add_argument("--type", type=str, default="before_after")
     parser.add_argument("--prompt", type=str, default='pr_1')
-    parser.add_argument("--model", type = str, default='gpt-3.5')
+    parser.add_argument("--model", type = str, default='gpt-4o')
     args = parser.parse_args()
     
     if args.prompt =='pr_1': 
@@ -385,7 +385,7 @@ if __name__ == "__main__":
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
     iter_limit_result = [['iterlimit', 'metric1','metric2','metric3']]
-    qid_list = [10*i for i in range(100)]
+    qid_list = [10*i for i in range(10)]
     
     #iter_limit_list = [25,20,15,10,5]
     iter_limit_list = [10]
@@ -400,8 +400,8 @@ if __name__ == "__main__":
                 label = qa_list[qid]['answers']
                 entities = qa_list[qid]['given_entities']
                 
-                #f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-                #f.write(f"GT entity:{entities}")
+                f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                f.write(f"GT entity:{entities}")
                 
                 prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
                 

@@ -20,8 +20,8 @@ def reasoning(model, engine, claim, initial_prompt, label, f,KG):
             
       
     if model =="gpt" : 
-        #engine="gpt-4o-mini-2024-07-18"
-        engine="gpt-3.5-turbo-0125"
+        engine="gpt-4o-mini-2024-07-18"
+        #engine="gpt-3.5-turbo-0125"
     elif model=='mixtral': engine = "open-mixtral-8x22b"
 
     chatbot = OpenAIBot(model,engine, 0.95, 0.95)
@@ -322,11 +322,11 @@ def parsing_question(question_path,entid2txt_dict,relid2txt_dict):
     
 if __name__ == "__main__":
     ### Multi Prompts
-    #python chatbot_oneAgent.py --type simple_entity --model gpt --engine gpt-3.5
+    #python chatbot_oneAgent.py --type simple_entity --model gpt --engine gpt-4o-mini
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", type=str, default="simple_entity")
     #parser.add_argument("--prompt", type=str, default='pr_1')
-    parser.add_argument("--model", type = str, default="gpt-4o")
+    parser.add_argument("--model", type = str, default="gpt")
     parser.add_argument("--engine", type=str, default="gpt-4o-mini")
     args = parser.parse_args()
     

@@ -1,0 +1,417 @@
+import openai
+import sys, os
+import ast
+from openai import OpenAI
+import json
+import csv
+import argparse
+import sample_number
+import numpy as np
+import re
+import dbpedia_sparql as db
+import subagent as sa
+import prompts_main
+
+
+
+###################ADD###########################
+#1. wrong relation select --> show relation list again
+#2. use only one agent
+#3. Call function one by one
+#4. varing temperature/ top-p (with fixed other parameter .95)
+
+
+
+openai.api_key = "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"
+client = OpenAI(api_key=openai.api_key)
+
+class OpenAIBot:
+    def __init__(self,engine, client, top_p, temperature):
+        # Initialize conversation with a system message
+        self.conversation = [{"role": "system", "content": "You are a helpful assistant."}]
+        self.engine = engine
+        self.client = client
+        self.top_p = top_p
+        self.temp = temperature
+    def add_message(self, role, content):
+        # Adds a message to the conversation.
+
+        self.conversation.append({"role": role, "content": content})
+    def generate_response(self, prompt):
+        # Add user prompt to conversation
+        self.add_message("user", prompt)
+
+        try:
+            # Make a request to the API using the chat-based endpoint with conversation context
+            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= self.temp, top_p = self.top_p)
+            # Extract the response
+            #print(response)
+            assistant_response = response.choices[0].message.content.strip()
+
+            
+            # Add assistant response to conversation
+            self.add_message("assistant", assistant_response)
+            # Return the response
+            return assistant_response
+        #except:
+        #    print('Error Generating Response!')
+        except openai.APIError as e:
+            #Handle API error here, e.g. retry or log
+            print(f"OpenAI API returned an API Error: {e}")
+            return f"OpenAI API returned an API Error: {e}"
+        
+def reasoning(claim,initial_prompt, label,engine, top_p, temperature):
+            
+    
+    chatbot = OpenAIBot(engine, client, top_p, temperature)
+
+    iter_limit=15
+    gold_set =[]
+    gold_relations =''
+    for i in range(iter_limit):
+        
+        # Get Prompt from User
+        if i == 0:
+            prompt = initial_prompt
+        else:
+            #prompt = input()
+            
+            prompt, result, triples, relations, get_rel_state = client_answer(claim,response, label, gold_set,gold_relations)
+            
+            if len(triples) > 0:
+                gold_set+=triples
+            if get_rel_state==1:
+                gold_relations += relations
+        
+        
+        #if i>0:    
+        #    f.write(prompt)
+        # User can stop the chat by sending 'End Chat' as a Prompt
+        if 'Done!!' in prompt:
+        
+            break
+
+        # Generate and Print the Response from ChatBot
+        response = chatbot.generate_response(prompt)
+        #f.write(f"\n************************************Iteration:{i}***********************************")
+        #f.write("\n"+response)
+    
+    if i==iter_limit-1:
+        result = 'Abstain'   
+        
+    return result, i
+        
+def client_answer(claim,response, label, gold_set,gold_relations):
+    #prompt, result, triples
+    result = None
+    #called multi helper functions
+    #if not response.startswith('getRelation', 11) or not response.startswith('exploreKG',11) or not response.startswith('Verify', 11):
+    #    prompt = '[Server]\nYou gave wrong format. Call the helper function again follow the right format'
+    #    return prompt, result
+
+    helper_ftn_calls, prompt = split_functions(response)
+    triples = []
+    relations = ""
+    get_rel_state=0
+    for helper_str in helper_ftn_calls:
+        
+        
+        if 'getRelation' in helper_str:
+    
+            get_rel_state, result = getRelations(helper_str)
+            prompt +=  "\n" + result
+            if get_rel_state==1:
+                relations += "\n" + result
+            #return prompt, result, []
+            
+            
+        elif 'exploreKG' in helper_str:
+            result, result_prompt = exploreKGs(helper_str)
+            prompt += "\n" + result_prompt
+            triples += result
+            #return prompt, triples, triples
+        
+            
+        elif 'Verification' in helper_str:
+            verify_prompt, result = verification(helper_str, label)
+            prompt += verify_prompt
+            #return prompt, prediction, []
+        else:
+            prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
+            result =''
+    
+    return prompt, result, triples, relations, get_rel_state
+
+
+def retrieval_relation_parse_answer(rel):
+    
+    post_rel = re.sub('[-=+,#/\?:^.@*\"※ㆍ!』‘|\(\)\[\]`\'…》\”\“\’·]', '', rel)
+    return post_rel 
+
+def split_functions(response):
+    helper_ftn_calls=[]
+    prompt=''
+    try:
+        response = response.replace("[ChatGPT]\n",'')
+        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
+        functions = response.split("Helper function : ")[1]
+        if '##' in functions:
+            helper_ftn_calls = functions.split(' ## ')
+        else :
+            helper_ftn_calls = [functions]
+        prompt ='\n[User]\nExecution result :'
+        
+    except:
+        prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
+        
+    return helper_ftn_calls, prompt
+
+
+def getRelations(helper_str):
+    relations = []
+    state = 0
+    try:
+        entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
+        relations += db.getRelationsFromEntity(entity)
+        relations += db.getRelationsFromEntity('"' + entity + '"')
+        if len(relations) ==0 :
+            state=0
+            return state,f"Do not change the format of entity {entity} in helper function."
+        else:
+            state=1
+            return state,'Relations_list["' + entity + '"] = ' + str(relations)
+    except:
+        return state,"You gave wrong format of getRelations() function. Follow the format of examples."
+
+
+def exploreKGs(helper_str):
+    triples= []
+    result_prompt = ''
+    try: 
+        ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
+        relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+    
+        if len(db.getRelationsFromEntity(ent)) < len(db.getRelationsFromEntity('"' + ent + '"')):
+            ent = '"' + ent + '"'
+            
+        for rel in relations:
+            rel = retrieval_relation_parse_answer(rel)
+            ###check if the LLM required non-existing relations
+            existing_relations = db.getRelationsFromEntity(ent)
+            if (rel not in existing_relations) and ('~' + rel) not in existing_relations:
+                #result_prompt += f"""The relation you chose '{rel}' does not exist. Choose from the following list. Relations_list["' + {ent} + '"] = ' + {str(existing_relations)}"""
+                result_prompt += f"'The relation you chose '{rel}' does not exist.Choose from the following list."
+                result_prompt += 'Relations_list["' + ent + '"] = ' + str(existing_relations)
+            
+            
+            tails = []
+            if rel[0] == '~':
+                tails += db.getEntityFromEntRel(ent, rel)
+                tails += db.getEntityFromEntRel(ent, rel.split('~')[1])
+            else:
+                tails += db.getEntityFromEntRel(ent, rel)
+                tails += db.getEntityFromEntRel(ent, '~' + rel)
+            
+            for tail in tails:
+                triples.append([ent, rel, tail])
+                
+        if len(triples)==0:
+            result_prompt += f"Choose other relations based refer to the Relations_list Or follow the format of Entity {ent} and Relations"
+        
+        else:
+            result_prompt += ', '.join(str(sublist) for sublist in triples)
+        
+    except:
+        result_prompt += "You gave wrong format of exploreKGs() function. Follow the format of examples."
+
+
+    return triples, result_prompt
+                
+
+def verification(helper_str, label):
+    
+    try : 
+        result = helper_str.split("Verification[")[1].split("]")[0]
+        prompt = f"\nDone!!Prediction:{result}\nReal label:{label}"
+    except:
+        prompt = '\nYou gave wrong format. Call the verification function again follow the right format'
+                
+    return prompt, result
+
+def score(predict, label):
+    abs, correct, wrong =0,0,0
+
+    #print(f"Scoring!!!!!!predict:{predict.lower()}, label:{label.lower()}")
+    if 'abstain' in predict.lower():
+        abs+=1
+    elif predict.lower() == label.lower():
+        correct+=1
+    else:
+        wrong +=1
+    #LLM abs개수, correct 개수
+    return abs, correct, wrong
+
+if __name__ == "__main__":
+
+    #python chatbot_varing.py --type existence --varing top_p --data test --num_iter 15 --model gpt-4o-mini
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--type", type=str, default="existence")
+    parser.add_argument("--varing", type=str, default="top_p")
+    parser.add_argument("--data", type =str, default="test")
+    parser.add_argument("--num_iter", type = int, default = "15")
+    parser.add_argument("--model", type = str, default= "gpt-4o-mini")
+    args = parser.parse_args()
+    
+    save_path = f"Variation_results_{args.data}/{args.model}_maxiter_{args.num_iter}"
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+    
+    result = {}
+    questions_dict = {}
+    entity_set_dict = {}
+    label_set_dict = {}
+    types_dict ={}
+    
+    if args.data =='dev':
+        f= open("/home/smjo/share_code/factkg/data/extracted_train_set.jsonl")
+    elif args.data =='test':
+        f= open("/home/smjo/share_code/factkg/data/extracted_test_set.jsonl")
+    else : 
+        print('Wrong argument')
+    for line in f:
+        if not line:
+            continue
+        q = json.loads(line)
+
+        questions_dict[q["question_id"]] = q["question"]
+        entity_set_dict[q["question_id"]] = q["entity_set"]
+        label_set_dict[q["question_id"]] = q["Label"]
+        types_dict[q['question_id']] = q["types"] 
+    f.close()
+            
+
+
+    total_correct, total_abs,total_wrong =0,0,0
+    
+    if args.type == 'existence': qid_list = sample_number.existence
+    elif args.type =="num1" : qid_list = sample_number.num1
+    elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
+    elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
+    else:
+        print("Wrong argument")
+    
+    
+
+
+
+        
+    if args.model =="gpt-4o-mini" : engine = "gpt-4o-mini-2024-07-18"
+    else :print("wrong argument")
+    
+    if args.varing == 'top_p' :  
+        temperature = 0.95
+        top_p_list = [0.2,0.4, 0.6, 0.8, 1.0]
+        top_p_vary_result =[['top_p','mtr1', 'mtr2', 'mtr3']]
+        
+        for top_p in top_p_list:
+            iter_num_list=[]
+            answer_list= [['qid','prediction','gt_label']]
+            total_correct, total_abs,total_wrong =0,0,0
+            for qid in qid_list:
+
+                question = questions_dict[qid]
+                label = label_set_dict[qid]
+                entities = entity_set_dict[qid]
+                
+                #print(f"GT entity:{entities}")
+                
+                prompt = prompts_main.pr_1_main_only.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
+
+                prediction, iter_num = reasoning(question,prompt, label, engine, top_p, temperature)
+                abs, correct, wrong= score(str(prediction), str(label[0]))
+                total_correct += correct
+                total_wrong += wrong
+                total_abs += abs
+                iter_num_list.append(iter_num)
+                answer_list.append([qid, str(prediction), str(label[0])])
+
+
+            
+            if (len(qid_list) - total_abs ) ==0 :
+                metric1=0
+            else:
+                metric1 = (len(qid_list) - total_abs ) /  len(qid_list)
+            if total_correct==0:
+                metric2 =0
+            else :
+                metric2 = total_correct/  (len(qid_list) - total_abs)
+                
+            if (total_correct-total_wrong)==0 :
+                metric3 =0
+            else:
+                metric3 = (total_correct-total_wrong) / (len(qid_list) - total_abs)
+                
+            top_p_vary_result.append([top_p, metric1, metric2, metric3])
+            print(top_p, metric1, metric2, metric3)
+                    
+                   
+        f= open(os.path.join(save_path, f"top_p_variation_{args.type}.csv"),'a')
+        writer= csv.writer(f)
+        writer.writerows(top_p_vary_result)
+        f.close()
+            
+    elif args.varing == 'temperature' : 
+        top_p = 0.95
+        temp_list = [0.2, 0.5, 0.8, 1.1, 1.4, 1.7, 2]
+        temp_vary_result = [['temperature','mtr1', 'mtr2', 'mtr3']]
+        
+        for temperature in temp_list:
+            iter_num_list=[]
+            answer_list= [['qid','prediction','gt_label']]
+            total_correct, total_abs,total_wrong =0,0,0
+            for qid in qid_list:
+
+                question = questions_dict[qid]
+                label = label_set_dict[qid]
+                entities = entity_set_dict[qid]
+                
+
+                
+                prompt = prompts_main.pr_1_main_only.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
+
+                prediction, iter_num = reasoning(question,prompt, label, engine, top_p, temperature)
+                abs, correct, wrong= score(str(prediction), str(label[0]))
+                total_correct += correct
+                total_wrong += wrong
+                total_abs += abs
+                iter_num_list.append(iter_num)
+                answer_list.append([qid, str(prediction), str(label[0])])
+
+
+            
+            if (len(qid_list) - total_abs ) ==0 :
+                metric1=0
+            else:
+                metric1 = (len(qid_list) - total_abs ) /  len(qid_list)
+            if total_correct==0:
+                metric2 =0
+            else :
+                metric2 = total_correct/  (len(qid_list) - total_abs)
+                
+            if (total_correct-total_wrong)==0 :
+                metric3 =0
+            else:
+                metric3 = (total_correct-total_wrong) / (len(qid_list) - total_abs)
+            
+            temp_vary_result.append([temperature, metric1, metric2, metric3])    
+            print(temperature, metric1, metric2, metric3)
+            
+        f= open(os.path.join(save_path, f"temp_variation_{args.type}.csv"),'w')
+        writer= csv.writer(f)
+        writer.writerows(temp_vary_result)
+        f.close() 
+
+
+            
+    else :
+        print("wrong argument")

@@ -39,7 +39,7 @@ class OpenAIBot:
 
         try:
             # Make a request to the API using the chat-based endpoint with conversation context
-            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.3, top_p = 0.1)
+            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.95, top_p = 0.95)
             # Extract the response
             #print(response)
             assistant_response = response.choices[0].message.content.strip()
@@ -56,14 +56,14 @@ class OpenAIBot:
             print(f"OpenAI API returned an API Error: {e}")
             return f"OpenAI API returned an API Error: {e}"
             
-def reasoning(claim,initial_prompt, label, f, sub_prompt):
+def reasoning(claim,iter_limit,initial_prompt, label, f, sub_prompt):
             
-    #engine="gpt-3.5-turbo-0125"         
-    #engine = "gpt-4o-mini-2024-07-18"
-    engine = "gpt-4o-2024-08-06"
+#engine="gpt-3.5-turbo-0125"         
+    engine = "gpt-4o-mini-2024-07-18"
+    #engine = "gpt-4o-2024-08-06"
     chatbot = OpenAIBot(engine, client)
 
-    iter_limit=30
+    
     gold_set =[]
     gold_relations =''
     for i in range(iter_limit):
@@ -81,8 +81,8 @@ def reasoning(claim,initial_prompt, label, f, sub_prompt):
             if get_rel_state==1:
                 gold_relations += relations
         
-        if i>0:    
-            f.write(prompt)
+        #if i>0:    
+            #f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -90,8 +90,8 @@ def reasoning(claim,initial_prompt, label, f, sub_prompt):
 
         # Generate and Print the Response from ChatBot
         response = chatbot.generate_response(prompt)
-        f.write(f"\n************************************Iteration:{i}***********************************")
-        f.write("\n"+response)
+        #f.write(f"\n************************************Iteration:{i}***********************************")
+        #f.write("\n"+response)
     
     if i==iter_limit-1:
         result = 'Abstain'   
@@ -134,7 +134,7 @@ def client_answer(claim,response, label, gold_set,gold_relations,f, sub_prompt):
             sub_answer, case, result = verification(claim,gold_set,gold_relations,f, sub_prompt)
             prompt += "\n" +sub_answer
             
-            f.write(f"CASE COUNT:{case}")
+            #f.write(f"CASE COUNT:{case}")
             #return prompt, prediction, []
         else:
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
@@ -239,7 +239,7 @@ def verification(claim,gold_set,gold_relations,f, sub_prompt):
 
 def score(predict, label,f):
     abs, correct, wrong =0,0,0
-    f.write(f"predict:{predict.lower()}, lable:{label.lower()}")
+    #f.write(f"predict:{predict.lower()}, lable:{label.lower()}")
     print(f"predict:{predict.lower()}, lable:{label.lower()}")
     if 'abstain' in predict.lower():
         abs+=1
@@ -252,14 +252,17 @@ def score(predict, label,f):
     
 if __name__ == "__main__":
     
+    #python chatbot_1by1_with_sub.py --type multi_hop --subagent 2option_beta --data test --model gpt-4o-mini
     parser = argparse.ArgumentParser()
-    parser.add_argument("type", type=str, default="existence")
-    parser.add_argument("subagent", type=str, default="7shot")
+    parser.add_argument("--type", type=str, default="existence")
+    parser.add_argument("--subagent", type=str, default="2option_beta")
+    parser.add_argument("--data", type =str, default="test")
+    parser.add_argument("--model", type = str, default= "gpt-4o-mini")
     args = parser.parse_args()
     
-    save_path = f"./example_shot"
+    save_path = f"results_{args.data}/{args.model}"
     if not os.path.exists(save_path):
-        os.mkdir(save_path)
+        os.makedirs(save_path)
     
     result = {}
     questions_dict = {}
@@ -267,21 +270,26 @@ if __name__ == "__main__":
     label_set_dict = {}
     types_dict ={}
     
-    
-    with open("/home/smjo/share_code/factkg/data/extracted_train_set.jsonl") as f:
-        for line in f:
-            if not line:
-                continue
-            q = json.loads(line)
+    if args.data =='dev':
+        f= open("/home/smjo/share_code/factkg/data/extracted_train_set.jsonl")
+    elif args.data =='test':
+        f= open("/home/smjo/share_code/factkg/data/extracted_test_set.jsonl")
+    else : 
+        print('Wrong argument')
+    for line in f:
+        if not line:
+            continue
+        q = json.loads(line)
 
-            questions_dict[q["question_id"]] = q["question"]
-            entity_set_dict[q["question_id"]] = q["entity_set"]
-            label_set_dict[q["question_id"]] = q["Label"]
-            types_dict[q['question_id']] = q["types"] 
+        questions_dict[q["question_id"]] = q["question"]
+        entity_set_dict[q["question_id"]] = q["entity_set"]
+        label_set_dict[q["question_id"]] = q["Label"]
+        types_dict[q['question_id']] = q["types"] 
+    f.close()
             
 
 
-    total_correct, total_abs,total_wrong =0,0,0
+    
     
     if args.type == 'existence': qid_list = sample_number.existence
     elif args.type =="num1" : qid_list = sample_number.num1
@@ -300,53 +308,70 @@ if __name__ == "__main__":
 
     
     iter_num_list=[]
-    answer_list= [['qid','prediction','gt_label']]
-    with open(os.path.join(save_path, f"result_{args.type}.txt"),'a') as f:
-        for qid in qid_list:
-            print(f"Qid:{qid}")
-            question = questions_dict[qid]
-            label = label_set_dict[qid]
-            entities = entity_set_dict[qid]
-            
-            f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-            f.write(f"GT entity:{entities}")
-            print(f"GT entity:{entities}")
-            
-            prompt = prompts_main.pr_2.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
+    
+    iter_limit_list = [15]
+    #iter_limit_list=[15]
+    metric_result = [['iterlimit','mtr1','mtr2','mtr3']]
+    
+    for iter_limit in iter_limit_list:
+        print(f'iter limit:{iter_limit}')
+        total_correct, total_abs,total_wrong =0,0,0
+        answer_list= [['qid','prediction','gt_label']]
+        with open(os.path.join(save_path, f"Iter_{iter_limit}_{args.type}.txt"),'a') as f:
+        
+            for qid in qid_list:
+                print(f"Qid:{qid}")
+                question = questions_dict[qid]
+                label = label_set_dict[qid]
+                entities = entity_set_dict[qid]
+                
+                #f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                #f.write(f"GT entity:{entities}")
+                #print(f"GT entity:{entities}")
+                
+                prompt = prompts_main.pr_1.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
 
-            prediction, iter_num = reasoning(question,prompt, label,f, sub_prompt)
-            abs, correct, wrong= score(str(prediction), str(label[0]),f)
-            total_correct += correct
-            total_wrong += wrong
-            total_abs += abs
-            iter_num_list.append(iter_num)
-            answer_list.append([qid, str(prediction), str(label[0])])
+                prediction, iter_num = reasoning(question,iter_limit,prompt, label,f, sub_prompt)
+                abs, correct, wrong= score(str(prediction), str(label[0]),f)
+                total_correct += correct
+                total_wrong += wrong
+                total_abs += abs
+                iter_num_list.append(iter_num)
+                answer_list.append([qid, str(prediction), str(label[0])])
 
 
+            '''
+            if (len(qid_list) - total_abs ) ==0 :
+                metric1=0
+            else:
+                metric1 = (len(qid_list) - total_abs ) /  len(qid_list)
+            if total_correct==0 or len(qid_list) == total_abs:
+                metric2 =0
+            else :
+                metric2 = total_correct/  (len(qid_list) - total_abs)
+                
+            if (total_correct-total_wrong)==0 or len(qid_list) == total_abs:
+                metric3 =0
+            else:
+                metric3 = (total_correct-total_wrong) / (len(qid_list) - total_abs)
         
-        if (len(qid_list) - total_abs ) ==0 :
-            metric1=0
-        else:
-            metric1 = (len(qid_list) - total_abs ) /  len(qid_list)
-        if total_correct==0:
-            metric2 =0
-        else :
-            metric2 = total_correct/  (len(qid_list) - total_abs)
-            
-        if (total_correct-total_wrong)==0 :
-            metric3 =0
-        else:
-            metric3 = (total_correct-total_wrong) / (len(qid_list) - total_abs)
-        
-            
+            '''
+            f = open(os.path.join(save_path, f"{iter_limit}_only_result_{args.type}.csv"),'w')
+            writer = csv.writer(f)
+            writer.writerows(answer_list)
+            f.close()
         
         
-
-        f.write(f"\n\n\nTotal sample:{len(qid_list)}, Total_Correct:{total_correct}, Total_Wrong:{total_wrong}, Total_abstain:{total_abs}\n")
-        f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
-        f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
-        
+            '''
+            f.write(f"\n\n\nTotal sample:{len(qid_list)}, Total_Correct:{total_correct}, Total_Wrong:{total_wrong}, Total_abstain:{total_abs}\n")
+            f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
+            f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
+            '''
+            #metric_result.append([iter_limit, metric1, metric2, metric3])
+    '''
     f= open(os.path.join(save_path, f"only_result_{args.type}.csv"),'w')
     writer= csv.writer(f)
-    writer.writerows(answer_list)
+    writer.writerows(metric_result)
     f.close()
+    '''
+    

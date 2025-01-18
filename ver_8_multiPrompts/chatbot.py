@@ -12,6 +12,7 @@ import dbpedia_sparql as db
 import subagent as sa
 import prompts_main
 import prompts_sub
+import models
 
 
 ###################ADD###########################
@@ -22,46 +23,13 @@ import prompts_sub
 #5. 3 trial result ensemble
 
 
-openai.api_key = "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"
-client = OpenAI(api_key=openai.api_key)
 
-class OpenAIBot:
-    def __init__(self,engine, client):
-        # Initialize conversation with a system message
-        self.conversation = [{"role": "system", "content": "You are a helpful assistant."}]
-        self.engine = engine
-        self.client = client
-    def add_message(self, role, content):
-        # Adds a message to the conversation.
-
-        self.conversation.append({"role": role, "content": content})
-    def generate_response(self, prompt):
-        # Add user prompt to conversation
-        self.add_message("user", prompt)
-
-        try:
-            # Make a request to the API using the chat-based endpoint with conversation context
-            response = self.client.chat.completions.create( model=self.engine, messages=self.conversation, temperature= 0.0, top_p = 0.1)
-            # Extract the response
-            #print(response)
-            assistant_response = response.choices[0].message.content.strip()
-
+def reasoning(model,claim,initial_prompt, label, f, sub_prompt):
             
-            # Add assistant response to conversation
-            self.add_message("assistant", assistant_response)
-            # Return the response
-            return assistant_response
-        #except:
-        #    print('Error Generating Response!')
-        except openai.APIError as e:
-            #Handle API error here, e.g. retry or log
-            print(f"OpenAI API returned an API Error: {e}")
-            return f"OpenAI API returned an API Error: {e}"
-            
-def reasoning(claim,initial_prompt, label, f, sub_prompt, engine):
-            
+    if model =="gpt" : engine="gpt-4o-mini-2024-07-18"
+    elif model=='mixtral': engine = "open-mixtral-8x22b"
     
-    chatbot = OpenAIBot(engine, client)
+    chatbot = models.OpenAIBot(model, engine)
 
     iter_limit=15
     gold_set =[]
@@ -152,9 +120,10 @@ def split_functions(response):
     helper_ftn_calls=[]
     prompt=''
     try:
-        response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
-        functions = response.split("Helper function : ")[1]
+        response = response.replace("[ChatBot]\n",'')
+        response = "[ChatBot]\n" + response
+        statement = response.split("Statement")[0].split("Helper function")[0]
+        functions = response.split("Helper function")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
         else :
@@ -255,14 +224,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", type=str, default="existence")
     parser.add_argument("--num_iter", type = int, default = "15")
-    parser.add_argument("--model", type = str, default= "gpt-3.5-turbo")
+    parser.add_argument("--model", type = str, default= "gpt")
     args = parser.parse_args()
     
     #save_path = f"./result"
-    save_path = f"result_{args.type}_{args.model}_maxiter_{args.num_iter}_multicalls_temp0"
+    save_path = f"mixtral_result_{args.type}_{args.model}_maxiter_{args.num_iter}_multicalls_temp0"
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     
+        
+        
     result = {}
     questions_dict = {}
     entity_set_dict = {}
@@ -283,15 +254,12 @@ if __name__ == "__main__":
 
     if args.type == 'existence': qid_list = sample_number.existence
     elif args.type =="num1" : qid_list = sample_number.num1
-    elif args.type =='multi_claim' : qid_list = sample_number.multi_claim
+    elif args.type =='multi_claim' : qid_list = sample_number.multi_claim_v2
     elif args.type =="multi_hop" : qid_list = sample_number.multi_hop
     else:
         print("Wrong argument")
     
-    
-    if args.model == 'gpt-3.5' :  engine= "gpt-3.5-turbo-0125"         
-    elif args.model == 'gpt-4o-mini' : engine = "gpt-4o-mini-2024-07-18"
-    elif args.model == 'gpt4o' : engine ="gpt-4o-2024-08-06"
+
     
     
     sub_prompt = prompts_sub.sub_1
@@ -319,11 +287,12 @@ if __name__ == "__main__":
                 
                 main_prompt = prompts_list[p].replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
                 
-                prediction, iter_num = reasoning(question,main_prompt, label,f, sub_prompt, engine)
+                prediction, iter_num = reasoning(args.model,question,main_prompt, label,f, sub_prompt)
                 iter_num_list.append(iter_num)
                 answer_list.append(prediction)
             
                 f.close()
+    
                 
         #print(f"Answer list:{answer_list}")         
         ###############ensemble
