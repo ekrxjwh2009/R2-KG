@@ -12,10 +12,11 @@ import prompt_main
 import prompt_sub
 import subagent as sa
 from models import LLMBot
+from collections import defaultdict
 
 
             
-def reasoning(model,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
+def reasoning(model,subagent ,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
             
     chatbot = LLMBot(model, temperature=0.95, top_p=0.95, max_tokens=2000)
    
@@ -29,7 +30,7 @@ def reasoning(model,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state = client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, KG)
+            prompt, result, triples, relations, get_rel_state = client_answer(claim,subagent ,response, label, gold_set,gold_relations,f,sub_prompt, KG)
             
             if len(triples) > 0:
                 gold_set+=triples
@@ -57,8 +58,8 @@ def split_functions(response):
     helper_ftn_calls=[]
     prompt=''
     try:
-        response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function")[0]
+        response = response.replace("[Your Task]\n",'')
+        statement = response.split("Statement")[0].split("Helper function")[0]
         functions = response.split("Helper function")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
@@ -71,7 +72,7 @@ def split_functions(response):
         
     return helper_ftn_calls, prompt
     
-def client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, KG):
+def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -103,7 +104,7 @@ def client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, K
         
             
         elif 'Verification' in helper_str:
-            sub_answer, case, result = verification(claim,gold_set,gold_relations,f, sub_prompt)
+            sub_answer, case, result = verification(subagent,claim,gold_set,gold_relations,f, sub_prompt)
             prompt += "\n" +sub_answer
             
             f.write(f"CASE COUNT:{case}")
@@ -177,8 +178,8 @@ def exploreKGs(helper_str, KG):
     return triples, result_prompt
 
 
-def verification(claim,gold_set,gold_relations,f, sub_prompt):
-    sub_response, case, prediction =sa.feedback(claim,gold_set,gold_relations,f,sub_prompt)
+def verification(subagent,claim,gold_set,gold_relations,f, sub_prompt):
+    sub_response, case, prediction =sa.feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt)
     return sub_response, case, prediction
 
 def score(predict, label,f):
@@ -311,32 +312,47 @@ if __name__ == "__main__":
     
     #python chatbot_2Agent.py --type time_join --prompt pr_1 --model gpt-3.5
     parser = argparse.ArgumentParser()
-    parser.add_argument("--type", type=str, default="before_after")
+    #parser.add_argument("--type", type=str, default="before_after")
     parser.add_argument("--prompt", type=str, default='pr_1')
+    parser.add_argument("--percentage", type=int, default=10)
     parser.add_argument("--model", type = str, default='mistral-small')
+    parser.add_argument("--subagent", type=str, default='gpt-4o-mini')
     args = parser.parse_args()
     
     if args.prompt =='pr_1': 
         sub_prompt = prompt_sub.pr_1 
         main_prompt = prompt_main.pr_1
-        save_path = f"./results/2Agent/sub_4omni/{args.model}/result_pr1/"
+        save_path = f"./results_final/2Agent/{args.model}/sub_{args.subagent}/result_pr1/"
     elif args.prompt =='pr_2': 
         sub_prompt = prompt_sub.pr_2
         main_prompt = prompt_main.pr_2
-        save_path = f"./results/2Agent/sub_4omini/{args.model}/result_pr2"
+        save_path = f"./results_final/2Agent/{args.model}/sub_{args.subagent}/result_pr2/"
     else : 
         sub_prompt = prompt_sub.pr_3
         main_prompt = prompt_main.pr_3
-        save_path = f"./results/2Agent/sub_4omini/{args.model}/result_pr3"
+        save_path = f"./results_final/2Agent/{args.model}/sub_{args.subagent}/result_pr3/"
         
     
-    question_path = f"/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/{args.type}.json"
+    
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     
     
     full_KG, entid2txt_dict, relid2txt_dict = make_data()
-    qa_list = parsing_question(question_path,entid2txt_dict, relid2txt_dict)
+    time_join_question_path = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/time_join.json"
+    simple_time_question_path = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/simple_time.json"
+    simple_entity_question_path = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/simple_entity.json"
+    time_join_qa_list = parsing_question(time_join_question_path,entid2txt_dict, relid2txt_dict) #3832
+    simple_time_qa_list = parsing_question(simple_time_question_path,entid2txt_dict, relid2txt_dict)    #5046
+    simple_entity_qa_list = parsing_question(simple_entity_question_path,entid2txt_dict, relid2txt_dict)    #7812
+    
+    qa_list_dict = defaultdict(list)
+    if args.percentage ==10:
+        #qa_list_dict = {time_join_qa_list:[10*i for i in range(383)] , simple_time_qa_list:[10*i for i in range(504)], simple_entity_qa_list:[10*i for i in range(780)]}
+        qa_list_dict = [time_join_qa_list,simple_time_qa_list,simple_entity_qa_list]
+        qid_list_dict = {0: [10*i for i in range(3)] , 1:[10*i for i in range(3)], 2:[10*i for i in range(3)]}
+    elif args.percentage ==20:
+        qa_list_dict = {time_join_qa_list:[10*i for i in range(383*2)] , simple_time_qa_list:[10*i for i in range(504*2)], simple_entity_qa_list:[10*i for i in range(780*2)]}
     
     result = {}
     questions_dict = {}
@@ -349,38 +365,43 @@ if __name__ == "__main__":
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
     iter_limit_result = [['iterlimit', 'metric1','metric2','metric3']]
-    qid_list = [10*i for i in range(100)]
     
-    #iter_limit_list = [25,20,15,10,5]
+    
     iter_limit_list = [10]
+    order =0
     for iter_limit in iter_limit_list:
         print(f"iter limit:{iter_limit}")
         total_correct, total_abs,total_wrong =0,0,0
-        with open(os.path.join(save_path, f"{args.type}.txt"),'a') as f:
-            for qid in qid_list:
+        for qa_list in qa_list_dict:
+            qid_list = qid_list_dict[order]
+            
+            with open(os.path.join(save_path, f"result.txt"),'a') as f:
+                for qid in qid_list:
 
-                print(f"Qid:{qid}")
-                question = qa_list[qid]['question']
-                label = qa_list[qid]['answers']
-                entities = qa_list[qid]['given_entities']
-                
-                f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-                f.write(f"GT entity:{entities}")
-                
-                prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
-                
-                prediction, iter_num = reasoning(args.model,question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG)
-                
-                abs, correct, wrong= score(str(prediction), label,f)
-                total_correct += correct
-                total_wrong += wrong
-                total_abs += abs
-                iter_num_list.append(iter_num)
-                
-                ff = open(os.path.join(save_path, f"{args.type}_answer.csv"),'a')
-                writer= csv.writer(ff)
-                writer.writerow([qid, prediction, label])
-                ff.close()
+                    print(f"Qid:{qid}")
+                    question = qa_list[qid]['question']
+                    label = qa_list[qid]['answers']
+                    entities = qa_list[qid]['given_entities']
+                    
+                    f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                    f.write(f"GT entity:{entities}")
+                    
+                    prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+                    
+                    prediction, iter_num = reasoning(args.model, args.subagent ,question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG)
+                    
+                    abs, correct, wrong= score(str(prediction), label,f)
+                    total_correct += correct
+                    total_wrong += wrong
+                    total_abs += abs
+                    iter_num_list.append(iter_num)
+                    
+                    ff = open(os.path.join(save_path, f"Only_answer.csv"),'a')
+                    writer= csv.writer(ff)
+                    writer.writerow([qid, prediction, label])
+                    ff.close()
+                    
+            order +=1
 
-                
-            total_sample = len(qid_list)
+                    
+

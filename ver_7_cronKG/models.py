@@ -1,82 +1,85 @@
-import os
-import openai
+import time
 from openai import OpenAI
-from mistralai import Mistral
+import tiktoken
 
+VLLM_API_BASE_MISTRAL_SMALL = "http://143.248.157.70:8334/v1"       #RTX 3090 * 8
+VLLM_API_QWEN_14B = ""
+VLLM_API_QWEN_32B = ""
+VLLM_API_LLAMA_70B = ""
+VLLM_API_KEY = "EMPTY"  # No API key required for vLLM
 
-###GPT 제외한 나머지 모델
-
-#time_gap = {}
-
-# Modify OpenAI's API key and API base to use vLLM's API server.
-VLLM_API_KEY = "EMPTY"
-#VLLM_API_BASE = "http://localhost:9123/v1"
-#vllm_client = OpenAI(api_key=VLLM_API_KEY, base_url=VLLM_API_BASE)
-
-
-
-
-class chatBot:
-    def __init__(self,model,temperature, top_p):
-        '''
-        # Initialize conversation with a system message
-        assert model in [
-        "meta-llama/Meta-Llama-3.1-70B-Instruct",
-    ]
-    time.sleep(time_gap.get(model, 3))
-'''
-        
-        
+class LLMBot:
+    def __init__(self, model, temperature, top_p, max_tokens):
         self.conversation = [{"role": "system", "content": "You are a helpful assistant."}]
-        self.model = model
-        self.temp = temperature #base .95
-        self.top_p = top_p #base 0.95
-        self.max_tokens = 500
+        self.max_context_length = 16384  # 모델의 최대 입력 길이
+        self.max_tokens = max_tokens
         
-        if self.model == "mistral-large": 
-            self.VLLM_API_BASE = "vqEwVLjtDQcL6zJTUj9Q1R6MKHNkuB6F"
-            #self.VLLM_API_BASE = Mistral(api_key=self.api_key)
-            
-        elif self.model == 'mistral-instruct' : ##mistral instruct small
-            self.VLLM_API_BASE = "http://143.248.157.51:8043/v1"
-            
-        elif self.model == 'qwen_2.5_32b': ##qwen2.5-32b
-            self.VLLM_API_BASE = "http://143.248.157.77:8043/v1"
+        if model == 'mistral-small':
+            self.model = "mistralai/Mistral-Small-Instruct-2409"
+            self.url = VLLM_API_BASE_MISTRAL_SMALL
+        elif model =='qwen_14b':
+            self.model = "Qwen/Qwen2.5-14B-Instruct"
+            self.url = VLLM_API_QWEN_14B
+        elif model == 'qwne_32b':
+            self.model = "Qwen/Qwen2.5-32B-Instruct"
+            self.url = VLLM_API_QWEN_32B
+        elif model=='llama':
+            self.model == "meta-llama/Meta-Llama-3.1-70B-Instruct"
+            self.url = VLLM_API_LLAMA_70B 
 
-        elif self.model == 'qwen_2.5': ##qwen2.5-14b
-            self.VLLM_API_BASE == "http://143.248.157.68:8043/v1"
-        
-        elif self.model == 'llama': ##llama3.1-70b
-            self.VLLM_API_BASE ="http://143.248.157.77:8044/v1"
+        self.temperature = temperature
+        self.top_p = top_p
+        self.vllm_client = OpenAI(api_key=VLLM_API_KEY, base_url=self.url)
+        self.tokenizer = tiktoken.get_encoding("cl100k_base")
 
+    def add_message(self, role, message):
+        self.conversation.append({"role": role, "content": message})
+        while self.calculate_total_tokens() > (self.max_context_length - self.max_tokens):
+            self.conversation.pop(0)
             
-        self.client = OpenAI(api_key=VLLM_API_KEY, base_url=self.VLLM_API_BASE)
-            
-    def add_message(self, role, content):
-        # Adds a message to the conversation.
+    def calculate_total_tokens(self):
+        # 대화 내 모든 메시지의 토큰 수 계산
+        total_tokens = 0
+        for msg in self.conversation:
+            total_tokens += len(self.tokenizer.encode(msg["content"]))
+        return total_tokens
 
-        self.conversation.append({"role": role, "content": content})
     def generate_response(self, prompt):
-        # Add user prompt to conversation
-        self.add_message("user", prompt)
-
+        self.add_message('user', prompt)
+        
         try:
-            res = self.client.chat.completions.create(
+            response = self.vllm_client.chat.completions.create(
                 model=self.model,
                 messages=self.conversation,
                 temperature=self.temperature,
-                n=1,
+                top_p=self.top_p,
                 max_tokens=self.max_tokens,
             )
-            self.response =  res.choices[0].message.content
-        
-        except Exception as e:
-            print(e)
-            #time.sleep(time_gap.get(model, 3) * 2)
-            #return vllm_response(message, model, temperature, max_tokens)
-        self.add_message('assistant', self.response)
+            assistant_response = response.choices[0].message.content.strip()
+            self.add_message('assistant', assistant_response)
+            return assistant_response
 
+        except Exception as e:
+            print(f"Error during API call: {e}")
+            return "I'm sorry, something went wrong."
             
-model_name = "meta-llama/Meta-Llama-3-70B-Instruct"
-messages = [{"role": "user", "content": "What is your name?"}]
-response = chatBot(messages=messages, model=model_name)
+        
+
+if __name__ == "__main__":
+    bot = LLMBot("mistralai/Mistral-Small-Instruct-2409", 0.7, 0.9, 2000)
+    print(bot.generate_response("What is the purpose of life?"))
+
+
+
+
+
+'''
+
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python -m vllm.entrypoints.openai.api_server \
+    --model mistralai/Mistral-Small-Instruct-2409 \
+    --tensor-parallel-size 8 \
+    --port 8334 \
+    --dtype bfloat16 \
+    --max-model-len 16384
+
+    '''
