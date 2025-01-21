@@ -17,7 +17,7 @@ class LLMBot:
         elif model =='qwen_14b':
             self.model = "Qwen/Qwen2.5-14B-Instruct"
             self.url = VLLM_API_QWEN_14B
-        elif model == 'qwne_32b':
+        elif model == 'qwen_32b':
             self.model = "Qwen/Qwen2.5-32B-Instruct"
             self.url = VLLM_API_QWEN_32B
         elif model=='llama':
@@ -54,7 +54,7 @@ class LLMBot:
         
 
 if __name__ == "__main__":
-    bot = LLMBot("mistralai/Mistral-Small-Instruct-2409", 0.7, 0.9, 2000)
+    bot = LLMBot("mistralai/Mistral-Small-Instruct-2409", 0.95, 0.95, 2000)
     print(bot.generate_response("What is the purpose of life?"))
 
 
@@ -63,11 +63,11 @@ if __name__ == "__main__":
 
 '''
 
-CUDA_VISIBLE_DEVICES=3,5,6,7 python -m vllm.entrypoints.openai.api_server \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python -m vllm.entrypoints.openai.api_server \
     --model mistralai/Mistral-Small-Instruct-2409 \
-    --tensor-parallel-size 4 \
+    --tensor-parallel-size 8 \
     --port 8334 \
     --dtype bfloat16 \
-    --max-model-len 8192 
+    --max-model-len 32768
 
     '''

@@ -1,0 +1,5 @@
+qid,predictions,gt_label
+qid,predictions,gt_label
+7651,"['False', 'True', 'False']",True
+6807,"['Abstain', 'False', 'False']",False
+7515,"['False', 'False', 'False']",False

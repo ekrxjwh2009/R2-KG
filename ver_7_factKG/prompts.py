@@ -12,34 +12,38 @@ You must follow the exact format of the given helper function.
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
 You have to use proper helper functions to find proper information to verify the given claim.
-Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Once you give a response about helper function, stop for [User] response. If response has made, continue your [Your Task] (Do not make multiple 'Helper function: ' lines).
+Importantly, you have to use inverse relation if you need. For example, if you want to find films starred by certain actors (when only actors were given), you have to use '~starred_actors' relation such as exploreKG['actor']=['~starred_actors'].
 Importantly, Do not change the format of the entity or relation including '~'.
+
+Here are some examples.
+
 
 Example 1)
 Claim: The airport in Punjab, Pakistan is operated by the government agency of the Jinnah International Airport.
 Given entity: ["\"Punjab, Pakistan\"", "Jinnah_International_Airport"]
 
-[ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. First, I need the relation list actually linked with the entity.
 Helper function : getRelation["\"Punjab, Pakistan\""] ## getRelation["Jinnah_International_Airport"]
 [User]
 Execution result : Relation_list["\"Punjab, Pakistan\""] = ['s', 'divdab', 'state', 'location', 'birthPlace', 'placeOfBirth', 'rdf-schema#label', 'deathPlace', 'placeOfDeath', 'origin', 'mapCaption', 'country'], Relation_list("Jinnah_International_Airport") = ['statYear', 'website', 'elevationF', 'stat2Data', 'r2LengthM', 'r1Number', 'stat1Data', '~targetAirport', 'icao', '~secondaryHubs', 'stat3Header', 'stat2Header', '~hubs', 'operator', 'imageWidth', 'airportManager', '~hubAirport', 'iata', 'type', 'r2Number', 'city', 'ownerOper', 'name', 'metricRwy', 'elevationM', 'hub', 'hypernym', '~headquarter', '~bases', '~origin', 'stat1Header', 'image2Width', 'runwayLength', 'icaoLocationIdentifier', 'owner', 'homepage', '22-rdf-syntax-ns#type', '~stopover', 'r1Surface', 'r1LengthM', 'subject', 'runwayDesignation', 'rdf-schema#label', '~wikiPageRedirects', 'image', 'stat3Data', '~location', 'location', '~target', '~headquarters', 'r2Surface', 'elevation', 'iataLocationIdentifier', 'runwaySurface', 'r2LengthF', 'r1LengthF', 'cityServed']
-[ChatGPT]
+[Your Task]
 Statement : Now, to find the airport located in Punjab, I need to explore the graph with "Punjab, Pakistan" and related relations. Also, to find the government agency of 'Jinnah_International_Airport', I need to explore the graph too.
 Helper function : exploreKG["\"Punjab, Pakistan\""]=['location']) ## exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
 [User]
 Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : There are many airports in 'Punjab, Pakistan', and the operator of 'Jinnah_International_Airport' is 'Pakistan_Civil_Aviation_Authority'. Here, we have to find the proper relation to find the operator of the airports.
 Helper function : getRelation['Allama_Iqbal_International_Airport'] ## getRelation['Faisalabad_International_Airport'] ## getRelation('Multan_International_Airport')
 [User]
 Execution result : Relation_list['Allama_Iqbal_International_Airport'] = ['operator', 'operatingOrganisation', 'hub'], Relation_list['Faisalabad_International_Airport'] = ['operator', 'owner'], Relation_list('Multan_International_Airport') = ['operator', 'owner']
-[ChatGPT]
+[Your Task]
 Statement : To find the operator of the airports, I need to explore the graph for each airport.
 Helper function : exploreKG['Allama_Iqbal_International_Airport']=['operator', 'operatingOrganisation'] ## exploreKG['Faisalabad_International_Airport']=['operator'] ## exploreKG['Multan_International_Airport']=['operator']
 [User]
 Execution result : ['Allama_Iqbal_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Allama_Iqbal_International_Airport', 'operatingOrganisation', 'Pakistan_Civil_Aviation_Authority'], ['Faisalabad_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Multan_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Since all of the airports' operator is government agency 'Pakistan_Civil_Aviation_Authority' and also the operator of 'Jinnah International Airport', the claim is True.
 Helper function : Verification[True]
 
@@ -47,17 +51,17 @@ Example 2)
 Claim: Tim Brooke-Taylor starred as a fictional character, which was first aired on 10/03/1983 and was broadcast by STV.
 Given entity: ["\"1983-10-03\"", "\"STV\"", "Tim_Brooke-Taylor"]
 
-[ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. First, I need the relation list actually linked with the entity.
 Helper function : getRelation["\"1983-10-03\""] ## getRelation["\"STV\""] ## getRelation["Tim_Brooke-Taylor"]
 [User]
 Execution result : Relation_list["\"1983-10-03\""] = ['~deathDate', '~activeYearsStartDate', '~added', '~dateOfDeath', '~date', '~years', '~termStart', '~start', '~birthDate', '~establishedDate', '~released', '~openingDate', '~foundingDate', '~age', '~releaseDate', '~originalairdate', '~firstAired', '~dateOfBirth'], Relation_list["\"STV\""] = ['~title', '~sisterNames', '~tv', '~formerName', '~code', '~owner', '~undp', '~distributor', '~name', '~alt', '~formerNames', '~callLetters', '~iataLocationIdentifier', '~rdf-schema#label', '~agencyStationCode', '~callSign', '~broadcastedBy', '~channel', '~iata'], Relation_list('Tim_Brooke-Taylor') = ['birthName', '~voice', '~caption', '~author', 'hypernym', '22-rdf-syntax-ns#type', 'name', 'surname', 'placeOfBirth', 'description', 'genre', 'notableWork', 'dateOfBirth', 'birthDate', 'honorificSuffix', 'shortDescription', 'subject', 'title', 'nationality', '~before', '~voices', 'imdbId', 'spouse', 'rdf-schema#label', 'birthPlace', '~writer', '~after', 'years', 'givenName', 'birthYear', '~starring', '~creator', 'active']
-[ChatGPT]
+[Your Task]
 Statement : To verify the information in the claim, I can choose proper relation for each entity.
 Helper function : exploreKG["\"1983-10-03\""]=['~firstAired'] ## exploreKG["\"STV\""]=['~broadcastedBy', '~channel'] ## exploreKG["Tim_Brooke-Taylor"]=['~starring']
 [User]
 Execution result : ["\"1983-10-03\"", '~firstAired', 'Terrahawks'], ["\"1983-10-03\"", '~firstAired', 'Scarecrow_and_Mrs._King'], ["\"1983-10-03\"", '~firstAired', 'Orm_and_Cheep'], ["\"1983-10-03\"", '~firstAired', 'Watch_Mr._Wizard'], ["\"1983-10-03\"", '~firstAired', 'Where_in_the_World_(UK_game_show)'], ["\"1983-10-03\"", '~firstAired', 'Go_(game_show)'], ['"1983-10-03"', '~firstAired', 'Bananaman'], ["\"STV\"", '~broadcastedBy', 'Bananaman'], ["\"STV\"", '~channel', 'Brain_Box'], ['Tim_Brooke-Taylor', '~starring', 'How_to_Irritate_People'], ['Tim_Brooke-Taylor', '~starring', 'Broaden_Your_Mind'], ['Tim_Brooke-Taylor', '~starring', 'ISIRTA_songs'], ['Tim_Brooke-Taylor', '~starring', 'What_the_Dickens'], ['Tim_Brooke-Taylor', '~starring', 'Bananaman']
-[ChatGPT]
+[Your Task]
 Statement : There is the fictional character 'Bananaman' which satisfy all the information in the claim.
 Helper function : Verification[True]
 
@@ -65,27 +69,27 @@ Example 3)
 Claim: Samsung is located in São Paulo.
 Given entity: ["Samsung", "São_Paulo"]
 
-[ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. First, I need the relation list actually linked with the entity.
 Helper function : getRelation["Samsung"] ## getRelation["São_Paulo"]
 [User]
 Execution result : Relation_list["Samsung"] = ['numEmployees', 'keyPeople', 'industry', 'type', 'hypernym', 'subsidiary', 'logo', 'subject', 'foundation', 'product', '22-rdf-syntax-ns#type', 'name', 'netIncome', 'foundingDate', 'rdf-schema#label', 'revenue', 'homepage', 'subsid', 'location', 'foundingYear', 'keyPerson', 'products', 'numberOfEmployees'], Relation_list["São_Paulo"] = ['imageCaption', 'coordinatesRegion', '22-rdf-syntax-ns#type', '~capital', 'areaCityKm', 'establishedTitle', '~west', 'motto', '~before', 'populationRank', 'float', 'foundingDate', '~locationTown', 'subdivisionType', '~finalAssembly', 'populationTotalRanking', 'rainfall', '~location']
-[ChatGPT]
+[Your Task]
 Statement : To verify the information in the claim, I have to find the location of 'Samsung' or place located in 'São_Paulo'.
 Helper function : exploreKG["Samsung"]=['location'] ## exploreKG["São_Paulo"]=['~location']
 [User]
 Execution result : ['Samsung', 'location', 'Korea'], ['Samsung', 'location', 'Seoul'], ['São_Paulo', '~location', '2009_Santos_FC_season'], ['São_Paulo', '~location', 'Vanguarda_Agro']
-[ChatGPT]
+[Your Task]
 Statement : I need to check "São_Paulo" is located in 'Korea' or 'Seoul'. I need to explore the graph from "São_Paulo".
 Helper function : getRelation["São_Paulo"] 
 [User]
 Execution result : Relation_list["São_Paulo"] = ['imageCaption', 'coordinatesRegion', '22-rdf-syntax-ns#type', '~capital', 'areaCityKm', 'establishedTitle', '~west', 'motto', '~before', 'populationRank', 'float', 'foundingDate', '~locationTown', 'subdivisionType', '~finalAssembly', 'populationTotalRanking', 'rainfall', '~location']
-[ChatGPT]
+[Your Task]
 Statement : To verify "São_Paulo" is located in 'Korea' or 'Seoul', I have to find the related location of "São_Paulo".
 Helper function : exploreKG["São_Paulo"]=['~capital', '~locationTown', '~location']
 [User]
 Execution result : ['São_Paulo', '~capital', 'São_Paulo_Province'], ['São_Paulo', '~locationTown', 'Ibirapuera_Auditorium], ['São_Paulo', '~location', '1972_São_Paulo_FC_season'], ['São_Paulo', '~location', '2013–14_in_Swiss_football']
-[ChatGPT]
+[Your Task]
 Statement : Since we cannot verify "São_Paulo" is located in 'Korea' or 'Seoul' by execution result, given claim is False.
 Helper function : Verifiation[False]
 
@@ -97,79 +101,82 @@ Given entity: <<<<GT_ENTITY>>>>
 
 main_agent_1by1 = """
 Your task is finding proper labels for given claim based on the graph data without your base knowledge.
-You can use one of the helper functions below to find the evidence for finding labels.
+You can use below helper functions to find the evidence for finding labels.
 
 Helper Functions
 1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
 2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
-3.Verification[]: If you can judge the claim as True or False give the answer.
+3.Verification[True or False]: If you can judge the claim as True or False give the answer.
 
 You must follow the exact format of the given helper function.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
 You have to use proper helper functions to find proper information to verify the given claim.
-Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Once you give a response about helper function, stop for [User] response. If response has made, continue your [Your Task] (Do not make multiple 'Helper function: ' lines).
+Importantly, you have to use inverse relation if you need. For example, if you want to find films starred by certain actors (when only actors were given), you have to use '~starred_actors' relation such as exploreKG['actor']=['~starred_actors'].
 Importantly, Do not change the format of the entity or relation including '~'.
+
+Here are some examples.
 
 Example 1)
 Claim: The airport in Punjab, Pakistan is operated by the government agency of the Jinnah International Airport.
 Given entity: ["\"Punjab, Pakistan\"", "Jinnah_International_Airport"]
 
-[ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. First, I need the relation list linked to Punjab, Pakistan
 Helper function : getRelation["\"Punjab, Pakistan\""] 
 [User]
 Execution result : Relation_list["\"Punjab, Pakistan\""] = ['s', 'divdab', 'state', '~location', 'birthPlace', 'placeOfBirth', 'rdf-schema#label', 'deathPlace', 'placeOfDeath', 'origin', 'mapCaption', 'country']
-ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. Now, I need the relation list linked to Jinnah_International_Airport
 Helper function : getRelation["Jinnah_International_Airport"]
 [User]
 Execution result : Relation_list("Jinnah_International_Airport") = ['statYear', 'website', 'elevationF', 'stat2Data', 'r2LengthM', 'r1Number', 'stat1Data', '~targetAirport', 'icao', '~secondaryHubs', 'stat3Header', 'stat2Header', '~hubs', 'operator', 'imageWidth', 'airportManager', '~hubAirport', 'iata', 'type', 'r2Number', 'city', 'ownerOper', 'name', 'metricRwy', 'elevationM', 'hub', 'hypernym', '~headquarter', '~bases', '~origin', 'stat1Header', 'image2Width', 'runwayLength', 'icaoLocationIdentifier', 'owner', 'homepage', '22-rdf-syntax-ns#type', '~stopover', 'r1Surface', 'r1LengthM', 'subject', 'runwayDesignation', 'rdf-schema#label', '~wikiPageRedirects', 'image', 'stat3Data', '~location', 'location', '~target', '~headquarters', 'r2Surface', 'elevation', 'iataLocationIdentifier', 'runwaySurface', 'r2LengthF', 'r1LengthF', 'cityServed']
-[ChatGPT]
+[Your Task]
 Statement : Now, to find the airport located in Punjab, I need to explore the graph with "Punjab, Pakistan" related to location.     and related relations. Also, to find the government agency of 'Jinnah_International_Airport', I need to explore the graph too.
 Helper function : exploreKG["\"Punjab, Pakistan\""]=['~location'])
 [User]
 Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], 
-[ChatGPT]
+[Your Task]
 Statement : Also, to find the government agency of 'Jinnah_International_Airport', look triples linked by 'operator', 'ownerOper'.
 Helper function : exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
 [User]
 Execution result : ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : There are three aiports in Punjab, Pakistan. We need relations of those three airpots. First,let's look Allama_Iqbal_International_Airport's relations.
 Helper function : getRelation['Allama_Iqbal_International_Airport']
 [User]
 Execution result : 
 Relation_list['Allama_Iqbal_International_Airport'] = ['operator', 'operatingOrganisation', 'hub']
-[ChatGPT]
+[Your Task]
 Statement : Next,let's look Faisalabad_International_Airport's relations.
 Helper function : getRelation['Faisalabad_International_Airport']
 [User]
 Execution result : 
 Relation_list['Faisalabad_International_Airport'] = ['operator', 'owner']
-[ChatGPT]
+[Your Task]
 Statement : Next,let's look Multan_International_Airport's relations.
 Helper function : getRelation['FMultan_International_Airport']
 [User]
 Execution result : 
 Relation_list('Multan_International_Airport') = ['operator', 'owner']
-[ChatGPT]
+[Your Task]
 Statement : To find the operator of the airports, I need to explore the graph for each airports related to operator.
 Helper function : exploreKG['Allama_Iqbal_International_Airport']=['operator', 'operatingOrganisation'] 
 [User]
 Execution result : ['Allama_Iqbal_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Allama_Iqbal_International_Airport', 'operatingOrganisation', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Now, let's check the operator of Faisalabad_International_Airport
 Helper function : exploreKG['Faisalabad_International_Airport']=['operator']
 [User]
 Execution result : ['Faisalabad_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Now, let's check the operator of Multan_International_Airport
 Helper function : exploreKG['Multan_International_Airport']=['operator']
 [User]
 Execution result :['Multan_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Since all of the airports' operator is government agency 'Pakistan_Civil_Aviation_Authority' and also the operator of 'Jinnah International Airport', the claim is True.
 Helper function : Verification[True]
 
@@ -178,43 +185,43 @@ Example 2)
 Claim: Tim Brooke-Taylor starred as a fictional character, which was first aired on 10/03/1983 and was broadcast by STV.
 Given entity: ["\"1983-10-03\"", "\"STV\"", "Tim_Brooke-Taylor"]
 
-[ChatGPT]
+[Your Task]
 Statement : First, I need relations linked to Tim_Brooke-Taylor
 Helper function : getRelation["Tim_Brooke-Taylor"]
 [User]
 Execution result : 
 Relation_list('Tim_Brooke-Taylor') = ['birthName', '~voice', '~caption', '~author', 'hypernym', '22-rdf-syntax-ns#type', 'name', 'surname', 'placeOfBirth', 'description', 'genre', 'notableWork', 'dateOfBirth', 'birthDate', 'honorificSuffix', 'shortDescription', 'subject', 'title', 'nationality', '~before', '~voices', 'imdbId', 'spouse', 'rdf-schema#label', 'birthPlace', '~writer', '~after', 'years', 'givenName', 'birthYear', '~starring', '~creator', 'active']
-[ChatGPT]
+[Your Task]
 Statemnt : I need relation linked to 1983-10-03.
 Helper function : getRelation["\"1983-10-03\""] 
 [User]
 Execution result : 
 Relation_list["\"1983-10-03\""] = ['~deathDate', '~activeYearsStartDate', '~added', '~dateOfDeath', '~date', '~years', '~termStart', '~start', '~birthDate', '~establishedDate', '~released', '~openingDate', '~foundingDate', '~age', '~releaseDate', '~originalairdate', '~firstAired', '~dateOfBirth']
-[ChatGPT]
+[Your Task]
 Statemnt : I need relation linked to STV.
 Helper function : getRelation["\"STV\""] 
 [User]
 Execution result : 
 Relation_list["\"STV\""] = ['~title', '~sisterNames', '~tv', '~formerName', '~code', '~owner', '~undp', '~distributor', '~name', '~alt', '~formerNames', '~callLetters', '~iataLocationIdentifier', '~rdf-schema#label', '~agencyStationCode', '~callSign', '~broadcastedBy', '~channel', '~iata']
-[ChatGPT]
+[Your Task]
 Statement : To get the starred information about Tim Brooke-Taylor, I need triples linked with '~starring' with Tim Brooke-Taylor.
 Helper function : exploreKG["Tim_Brooke-Taylor"]=['~starring']
 [User]
 Execution result:
 ['Tim_Brooke-Taylor', '~starring', 'How_to_Irritate_People'], ['Tim_Brooke-Taylor', '~starring', 'Broaden_Your_Mind'], ['Tim_Brooke-Taylor', '~starring', 'ISIRTA_songs'], ['Tim_Brooke-Taylor', '~starring', 'What_the_Dickens'], ['Tim_Brooke-Taylor', '~starring', 'Bananaman']
-[ChatGPT]
+[Your Task]
 Statement : From the triples, Tim Brooke Taylor starred on How_to_Irritate_People,Broaden_Your_Mind,ISIRTA_songs,What_the_Dickens,Bananaman. Now, let's check the first aired date of each program.
 Helper function : exploreKG["\"1983-10-03\""]=['~firstAired'] 
 [User]
 Execution reuslt:
 ["\"1983-10-03\"", '~firstAired', 'Terrahawks'], ["\"1983-10-03\"", '~firstAired', 'Scarecrow_and_Mrs._King'], ["\"1983-10-03\"", '~firstAired', 'Orm_and_Cheep'], ["\"1983-10-03\"", '~firstAired', 'Watch_Mr._Wizard'], ["\"1983-10-03\"", '~firstAired', 'Where_in_the_World_(UK_game_show)'], ["\"1983-10-03\"", '~firstAired', 'Go_(game_show)'], ['"1983-10-03"', '~firstAired', 'Bananaman']
-[ChatGPT]
+[Your Task]
 Statement : From the triples, Bananman was first aired on 1983-10-03 which satisfy the claim. Now, I need to check if the Bananaman broadcast by STV.
 Helper function : exploreKG["\"STV\""]=['~broadcastedBy', '~channel']
 [User]
 Execution reuslt : 
 ["\"STV\"", '~broadcastedBy', 'Bananaman'], ["\"STV\"", '~channel', 'Brain_Box']
-[ChatGPT]
+[Your Task]
 Statement : According to the triples, Bananman broadcast by STV and first starred on 1983-10-03 and Tim Brooke Taylor starred on. So the claim is True.
 Helper function : Verification[True]
 
@@ -223,36 +230,36 @@ Example 3)
 Claim: Samsung is located in São Paulo.
 Given entity: ["Samsung", "São_Paulo"]
 
-[ChatGPT]
+[Your Task]
 Statement : First, I need information about Samsung.
 Helper function : getRelation["Samsung"]
 [User]
 Execution result : 
 Relation_list["Samsung"] = ['numEmployees', 'keyPeople', 'industry', 'type', 'hypernym', 'subsidiary', 'logo', 'subject', 'foundation', 'product', '22-rdf-syntax-ns#type', 'name', 'netIncome', 'foundingDate', 'rdf-schema#label', 'revenue', 'homepage', 'subsid', 'location', 'foundingYear', 'keyPerson', 'products', 'numberOfEmployees']
-[ChatGPT]
+[Your Task]
 Statement : To know the location of Samsung, I need triples linked by 'location' with Samsung.
 Helper function : exploreKG["Samsung"]=['location']
 [User]
 Execution result :
 ['Samsung', 'location', 'Korea'], ['Samsung', 'location', 'Seoul']
-[ChatGPT]
+[Your Task]
 Statement : According to the triples, Samsung is locate in Korea and Seoul. To check the relation with São Paulo, I need information about São Paulo.
 Helper function : getRelation["São_Paulo"] 
 [User]
 Execution result :
 Relation_list["São_Paulo"] = ['imageCaption', 'coordinatesRegion', '22-rdf-syntax-ns#type', '~capital', 'areaCityKm', 'establishedTitle', '~west', 'motto', '~before', 'populationRank', 'float', 'foundingDate', '~locationTown', 'subdivisionType', '~finalAssembly', 'populationTotalRanking', 'rainfall', '~location']
-[ChatGPT]
+[Your Task]
 Statement : Let's check what are located in São Paulo.
 Helper function : exploreKG["São_Paulo"]=['~location']
 [User]
 Execution result :
 ['São_Paulo', '~location', '2009_Santos_FC_season'], ['São_Paulo', '~location', 'Vanguarda_Agro']
-[ChatGPT]
+[Your Task]
 Statement : It is not clear that Samsung is located in São Paulo. Let's check if "São_Paulo" is located in 'Korea' or 'Seoul'.I have to find the related location of "São_Paulo".
 Helper function : exploreKG["São_Paulo"]=['~capital', '~locationTown', '~location']
 [User]
 Execution result : ['São_Paulo', '~capital', 'São_Paulo_Province'], ['São_Paulo', '~locationTown', 'Ibirapuera_Auditorium], ['São_Paulo', '~location', '1972_São_Paulo_FC_season'], ['São_Paulo', '~location', '2013–14_in_Swiss_football']
-[ChatGPT]
+[Your Task]
 Statement : Since we cannot verify "São_Paulo" is located in 'Korea' or 'Seoul' by execution result, given claim is False.
 Helper function : Verifiation[False]
 
@@ -266,84 +273,87 @@ Given entity: <<<<GT_ENTITY>>>>
 
 main_agent_1by1_with_sub = """
 Your task is finding proper labels for given claim based on the graph data without your base knowledge.
-You can use one of the helper functions below to find the evidence for finding labels.
+You can use below helper functions to find the evidence for finding labels.
 
 Helper Functions
 1.getRelation[entity]: Returns the list of relations linked to the entity. You can choose several relations from the list that seem related to the claim.
 2.exploreKG[entity]=[relation_1,relation_2, ... relation_K]: Returns the triple set around the entity. For example, [entity, relation_1, tail entity] etc. You can choose relation from [User]'s execution result.
-3.Verification[]: If you can judge the claim as True or False give the answer. If [User] requires more information, you need to collect more triples in following steps.
+3.Verification[True or False]: If you can judge the claim as True or False give the answer.
 
 You must follow the exact format of the given helper function.
 
 Now, I will give you a claim and Given Entity that you can refer to.
 However, some of the entities needed in verification are not included in Given Entity.
 You have to use proper helper functions to find proper information to verify the given claim.
-Once you give a response about helper function, stop for my response. If response has made, continue your 'Statement and Helper function' task.
+Once you give a response about helper function, stop for [User] response. If response has made, continue your [Your Task] (Do not make multiple 'Helper function: ' lines).
+Importantly, you have to use inverse relation if you need. For example, if you want to find films starred by certain actors (when only actors were given), you have to use '~starred_actors' relation such as exploreKG['actor']=['~starred_actors'].
 Importantly, Do not change the format of the entity or relation including '~'.
+
+Here are some examples.
 
 Example 1)
 Claim: The airport in Punjab, Pakistan is operated by the government agency of the Jinnah International Airport.
 Given entity: ["\"Punjab, Pakistan\"", "Jinnah_International_Airport"]
 
-[ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. First, I need the relation list linked to Punjab, Pakistan
 Helper function : getRelation["\"Punjab, Pakistan\""] 
 [User]
 Execution result : Relation_list["\"Punjab, Pakistan\""] = ['s', 'divdab', 'state', '~location', 'birthPlace', 'placeOfBirth', 'rdf-schema#label', 'deathPlace', 'placeOfDeath', 'origin', 'mapCaption', 'country']
-ChatGPT]
+[Your Task]
 Statement : I need to look around the the given entities. Now, I need the relation list linked to Jinnah_International_Airport
 Helper function : getRelation["Jinnah_International_Airport"]
 [User]
 Execution result : Relation_list("Jinnah_International_Airport") = ['statYear', 'website', 'elevationF', 'stat2Data', 'r2LengthM', 'r1Number', 'stat1Data', '~targetAirport', 'icao', '~secondaryHubs', 'stat3Header', 'stat2Header', '~hubs', 'operator', 'imageWidth', 'airportManager', '~hubAirport', 'iata', 'type', 'r2Number', 'city', 'ownerOper', 'name', 'metricRwy', 'elevationM', 'hub', 'hypernym', '~headquarter', '~bases', '~origin', 'stat1Header', 'image2Width', 'runwayLength', 'icaoLocationIdentifier', 'owner', 'homepage', '22-rdf-syntax-ns#type', '~stopover', 'r1Surface', 'r1LengthM', 'subject', 'runwayDesignation', 'rdf-schema#label', '~wikiPageRedirects', 'image', 'stat3Data', '~location', 'location', '~target', '~headquarters', 'r2Surface', 'elevation', 'iataLocationIdentifier', 'runwaySurface', 'r2LengthF', 'r1LengthF', 'cityServed']
-[ChatGPT]
+[Your Task]
 Statement : Now, to find the airport located in Punjab, I need to explore the graph with "Punjab, Pakistan" related to location.     and related relations. Also, to find the government agency of 'Jinnah_International_Airport', I need to explore the graph too.
 Helper function : exploreKG["\"Punjab, Pakistan\""]=['~location'])
 [User]
 Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], 
-[ChatGPT]
+[Your Task]
 Statement : According to the triples, Allama_Iqbal_International_Airport, Faisalabad_International_Airport,Multan_International_Airport are located in the Punjab, Pakistan. So the claim is true.
 Helper function : Verification[]
 [User]
 Execution result : You need more information to verify the claim. Try to look triples of Jinnah_International_Airport linked by 'operator', 'ownerOper'
-[ChatGPT]
+[Your Task]
 Statement : Also, to find the government agency of 'Jinnah_International_Airport', look triples linked by 'operator', 'ownerOper'.
 Helper function : exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
 [User]
 Execution result : ['Jinnah_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Jinnah_International_Airport', 'ownerOper', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : There are three aiports in Punjab, Pakistan. We need relations of those three airpots. First,let's look Allama_Iqbal_International_Airport's relations.
 Helper function : getRelation['Allama_Iqbal_International_Airport']
 [User]
 Execution result : 
 Relation_list['Allama_Iqbal_International_Airport'] = ['operator', 'operatingOrganisation', 'hub']
-[ChatGPT]
+[Your Task]
 Statement : Next,let's look Faisalabad_International_Airport's relations.
 Helper function : getRelation['Faisalabad_International_Airport']
 [User]
 Execution result : 
 Relation_list['Faisalabad_International_Airport'] = ['operator', 'owner']
-[ChatGPT]
+[Your Task]
 Statement : Next,let's look Multan_International_Airport's relations.
 Helper function : getRelation['FMultan_International_Airport']
 [User]
 Execution result : 
 Relation_list('Multan_International_Airport') = ['operator', 'owner']
-[ChatGPT]
+[Your Task]
 Statement : To find the operator of the airports, I need to explore the graph for each airports related to operator.
 Helper function : exploreKG['Allama_Iqbal_International_Airport']=['operator', 'operatingOrganisation'] 
 [User]
 Execution result : ['Allama_Iqbal_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority'], ['Allama_Iqbal_International_Airport', 'operatingOrganisation', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Now, let's check the operator of Faisalabad_International_Airport
 Helper function : exploreKG['Faisalabad_International_Airport']=['operator']
 [User]
 Execution result : ['Faisalabad_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Now, let's check the operator of Multan_International_Airport
 Helper function : exploreKG['Multan_International_Airport']=['operator']
 [User]
 Execution result :['Multan_International_Airport', 'operator', 'Pakistan_Civil_Aviation_Authority']
-[ChatGPT]
+[Your Task]
 Statement : Since all of the airports' operator is government agency 'Pakistan_Civil_Aviation_Authority' and also the operator of 'Jinnah International Airport', the claim is True.
 Helper function : Verification[]
 
@@ -352,43 +362,43 @@ Example 2)
 Claim: Tim Brooke-Taylor starred as a fictional character, which was first aired on 10/03/1983 and was broadcast by STV.
 Given entity: ["\"1983-10-03\"", "\"STV\"", "Tim_Brooke-Taylor"]
 
-[ChatGPT]
+[Your Task]
 Statement : First, I need relations linked to Tim_Brooke-Taylor
 Helper function : getRelation["Tim_Brooke-Taylor"]
 [User]
 Execution result : 
 Relation_list('Tim_Brooke-Taylor') = ['birthName', '~voice', '~caption', '~author', 'hypernym', '22-rdf-syntax-ns#type', 'name', 'surname', 'placeOfBirth', 'description', 'genre', 'notableWork', 'dateOfBirth', 'birthDate', 'honorificSuffix', 'shortDescription', 'subject', 'title', 'nationality', '~before', '~voices', 'imdbId', 'spouse', 'rdf-schema#label', 'birthPlace', '~writer', '~after', 'years', 'givenName', 'birthYear', '~starring', '~creator', 'active']
-[ChatGPT]
+[Your Task]
 Statemnt : I need relation linked to 1983-10-03.
 Helper function : getRelation["\"1983-10-03\""] 
 [User]
 Execution result : 
 Relation_list["\"1983-10-03\""] = ['~deathDate', '~activeYearsStartDate', '~added', '~dateOfDeath', '~date', '~years', '~termStart', '~start', '~birthDate', '~establishedDate', '~released', '~openingDate', '~foundingDate', '~age', '~releaseDate', '~originalairdate', '~firstAired', '~dateOfBirth']
-[ChatGPT]
+[Your Task]
 Statemnt : I need relation linked to STV.
 Helper function : getRelation["\"STV\""] 
 [User]
 Execution result : 
 Relation_list["\"STV\""] = ['~title', '~sisterNames', '~tv', '~formerName', '~code', '~owner', '~undp', '~distributor', '~name', '~alt', '~formerNames', '~callLetters', '~iataLocationIdentifier', '~rdf-schema#label', '~agencyStationCode', '~callSign', '~broadcastedBy', '~channel', '~iata']
-[ChatGPT]
+[Your Task]
 Statement : To get the starred information about Tim Brooke-Taylor, I need triples linked with '~starring' with Tim Brooke-Taylor.
 Helper function : exploreKG["Tim_Brooke-Taylor"]=['~starring']
 [User]
 Execution result:
 ['Tim_Brooke-Taylor', '~starring', 'How_to_Irritate_People'], ['Tim_Brooke-Taylor', '~starring', 'Broaden_Your_Mind'], ['Tim_Brooke-Taylor', '~starring', 'ISIRTA_songs'], ['Tim_Brooke-Taylor', '~starring', 'What_the_Dickens'], ['Tim_Brooke-Taylor', '~starring', 'Bananaman']
-[ChatGPT]
+[Your Task]
 Statement : From the triples, Tim Brooke Taylor starred on How_to_Irritate_People,Broaden_Your_Mind,ISIRTA_songs,What_the_Dickens,Bananaman. Now, let's check the first aired date of each program.
 Helper function : exploreKG["\"1983-10-03\""]=['~firstAired'] 
 [User]
 Execution reuslt:
 ["\"1983-10-03\"", '~firstAired', 'Terrahawks'], ["\"1983-10-03\"", '~firstAired', 'Scarecrow_and_Mrs._King'], ["\"1983-10-03\"", '~firstAired', 'Orm_and_Cheep'], ["\"1983-10-03\"", '~firstAired', 'Watch_Mr._Wizard'], ["\"1983-10-03\"", '~firstAired', 'Where_in_the_World_(UK_game_show)'], ["\"1983-10-03\"", '~firstAired', 'Go_(game_show)'], ['"1983-10-03"', '~firstAired', 'Bananaman']
-[ChatGPT]
+[Your Task]
 Statement : From the triples, Bananman was first aired on 1983-10-03 which satisfy the claim. Now, I need to check if the Bananaman broadcast by STV.
 Helper function : exploreKG["\"STV\""]=['~broadcastedBy', '~channel']
 [User]
 Execution reuslt : 
 ["\"STV\"", '~broadcastedBy', 'Bananaman'], ["\"STV\"", '~channel', 'Brain_Box']
-[ChatGPT]
+[Your Task]
 Statement : According to the triples, Bananman broadcast by STV and first starred on 1983-10-03 and Tim Brooke Taylor starred on. So the claim is True.
 Helper function : Verification[]
 
@@ -397,36 +407,36 @@ Example 3)
 Claim: Samsung is located in São Paulo.
 Given entity: ["Samsung", "São_Paulo"]
 
-[ChatGPT]
+[Your Task]
 Statement : First, I need information about Samsung.
 Helper function : getRelation["Samsung"]
 [User]
 Execution result : 
 Relation_list["Samsung"] = ['numEmployees', 'keyPeople', 'industry', 'type', 'hypernym', 'subsidiary', 'logo', 'subject', 'foundation', 'product', '22-rdf-syntax-ns#type', 'name', 'netIncome', 'foundingDate', 'rdf-schema#label', 'revenue', 'homepage', 'subsid', 'location', 'foundingYear', 'keyPerson', 'products', 'numberOfEmployees']
-[ChatGPT]
+[Your Task]
 Statement : To know the location of Samsung, I need triples linked by 'location' with Samsung.
 Helper function : exploreKG["Samsung"]=['location']
 [User]
 Execution result :
 ['Samsung', 'location', 'Korea'], ['Samsung', 'location', 'Seoul']
-[ChatGPT]
+[Your Task]
 Statement : According to the triples, Samsung is locate in Korea and Seoul. To check the relation with São Paulo, I need information about São Paulo.
 Helper function : getRelation["São_Paulo"] 
 [User]
 Execution result :
 Relation_list["São_Paulo"] = ['imageCaption', 'coordinatesRegion', '22-rdf-syntax-ns#type', '~capital', 'areaCityKm', 'establishedTitle', '~west', 'motto', '~before', 'populationRank', 'float', 'foundingDate', '~locationTown', 'subdivisionType', '~finalAssembly', 'populationTotalRanking', 'rainfall', '~location']
-[ChatGPT]
+[Your Task]
 Statement : Let's check what are located in São Paulo.
 Helper function : exploreKG["São_Paulo"]=['~location']
 [User]
 Execution result :
 ['São_Paulo', '~location', '2009_Santos_FC_season'], ['São_Paulo', '~location', 'Vanguarda_Agro']
-[ChatGPT]
+[Your Task]
 Statement : It is not clear that Samsung is located in São Paulo. Let's check if "São_Paulo" is located in 'Korea' or 'Seoul'.I have to find the related location of "São_Paulo".
 Helper function : exploreKG["São_Paulo"]=['~capital', '~locationTown', '~location']
 [User]
 Execution result : ['São_Paulo', '~capital', 'São_Paulo_Province'], ['São_Paulo', '~locationTown', 'Ibirapuera_Auditorium], ['São_Paulo', '~location', '1972_São_Paulo_FC_season'], ['São_Paulo', '~location', '2013–14_in_Swiss_football']
-[ChatGPT]
+[Your Task]
 Statement : Since we cannot verify "São_Paulo" is located in 'Korea' or 'Seoul' by execution result, given claim is False.
 Helper function : Verifiation[]
 

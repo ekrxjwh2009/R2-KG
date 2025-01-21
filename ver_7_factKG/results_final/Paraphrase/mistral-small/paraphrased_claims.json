@@ -1,0 +1,47 @@
+[
+    {
+        "qid": 7651,
+        "question": "Apparently Bilikere Dwarakanath did not have a spouse.",
+        "label": [
+            true
+        ],
+        "entities": [
+            "Bilikere_Dwarakanath"
+        ],
+        "claims": [
+            "It appears that Bilikere Dwarakanath did not have a marital partner.",
+            "Bilikere Dwarakanath seemingly did not enter into a spousal relationship.",
+            "Evidently, Bilikere Dwarakanath was not married to a spouse."
+        ]
+    },
+    {
+        "qid": 6807,
+        "question": "What is the name of Kevin Andzouana's capital?",
+        "label": [
+            false
+        ],
+        "entities": [
+            "Kevin_Andzouana"
+        ],
+        "claims": [
+            "What is the name of the capital associated with Kevin Andzouana?",
+            "Which city serves as the capital for Kevin Andzouana?",
+            "What is the designation of the capital linked to Kevin Andzouana?"
+        ]
+    },
+    {
+        "qid": 7515,
+        "question": "No, Mitsuru Ushijima did not receive an award.",
+        "label": [
+            false
+        ],
+        "entities": [
+            "Mitsuru_Ushijima"
+        ],
+        "claims": [
+            "Mitsuru Ushijima was not the recipient of any awards.  ",
+            "Mitsuru Ushijima did not receive any form of accolade.  ",
+            "No award was bestowed upon Mitsuru Ushijima."
+        ]
+    }
+]

@@ -7,11 +7,9 @@ openai.api_key = "sk-proj-RJVCwZ-OlnmckYkxqb1lr9fkFQtxmkGLpHd_KPQ9cATq0ij54zWBX2
 client = OpenAI(api_key=openai.api_key)
 
 
-def feedback(claim,gold_set,gold_relations,f,sub_prompt):
-    
-    #engine="gpt-3.5-turbo-0125"
-    #engine = "gpt-4o-mini-2024-07-18"
-    engine = "gpt-4o-2024-08-06"
+def feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt):
+    if subagent=='gpt-4o-mini':engine = "gpt-4o-mini-2024-07-18"
+    elif subagent=='gpt-4o' : engine = "gpt-4o-2024-08-06"
     
     #f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
     #f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    
@@ -22,7 +20,7 @@ def feedback(claim,gold_set,gold_relations,f,sub_prompt):
         if tri not in final_evidence:
             final_evidence.append(tri)
       
-    #f.write(f"\nFinal Evidence!!!!!!!!!!!!!!!!!!!!!!\n{final_evidence}")       
+    f.write(f"\nFinal Evidence!!!!!!!!!!!!!!!!!!!!!!\n{final_evidence}")       
     
     conversation = [{"role": "system", "content": "You are a helpful assistant."}]
     prompt = sub_prompt.replace('<<<<CLAIM>>>>', claim).replace('<<<<Triple set>>>>', str(final_evidence)).replace('<<<<GOLD RELATIONS>>>>', gold_relations)
