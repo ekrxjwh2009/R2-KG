@@ -1,0 +1,45 @@
+
+
+
+Question: When Begonya Montalban i Vilas was City councillor of Palafrugell, who was member of the Riksdag
+GT entity: ['member of the Riksdag', 'Begonya Montalban i Vilas', 'City councillor of Palafrugell']
+************************************Iteration:0***********************************
+Statement : Let's look the relations linked with given entity.
+Helper function : getRelation['member of the Riksdag'] ## getRelation['Begonya Montalban i Vilas'] ## getRelation['City councillor of Palafrugell']
+[User]
+Execution result :
+Relations_list["member of the Riksdag"] = ['~position held']
+Relations_list["Begonya Montalban i Vilas"] = ['member of political party', 'member of', 'position held']
+Relations_list["City councillor of Palafrugell"] = ['~position held']
+************************************Iteration:1***********************************
+Statement : The relation 'position held' of 'Begonya Montalban i Vilas' and 'City councillor of Palafrugell', the relation '~position held' of 'member of the Riksdag' looks mostly related to the question.
+Helper function : exploreKG['Begonya Montalban i Vilas']=['position held'] ## exploreKG['City councillor of Palafrugell']=['~position held'] ## exploreKG['member of the Riksdag']=['~position held']
+[User]
+Execution result :
+['Begonya Montalban i Vilas', 'position held', 'City councillor of Palafrugell', '2010', '2013'], ['Begonya Montalban i Vilas', 'position held', 'Member of the Catalan Parliament', '2010', '2015']
+['City councillor of Palafrugell', '~position held', 'Francesc Alsius i Granés', '1949', '1967'], ['City councillor of Palafrugell', '~position held', 'Sergi Sabrià i Benito', '2007', '2015'], ['City councillor of Palafrugell', '~position held', 'Lluís Medir i Huerta', '1979', '2011'], ['City councillor of Palafrugell', '~position held', 'Begonya Montalban i Vilas', '2010', '2013'], ['City councillor of Palafrugell', '~position held', 'Joan Cama i Serra', '1954', '1960']
+['member of the Riksdag', '~position held', 'Per Ahlmark', '1967', '1969'], ['member of the Riksdag', '~position held', 'Per Gahrton', '1976', '1979'], ['member of the Riksdag', '~position held', 'Karin Söder', '1976', '1991'], ['member of the Riksdag', '~position held', 'Olle Wästberg', '1976', '1982'], ['member of the Riksdag', '~position held', 'Claes Adelsköld', '1885', '1893'], ['member of the Riksdag', '~position held', 'Ewa Björling', '2014', '2014'], ['member of the Riksdag', '~position held', 'Veronica Palm', '2014', '2015'], ['member of the Riksdag', '~position held', 'Claes Adelsköld', '1862', '1863'], ['member of the Riksdag', '~position held', 'Per Gahrton', '1994', '1995'], ['member of the Riksdag', '~position held', 'Cecilia Wikström', '2002', '2009'], ['member of the Riksdag', '~position held', 'Alf Svensson', '1985', '1988'], ['member of the Riksdag', '~position held', 'Mauricio Rojas', '2006', '2008'], ['member of the Riksdag', '~position held', 'Gunilla Carlsson', '2002', '2013'], ['member of the Riksdag', '~position held', 'Per Gahrton', '1988', '1991'], ['member of the Riksdag', '~position held', 'Max Andersson', '2006', '2010'], ['member of the Riksdag', '~position held', 'Axel Gustav Adlercreutz', '1847', '1866'], ['member of the Riksdag', '~position held', 'Claes Adelsköld', '1876', '1884'], ['member of the Riksdag', '~position held', 'Fredrik Reinfeldt', '1991', '2014'], ['member of the Riksdag', '~position held', 'Maria Wetterstrand', '2001', '2011'], ['member of the Riksdag', '~position held', 'Alf Svensson', '1991', '2009'], ['member of the Riksdag', '~position held', 'Einar Dahl', '1954', '1970'], ['member of the Riksdag', '~position held', 'Mauricio Rojas', '2002', '2006'], ['member of the Riksdag', '~position held', 'Per Ahlmark', '1969', '1970'], ['member of the Riksdag', '~position held', 'Edvard Fränckel', '1889', '1911'], ['member of the Riksdag', '~position held', 'Hjalmar Branting', '1896', '1925'], ['member of the Riksdag', '~position held', 'Lena Ek', '2014', '2015'], ['member of the Riksdag', '~position held', 'Axel Gustav Adlercreutz', '1877', '1880'], ['member of the Riksdag', '~position held', 'Fredrick Federley', '2006', '2014']
+************************************Iteration:2***********************************
+Statement : Now, we have the information about the time when Begonya Montalban i Vilas occupied the role of City Councillor of Palafrugell, which is 2010-2013. 
+Now, let's find who was part of the Riksdag during that period.
+Helper function : Verification of which persons held the position of member of the Riksdag between 2010-2013.
+[User]
+Execution result :
+You gave wrong format. Call the verification function again follow the right format
+************************************Iteration:3***********************************
+Statement : Now, we have the information about the time when Begonya Montalban i Vilas occupied the role of City Councillor of Palafrugell, which is 2010-2013. 
+Now, let's find who was part of the Riksdag during that period.
+
+Helper function : Verification ['Per Ahlmark', 'Per Gahrton', 'Karin Söder', 'Olle Wästberg', 'Claes Adelsköld', 'Cecilia Wikström', 'Alf Svensson', 'Gunilla Carlsson', 'Max Andersson', 'Fredrik Reinfeldt', 'Maria Wetterstrand', 'Einar Dahl', 'Mauricio Rojas', 'Hjalmar Branting', 'Axel Gustav Adlercreutz', 'Fredrick Federley', 'Veronica Palm', 'Ewa Björling']
+[User]
+Execution result :
+You gave wrong format. Call the verification function again follow the right format
+************************************Iteration:4***********************************
+Statement : Now, we have the information about the time when Begonya Montalban i Vilas occupied the role of City Councillor of Palafrugell, which is 2010-2013. 
+Now, let's find who was part of the Riksdag during that period.
+
+Helper function : Verification['Cecilia Wikström', 'Gunilla Carlsson', 'Alf Svensson', 'Max Andersson', 'Fredrik Reinfeldt', 'Maria Wetterstrand', 'Mauricio Rojas', 'Fredrick Federley']
+[User]
+Execution result :
+Done!!Prediction:'Cecilia Wikström', 'Gunilla Carlsson', 'Alf Svensson', 'Max Andersson', 'Fredrik Reinfeldt', 'Maria Wetterstrand', 'Mauricio Rojas', 'Fredrick Federley'
+Real label:['Gunilla Carlsson', 'Fredrick Federley', 'Fredrik Reinfeldt', 'Max Andersson', 'Maria Wetterstrand']

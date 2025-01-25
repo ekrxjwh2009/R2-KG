@@ -6,7 +6,7 @@ The triple set takes the form [Head, Relation, Tail, start_time, end_time], whic
 If the relation starts with '~', it indicates a reverse relation, meaning 'Tail's relation is head and the period lasted from the start_time to the end_time.' 
 The following cases may arise: Choose one option from 'Executable ([list of labels])' or 'Not executable(Insufficient evidence)'.
 If you choose 'Not executable(Insufficient evidence)', You must specify in the statement which additional relation information is needed for a particular entity. However, the relation can only be selected from the given Relation_list and cannot be created arbitrarily.
-If multiple answers are possible, choose the answer with the smallest time gap either right after or just before a specific point in time.
+If multiple answers are possible, Choose all possible answers.
 Refer to the explanations of the two options below to answer the Statement and Evaluation.
 
 
@@ -23,7 +23,7 @@ Relation_list['Wolf-Dieter Heilmeyer']=['award received', 'employer']
 Relation_list['Freie Universität Berlin']=['rector']
 [ChatGPT]
 Statement : According to the triple sets, Freie Universität Berlin employed in Wolf-Dieter Heilmeyer in '1977','1978','1979','1980','1981','1982','1983','1984','1985','1986','1987','1988','1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002'.
-Evaluation : Executable(['1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002'])
+Evaluation : Executable([1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002])
 
 <Example 2>
 [User]
@@ -35,7 +35,7 @@ Relation_list['district attorney']=['~position held', '~occupation']
 Relation_list['J. D. Rees']=['position held']
 [ChatGPT]
 Statement : According to the triple sets, the person that district attorney when J. D. Rees was the Member of the 31st Parliament of the United Kingdom was 'Leverett Saltonstall','Milton Horace West','Thomas Jefferson Murray'.
-Evaluation : Executable(['Leverett Saltonstall', 'Milton Horace West', 'Thomas Jefferson Murray'])
+Evaluation : Executable([Leverett Saltonstall, Milton Horace West, Thomas Jefferson Murray])
 
 <Example 3>
 [User]
@@ -47,7 +47,7 @@ Relation_list['Godman Irvine']=['position held']
 Relation_list['Member of the 44th Parliament of the United Kingdom']=['~position held']
 [ChatGPT]
 Statement : According to the triples, Godman Irvine was the Member of the 44th Parliament of the United Kingdom from 1966 to 1970. So, there are several people who was member of Corteds franquistas from 1966 to 1970. 
-Evaluation : Executable(['Ángel González Álvarez', 'Ramón Serrano Suñer', 'José Martínez Emperador', 'Rafael Ruiz Gallardón', 'Euloxio Gómez Franqueira', "Joaquim Buxó Dulce d'Abaigar", 'Francisco Labadie Otermin', 'Manuel Díez-Alegría', 'Juan Antonio Samaranch', 'Fernando María Castiella y Maíz', 'José María Sentís Simeón', 'Gregorio Marañón Moya', 'Adolfo Suárez', 'Carlos González-Bueno', 'Florentino Pérez Embid', 'Santiago de Cruïlles de Peratallada Bosch', 'José Luis de Arrese', 'Jesús Esperabé de Arteaga González', 'Armando Muñoz Calero', 'Camilo Alonso Vega', 'Fernando Herrero Tejedor', 'Blas Tello', 'Carlos Asensio Cabanillas', 'Fernando Martín-Sánchez Juliá', 'Antonio Barroso y Sánchez-Guerra', 'José Finat y Escrivá de Romaní', 'Torcuato Luca de Tena', 'Juan José Espinosa San Martín', 'Rodolfo Martín Villa', 'José Clua Queixalós', 'Blas Piñar', 'Pilar Primo de Rivera', 'José Utrera Molina'])
+Evaluation : Executable([Ángel González Álvarez, Ramón Serrano Suñer, José Martínez Emperador, Rafael Ruiz Gallardón, Euloxio Gómez Franqueira, Joaquim Buxó Dulce d'Abaigar, Francisco Labadie Otermin, Manuel Díez-Alegría, Juan Antonio Samaranch, Fernando María Castiella y Maíz, José María Sentís Simeón, Gregorio Marañón Moya, Adolfo Suárez, Carlos González-Bueno, Florentino Pérez Embid, Santiago de Cruïlles de Peratallada Bosch, José Luis de Arrese, Jesús Esperabé de Arteaga González, Armando Muñoz Calero, Camilo Alonso Vega, Fernando Herrero Tejedor, Blas Tello, Carlos Asensio Cabanillas, Fernando Martín-Sánchez Juliá, Antonio Barroso y Sánchez-Guerra, José Finat y Escrivá de Romaní, Torcuato Luca de Tena, Juan José Espinosa San Martín, Rodolfo Martín Villa, José Clua Queixalós, Blas Piñar, Pilar Primo de Rivera, José Utrera Molina])
 
 <Example 4>
 [User]
@@ -79,7 +79,7 @@ The triple set takes the form [Head, Relation, Tail, start_time, end_time], whic
 If the relation starts with '~', it indicates a reverse relation, meaning 'Tail's relation is head and the period lasted from the start_time to the end_time.' 
 The following cases may arise: Choose one option from 'Executable ([list of labels])' or 'Not executable(Insufficient evidence)'.
 If you choose 'Not executable(Insufficient evidence)', You must specify in the statement which additional relation information is needed for a particular entity. However, the relation can only be selected from the given Relation_list and cannot be created arbitrarily.
-If multiple answers are possible, choose the answer with the smallest time gap either right after or just before a specific point in time.
+If multiple answers are possible, Choose all possible answers.
 Refer to the explanations of the two options below to answer the Statement and Evaluation.
 
 
@@ -96,7 +96,7 @@ Relation_list['Governor of Connecticut']=['~position held']
 Relation_list['World War II']=['~conflict', '~participant of', 'significant event']
 [ChatGPT]
 Statement : According to the triples, the world war II occured in 1939, so the person held as governor of connecticut is 'Wilbur Lucius Cross'
-Evaluation : Executable(['Wilbur Lucius Cross'])
+Evaluation : Executable([Wilbur Lucius Cross])
 
 <Example 2>
 [User]
@@ -107,7 +107,7 @@ Relation_list['Governor of Idaho']=['~position held']
 Relation_list['Nazi Germany']=['~allegiance', '~country', 'replaces', 'head of state', '~located in the administrative territorial entity', '~country of citizenship', 'shares border with', '~occupant', 'instance of', '~owned by', '~replaced by', 'significant event']
 [ChatGPT]
 Statement : According to the triples, Nazi Germnay occupation ended in 1945, so the person who held position of governor of Idaho after 1945 is Leonard B. Jordan
-Evaluation : Executable(['Leonard B. Jordan'])
+Evaluation : Executable([Leonard B. Jordan])
 
 <Example 3>
 [User]
@@ -119,7 +119,7 @@ Relation_list['Godman Irvine']=['position held']
 Relation_list['Member of the 44th Parliament of the United Kingdom']=['~position held']
 [ChatGPT]
 Statement : According to the triples, Godman Irvine was the Member of the 44th Parliament of the United Kingdom from 1966 to 1970. So, there are several people who was member of Corteds franquistas from 1966 to 1970. 
-Evaluation : Executable(['Ángel González Álvarez', 'Ramón Serrano Suñer', 'José Martínez Emperador', 'Rafael Ruiz Gallardón', 'Euloxio Gómez Franqueira', "Joaquim Buxó Dulce d'Abaigar", 'Francisco Labadie Otermin', 'Manuel Díez-Alegría', 'Juan Antonio Samaranch', 'Fernando María Castiella y Maíz', 'José María Sentís Simeón', 'Gregorio Marañón Moya', 'Adolfo Suárez', 'Carlos González-Bueno', 'Florentino Pérez Embid', 'Santiago de Cruïlles de Peratallada Bosch', 'José Luis de Arrese', 'Jesús Esperabé de Arteaga González', 'Armando Muñoz Calero', 'Camilo Alonso Vega', 'Fernando Herrero Tejedor', 'Blas Tello', 'Carlos Asensio Cabanillas', 'Fernando Martín-Sánchez Juliá', 'Antonio Barroso y Sánchez-Guerra', 'José Finat y Escrivá de Romaní', 'Torcuato Luca de Tena', 'Juan José Espinosa San Martín', 'Rodolfo Martín Villa', 'José Clua Queixalós', 'Blas Piñar', 'Pilar Primo de Rivera', 'José Utrera Molina'])
+Evaluation : Executable([Ángel González Álvarez, Ramón Serrano Suñer, José Martínez Emperador, Rafael Ruiz Gallardón, Euloxio Gómez Franqueira, Joaquim Buxó Dulce d'Abaigar, Francisco Labadie Otermin, Manuel Díez-Alegría, Juan Antonio Samaranch, Fernando María Castiella y Maíz, José María Sentís Simeón, Gregorio Marañón Moya, Adolfo Suárez, Carlos González-Bueno, Florentino Pérez Embid, Santiago de Cruïlles de Peratallada Bosch, José Luis de Arrese, Jesús Esperabé de Arteaga González, Armando Muñoz Calero, Camilo Alonso Vega, Fernando Herrero Tejedor, Blas Tello, Carlos Asensio Cabanillas, Fernando Martín-Sánchez Juliá, Antonio Barroso y Sánchez-Guerra, José Finat y Escrivá de Romaní, Torcuato Luca de Tena, Juan José Espinosa San Martín, Rodolfo Martín Villa, José Clua Queixalós, Blas Piñar, Pilar Primo de Rivera, José Utrera Molina])
 
 <Example 4>
 [User]
@@ -150,7 +150,7 @@ The triple set takes the form [Head, Relation, Tail, start_time, end_time], whic
 If the relation starts with '~', it indicates a reverse relation, meaning 'Tail's relation is head and the period lasted from the start_time to the end_time.' 
 The following cases may arise: Choose one option from 'Executable ([list of labels])' or 'Not executable(Insufficient evidence)'.
 If you choose 'Not executable(Insufficient evidence)', You must specify in the statement which additional relation information is needed for a particular entity. However, the relation can only be selected from the given Relation_list and cannot be created arbitrarily.
-If multiple answers are possible, choose the answer with the smallest time gap either right after or just before a specific point in time.
+If multiple answers are possible, Choose all possible answers.
 Refer to the explanations of the two options below to answer the Statement and Evaluation.
 
 
@@ -168,7 +168,7 @@ Relation_list['David I of Scotland']=['position held']
 Relation_list['monarch of Scotland']=['~position held']
 [ChatGPT]
 Statement : According to the triples. David I of Scotland held position of monarch in 1124, so the precedor of David I of Scotland is Alexander I of Scotland who help position from 1107 to 1124.
-Evaluation : Executable(['Alexander I of Scotland'])
+Evaluation : Executable([Alexander I of Scotland])
 
 <Example 2>
 [User]
@@ -180,7 +180,7 @@ Relation_list['Member of the 31st Parliament of the United Kingdom']=['~position
 Relation_list['J. D. Rees']=['position held']
 [ChatGPT]
 Statement : According to the triples, J.D. Rees was member of 31st Parliament of the United Kingdom from 1918 to 1922. There are several people who held as minister of communication in corresponding periods.
-Evaluation : Executable(['Shulamit Aloni', 'Limor Livnat', 'Moshe Shahal'])
+Evaluation : Executable([Shulamit Aloni, Limor Livnat, Moshe Shahal])
 
 <Example 3>
 [User]
@@ -191,7 +191,7 @@ Relation_list['Thorolf Rafto Memorial Prize']=['~award received']
 Relation_list['Yelena Bonner']=['award received', '~winner']
 [ChatGPT]
 Statement : According to the triples, Yelena Bonner received Thorolf Rafto Memorial Prize in 1991.
-Evaluation : Executable(['1991'])
+Evaluation : Executable([1991])
 
 <Exmaple 4>
 [User]

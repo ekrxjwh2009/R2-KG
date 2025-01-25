@@ -5,7 +5,7 @@ import tiktoken
 VLLM_API_BASE_MISTRAL_SMALL = "http://143.248.157.70:8334/v1"       #RTX 3090 * 8
 VLLM_API_QWEN_14B = ""
 VLLM_API_QWEN_32B = ""
-VLLM_API_LLAMA_70B = ""
+VLLM_API_LLAMA_70B = "http://143.248.157.130:8334/v1"  # A6000*4
 VLLM_API_KEY = "EMPTY"  # No API key required for vLLM
 
 class LLMBot:
@@ -24,7 +24,7 @@ class LLMBot:
             self.model = "Qwen/Qwen2.5-32B-Instruct"
             self.url = VLLM_API_QWEN_32B
         elif model=='llama':
-            self.model == "meta-llama/Meta-Llama-3.1-70B-Instruct"
+            self.model = "meta-llama/Meta-Llama-3.1-70B-Instruct"  
             self.url = VLLM_API_LLAMA_70B 
 
         self.temperature = temperature
@@ -34,7 +34,7 @@ class LLMBot:
 
     def add_message(self, role, message):
         self.conversation.append({"role": role, "content": message})
-        while self.calculate_total_tokens() > (self.max_context_length - self.max_tokens):
+        while self.calculate_total_tokens() >= (self.max_context_length - self.max_tokens):
             self.conversation.pop(0)
             
     def calculate_total_tokens(self):

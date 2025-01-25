@@ -1,0 +1,45 @@
+
+
+
+Qid:0
+Question :Who were those players playing in Brazil national football team with Denílson de Oliveira Araújo?GT entity:['Denílson de Oliveira Araújo', 'Brazil national football team']
+************************************Iteration:0***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:1***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:2***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:3***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+
+
+Qid:0
+Question :Who were those players playing in Brazil national football team with Denílson de Oliveira Araújo?GT entity:['Denílson de Oliveira Araújo', 'Brazil national football team']
+************************************Iteration:0***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:1***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:2***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:3***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.
+************************************Iteration:4***********************************
+I'm sorry, something went wrong.
+[User]
+You gave wrong format of Statement and Helper function.

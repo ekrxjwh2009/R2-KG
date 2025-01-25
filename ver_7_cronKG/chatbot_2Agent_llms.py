@@ -13,29 +13,33 @@ import prompt_sub
 import subagent as sa
 from models import LLMBot
 from collections import defaultdict
-
+from difflib import get_close_matches
 
             
-def reasoning(model,subagent ,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
+def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG, entities):
             
     chatbot = LLMBot(model, temperature=0.95, top_p=0.95, max_tokens=2000)
    
     gold_set =[]
     gold_relations =''
+    gold_entities =[]
     for i in range(iter_limit):
         
         # Get Prompt from User
         if i == 0:
             prompt = initial_prompt
+            gold_entities += entities
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state = client_answer(claim,subagent ,response, label, gold_set,gold_relations,f,sub_prompt, KG)
+            prompt, result, triples, relations, get_rel_state, new_entites = client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG, gold_entities)
             
             if len(triples) > 0:
                 gold_set+=triples
             if get_rel_state==1:
                 gold_relations += relations
+            if len(new_entites)>0:
+                gold_entities+=new_entites 
         
         if i>0:    
             f.write(prompt)
@@ -59,20 +63,37 @@ def split_functions(response):
     prompt=''
     try:
         response = response.replace("[Your Task]\n",'')
-        statement = response.split("Statement")[0].split("Helper function")[0]
-        functions = response.split("Helper function")[1]
+        statement = response.split("Statement")[0].split("Helper function : ")[0]
+        functions = response.split("Helper function:")[1]
+        if '##' in functions:
+            helper_ftn_calls = functions.split(' ## ')
+        else :
+            helper_ftn_calls = [functions]
+        prompt ='\n[User]\nExecution result :'
+        return helper_ftn_calls, prompt
+        
+    except:
+        #prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
+        print("wrong format of call function")
+        
+    try : 
+        response = response.replace("[Your Task]\n",'')
+        functions = response.split("Helper function :")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
         else :
             helper_ftn_calls = [functions]
         prompt ='\n[User]\nExecution result :'
         
+        return helper_ftn_calls, prompt
+    
     except:
+        print("wrong format of call functions")
         prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
         
     return helper_ftn_calls, prompt
     
-def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG):
+def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG, gold_entities):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -82,6 +103,7 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_
 
     helper_ftn_calls, prompt = split_functions(response)
     triples = []
+    new_entities=[]
     relations = ""
     get_rel_state=0
     for helper_str in helper_ftn_calls:
@@ -89,7 +111,7 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_
         
         if 'getRelation' in helper_str:
     
-            get_rel_state, result = getRelations(helper_str, KG)
+            get_rel_state, result = getRelations(helper_str, KG, gold_entities)
             prompt +=  "\n" + result
             if get_rel_state==1:
                 relations += "\n" + result
@@ -97,9 +119,12 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_
             
             
         elif 'exploreKG' in helper_str:
-            result, result_prompt = exploreKGs(helper_str, KG)
+            result, result_prompt = exploreKGs(helper_str, KG, gold_entities)
             prompt += "\n" + result_prompt
             triples += result
+            
+            #For matching entities
+            new_entities += find_new_entity(triples)
             #return prompt, triples, triples
         
             
@@ -113,15 +138,40 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
             result =''
     
-    return prompt, result, triples, relations, get_rel_state
+    return prompt, result, triples, relations, get_rel_state, new_entities
+
+def find_new_entity(triples):
+    new_entities = []
+    for triple_set in triples:
+        head, rel, tail = triple_set[0], triple_set[1], triple_set[1]
+        if head not in new_entities:
+            new_entities.append(head)
+        if tail not in new_entities:
+            new_entities.append(tail)
     
-def getRelations(helper_str, KG): 
+    return new_entities
+
+def match_and_replace_single(parsed_entity, gold_entities):
+
+    # Find the closest match from gold_entities
+    matches = get_close_matches(parsed_entity, gold_entities, n=1, cutoff=0.6)  # Adjust cutoff as needed
+    if matches:
+        return matches[0]  # Return the closest match
+    return parsed_entity  # Return the original if no match is found
+
+
+
+def getRelations(helper_str, KG, gold_entities): 
     
     relations = []
     state=0
     try:
         entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
-        subgraphs = KG[entity]
+        #Entity matching
+        matched_entity = match_and_replace_single(entity, gold_entities)
+        print(f"Before :{entity}, matched:{matched_entity}")
+        
+        subgraphs = KG[matched_entity]
         for graph in subgraphs:
             rel = graph[1]
             if rel not in relations:
@@ -132,22 +182,25 @@ def getRelations(helper_str, KG):
             
         else:
             state=1
-            return state,'Relations_list["' + entity + '"] = ' + str(relations)
+            return state,'Relations_list["' + matched_entity + '"] = ' + str(relations)
     
     except:
         return state,"You gave wrong format of getRelations() function. Follow the format of examples."
     
 
 
-def exploreKGs(helper_str, KG):
+def exploreKGs(helper_str, KG, gold_entities):
 
     triples=[]
     result_prompt = ''
     try: 
         entity = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
         relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+        #Entity matching
+        matched_entity = match_and_replace_single(entity, gold_entities)
+        print(f"Before :{entity}, matched:{matched_entity}")
 
-        subgraphs = KG[entity]
+        subgraphs = KG[matched_entity]
         existing_relations = []
         for graph in subgraphs:
             exist_rel = graph[1]
@@ -159,12 +212,14 @@ def exploreKGs(helper_str, KG):
             print(f"Relation :{rel}")
             if (rel not in existing_relations) and ('~' + rel) not in existing_relations:
                 result_prompt += f"'The relation you chose '{rel}' does not exist.Choose from the following list."
-                result_prompt += 'Relations_list["' + entity + '"] = ' + str(existing_relations)
+                result_prompt += 'Relations_list["' + matched_entity + '"] = ' + str(existing_relations)
             
-            for sub_graph in KG[entity]:
+            for sub_graph in KG[matched_entity]:
                 if rel == sub_graph[1]:
                     triples.append(sub_graph)
         
+        if len(triples) >= 50:
+            triples = triples[:50]
         if len(triples)==0:
             result_prompt += f"Choose other relations based refer to the Relations_list Or follow the format of Entity {entity} and Relations"
         
@@ -346,13 +401,12 @@ if __name__ == "__main__":
     simple_time_qa_list = parsing_question(simple_time_question_path,entid2txt_dict, relid2txt_dict)    #5046
     simple_entity_qa_list = parsing_question(simple_entity_question_path,entid2txt_dict, relid2txt_dict)    #7812
     
-    qa_list_dict = defaultdict(list)
+    qa_list_dict = [time_join_qa_list,simple_time_qa_list,simple_entity_qa_list]
     if args.percentage ==10:
-        #qa_list_dict = {time_join_qa_list:[10*i for i in range(383)] , simple_time_qa_list:[10*i for i in range(504)], simple_entity_qa_list:[10*i for i in range(780)]}
-        qa_list_dict = [time_join_qa_list,simple_time_qa_list,simple_entity_qa_list]
-        qid_list_dict = {0: [10*i for i in range(3)] , 1:[10*i for i in range(3)], 2:[10*i for i in range(3)]}
+        qid_list_dict = {0:[10*i for i in range(250)] , 1:[10*i for i in range(500)], 2:[10*i for i in range(700)]}
+        #qid_list_dict = {0: [10*i for i in range(2)] , 1:[10*i for i in range(2)], 2:[10*i for i in range(2)]}
     elif args.percentage ==20:
-        qa_list_dict = {time_join_qa_list:[10*i for i in range(383*2)] , simple_time_qa_list:[10*i for i in range(504*2)], simple_entity_qa_list:[10*i for i in range(780*2)]}
+        qid_list_dict = {0:[10*i for i in range(383*2)] , 1:[10*i for i in range(504*2)], 2:[10*i for i in range(780*2)]}
     
     result = {}
     questions_dict = {}
@@ -388,7 +442,7 @@ if __name__ == "__main__":
                     
                     prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
                     
-                    prediction, iter_num = reasoning(args.model, args.subagent ,question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG)
+                    prediction, iter_num = reasoning(args.model, args.subagent, question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG, entities=entities)
                     
                     abs, correct, wrong= score(str(prediction), label,f)
                     total_correct += correct

@@ -1,0 +1,24 @@
+
+
+
+Question: The President of Ireland of 2007 was who
+GT entity: ['President of Ireland']
+************************************Iteration:0***********************************
+Statement : Let's look the relations linked with the given entity.
+Helper function : getRelation['President of Ireland']
+[User]
+Execution result :
+Relations_list["President of Ireland"] = ['~position held']
+************************************Iteration:1***********************************
+Statement : The relation '~position held' of 'President of Ireland' looks mostly related to the question.
+Helper function : exploreKG['President of Ireland']=['~position held']
+[User]
+Execution result :
+['President of Ireland', '~position held', 'Douglas Hyde', '1938', '1945'], ['President of Ireland', '~position held', 'Cearbhall Ó Dálaigh', '1974', '1976'], ['President of Ireland', '~position held', 'Patrick Hillery', '1976', '1990'], ['President of Ireland', '~position held', 'Mary McAleese', '1997', '2011'], ['President of Ireland', '~position held', 'Mary Robinson', '1990', '1997'], ['President of Ireland', '~position held', "Seán T. O'Kelly", '1945', '1959'], ['President of Ireland', '~position held', 'Erskine Hamilton Childers', '1973', '1974'], ['President of Ireland', '~position held', 'Éamon de Valera', '1959', '1973']
+************************************Iteration:2***********************************
+Statement : Now, we have all evidence to answer who occupied the position of President of Ireland during the year 2007.
+Helper function : Verification['Mary McAleese']
+[User]
+Execution result :
+Done!!Prediction:'Mary McAleese'
+Real label:['Mary McAleese']

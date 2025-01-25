@@ -11,6 +11,8 @@ import re
 import prompt_main
 import prompt_sub
 import subagent as sa
+from collections import defaultdict
+from difflib import get_close_matches
 
 openai.api_key = "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"
 client = OpenAI(api_key=openai.api_key)
@@ -48,32 +50,36 @@ class OpenAIBot:
             print(f"OpenAI API returned an API Error: {e}")
             return f"OpenAI API returned an API Error: {e}"
             
-def reasoning(claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
-            
-    #engine="gpt-3.5-turbo-0125"         
-    engine = "gpt-4o-mini-2024-07-18"
+def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG, entities):
+    
+    if model =='gpt-4o-mini': engine = "gpt-4o-mini-2024-07-18"
+    elif model == 'gpt-4o': engine = "gpt-4o-2024-08-06"
     chatbot = OpenAIBot(engine, client)
 
    
     gold_set =[]
     gold_relations =''
+    gold_entities =[]
     for i in range(iter_limit):
         
         # Get Prompt from User
         if i == 0:
             prompt = initial_prompt
+            gold_entities += entities
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state = client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, KG)
+            prompt, result, triples, relations, get_rel_state, new_entities = client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG, gold_entities)
             
             if len(triples) > 0:
                 gold_set+=triples
             if get_rel_state==1:
                 gold_relations += relations
+            if len(new_entities)>0:
+                gold_entities+=new_entities
         
-        #if i>0:    
-        #    f.write(prompt)
+        if i>0:    
+            f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -81,8 +87,8 @@ def reasoning(claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG):
 
         # Generate and Print the Response from ChatBot
         response = chatbot.generate_response(prompt)
-        #f.write(f"\n************************************Iteration:{i}***********************************")
-        #f.write("\n"+response)
+        f.write(f"\n************************************Iteration:{i}***********************************")
+        f.write("\n"+response)
     
     if i==iter_limit-1:
         result = 'Abstain'   
@@ -93,21 +99,38 @@ def split_functions(response):
     helper_ftn_calls=[]
     prompt=''
     try:
-        response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function")[0]
-        functions = response.split("Helper function")[1]
+        response = response.replace("[Your Task]\n",'')
+        statement = response.split("Statement")[0].split("Helper function : ")[0]
+        functions = response.split("Helper function:")[1]
+        if '##' in functions:
+            helper_ftn_calls = functions.split(' ## ')
+        else :
+            helper_ftn_calls = [functions]
+        prompt ='\n[User]\nExecution result :'
+        return helper_ftn_calls, prompt
+        
+    except:
+        #prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
+        print("wrong format of call function")
+        
+    try : 
+        response = response.replace("[Your Task]\n",'')
+        functions = response.split("Helper function :")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
         else :
             helper_ftn_calls = [functions]
         prompt ='\n[User]\nExecution result :'
         
+        return helper_ftn_calls, prompt
+    
     except:
+        print("wrong format of call functions")
         prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
         
     return helper_ftn_calls, prompt
     
-def client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, KG):
+def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG, gold_entities):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -117,6 +140,7 @@ def client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, K
 
     helper_ftn_calls, prompt = split_functions(response)
     triples = []
+    new_entities=[]
     relations = ""
     get_rel_state=0
     for helper_str in helper_ftn_calls:
@@ -124,7 +148,7 @@ def client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, K
         
         if 'getRelation' in helper_str:
     
-            get_rel_state, result = getRelations(helper_str, KG)
+            get_rel_state, result = getRelations(helper_str, KG, gold_entities)
             prompt +=  "\n" + result
             if get_rel_state==1:
                 relations += "\n" + result
@@ -132,31 +156,59 @@ def client_answer(claim,response, label, gold_set,gold_relations,f,sub_prompt, K
             
             
         elif 'exploreKG' in helper_str:
-            result, result_prompt = exploreKGs(helper_str, KG)
+            result, result_prompt = exploreKGs(helper_str, KG, gold_entities)
             prompt += "\n" + result_prompt
             triples += result
+            
+            #For matching entities
+            new_entities += find_new_entity(triples)
             #return prompt, triples, triples
         
             
         elif 'Verification' in helper_str:
-            sub_answer, case, result = verification(claim,gold_set,gold_relations,f, sub_prompt)
+            sub_answer, case, result = verification(subagent,claim,gold_set,gold_relations,f, sub_prompt)
             prompt += "\n" +sub_answer
             
-            #f.write(f"CASE COUNT:{case}")
+            f.write(f"CASE COUNT:{case}")
             #return prompt, prediction, []
         else:
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
             result =''
     
-    return prompt, result, triples, relations, get_rel_state
+    return prompt, result, triples, relations, get_rel_state, new_entities
+
+def find_new_entity(triples):
+    new_entities = []
+    for triple_set in triples:
+        head, rel, tail = triple_set[0], triple_set[1], triple_set[1]
+        if head not in new_entities:
+            new_entities.append(head)
+        if tail not in new_entities:
+            new_entities.append(tail)
     
-def getRelations(helper_str, KG): 
+    return new_entities
+
+def match_and_replace_single(parsed_entity, gold_entities):
+
+    # Find the closest match from gold_entities
+    matches = get_close_matches(parsed_entity, gold_entities, n=1, cutoff=0.6)  # Adjust cutoff as needed
+    if matches:
+        return matches[0]  # Return the closest match
+    return parsed_entity  # Return the original if no match is found
+
+
+
+def getRelations(helper_str, KG, gold_entities): 
     
     relations = []
     state=0
     try:
         entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
-        subgraphs = KG[entity]
+        #Entity matching
+        matched_entity = match_and_replace_single(entity, gold_entities)
+        print(f"Before :{entity}, matched:{matched_entity}")
+        
+        subgraphs = KG[matched_entity]
         for graph in subgraphs:
             rel = graph[1]
             if rel not in relations:
@@ -167,22 +219,25 @@ def getRelations(helper_str, KG):
             
         else:
             state=1
-            return state,'Relations_list["' + entity + '"] = ' + str(relations)
+            return state,'Relations_list["' + matched_entity + '"] = ' + str(relations)
     
     except:
         return state,"You gave wrong format of getRelations() function. Follow the format of examples."
     
 
 
-def exploreKGs(helper_str, KG):
+def exploreKGs(helper_str, KG, gold_entities):
 
     triples=[]
     result_prompt = ''
     try: 
         entity = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
         relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+        #Entity matching
+        matched_entity = match_and_replace_single(entity, gold_entities)
+        print(f"Before :{entity}, matched:{matched_entity}")
 
-        subgraphs = KG[entity]
+        subgraphs = KG[matched_entity]
         existing_relations = []
         for graph in subgraphs:
             exist_rel = graph[1]
@@ -194,12 +249,14 @@ def exploreKGs(helper_str, KG):
             print(f"Relation :{rel}")
             if (rel not in existing_relations) and ('~' + rel) not in existing_relations:
                 result_prompt += f"'The relation you chose '{rel}' does not exist.Choose from the following list."
-                result_prompt += 'Relations_list["' + entity + '"] = ' + str(existing_relations)
+                result_prompt += 'Relations_list["' + matched_entity + '"] = ' + str(existing_relations)
             
-            for sub_graph in KG[entity]:
+            for sub_graph in KG[matched_entity]:
                 if rel == sub_graph[1]:
                     triples.append(sub_graph)
         
+        if len(triples) >= 50:
+            triples = triples[:50]
         if len(triples)==0:
             result_prompt += f"Choose other relations based refer to the Relations_list Or follow the format of Entity {entity} and Relations"
         
@@ -213,8 +270,8 @@ def exploreKGs(helper_str, KG):
     return triples, result_prompt
 
 
-def verification(claim,gold_set,gold_relations,f, sub_prompt):
-    sub_response, case, prediction =sa.feedback(claim,gold_set,gold_relations,f,sub_prompt)
+def verification(subagent,claim,gold_set,gold_relations,f, sub_prompt):
+    sub_response, case, prediction =sa.feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt)
     return sub_response, case, prediction
 
 def score(predict, label,f):
@@ -345,34 +402,46 @@ def parsing_question(question_path,entid2txt_dict,relid2txt_dict):
     
 if __name__ == "__main__":
     
-    #python chatbot_2Agent.py --type time_join --prompt pr_1 --model gpt-3.5
+    #python chatbot_2Agent.py --prompt pr_1 --model gpt-3.5
     parser = argparse.ArgumentParser()
-    parser.add_argument("--type", type=str, default="before_after")
     parser.add_argument("--prompt", type=str, default='pr_1')
+    parser.add_argument("--percentage", type=int, default=10)
     parser.add_argument("--model", type = str, default='gpt-4o-mini')
+    parser.add_argument("--subagent", type=str, default='gpt-4o-mini')
     args = parser.parse_args()
     
     if args.prompt =='pr_1': 
         sub_prompt = prompt_sub.pr_1 
         main_prompt = prompt_main.pr_1
-        save_path = f"./results/2Agent/sub_4omni/{args.model}/result_pr1/"
+        save_path = f"./results_final/2Agent/{args.model}/sub_{args.subagent}/result_pr1/"
     elif args.prompt =='pr_2': 
         sub_prompt = prompt_sub.pr_2
         main_prompt = prompt_main.pr_2
-        save_path = f"./results/2Agent/sub_4omini/{args.model}/result_pr2"
+        save_path = f"./results_final/2Agent/{args.model}/sub_{args.subagent}/result_pr2/"
     else : 
         sub_prompt = prompt_sub.pr_3
         main_prompt = prompt_main.pr_3
-        save_path = f"./results/2Agent/sub_4omini/{args.model}/result_pr3"
+        save_path = f"./results_final/2Agent/{args.model}/sub_{args.subagent}/result_pr3/"
         
-    
-    question_path = f"/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/{args.type}.json"
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     
     
     full_KG, entid2txt_dict, relid2txt_dict = make_data()
-    qa_list = parsing_question(question_path,entid2txt_dict, relid2txt_dict)
+    time_join_question_path = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/time_join.json"
+    simple_time_question_path = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/simple_time.json"
+    simple_entity_question_path = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/questions/simple_entity.json"
+    time_join_qa_list = parsing_question(time_join_question_path,entid2txt_dict, relid2txt_dict) #3832
+    simple_time_qa_list = parsing_question(simple_time_question_path,entid2txt_dict, relid2txt_dict)    #5046
+    simple_entity_qa_list = parsing_question(simple_entity_question_path,entid2txt_dict, relid2txt_dict)    #7812
+    
+    qa_list_dict = [time_join_qa_list,simple_time_qa_list,simple_entity_qa_list]
+    if args.percentage ==10:
+        qid_list_dict = {0:[10*i for i in range(250)] , 1:[10*i for i in range(250)], 2:[10*i for i in range(250)]}
+        #qid_list_dict = {0: [10*i for i in range(1)] , 1:[10*i for i in range(1)], 2:[10*i for i in range(1)]}
+    elif args.percentage ==20:
+        qid_list_dict = {0:[10*i for i in range(383*2)] , 1:[10*i for i in range(504*2)], 2:[10*i for i in range(780*2)]}
+    
     
     result = {}
     questions_dict = {}
@@ -385,66 +454,41 @@ if __name__ == "__main__":
     iter_num_list=[]
     answer_list= [['qid','prediction','gt_label']]
     iter_limit_result = [['iterlimit', 'metric1','metric2','metric3']]
-    qid_list = [10*i for i in range(100)]
-    
-    #iter_limit_list = [25,20,15,10,5]
+
+
     iter_limit_list = [10]
+
     for iter_limit in iter_limit_list:
         print(f"iter limit:{iter_limit}")
         total_correct, total_abs,total_wrong =0,0,0
-        with open(os.path.join(save_path, f"{args.type}.txt"),'a') as f:
-            for qid in qid_list:
+        for order,qa_list in enumerate(qa_list_dict):
 
-                print(f"Qid:{qid}")
-                question = qa_list[qid]['question']
-                label = qa_list[qid]['answers']
-                entities = qa_list[qid]['given_entities']
-                
-                f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-                f.write(f"GT entity:{entities}")
-                
-                prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
-                
-                prediction, iter_num = reasoning(question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG)
-                
-                abs, correct, wrong= score(str(prediction), label,f)
-                total_correct += correct
-                total_wrong += wrong
-                total_abs += abs
-                iter_num_list.append(iter_num)
-                
-                ff = open(os.path.join(save_path, f"{args.type}_answer.csv"),'a')
-                writer= csv.writer(ff)
-                writer.writerow([qid, prediction, label])
-                ff.close()
+            qid_list = qid_list_dict[order]
+            with open(os.path.join(save_path, f"result.txt"),'a') as f:
+                for qid in qid_list:
+
+                    print(f"Qid:{qid}")
+                    question = qa_list[qid]['question']
+                    label = qa_list[qid]['answers']
+                    entities = qa_list[qid]['given_entities']
+                    
+                    f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                    f.write(f"GT entity:{entities}")
+                    
+                    prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+                    
+                    prediction, iter_num = reasoning(args.model, args.subagent, question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG, entities=entities)
+                    
+                    abs, correct, wrong= score(str(prediction), label,f)
+                    total_correct += correct
+                    total_wrong += wrong
+                    total_abs += abs
+                    iter_num_list.append(iter_num)
+                    
+                    ff = open(os.path.join(save_path, f"Only_answer.csv"),'a')
+                    writer= csv.writer(ff)
+                    writer.writerow([qid, prediction, label])
+                    ff.close()
 
                 
-            total_sample = len(qid_list)
 
-            '''
-            if (total_sample - total_abs ) ==0 :
-                metric1=0
-            else:
-                metric1 = (total_sample - total_abs ) /  total_sample
-            if total_correct==0 or total_sample == total_abs:
-                metric2 =0
-            else :
-                metric2 = total_correct/  (total_sample - total_abs)
-                
-            if (total_correct-total_wrong)==0 or total_sample == total_abs :
-                metric3 =0
-            else:
-                metric3 = (total_correct-total_wrong) / (total_sample - total_abs)
-
-            
-            f.write(f"\n\n\nTotal sample:{total_sample}, Total_Correct:{total_correct}, Total_Wrong:{total_wrong}, Total_abstain:{total_abs}\n")
-            f.write(f"mrtric1:{metric1}\n mertric2:{metric2}\n metric3:{metric3}")
-            f.write(f"avg iter:{np.average(iter_num_list)}\n max_iter:{np.max(iter_num_list)}\n min_iter:{np.min(iter_num_list)}")
-            
-            iter_limit_result.append([iter_limit, metric1, metric2, metric3])
-            
-    ff= open(os.path.join(save_path, f"{iter_limit}_result.csv"), 'w') 
-    writer= csv.writer(ff)
-    writer.writerows(iter_limit_result)
-    ff.close()
-    '''
