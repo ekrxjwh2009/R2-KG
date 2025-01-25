@@ -11,7 +11,7 @@ import re
 import dbpedia_sparql as db
 import subagent as sa
 import prompt_oneAgent
-
+from difflib import get_close_matches
 
 openai.api_key = "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"
 client = OpenAI(api_key=openai.api_key)
@@ -49,7 +49,7 @@ class OpenAIBot:
             print(f"OpenAI API returned an API Error: {e}")
             return f"OpenAI API returned an API Error: {e}"
             
-def reasoning(model,claim,initial_prompt, label, f):
+def reasoning(model,claim,initial_prompt, label,entities, f):
             
     if model == 'gpt-4o-mini': engine = "gpt-4o-mini-2024-07-18"
     elif model == 'gpt-4o' : engine = "gpt-4o-2024-08-06"
@@ -58,20 +58,25 @@ def reasoning(model,claim,initial_prompt, label, f):
     iter_limit=15
     gold_set =[]
     gold_relations =''
+    gold_entities =[]
     for i in range(iter_limit):
         
         # Get Prompt from User
         if i == 0:
             prompt = initial_prompt
+            gold_entities += entities
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state = client_answer(claim,response, label, gold_set,gold_relations,f)
+            prompt, result, triples, relations, get_rel_state, new_entites = client_answer(claim,response, label, gold_set,gold_relations,gold_entities,f)
             
             if len(triples) > 0:
                 gold_set+=triples
             if get_rel_state==1:
                 gold_relations += relations
+            if len(new_entites)>0:
+                gold_entities+=new_entites    
+            
         
         if i>0:    
             f.write(prompt)
@@ -87,11 +92,11 @@ def reasoning(model,claim,initial_prompt, label, f):
     
     if i==iter_limit-1:
         result = 'Abstain'   
-        
+            
     return result, i
         
         
-def client_answer(claim,response, label, gold_set,gold_relations,f):
+def client_answer(claim,response, label, gold_set,gold_relations,gold_entities,f):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -101,6 +106,7 @@ def client_answer(claim,response, label, gold_set,gold_relations,f):
 
     helper_ftn_calls, prompt = split_functions(response)
     triples = []
+    new_entities=[]
     relations = ""
     get_rel_state=0
     for helper_str in helper_ftn_calls:
@@ -108,17 +114,21 @@ def client_answer(claim,response, label, gold_set,gold_relations,f):
         
         if 'getRelation' in helper_str:
     
-            get_rel_state, result = getRelations(helper_str)
+            get_rel_state, result = getRelations(helper_str,gold_entities)
             prompt +=  "\n" + result
             if get_rel_state==1:
                 relations += "\n" + result
+                
             #return prompt, result, []
             
             
         elif 'exploreKG' in helper_str:
-            result, result_prompt = exploreKGs(helper_str)
+            result, result_prompt = exploreKGs(helper_str,gold_entities)
             prompt += "\n" + result_prompt
             triples += result
+            
+            #For matching entities
+            new_entities += find_new_entity(triples)
             #return prompt, triples, triples
         
             
@@ -130,8 +140,26 @@ def client_answer(claim,response, label, gold_set,gold_relations,f):
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
             result =''
     
-    return prompt, result, triples, relations, get_rel_state
+    return prompt, result, triples, relations, get_rel_state , new_entities
+
+def find_new_entity(triples):
+    new_entities = []
+    for triple_set in triples:
+        head, rel, tail = triple_set[0], triple_set[1], triple_set[1]
+        if head not in new_entities:
+            new_entities.append(head)
+        if tail not in new_entities:
+            new_entities.append(tail)
     
+    return new_entities
+
+def match_and_replace_single(parsed_entity, gold_entities):
+
+    # Find the closest match from gold_entities
+    matches = get_close_matches(parsed_entity, gold_entities, n=1, cutoff=0.6)  # Adjust cutoff as needed
+    if matches:
+        return matches[0]  # Return the closest match
+    return parsed_entity  # Return the original if no match is found 
 
 def retrieval_relation_parse_answer(rel):
     
@@ -157,54 +185,64 @@ def split_functions(response):
     return helper_ftn_calls, prompt
 
 
-def getRelations(helper_str):
+def getRelations(helper_str,gold_entities):
     relations = []
     state = 0
     try:
         entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
-        relations += db.getRelationsFromEntity(entity)
-        relations += db.getRelationsFromEntity('"' + entity + '"')
+        #Entity matching
+        matched_entity = match_and_replace_single(entity, gold_entities)
+        print(f"Before :{entity}, matched:{matched_entity}")
+        
+        relations += db.getRelationsFromEntity(matched_entity)
+        relations += db.getRelationsFromEntity('"' + matched_entity + '"')
         if len(relations) ==0 :
             state=0
             return state,f"Do not change the format of entity {entity} in helper function."
         else:
             state=1
-            return state,'Relations_list["' + entity + '"] = ' + str(relations)
+            return state,'Relations_list["' + matched_entity + '"] = ' + str(relations)
     except:
         return state,"You gave wrong format of getRelations() function. Follow the format of examples."
 
 
-def exploreKGs(helper_str):
+def exploreKGs(helper_str,gold_entities):
     triples= []
     result_prompt = ''
     try: 
         ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
         relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+        #Entity matching
+        matched_entity = match_and_replace_single(ent, gold_entities)
+        print(f"Before :{ent}, matched:{matched_entity}")
     
-        if len(db.getRelationsFromEntity(ent)) < len(db.getRelationsFromEntity('"' + ent + '"')):
-            ent = '"' + ent + '"'
+        if len(db.getRelationsFromEntity(matched_entity)) < len(db.getRelationsFromEntity('"' + matched_entity + '"')):
+            matched_entity = '"' + matched_entity + '"'
             
         for rel in relations:
             rel = retrieval_relation_parse_answer(rel)
             ###check if the LLM required non-existing relations
-            existing_relations = db.getRelationsFromEntity(ent)
+            existing_relations = db.getRelationsFromEntity(matched_entity)
             if (rel not in existing_relations) and ('~' + rel) not in existing_relations:
                 #result_prompt += f"""The relation you chose '{rel}' does not exist. Choose from the following list. Relations_list["' + {ent} + '"] = ' + {str(existing_relations)}"""
                 result_prompt += f"'The relation you chose '{rel}' does not exist.Choose from the following list."
-                result_prompt += 'Relations_list["' + ent + '"] = ' + str(existing_relations)
+                result_prompt += 'Relations_list["' + matched_entity + '"] = ' + str(existing_relations)
             
             
             tails = []
             if rel[0] == '~':
-                tails += db.getEntityFromEntRel(ent, rel)
-                tails += db.getEntityFromEntRel(ent, rel.split('~')[1])
+                tails += db.getEntityFromEntRel(matched_entity, rel)
+                tails += db.getEntityFromEntRel(matched_entity, rel.split('~')[1])
             else:
-                tails += db.getEntityFromEntRel(ent, rel)
-                tails += db.getEntityFromEntRel(ent, '~' + rel)
+                tails += db.getEntityFromEntRel(matched_entity, rel)
+                tails += db.getEntityFromEntRel(matched_entity, '~' + rel)
             
             for tail in tails:
-                triples.append([ent, rel, tail])
-                
+                triples.append([matched_entity, rel, tail])
+        
+        if len(triples) >= 50:
+            triples = triples[:50]
+        
         if len(triples)==0:
             result_prompt += f"Choose other relations based refer to the Relations_list Or follow the format of Entity {ent} and Relations"
         
@@ -214,9 +252,9 @@ def exploreKGs(helper_str):
     except:
         result_prompt += "You gave wrong format of exploreKGs() function. Follow the format of examples."
 
-
+    
     return triples, result_prompt
-                
+
 
 def verification(helper_str, label):
     
@@ -285,7 +323,7 @@ if __name__ == "__main__":
     iter_num_list=[]
     total_correct,total_wrong, total_abs =0,0,0
     ensemble_answer_list = [['qid','prediction','gt_label']]
-    for qid in qid_list[:3]:
+    for qid in qid_list:
         
         print(f"Qid:{qid}")
         question = questions_dict[qid]
@@ -304,8 +342,8 @@ if __name__ == "__main__":
                 #print(f"GT entity:{entities}")
                 
                 main_prompt = prompts_list[p].replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
-                #reasoning(model,claim,initial_prompt, label, f)
-                prediction, iter_num = reasoning(args.model, question, main_prompt, label,f)
+                #reasoning(model,claim,initial_prompt, label,entities, f)
+                prediction, iter_num = reasoning(args.model, question, main_prompt, label,entities,f)
                 iter_num_list.append(iter_num)
                 answer_list.append(prediction)
             

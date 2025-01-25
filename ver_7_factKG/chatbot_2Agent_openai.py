@@ -12,7 +12,7 @@ import dbpedia_sparql as db
 import prompts
 import subagent as sa
 import prompts_main
-
+from difflib import get_close_matches
 
 ###################ADD###########################
 #1. wrong relation select --> show relation list again
@@ -56,8 +56,15 @@ class OpenAIBot:
             print(f"OpenAI API returned an API Error: {e}")
             return f"OpenAI API returned an API Error: {e}"
             
-def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f, sub_prompt):
-            
+def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f, sub_prompt,entities):
+        # Validate subagent
+    valid_subagents = ['gpt-4o', 'gpt-4o-mini']
+    if subagent not in valid_subagents:
+        raise ValueError(f"Invalid subagent: {subagent}. Must be one of {valid_subagents}.")
+    print(f"[DEBUG] reasoning - Received subagent: {subagent}")
+    
+    
+    
     if model == 'gpt-4o-mini': engine = "gpt-4o-mini-2024-07-18"
     elif model == 'gpt-4o' : engine = "gpt-4o-2024-08-06"
     chatbot = OpenAIBot(engine, client)
@@ -65,23 +72,28 @@ def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f, sub_prom
     
     gold_set =[]
     gold_relations =''
+    gold_entities =[]
     for i in range(iter_limit):
         
         # Get Prompt from User
         if i == 0:
             prompt = initial_prompt
+            gold_entities += entities
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state = client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub_prompt)
+            prompt, result, triples, relations, get_rel_state, new_entites = client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub_prompt, gold_entities)
             
             if len(triples) > 0:
                 gold_set+=triples
             if get_rel_state==1:
                 gold_relations += relations
+            if len(new_entites)>0:
+                gold_entities+=new_entites  
         
         if i>0:    
             f.write(prompt)
+            print(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -91,6 +103,8 @@ def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f, sub_prom
         response = chatbot.generate_response(prompt)
         f.write(f"\n************************************Iteration:{i}***********************************")
         f.write("\n"+response)
+        print(f"\n************************************Iteration:{i}***********************************")
+        print("\n"+response)
     
     if i==iter_limit-1:
         result = 'Abstain'   
@@ -98,7 +112,7 @@ def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f, sub_prom
     return result, i
         
         
-def client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub_prompt):
+def client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub_prompt, gold_entities):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -108,6 +122,7 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub
 
     helper_ftn_calls, prompt = split_functions(response)
     triples = []
+    new_entities=[]
     relations = ""
     get_rel_state=0
     for helper_str in helper_ftn_calls:
@@ -115,7 +130,7 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub
         
         if 'getRelation' in helper_str:
     
-            get_rel_state, result = getRelations(helper_str)
+            get_rel_state, result = getRelations(helper_str,gold_entities)
             prompt +=  "\n" + result
             if get_rel_state==1:
                 relations += "\n" + result
@@ -123,14 +138,17 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub
             
             
         elif 'exploreKG' in helper_str:
-            result, result_prompt = exploreKGs(helper_str)
+            result, result_prompt = exploreKGs(helper_str,gold_entities)
             prompt += "\n" + result_prompt
             triples += result
+            
+            #For matching entities
+            new_entities += find_new_entity(triples)
             #return prompt, triples, triples
         
             
         elif 'Verification' in helper_str:
-            sub_answer, case, result = verification(claim,subagent,gold_set,gold_relations,f, sub_prompt)
+            sub_answer, case, result = verification(subagent,claim,gold_set,gold_relations,f, sub_prompt)
             prompt += "\n" +sub_answer
             
             f.write(f"CASE COUNT:{case}")
@@ -139,8 +157,26 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f, sub
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
             result =''
     
-    return prompt, result, triples, relations, get_rel_state
+    return prompt, result, triples, relations, get_rel_state, new_entities
     
+def find_new_entity(triples):
+    new_entities = []
+    for triple_set in triples:
+        head, rel, tail = triple_set[0], triple_set[1], triple_set[1]
+        if head not in new_entities:
+            new_entities.append(head)
+        if tail not in new_entities:
+            new_entities.append(tail)
+    
+    return new_entities
+
+def match_and_replace_single(parsed_entity, gold_entities):
+
+    # Find the closest match from gold_entities
+    matches = get_close_matches(parsed_entity, gold_entities, n=1, cutoff=0.6)  # Adjust cutoff as needed
+    if matches:
+        return matches[0]  # Return the closest match
+    return parsed_entity  # Return the original if no match is found
 
 def retrieval_relation_parse_answer(rel):
     
@@ -151,69 +187,96 @@ def split_functions(response):
     helper_ftn_calls=[]
     prompt=''
     try:
-        response = response.replace("[ChatGPT]\n",'')
-        statement = response.split("Statement : ")[0].split("Helper function : ")[0]
-        functions = response.split("Helper function")[1]
+        response = response.replace("[Your Task]\n",'')
+        statement = response.split("Statement")[0].split("Helper function : ")[0]
+        functions = response.split("Helper function:")[1]
+        if '##' in functions:
+            helper_ftn_calls = functions.split(' ## ')
+        else :
+            helper_ftn_calls = [functions]
+        prompt ='\n[User]\nExecution result :'
+        return helper_ftn_calls, prompt
+        
+    except:
+        #prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
+        print("wrong format of call function")
+        
+    try : 
+        response = response.replace("[Your Task]\n",'')
+        functions = response.split("Helper function :")[1]
         if '##' in functions:
             helper_ftn_calls = functions.split(' ## ')
         else :
             helper_ftn_calls = [functions]
         prompt ='\n[User]\nExecution result :'
         
+        return helper_ftn_calls, prompt
+    
     except:
+        print("wrong format of call functions")
         prompt = "\n[User]\nYou gave wrong format of Statement and Helper function."
         
     return helper_ftn_calls, prompt
 
 
-def getRelations(helper_str):
+def getRelations(helper_str,gold_entities):
     relations = []
     state = 0
     try:
         entity = helper_str.split("getRelation[")[1].split("]")[0].strip()[1:-1]
-        relations += db.getRelationsFromEntity(entity)
-        relations += db.getRelationsFromEntity('"' + entity + '"')
+        #Entity matching
+        matched_entity = match_and_replace_single(entity, gold_entities)
+        print(f"Before :{entity}, matched:{matched_entity}")
+        
+        relations += db.getRelationsFromEntity(matched_entity)
+        relations += db.getRelationsFromEntity('"' + matched_entity + '"')
         if len(relations) ==0 :
             state=0
             return state,f"Do not change the format of entity {entity} in helper function."
         else:
             state=1
-            return state,'Relations_list["' + entity + '"] = ' + str(relations)
+            return state,'Relations_list["' + matched_entity + '"] = ' + str(relations)
     except:
         return state,"You gave wrong format of getRelations() function. Follow the format of examples."
 
 
-def exploreKGs(helper_str):
+def exploreKGs(helper_str,gold_entities):
     triples= []
     result_prompt = ''
     try: 
         ent = helper_str.split("exploreKG[")[1].split("]=")[0].strip()[1:-1]
         relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
+        #Entity matching
+        matched_entity = match_and_replace_single(ent, gold_entities)
+        print(f"Before :{ent}, matched:{matched_entity}")
     
-        if len(db.getRelationsFromEntity(ent)) < len(db.getRelationsFromEntity('"' + ent + '"')):
-            ent = '"' + ent + '"'
+        if len(db.getRelationsFromEntity(matched_entity)) < len(db.getRelationsFromEntity('"' + matched_entity + '"')):
+            matched_entity = '"' + matched_entity + '"'
             
         for rel in relations:
             rel = retrieval_relation_parse_answer(rel)
             ###check if the LLM required non-existing relations
-            existing_relations = db.getRelationsFromEntity(ent)
+            existing_relations = db.getRelationsFromEntity(matched_entity)
             if (rel not in existing_relations) and ('~' + rel) not in existing_relations:
                 #result_prompt += f"""The relation you chose '{rel}' does not exist. Choose from the following list. Relations_list["' + {ent} + '"] = ' + {str(existing_relations)}"""
                 result_prompt += f"'The relation you chose '{rel}' does not exist.Choose from the following list."
-                result_prompt += 'Relations_list["' + ent + '"] = ' + str(existing_relations)
+                result_prompt += 'Relations_list["' + matched_entity + '"] = ' + str(existing_relations)
             
             
             tails = []
             if rel[0] == '~':
-                tails += db.getEntityFromEntRel(ent, rel)
-                tails += db.getEntityFromEntRel(ent, rel.split('~')[1])
+                tails += db.getEntityFromEntRel(matched_entity, rel)
+                tails += db.getEntityFromEntRel(matched_entity, rel.split('~')[1])
             else:
-                tails += db.getEntityFromEntRel(ent, rel)
-                tails += db.getEntityFromEntRel(ent, '~' + rel)
+                tails += db.getEntityFromEntRel(matched_entity, rel)
+                tails += db.getEntityFromEntRel(matched_entity, '~' + rel)
             
             for tail in tails:
-                triples.append([ent, rel, tail])
-                
+                triples.append([matched_entity, rel, tail])
+        
+        if len(triples) >= 50:
+            triples = triples[:50]
+        
         if len(triples)==0:
             result_prompt += f"Choose other relations based refer to the Relations_list Or follow the format of Entity {ent} and Relations"
         
@@ -227,8 +290,8 @@ def exploreKGs(helper_str):
     return triples, result_prompt
                 
 
-def verification(claim,subagent,gold_set,gold_relations,f, sub_prompt):
-    
+def verification(subagent,claim,gold_set,gold_relations,f, sub_prompt):
+
     sub_response, case, prediction =sa.feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt)
     return sub_response, case, prediction
     
@@ -297,7 +360,7 @@ if __name__ == "__main__":
         answer_list= [['qid','prediction','gt_label']]
         with open(os.path.join(save_path, f"Iter_{iter_limit}.txt"),'a') as f:
         
-            for qid in qid_list[:5]:
+            for qid in qid_list:
                 print(f"Qid:{qid}")
                 question = questions_dict[qid]
                 label = label_set_dict[qid]
@@ -309,7 +372,7 @@ if __name__ == "__main__":
                 
                 prompt = prompts_main.pr_1.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>', str(entities))
 
-                prediction, iter_num = reasoning(args.model, args.subagent ,question,iter_limit,prompt, label,f, sub_prompt)
+                prediction, iter_num = reasoning(args.model,args.subagent ,question,iter_limit,prompt, label,f, sub_prompt, entities)
                 abs, correct, wrong= score(str(prediction), str(label[0]),f)
                 total_correct += correct
                 total_wrong += wrong

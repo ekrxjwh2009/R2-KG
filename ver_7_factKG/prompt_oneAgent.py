@@ -33,12 +33,7 @@ Execution result : Relation_list("Jinnah_International_Airport") = ['statYear', 
 Statement : Now, to find the airport located in Punjab, I need to explore the graph with "Punjab, Pakistan" related to location.     and related relations. Also, to find the government agency of 'Jinnah_International_Airport', I need to explore the graph too.
 Helper function : exploreKG["\"Punjab, Pakistan\""]=['~location'])
 [User]
-Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport'], 
-[Your Task]
-Statement : According to the triples, Allama_Iqbal_International_Airport, Faisalabad_International_Airport,Multan_International_Airport are located in the Punjab, Pakistan. So the claim is true.
-Helper function : Verification[]
-[User]
-Execution result : You need more information to verify the claim. Try to look triples of Jinnah_International_Airport linked by 'operator', 'ownerOper'
+Execution result : ["\"Punjab, Pakistan\"", '~location', 'Bahawalpur_Zoo'], ["\"Punjab, Pakistan\"", '~location', "Allama_Iqbal_International_Airport"], ["\"Punjab, Pakistan\"", '~location', 'Jungle_World,_Rawalpindi'], ["\"Punjab, Pakistan\"", '~location', 'Faisalabad_International_Airport'], ["\"Punjab, Pakistan\"", '~location', 'Multan_International_Airport']
 [Your Task]
 Statement : Also, to find the government agency of 'Jinnah_International_Airport', look triples linked by 'operator', 'ownerOper'.
 Helper function : exploreKG["Jinnah_International_Airport"]=['operator', 'ownerOper']
@@ -162,7 +157,7 @@ Helper function : exploreKG["São_Paulo"]=['~capital', '~locationTown', '~locati
 Execution result : ['São_Paulo', '~capital', 'São_Paulo_Province'], ['São_Paulo', '~locationTown', 'Ibirapuera_Auditorium], ['São_Paulo', '~location', '1972_São_Paulo_FC_season'], ['São_Paulo', '~location', '2013–14_in_Swiss_football']
 [Your Task]
 Statement : Since we cannot verify "São_Paulo" is located in 'Korea' or 'Seoul' by execution result, given claim is False.
-Helper function : Verifiation[False]
+Helper function : Verification[False]
 
 
 
@@ -250,12 +245,6 @@ Helper function : exploreKG['Aarhus_Airport']=['r1Number', 'r1LengthM', 'r2Numbe
 [User]
 Execution result :
 ['Aarhus_Airport', 'r1Number', '"10"'], ['Aarhus_Airport', 'r1LengthM', '"2777"'], ['Aarhus_Airport', 'r2Number', '"10"'], ['Aarhus_Airport', 'r2LengthM', '"2702"']
-[Your Task]
-Statement : The runway length of 'Aarhus_Airport' is 2777 meters, which is close to the given length of 2776.73, but the runway name '10L/28R' does not match the available runway numbers '10'. Therefore, the claim is False.
-Helper function : Verification[]
-[User]
-Execution result :
-We need more information for verification. Try to look relation 'runwaySurface, runwayName' of Aarhus_Airport and the relation 'hypernym' of Aktieselskab.
 [Your Task]
 Statement : To gather more information, I will explore the graph for 'Aarhus_Airport' related to 'runwaySurface' and 'runwayName'.
 Helper function : exploreKG['Aarhus_Airport']=['runwaySurface', 'runwayName']

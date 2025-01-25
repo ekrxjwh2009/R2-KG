@@ -11,6 +11,7 @@ def feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt):
     if subagent=='gpt-4o-mini':engine = "gpt-4o-mini-2024-07-18"
     elif subagent=='gpt-4o' : engine = "gpt-4o-2024-08-06"
     
+
     #f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
     #f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    
     final_evidence=[]
