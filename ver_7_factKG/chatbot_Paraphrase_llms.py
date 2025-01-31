@@ -332,7 +332,7 @@ if __name__ == "__main__":
         paraphrased_claims = load_from_json(claim_path)
 
     # 저장된 데이터를 사용해 문장별 처리
-    for processed in paraphrased_claims[328:]:
+    for processed in paraphrased_claims:
         qid = processed['qid']
         print(qid)
         question = processed['question']

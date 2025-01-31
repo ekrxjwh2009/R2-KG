@@ -3,25 +3,23 @@ from openai import OpenAI
 import prompts
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 client = OpenAI(api_key=openai.api_key)
 
 
-def feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt):
+def feedback(subagent,claim,gold_set,gold_relations,sub_prompt):
     if subagent=='gpt-4o-mini':engine = "gpt-4o-mini-2024-07-18"
     elif subagent=='gpt-4o' : engine = "gpt-4o-2024-08-06"
     
 
-    #f.write(f"\nGOLD SET!!!!!!!!!!!!!!!!!!!!!!\n{gold_set}") 
-    #f.write(f"\nGOLD RELATIONS!!!!!!!!!!!!!!!!\n{gold_relations}")    
+    
     final_evidence=[]
     
     
     for tri in gold_set:
         if tri not in final_evidence:
             final_evidence.append(tri)
-      
-    f.write(f"\nFinal Evidence!!!!!!!!!!!!!!!!!!!!!!\n{final_evidence}")       
+    
     
     conversation = [{"role": "system", "content": "You are a helpful assistant."}]
     prompt = sub_prompt.replace('<<<<CLAIM>>>>', claim).replace('<<<<Triple set>>>>', str(final_evidence)).replace('<<<<GOLD RELATIONS>>>>', gold_relations)

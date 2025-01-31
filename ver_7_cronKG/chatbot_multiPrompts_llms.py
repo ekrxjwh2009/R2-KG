@@ -14,7 +14,7 @@ from collections import defaultdict
 from difflib import get_close_matches
 
             
-def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
+def reasoning(model,claim, initial_prompt, label,iter_limit,KG, entities):
             
     chatbot = LLMBot(model, temperature=0.95, top_p=0.95, max_tokens=2000)
 
@@ -30,7 +30,7 @@ def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state, new_entities = client_answer(claim,response, label, gold_set,gold_relations,f, KG, gold_entities)
+            prompt, result, triples, relations, get_rel_state, new_entities = client_answer(claim,response, label, gold_set,gold_relations,KG, gold_entities)
             
             if len(triples) > 0:
                 gold_set+=triples
@@ -39,8 +39,8 @@ def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
             if len(new_entities)>0:
                 gold_entities+=new_entities 
         
-        if i>0:    
-            f.write(prompt)
+        #if i>0:    
+            #f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -48,8 +48,8 @@ def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
 
         # Generate and Print the Response from ChatBot
         response = chatbot.generate_response(prompt)
-        f.write(f"\n************************************Iteration:{i}***********************************")
-        f.write("\n"+response)
+        #f.write(f"\n************************************Iteration:{i}***********************************")
+        #f.write("\n"+response)
     
     if i==iter_limit-1:
         result = 'Abstain'   
@@ -91,7 +91,7 @@ def split_functions(response):
         
     return helper_ftn_calls, prompt
     
-def client_answer(claim,response, label, gold_set,gold_relations,f, KG,gold_entities):
+def client_answer(claim,response, label, gold_set,gold_relations,KG,gold_entities):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -233,6 +233,9 @@ def exploreKGs(helper_str, KG, gold_entities):
 
 
 def verification(helper_str, KG):
+    result=''
+    if ' ## ' in helper_str:
+        helper_str = helper_str.split(' ## ')[0]
     try : 
         result = helper_str.split("Verification[")[1].split("]")[0]
         prompt = f"\nDone!!Prediction:{result}\nReal label:{label}"
@@ -242,43 +245,10 @@ def verification(helper_str, KG):
     return prompt, result
 
 
-def score(predict, label,f):
-    per_score = len(label)
-    abs, correct, wrong =0,0,0
-    
-    if 'abstain' in str(predict).lower():
-        abs+=1
-
-    else:
-        new_pred_list, new_label_list = [],[]
-        predict_list = predict.strip().split(',')
-        for pred in predict_list:
-            pred_tmp = re.sub(r"[^a-zA-Z0-9]", "", pred.lower())
-            pred_tmp = pred_tmp.strip()
-            new_pred_list.append(pred_tmp)
-        for lab in label:
-            if type(lab)==int:
-                lab_tmp = f'{lab}'
-                new_label_list.append(lab_tmp)
-                continue
-            else:
-                lab_tmp = re.sub(r"[^a-zA-Z0-9]", "", lab.lower())
-                lab_tmp = lab_tmp.strip()
-                new_label_list.append(lab_tmp)
-
-        print(f"predict:{new_pred_list}\nlabel:{new_label_list}")
-        for new_pred in new_pred_list:
-            if new_pred in new_label_list:
-                correct = 1/per_score
-            else:
-                wrong += 1/per_score
-                    
-    
-    return abs, correct, wrong
 
 def make_data():
     print("Making dataset")
-    gt_pth = "/home/smjo/KG-gpt2_cronKG/CronQA_data/wikidata_big/"
+    gt_pth = "/nfs_edlab/smjo/KG-gpt2/wikidata_big/"
     split = 'test'
     filename = os.path.join(gt_pth, 'questions/{split}.pickle'.format(split=split) )
     questions = pickle.load(open(filename, 'rb'))
@@ -415,29 +385,31 @@ if __name__ == "__main__":
     iter_limit = 10
 
     for order,qa_list in enumerate(qa_list_dict):
+
         qid_list = qid_list_dict[order]
         for pr_id,main_prompt in enumerate(prompt_list):
-            with open(os.path.join(save_path, f"result_{pr_id}.txt"),'a') as f:
-                for qid in qid_list:
+            if pr_id==0 : continue
+            for qid in qid_list: 
+            #for qid in qid_list[]
+                print(f"Qid:{qid}")
+                
+                question = qa_list[qid]['question']
+                label = qa_list[qid]['answers']
+                entities = qa_list[qid]['given_entities']
+                
+                #f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                #f.write(f"GT entity:{entities}")
+                
+                prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
 
-                    print(f"Qid:{qid}")
-                    question = qa_list[qid]['question']
-                    label = qa_list[qid]['answers']
-                    entities = qa_list[qid]['given_entities']
-                    
-                    f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-                    f.write(f"GT entity:{entities}")
-                    
-                    prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+                prediction, iter_num = reasoning(args.model, question,prompt, label,iter_limit,KG = full_KG, entities=entities)
+                iter_num_list.append(iter_num)
+                
 
-                    prediction, iter_num = reasoning(args.model, question,prompt, label,iter_limit,f, KG = full_KG, entities=entities)
-                    iter_num_list.append(iter_num)
-                    
-
-                    ff = open(os.path.join(save_path, f"only_result_{pr_id}.csv"),'a')
-                    writer= csv.writer(ff)
-                    writer.writerow([qid, prediction, label])
-                    ff.close()
+                ff = open(os.path.join(save_path, f"only_result_{pr_id}.csv"),'a')
+                writer= csv.writer(ff)
+                writer.writerow([qid, prediction, label])
+                ff.close()
                     
 
 

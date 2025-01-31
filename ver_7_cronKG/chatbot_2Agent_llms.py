@@ -16,7 +16,7 @@ from collections import defaultdict
 from difflib import get_close_matches
 
             
-def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f,sub_prompt ,KG, entities):
+def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, sub_prompt ,KG, entities):
             
     chatbot = LLMBot(model, temperature=0.95, top_p=0.95, max_tokens=2000)
    
@@ -32,7 +32,7 @@ def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f,sub_promp
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state, new_entites = client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG, gold_entities)
+            prompt, result, triples, relations, get_rel_state, new_entites = client_answer(claim,subagent,response, label, gold_set,gold_relations,sub_prompt, KG, gold_entities)
             
             if len(triples) > 0:
                 gold_set+=triples
@@ -41,8 +41,8 @@ def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f,sub_promp
             if len(new_entites)>0:
                 gold_entities+=new_entites 
         
-        if i>0:    
-            f.write(prompt)
+        #if i>0:    
+        #    f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -50,8 +50,8 @@ def reasoning(model,subagent,claim,iter_limit,initial_prompt, label, f,sub_promp
 
         # Generate and Print the Response from ChatBot
         response = chatbot.generate_response(prompt)
-        f.write(f"\n************************************Iteration:{i}***********************************")
-        f.write("\n"+response)
+        #f.write(f"\n************************************Iteration:{i}***********************************")
+        #f.write("\n"+response)
     
     if i==iter_limit-1:
         result = 'Abstain'   
@@ -93,7 +93,7 @@ def split_functions(response):
         
     return helper_ftn_calls, prompt
     
-def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_prompt, KG, gold_entities):
+def client_answer(claim,subagent,response, label, gold_set,gold_relations,sub_prompt, KG, gold_entities):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -129,10 +129,10 @@ def client_answer(claim,subagent,response, label, gold_set,gold_relations,f,sub_
         
             
         elif 'Verification' in helper_str:
-            sub_answer, case, result = verification(subagent,claim,gold_set,gold_relations,f, sub_prompt)
+            sub_answer, case, result = verification(subagent,claim,gold_set,gold_relations,sub_prompt)
             prompt += "\n" +sub_answer
             
-            f.write(f"CASE COUNT:{case}")
+            #f.write(f"CASE COUNT:{case}")
             #return prompt, prediction, []
         else:
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
@@ -233,8 +233,8 @@ def exploreKGs(helper_str, KG, gold_entities):
     return triples, result_prompt
 
 
-def verification(subagent,claim,gold_set,gold_relations,f, sub_prompt):
-    sub_response, case, prediction =sa.feedback(subagent,claim,gold_set,gold_relations,f,sub_prompt)
+def verification(subagent,claim,gold_set,gold_relations,sub_prompt):
+    sub_response, case, prediction =sa.feedback(subagent,claim,gold_set,gold_relations,sub_prompt)
     return sub_response, case, prediction
 
 def score(predict, label,f):
@@ -371,7 +371,7 @@ if __name__ == "__main__":
     parser.add_argument("--prompt", type=str, default='pr_1')
     parser.add_argument("--percentage", type=int, default=10)
     parser.add_argument("--model", type = str, default='mistral-small')
-    parser.add_argument("--subagent", type=str, default='gpt-4o-mini')
+    parser.add_argument("--subagent", type=str, default='gpt-4o')
     args = parser.parse_args()
     
     if args.prompt =='pr_1': 
@@ -429,33 +429,29 @@ if __name__ == "__main__":
         for qa_list in qa_list_dict:
             qid_list = qid_list_dict[order]
             
-            with open(os.path.join(save_path, f"result.txt"),'a') as f:
-                for qid in qid_list:
+            #with open(os.path.join(save_path, f"result.txt"),'a') as f:
+            for qid in qid_list:
 
-                    print(f"Qid:{qid}")
-                    question = qa_list[qid]['question']
-                    label = qa_list[qid]['answers']
-                    entities = qa_list[qid]['given_entities']
-                    
-                    f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
-                    f.write(f"GT entity:{entities}")
-                    
-                    prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
-                    
-                    prediction, iter_num = reasoning(args.model, args.subagent, question, iter_limit,prompt, label,f,sub_prompt,KG = full_KG, entities=entities)
-                    
-                    abs, correct, wrong= score(str(prediction), label,f)
-                    total_correct += correct
-                    total_wrong += wrong
-                    total_abs += abs
-                    iter_num_list.append(iter_num)
-                    
-                    ff = open(os.path.join(save_path, f"Only_answer.csv"),'a')
-                    writer= csv.writer(ff)
-                    writer.writerow([qid, prediction, label])
-                    ff.close()
-                    
-            order +=1
+                print(f"Qid:{qid}")
+                question = qa_list[qid]['question']
+                label = qa_list[qid]['answers']
+                entities = qa_list[qid]['given_entities']
+                
+                #f.write(f"\n\n\nQid:{qid}\nQuestion :{question}")
+                #f.write(f"GT entity:{entities}")
+                
+                prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+                
+                prediction, iter_num = reasoning(args.model, args.subagent, question, iter_limit,prompt, label,sub_prompt,KG = full_KG, entities=entities)
+                
+
+                
+                ff = open(os.path.join(save_path, f"Only_answer.csv"),'a')
+                writer= csv.writer(ff)
+                writer.writerow([qid, prediction, label])
+                ff.close()
+                
+        order +=1
 
                     
 

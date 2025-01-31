@@ -221,7 +221,9 @@ def exploreKGs(helper_str,gold_entities):
                 
 
 def verification(helper_str, label):
-    
+    result=''
+    if ' ## ' in helper_str:
+        helper_str = helper_str.split(' ## ')[0]
     try : 
         result = helper_str.split("Verification[")[1].split("]")[0]
         prompt = f"\nDone!!Prediction:{result}\nReal label:{label}"
@@ -287,7 +289,7 @@ if __name__ == "__main__":
     iter_num_list=[]
     total_correct,total_wrong, total_abs =0,0,0
     ensemble_answer_list = [['qid','prediction','gt_label']]
-    for qid in qid_list[451::]:
+    for qid in qid_list:
         
         print(f"Qid:{qid}")
         question = questions_dict[qid]

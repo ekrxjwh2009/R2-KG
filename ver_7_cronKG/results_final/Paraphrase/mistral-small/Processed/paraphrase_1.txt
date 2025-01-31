@@ -1,0 +1,29 @@
+
+
+
+Question: What time was Péter Rajczi playing in Barnsley F.C.?
+GT entity: ['Péter Rajczi', 'Barnsley F.C.']
+************************************Iteration:0***********************************
+[Your Task]
+Statement : Let's look the relations linked with given entity.
+Helper function : getRelation['Péter Rajczi'] ## getRelation['Barnsley F.C.']
+[User]
+Execution result :
+Relations_list["Péter Rajczi"] = ['member of sports team']
+Relations_list["Barnsley F.C."] = ['head coach', '~member of sports team']
+************************************Iteration:1***********************************
+[Your Task]
+Statement : The relation '~member of sports team' from 'Péter Rajczi' and 'member of sports team' from 'Barnsley F.C.' look mostly related to the question.
+Helper function : exploreKG['Péter Rajczi']=['member of sports team'] ## exploreKG['Barnsley F.C.']=['~member of sports team']
+[User]
+Execution result :
+['Péter Rajczi', 'member of sports team', 'Barnsley F.C.', '2007', '2007']
+['Barnsley F.C.', '~member of sports team', 'Ryan Williams', '2014', '2015'], ['Barnsley F.C.', '~member of sports team', 'Suad Fileković', '2009', '2009'], ['Barnsley F.C.', '~member of sports team', 'Jonathan Walters', '2003', '2004'], ['Barnsley F.C.', '~member of sports team', 'Neil Cooper', '1979', '1981'], ['Barnsley F.C.', '~member of sports team', 'David Geddis', '1983', '1985'], ['Barnsley F.C.', '~member of sports team', 'Kevin McMahon', '1972', '1973'], ['Barnsley F.C.', '~member of sports team', 'Peter Springett', '1975', '1980'], ['Barnsley F.C.', '~member of sports team', 'Danny Alcock', '2003', '2004'], ['Barnsley F.C.', '~member of sports team', 'Luke Steele', '2008', '2014'], ['Barnsley F.C.', '~member of sports team', 'Kern Miller', '2011', '2012'], ['Barnsley F.C.', '~member of sports team', 'Bobby Archibald', '1932', '1933'], ['Barnsley F.C.', '~member of sports team', 'Colin Walker', '1980', '1983'], ['Barnsley F.C.', '~member of sports team', 'Frederick Mearns', '1909', '1911'], ['Barnsley F.C.', '~member of sports team', 'Steve McAdam', '1980', '1980'], ['Barnsley F.C.', '~member of sports team', 'Geoff Thomas', '1999', '2001'], ['Barnsley F.C.', '~member of sports team', "Jean-Yves M'voto", '2013', '2015'], ['Barnsley F.C.', '~member of sports team', 'Jon Macken', '2008', '2010'], ['Barnsley F.C.', '~member of sports team', 'Gordon Owen', '1984', '1986'], ['Barnsley F.C.', '~member of sports team', 'George Robledo', '1946', '1949'], ['Barnsley F.C.', '~member of sports team', 'Arjan de Zeeuw', '1995', '1999'], ['Barnsley F.C.', '~member of sports team', 'Glynn Hurst', '1994', '1997'], ['Barnsley F.C.', '~member of sports team', 'Robin van der Laan', '1998', '2001'], ['Barnsley F.C.', '~member of sports team', 'Kevin Betsy', '2002', '2004'], ['Barnsley F.C.', '~member of sports team', 'Neil Austin', '2000', '2007'], ['Barnsley F.C.', '~member of sports team', 'Nathan Jarman', '2002', '2007'], ['Barnsley F.C.', '~member of sports team', 'Chris Dagnall', '2012', '2014'], ['Barnsley F.C.', '~member of sports team', 'Dale Tonge', '2003', '2007'], ['Barnsley F.C.', '~member of sports team', 'Tininho', '2008', '2008'], ['Barnsley F.C.', '~member of sports team', 'Tom Forman', '1907', '1910'], ['Barnsley F.C.', '~member of sports team', 'Leonard Thompson', '1917', '1918'], ['Barnsley F.C.', '~member of sports team', 'Gareth Williams', '1991', '1994'], ['Barnsley F.C.', '~member of sports team', 'Keith Brown', '1999', '1999'], ['Barnsley F.C.', '~member of sports team', 'Kyle Nix', '2006', '2006'], ['Barnsley F.C.', '~member of sports team', 'Saša Ilić', '2003', '2004'], ['Barnsley F.C.', '~member of sports team', 'Frank Cornan', '1909', '1910'], ['Barnsley F.C.', '~member of sports team', 'Daniel Bogdanović', '2009', '2010'], ['Barnsley F.C.', '~member of sports team', 'Sean McClare', '1993', '2001'], ['Barnsley F.C.', '~member of sports team', 'Matt Done', '2011', '2013'], ['Barnsley F.C.', '~member of sports team', 'Ken Lambert', '1950', '1952'], ['Barnsley F.C.', '~member of sports team', 'Simon Whaley', '2008', '2008'], ['Barnsley F.C.', '~member of sports team', 'Malcolm Graham', '1964', '1965'], ['Barnsley F.C.', '~member of sports team', 'Andy Evans', '1999', '2001'], ['Barnsley F.C.', '~member of sports team', 'Tommy Ring', '1961', '1963'], ['Barnsley F.C.', '~member of sports team', 'Jeremy Christie', '1999', '2002'], ['Barnsley F.C.', '~member of sports team', "Garry O'Connor", '2010', '2010'], ['Barnsley F.C.', '~member of sports team', 'Joe Dudgeon', '2014', '2015'], ['Barnsley F.C.', '~member of sports team', 'Simon Lowe', '1983', '1984'], ['Barnsley F.C.', '~member of sports team', 'Ian Ironside', '1982', '1987'], ['Barnsley F.C.', '~member of sports team', 'Patrick McDonagh', '1926', '1928'], ['Barnsley F.C.', '~member of sports team', 'Chris Pearce', '1981', '1981']
+************************************Iteration:2***********************************
+[Your Task]
+Statement : We have found the years when Péter Rajczi was a member of Barnsley F.C. from the relation 'member of sports team'.
+Helper function : Verification['2007']
+[User]
+Execution result :
+Done!!Prediction:'2007'
+Real label:[2007]

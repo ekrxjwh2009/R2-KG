@@ -14,7 +14,7 @@ import pickle
 from models import LLMBot
 from difflib import get_close_matches
             
-def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
+def reasoning(model,claim, initial_prompt, label,iter_limit,KG, entities):
             
     chatbot = LLMBot(model, temperature=0.95, top_p=0.95, max_tokens=2000)
 
@@ -31,7 +31,7 @@ def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
         else:
             #prompt = input()
             
-            prompt, result, triples, relations, get_rel_state, new_entities = client_answer(claim,response, label, gold_set,gold_relations,f,KG, gold_entities)
+            prompt, result, triples, relations, get_rel_state, new_entities = client_answer(claim,response, label, gold_set,gold_relations,KG, gold_entities)
             
             if len(triples) > 0:
                 gold_set+=triples
@@ -40,8 +40,8 @@ def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
             if len(new_entities)>0:
                 gold_entities+=new_entities 
         
-        if i>0:    
-            f.write(prompt)
+        #if i>0:    
+        #    f.write(prompt)
         # User can stop the chat by sending 'End Chat' as a Prompt
         if 'Done!!' in prompt:
         
@@ -49,8 +49,8 @@ def reasoning(model,claim, initial_prompt, label,iter_limit, f,KG, entities):
 
         # Generate and Print the Response from ChatBot
         response = chatbot.generate_response(prompt)
-        f.write(f"\n************************************Iteration:{i}***********************************")
-        f.write("\n"+response)
+        #f.write(f"\n************************************Iteration:{i}***********************************")
+        #f.write("\n"+response)
     
     if i==iter_limit-1:
         result = 'Abstain'   
@@ -92,7 +92,7 @@ def split_functions(response):
         
     return helper_ftn_calls, prompt
     
-def client_answer(claim,response, label, gold_set,gold_relations,f, KG,gold_entities):
+def client_answer(claim,response, label, gold_set,gold_relations,KG,gold_entities):
     #prompt, result, triples
     result = None
     #called multi helper functions
@@ -460,7 +460,7 @@ if __name__ == "__main__":
     # 저장된 데이터 처리
     iter_limit=10
     iter_num_list = []
-    for processed in paraphrased_claims[17:]:
+    for processed in paraphrased_claims[1356:]:
         qid = processed['qid']
         paraphrase_claims = processed['claims']
         q = processed['question']
@@ -468,25 +468,26 @@ if __name__ == "__main__":
         label = processed['label']
 
         for p, question in enumerate(paraphrase_claims):
+            print(question)
             # 텍스트 파일 저장
             paraphrase_file = os.path.join(save_path, f"paraphrase_{p}.txt")
             os.makedirs(os.path.dirname(paraphrase_file), exist_ok=True)
-            with open(paraphrase_file, 'w', encoding='utf-8') as f:
-                f.write(f"\n\n\nQuestion: {q}")
-                f.write(f"\nGT entity: {entities}")
+            #with open(paraphrase_file, 'w', encoding='utf-8') as f:
+                #f.write(f"\n\n\nQuestion: {q}")
+                #f.write(f"\nGT entity: {entities}")
 
-                # Reasoning 처리
-                prompt = prompt_oneAgent.pr_1.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
-                prediction, iter_num = reasoning(args.model, question,prompt, label,iter_limit,f, KG = full_KG, entities=entities)
+            # Reasoning 처리
+            prompt = prompt_oneAgent.pr_1.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
+            prediction, iter_num = reasoning(args.model, question,prompt, label,iter_limit,KG = full_KG, entities=entities)
 
-                iter_num_list.append(iter_num)
+            iter_num_list.append(iter_num)
 
-                # 결과 CSV 저장
-                result_csv = os.path.join(save_path, f"only_result_{p}.csv")
-                os.makedirs(os.path.dirname(result_csv), exist_ok=True)
-                with open(result_csv, 'a', newline='', encoding='utf-8') as ff:
-                    writer = csv.writer(ff)
-                    writer.writerow([qid,prediction, label])
+            # 결과 CSV 저장
+            result_csv = os.path.join(save_path, f"only_result_{p}.csv")
+            os.makedirs(os.path.dirname(result_csv), exist_ok=True)
+            with open(result_csv, 'a', newline='', encoding='utf-8') as ff:
+                writer = csv.writer(ff)
+                writer.writerow([qid,prediction, label])
                     
         
 

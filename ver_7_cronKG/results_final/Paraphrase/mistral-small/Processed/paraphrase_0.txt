@@ -1,0 +1,36 @@
+
+
+
+Question: What time was Péter Rajczi playing in Barnsley F.C.?
+GT entity: ['Péter Rajczi', 'Barnsley F.C.']
+************************************Iteration:0***********************************
+Sure, let's start the process.
+
+[Your Task]
+Statement : Let's look the relations linked with given entity.
+Helper function : getRelation['Péter Rajczi'] ## getRelation['Barnsley F.C.']
+[User]
+Execution result :
+Relations_list["Péter Rajczi"] = ['member of sports team']
+Relations_list["Barnsley F.C."] = ['head coach', '~member of sports team']
+************************************Iteration:1***********************************
+Thank you.
+
+[Your Task]
+Statement : The relation 'member of sports team' looks related to the question.
+Helper function : exploreKG['Péter Rajczi']=['member of sports team']
+
+Please provide the result of this execution.
+[User]
+Execution result :
+['Péter Rajczi', 'member of sports team', 'Barnsley F.C.', '2007', '2007']
+************************************Iteration:2***********************************
+Thank you.
+
+[Your Task]
+Statement : We now have the necessary evidence to answer the question.
+Helper function : Verification['2007']
+[User]
+Execution result :
+Done!!Prediction:'2007'
+Real label:[2007]

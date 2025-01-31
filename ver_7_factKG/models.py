@@ -2,7 +2,7 @@ import time
 from openai import OpenAI
 import requests
 
-VLLM_API_BASE_MISTRAL_SMALL = "http://143.248.157.51:8334/v1"       #A60000 *2 안됨. 51서버 공간 부족
+VLLM_API_BASE_MISTRAL_SMALL = "http://143.248.157.142:8334/v1"       #A60000 *2 안됨. 51서버 공간 부족
 VLLM_API_QWEN_14B = "http://143.248.157.142:8334/v1" #A60000 *2
 VLLM_API_QWEN_32B = "" #A6000*3
 VLLM_API_LLAMA_70B = "http://143.248.157.130:8334/v1"   #A6000*4
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
 '''
 
-CUDA_VISIBLE_DEVICES=6,7 python -m vllm.entrypoints.openai.api_server \
+CUDA_VISIBLE_DEVICES=5,6 python -m vllm.entrypoints.openai.api_server \
     --model mistralai/Mistral-Small-Instruct-2409 \
     --tokenizer mistralai/Mistral-Small-Instruct-2409 \
     --tensor-parallel-size 2 \
