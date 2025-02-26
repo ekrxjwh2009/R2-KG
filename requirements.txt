@@ -1,0 +1,6 @@
+openai
+jsonlines
+SPARQLWrapper
+argparse
+python-dotenv
+config

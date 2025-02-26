@@ -1,0 +1,6 @@
+- 서버 주소 다 지우기
+- results_final 폴더 위치 루트로 나오는거 각 폴더에 위치하도록 바꾸기
+- paraphrase, llm 모두 하나로 융합 가능할듯.
+- factkg 데이터셋 경로 고치기
+- readme에 framework 그림 넣기
+- 데이터셋 drive에 올리기. 단, dbpedia에 대해서는 모든 파일에 해당하는 것이 아니라는 것 명시
