@@ -50,7 +50,8 @@ python r2kg_chatbot.py --dataset 'WebQSP' --operator 'gpt-4o-mini' --supervisor 
 This will generate result file in `./[DATASET]/results/dual_agent/` directory.
 
 The output file will be
-- op_{OPERATOR}_sup_{SUPERVISOR}_{PROMPT}_temp_{TEMPERATURE}_topp_{TOP_P}
+- ```op_{OPERATOR}_sup_{SUPERVISOR}_{PROMPT}_temp_{TEMPERATURE}_topp_{TOP_P}.csv``` : Including only results for each dataset
+- ```op_{OPERATOR}_sup_{SUPERVISOR}_{PROMPT}_temp_{TEMPERATURE}_topp_{TOP_P}.txt``` : Includes Operator's workflow
 
 If you want to experiment paraphrase mode, add `-paraphrase` option like below:
 ```sh
