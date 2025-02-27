@@ -1,9 +1,0 @@
-
-
-qid:240, claim:what does [Jenna Fischer] star in?	Correct!
-
-qid:480, claim:what movies was [Sissy Spacek] an actor in?	Correct!
-
-qid:540, claim:what does [Claude Lelouch] act in?	Correct!
-
-qid:600, claim:what does [Esther Furst] appear in?	Correct!

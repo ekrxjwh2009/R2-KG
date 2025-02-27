@@ -1,0 +1,36 @@
+
+
+
+Qid: 1
+Question: I have heard that Mobyland had a successor.GT entity: ['Mobyland']
+************************************Iteration:0************************************
+Statement : First, I need to get relations linked to Mobyland.
+Helper function : getRelation["Mobyland"]
+[User]
+Execution result :
+Relations_list["Mobyland"] = ['locationCity', 'subject', 'successor', 'locationCountry', 'name', '22-rdf-syntax-ns#type', 'homepage', 'keyPeople', 'foundingYear', 'services', 'industry', 'internationally', 'regionServed', 'intl', 'rdf-schema#label', 'service', 'areaServed', 'keyPerson', 'type', 'hypernym', '~name']
+************************************Iteration:1************************************
+Statement : To find out if Mobyland had a successor, I need to explore the graph with the relation 'successor' linked to Mobyland.
+Helper function : exploreKG["Mobyland"]=['successor']
+[User]
+Execution result :
+['Mobyland', 'successor', '"Aero 2"']
+************************************Iteration:2************************************
+Statement : According to the triples, Mobyland had a successor which is "Aero 2". Therefore, the claim is True.
+Helper function : Verification[True]
+
+
+Qid: 2
+Question: At least Dawn Butler had a successor!GT entity: ['Dawn_Butler']
+************************************Iteration:0************************************
+Statement : First, I need to check the relations linked to Dawn_Butler.
+Helper function : getRelation['Dawn_Butler']
+[User]
+Execution result :
+Relations_list["Dawn_Butler"] = ['surname', 'dateOfBirth', 'nationality', 'website', 'subject', 'successor', 'name', 'electionMajority', 'birthPlace', '22-rdf-syntax-ns#type', 'orderInOffice', 'office', 'party', 'homepage', 'birthDate', 'placeOfBirth', 'years', 'shortDescription', 'termStart', '~successor', '~last', 'givenName', 'termEnd', 'predecessor', '~first', 'majority', 'activeYearsStartDate', '~candidate', 'rdf-schema#label', 'primeminister', 'title', '~mp', 'activeYearsEndDate', 'description', 'hypernym', 'birthYear', 'honorificSuffix', 'primeMinister', '~mps']
+************************************Iteration:1************************************
+Statement : To find information about the successor of Dawn Butler, I need to explore the graph with the relation 'successor'.
+Helper function : exploreKG['Dawn_Butler']=['successor']
+[User]
+Execution result :
+Choose other relations based refer to the Relations_list Or follow the format of Entity Dawn_Butler and Relations

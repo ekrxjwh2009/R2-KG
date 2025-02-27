@@ -1,7 +1,0 @@
-result for abstention (without confidenceCheck, start from 3 helper function prompt)
-Abstention method : If equal (ent, rel) pair appears more than 1 times, abstain and quit.
-
-abstention_test.py
-core function : helper_function.py -> exploreKGs_abstain() / class Information() in individual_claim_info.py
-
-Experimented by 3.5-turbo, 4o-mini

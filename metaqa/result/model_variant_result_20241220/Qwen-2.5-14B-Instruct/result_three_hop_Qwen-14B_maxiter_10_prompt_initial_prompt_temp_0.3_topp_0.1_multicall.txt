@@ -1,5 +1,0 @@
-
-
-
-Qid:20
-Question :who starred films for the director of [Flickering Lights]?GT entity:['Flickering Lights']

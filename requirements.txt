@@ -4,3 +4,4 @@ SPARQLWrapper
 argparse
 python-dotenv
 config
+vllm

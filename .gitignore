@@ -1,4 +1,5 @@
 .env
+.todo
 **/wikidata_big
 **/__pycache__/
 **/*.pyc

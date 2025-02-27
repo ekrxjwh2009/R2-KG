@@ -1,0 +1,7 @@
+- 서버 주소 다 지우기
+- 각 QA 데이터셋 경로 고치기 (original repo에서 받아서 호환되는지 체크)
+- 데이터셋 drive에 올리기. 단, dbpedia에 대해서는 모든 파일에 해당하는 것이 아니라는 것 명시
+
+- ensemble / eval 코드 넣기
+
+python chatbot_2Agent_openai.py --dataset 'MetaQA' --model 'gpt-4o-mini' --subagent 'gpt-4o-mini' --prompt 'pr_1' --iter_limit 15 --temperature 0.95 --top_p 0.95

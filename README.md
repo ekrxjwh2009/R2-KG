@@ -14,7 +14,7 @@ This repo provides the source code & data of our paper: [R2-KG: General-Purpose 
 pip install -r requirements.txt
 ```
 
-- make .env file at root directory and add below line
+- make .env file at root directory and add the below line:
 ```
 OPENAI_KEY = <YOUR_OPENAI_API_KEY>
 ```
@@ -28,22 +28,51 @@ QA dataset and fact verification dataset used in R2-KG can be found in below rep
 - [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA)
 
 
-### 1. Knowledge Graphs (KGs)
+### 1. Knowledge Graphs (KGs) Preparation
 Server has to provide appropriate information requested by Opeartor. We used SPARQL endpoint for triple-formed KGs (e.g., WebQSP, FactKG, MetaQA 3-hop). [jena-fuseki](https://github.com/stain/jena-docker?tab=readme-ov-file) provides docker image and instructions for running SPARQL endpoint server.
 
-- [FactKG](https://github.com/jiho283/FactKG): [DBpedia 2015-10 version](https://downloads.dbpedia.org/2015-10/core-i18n/en/) is used as a KG for FactKG. However, there are files that are not relevant to solving FactKG. Also, to ensure a consistent URI format and make it more convenient to use, we have uploaded a preprocessed version of the files [here](). After then, use jena-fuseki to import the data into SPARQL endpoint.
+- [FactKG](https://github.com/jiho283/FactKG): [DBpedia 2015-10 version](https://downloads.dbpedia.org/2015-10/core-i18n/en/) is used as a KG for FactKG. However, there are files that are not relevant to solving FactKG. Also, to ensure a consistent URI format and make it more convenient to use, we have uploaded a preprocessed version of the files [here](). After then, use jena-fuseki to import the data into SPARQL endpoint. Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., 'http://111.222.333.444:port/') in `./FactKG/dbpedia_sparql.py`.
 
-- [MetaQA](https://github.com/yuyuz/MetaQA): For convenience, we also provide preprocessed version of MetaQA KG [here]() (The URIs attached to this preprocessed file are provided for convenience and are not related to the actual data URIs). After then, use jena-fuseki to import the data into SPARQL endpoint.
+- [MetaQA](https://github.com/yuyuz/MetaQA): For convenience, we also provide preprocessed version of MetaQA KG [here]() (The URIs attached to this preprocessed file are provided for convenience and are not related to the actual data URIs). After then, use jena-fuseki to import the data into SPARQL endpoint. Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., 'http://111.222.333.444:port/') in `./MetaQA/movie_sparql.py`.
 
-- [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763): Although original [Freebase](https://developers.google.com/freebase) triples are available here, but [this repo](https://github.com/dki-lab/Freebase-Setup) helps setting up SPARQL endpoint for Freebase much easier. Follow the instructions in the repo (jena-fuseki is not needed here).
+- [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763): Although original [Freebase](https://developers.google.com/freebase) triples are available here, but [this repo](https://github.com/dki-lab/Freebase-Setup) helps setting up SPARQL endpoint for Freebase much easier. Follow the instructions in the repo (jena-fuseki is not needed here). Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., 'http://111.222.333.444:port/') in `./WebQSP/freebase_sparql.py`.
 
-- [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA): You can get all dataset in linked repo. Since CRONQUESTIONS doesn't use triple-form of KG, The preprocessing was done separately within the code. 
+- [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA): You can get all dataset in linked repo. Since CRONQUESTIONS doesn't use triple-form of KG, The preprocessing was done separately within the code. After downloading CRONQUESTIONS, move `/wikidata_big` directory into `./CRONQ` in this repo.
 
 
 
 ## How to Run
-### 
+### 1. Dual-Agent Mode R2-KG
+To run R2-KG as a dual-agent mode (including Operator and Supervisor), employ the following command:
+```sh
+python r2kg_chatbot.py --dataset 'WebQSP' --operator 'gpt-4o-mini' --supervisor 'gpt-4o' --prompt 'pr_1' --iter_limit 15 --temperature 0.95 --top_p 0.95
+```
+This will generate result file in `./[DATASET]/results/dual_agent/` directory.
 
+The output file will be
+- op_{OPERATOR}_sup_{SUPERVISOR}_{PROMPT}_temp_{TEMPERATURE}_topp_{TOP_P}
+
+If you want to experiment paraphrase mode, add `-paraphrase` option like below:
+```sh
+python r2kg_chatbot.py --dataset 'WebQSP' --operator 'gpt-4o-mini' --supervisor 'gpt-4o' --prompt 'pr_1' --iter_limit 15  --temperature 0.95 --top_p 0.95 -paraphrase
+```
+This will automatically generate three result files for each paraphrased sentence.
+
+### 2. Single-Agent Mode R2-KG
+To run R2-KG as a single-agent mode (excluding Supervisor), employ the following command:
+```sh
+python r2kg_chatbot.py --dataset 'WebQSP' --operator 'gpt-4o-mini' --prompt 'pr_1' --iter_limit 15 --temperature 0.95 --top_p 0.95 -single_agent 
+```
+This will generate result file in `./[DATASET]/results/single_agent/` directory.
+
+As mentioned, you can use `-paraphrase` option for additional experiment.
+
+### 3. LLM models
+We used [vllm](https://github.com/vllm-project/vllm) to serve other LLMs (open-source LLMs). To use your local LLMs, modify `[VLLM SERVER URL]` and related codes in `./model.py`.
+
+
+## Evaluation
+###
 
 ## Citation
 You can cite us by:
@@ -59,13 +88,3 @@ You can cite us by:
 }
 ```
 
-
-### VLLM Serving Code
-- 대괄호가 씌워져 있는 parameter의 경우 상황에 따라 자주 바뀌기 때문에 상황에 맞게 parameter 수정 후 대괄호 제거 후 실행
-```
-CUDA_VISIBLE_DEVICES=[6,7] python -m vllm.entrypoints.openai.api_server --model meta-llama/Meta-Llama-3.1-8B-Instruct \
---load-format safetensors --max-model-len 8192 --download-dir /nfs_data_storage/huggingface \
---tensor-parallel-size [2] --port [8043] --dtype bfloat16 --chat-template ./tool_chat_template_llama3.1_json.jinja
-```
-- 실행 시 "http://server_url:server_port/v1" url로 요청 가능
-- test code : /model.py

@@ -1,5 +1,0 @@
-qid,correct,wrong,prediction,gt_label
-20,0.75,0.75,"['trine_dyrholm', 'mads_mikkelsen', 'søren_pilmark', 'nikolaj_lie_kaas', 'peter_palm', 'ulrich_thomsen']","['Mads Mikkelsen', 'Ulrich Thomsen', 'Line Kruse', 'Nikolaj Lie Kaas']"
-40,1.0,0,"['rob_epstein', 'jeffrey_friedman', 'hal_hartley', 'todd_field']","['Jeffrey Friedman', 'Rob Epstein', 'Todd Field', 'Hal Hartley']"
-60,0,1.5,"['1955', '1950', '1960']","['1956', '1958']"
-80,0,1.0,"['fábio_faria', 'grant_sims', 'david_kronenberg']","['John Maybury', 'François Girard', 'Fernando Meirelles']"
