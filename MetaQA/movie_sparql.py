@@ -6,6 +6,7 @@ import re
 
 DATABASE_PATH = "http://143.248.157.135:3333/"
 
+## Store the dataset with the name: "metaqa"
 datasets = ["metaqa"]  
 
 
