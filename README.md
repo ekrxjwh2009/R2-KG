@@ -27,6 +27,7 @@ QA dataset and fact verification dataset used in R2-KG can be found in below rep
 - [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763)
 - [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA)
 
+We've already included proper dataset in each dataset directory (except CRONQUESTIONS, refer to below Knowledge Graphs Preparation for CRONQUESTIONS). Look `/[DATASET]\data` directory.
 
 ### 1. Knowledge Graphs (KGs) Preparation
 Server has to provide appropriate information requested by Opeartor. We used SPARQL endpoint for triple-formed KGs (e.g., WebQSP, FactKG, MetaQA 3-hop). [jena-fuseki](https://github.com/stain/jena-docker?tab=readme-ov-file) provides docker image and instructions for running SPARQL endpoint server.
@@ -37,7 +38,7 @@ Server has to provide appropriate information requested by Opeartor. We used SPA
 
 - [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763): Although original [Freebase](https://developers.google.com/freebase) triples are available here, but [this repo](https://github.com/dki-lab/Freebase-Setup) helps setting up SPARQL endpoint for Freebase much easier. Follow the instructions in the repo (jena-fuseki is not needed here). Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., `http://111.222.333.444:port/`) in `./WebQSP/freebase_sparql.py`.
 
-- [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA): You can get all dataset in linked repo. Since CRONQUESTIONS doesn't use triple-form of KG, The preprocessing was done separately within the code. After downloading CRONQUESTIONS, move `/wikidata_big` directory into `./CRONQ/data` in this repo.
+- [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA): You can get all dataset in linked repo. Since CRONQUESTIONS doesn't use triple-form of KG, The preprocessing was done separately within the code. After downloading CRONQUESTIONS, move `/wikidata_big` directory into `./CRONQ/data` in this repo (create `data` directory in `./CRONQ`).
 
 
 
