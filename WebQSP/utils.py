@@ -41,7 +41,7 @@ def main(args):
     entity_set_dict = {}
     label_set_dict = {}
 
-    with open("/nfs_edlab/jschoi/SPARQL/unified/freebase/WebQSP.test.json", 'r') as f:
+    with open(os.path.join(os.path.dirname(__file__), "./data/WebQSP.test.json"), 'r') as f:
         data = json.load(f)
         questions = data['Questions']
         
@@ -61,7 +61,13 @@ def main(args):
 
             for i in range(3):
                 question = paraphrase_list[i]
-                with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}.txt"),'a') as f:
+
+                if args.single_agent:
+                    result_filename = f"op_{args.operator}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}"
+                else:
+                    result_filename = f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}"
+
+                with open(os.path.join(save_path, f"{result_filename}.txt"),'a') as f:
                     f.write(f"\n\n\nQid: {qid}\nQuestion: {question}")
                     label = label_set_dict[qid]
                     entities = entity_set_dict[qid]
@@ -76,14 +82,19 @@ def main(args):
                     prediction, _ = reasoning((args.operator, args.temperature, args.top_p), args.supervisor, question, args.iter_limit, prompt, sub_prompt, entities, f, info=info)
                     tmp = [qid, str(prediction), str(label)]
 
-                    with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}.csv"),'a') as ff:
+                    with open(os.path.join(save_path, f"{result_filename}.csv"),'a') as ff:
                         writer = csv.writer(ff)
                         writer.writerow(tmp)
     
     else:
         for qid, question in questions_dict.items():
             print(qid, question)
-            with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}.txt"),'a') as f:
+            if args.single_agent:
+                result_filename = f"op_{args.operator}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}"
+            else:
+                result_filename = f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}"
+
+            with open(os.path.join(save_path, f"{result_filename}.txt"),'a') as f:
                 print(f"Qid: {qid}")
                 question = questions_dict[qid]
                 label = label_set_dict[qid]
@@ -99,6 +110,6 @@ def main(args):
                 prediction, _ = reasoning((args.operator, args.temperature, args.top_p), args.supervisor, question, args.iter_limit, prompt, sub_prompt, entities, f, info=info)
                 tmp = [qid, str(prediction), str(label)]
 
-                with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}.csv"),'a') as ff:
+                with open(os.path.join(save_path, f"{result_filename}.csv"),'a') as ff:
                     writer = csv.writer(ff)
                     writer.writerow(tmp)

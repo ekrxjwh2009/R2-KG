@@ -3,3 +3,5 @@
 **/wikidata_big
 **/__pycache__/
 **/*.pyc
+**/results/
+!**/data/

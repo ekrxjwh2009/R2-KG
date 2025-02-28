@@ -10,13 +10,13 @@ sys.path.append(parent_dir)
 
 import prompt_main, prompt_sub, prompt_single
 from paraphraser import paraphrase
-from open.r2kg_chatbot import reasoning
+from r2kg_chatbot import reasoning
 
 def make_data():
     print("Making dataset")
     
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    gt_pth = os.path.join(script_dir, 'wikidata_big')
+    gt_pth = os.path.join(script_dir, './data/wikidata_big')
 
     split = 'test'
     filename = os.path.join(gt_pth, 'questions/{split}.pickle'.format(split=split))
@@ -69,7 +69,7 @@ def make_data():
 
 def parsing_question(question_path, entid2txt_dict, relid2txt_dict):
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    gt_pth = os.path.join(script_dir, 'wikidata_big')
+    gt_pth = os.path.join(script_dir, './data/wikidata_big')
 
     question_path = os.path.join(gt_pth, question_path)
 
@@ -149,7 +149,13 @@ def main(args):
 
                 for i in range(3):
                     question = paraphrase_list[i]
-                    with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}.txt"),'a') as f:
+
+                    if args.single_agent:
+                        result_filename = f"op_{args.operator}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}"
+                    else:
+                        result_filename = f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}"
+
+                    with open(os.path.join(save_path, f"{result_filename}.txt"),'a') as f:
                         print(f"Qid: {qid}\n Question: {question}")
                         label = qa_list[qid]['answers']
                         entities = qa_list[qid]['given_entities']
@@ -161,7 +167,7 @@ def main(args):
                         
                         prediction, _ = reasoning((args.operator, args.temperature, args.top_p), args.supervisor, question, args.iter_limit, prompt, sub_prompt, entities, f, KG=full_KG)
                         
-                        with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}.csv"),'a') as ff:
+                        with open(os.path.join(save_path, f"{result_filename}.csv"),'a') as ff:
                             writer= csv.writer(ff)
                             writer.writerow([qid, prediction, label])
 
@@ -169,7 +175,12 @@ def main(args):
         for order, qa_list in enumerate(qa_list_dict):
             qid_list = qid_list_dict[order]
             for qid in qid_list:
-                with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}.txt"),'a') as f:
+                if args.single_agent:
+                    result_filename = f"op_{args.operator}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}"
+                else:
+                    result_filename = f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}"
+
+                with open(os.path.join(save_path, f"{result_filename}.txt"),'a') as f:
                     print(f"Qid: {qid}")
                     question = qa_list[qid]['question']
                     label = qa_list[qid]['answers']
@@ -182,6 +193,6 @@ def main(args):
                     
                     prediction, _ = reasoning((args.operator, args.temperature, args.top_p), args.supervisor, question, args.iter_limit, prompt, sub_prompt, entities, f, KG=full_KG)
                     
-                    with open(os.path.join(save_path, f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}.csv"),'a') as ff:
+                    with open(os.path.join(save_path, f"{result_filename}.csv"),'a') as ff:
                         writer= csv.writer(ff)
                         writer.writerow([qid, prediction, label])

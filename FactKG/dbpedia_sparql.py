@@ -3,6 +3,8 @@ import itertools
 
 DATABASE_PATH = "http://143.248.157.135:3030/"
 
+## Recommend to divide datasets into below categories since it is too large to store in one dataset.
+## Already divided in the preprcessed data we've provided.
 datasets = ["article_categories",
             "category_labels_clean",
             "disambiguations",

@@ -97,6 +97,9 @@ def reasoning(operator, supervisor, claim, iter_limit, initial_prompt, sub_promp
 
         # Generate and Print the Response from ChatBot
         response = chatbot.generate_response(prompt)
+        if response == None or 'Error' in response:
+            return 'Abstain', i
+        
         f.write(f"\n************************************Iteration:{i}************************************")
         f.write("\n"+response)
     
@@ -354,17 +357,18 @@ def verification(helper_str, supervisor, claim, gold_set, gold_relations, sub_pr
 
     else: # For Dual-Agent mode
         if config.DATASET == 'CRONQUESTIONS':
-            import open.CRONQ.supervisor as sa
+            import CRONQ.supervisor as sa
         elif config.DATASET == 'FactKG':
-            import open.FactKG.supervisor as sa
+            import FactKG.supervisor as sa
         elif config.DATASET == 'WebQSP':
-            import open.WebQSP.supervisor as sa
+            import WebQSP.supervisor as sa
         elif config.DATASET == 'MetaQA':
-            import open.MetaQA.supervisor as sa
+            import MetaQA.supervisor as sa
         sub_response, prediction = sa.feedback(supervisor, claim, gold_set, gold_relations, sub_prompt)
 
-    if config.DATASET == 'WebQSP' or config.DATASET == 'MetaQA':
-        prediction = '[' + prediction + ']'
+    if prediction != None:
+        if config.DATASET == 'WebQSP' or config.DATASET == 'MetaQA':
+            prediction = '[' + prediction + ']' if not str(prediction).startswith("[") else prediction
         
     return sub_response, prediction
 

@@ -51,7 +51,7 @@ def compute_metrics(csv_file, output_csv="filtered_data.csv"):
     
     # Abstain
     def is_abstain(pred):
-        return len(pred) == 0 or "abstain" in pred
+        return len(pred) == 0 or "abstain" in pred or "error" in pred
     
     valid_df = df[~df["final_prediction"].apply(is_abstain)].copy()
     
@@ -101,29 +101,26 @@ def compute_metrics(csv_file, output_csv="filtered_data.csv"):
         "Hit": hit
     }
     
-
+    
 def compute_metrics_ensemble(csv_files, output_csv="./filtered_data2.csv"):
 
-    # 여러 개의 CSV 파일을 로드하여 행 순서를 유지하면서 병합
     dfs = []
     for i, file in enumerate(csv_files):
         try:
             df = pd.read_csv(file, nrows=1360)
             if set(["qid", "prediction", "gt_label"]) - set(df.columns):
-                raise ValueError(f"{file}에 필요한 컬럼이 없습니다. 헤더가 없는 경우를 고려하세요.")
+                raise ValueError(f"{file}CSV doesn't have header columns")
         except (pd.errors.ParserError, ValueError):
             df = pd.read_csv(file, header=None, nrows=1360)
             if df.shape[1] != 3:
-                raise ValueError(f"{file}의 컬럼 개수가 예상과 다릅니다. (예상: 3개)")
+                raise ValueError(f"{file}CSV column number doesn't match")
             df.columns = ["qid", "prediction", "gt_label"]
         df = df.rename(columns={"prediction": f"prediction_{i}"})
         dfs.append(df)
     
-    # 행 순서를 유지하면서 병합 (qid 기준이 아니라 인덱스 기준)
     df = pd.concat(dfs, axis=1, ignore_index=False)
-    df = df.loc[:, ~df.columns.duplicated()].copy()  # 중복되는 컬럼 제거
+    df = df.loc[:, ~df.columns.duplicated()].copy()  
     
-    # gt_label 변환 (리스트 형태로 변환 후 정리)
     def process_labels(label_str):
         try:
             labels = literal_eval(label_str) if isinstance(label_str, str) else label_str
@@ -133,15 +130,15 @@ def compute_metrics_ensemble(csv_files, output_csv="./filtered_data2.csv"):
     
     df["gt_label"] = df["gt_label"].apply(process_labels)
     
-    # prediction 변환 및 gt_label 기반 대체
     def process_predictions(pred, gt_labels):
         try:
             if isinstance(pred, float) or pred.strip().lower() == "abstain":
                 return set(["abstain"])
-            pred_list = literal_eval(pred) if isinstance(pred, str) and pred.startswith("[") else [pred]
+            # pred_list = literal_eval(pred) if isinstance(pred, str) and pred.startswith("[") else [pred]
+            pred_list = literal_eval(pred) if isinstance(pred, str) and pred.startswith("[") else literal_eval('['+pred+']')
             pred_set = set(str(label).strip().lower().replace("'", "") for label in pred_list)
             
-            # gt_label과 가장 유사한 label 찾기
+            # most similar label with ground truth
             matched_preds = set()
             for pred_label in pred_set:
                 closest_match = get_close_matches(pred_label, gt_labels, n=1, cutoff=0.7)
@@ -154,7 +151,6 @@ def compute_metrics_ensemble(csv_files, output_csv="./filtered_data2.csv"):
         prediction_col = f"prediction_{i}"
         df[prediction_col] = df.apply(lambda row: process_predictions(row[prediction_col], row["gt_label"]), axis=1)
     
-    # 공통된 prediction 찾기
     def find_common_prediction(row):
         predictions = [row[f"prediction_{i}"] for i in range(len(csv_files))]
         if any("abstain" in pred for pred in predictions):
@@ -164,24 +160,23 @@ def compute_metrics_ensemble(csv_files, output_csv="./filtered_data2.csv"):
     
     df["final_prediction"] = df.apply(find_common_prediction, axis=1)
     
-    # Abstain 처리 (빈 값이거나 "abstain" 포함된 경우 필터링)
+    # Abstain 
     valid_df = df[df["final_prediction"].apply(lambda x: "abstain" not in x)].copy()
     
-    # 필터링된 데이터 저장
     valid_df.to_csv(output_csv, index=False)
     
-    # coverage 계산
+    # coverage
     total_samples = len(df)
     valid_samples = len(valid_df)
     coverage = valid_samples / total_samples if total_samples > 0 else 0
     
-    # Multi-label F1 score 계산
+    # Multi-label F1 score 
     y_true = valid_df["gt_label"]
     y_pred = valid_df["final_prediction"]
     
     def f1_per_sample(true, pred):
         if len(true) == 0 and len(pred) == 0:
-            return 1  # 완전히 비어있는 경우 F1=1
+            return 1 
         tp = len(true & pred)
         fp = len(pred - true)
         fn = len(true - pred)
@@ -192,7 +187,7 @@ def compute_metrics_ensemble(csv_files, output_csv="./filtered_data2.csv"):
     sample_f1_scores = valid_df.apply(lambda row: f1_per_sample(row["gt_label"], row["final_prediction"]), axis=1)
     sample_wise_f1 = sample_f1_scores.mean()
     
-    # 개선된 Micro-F1 score 계산 (전체 TP, FP, FN을 기반으로 계산)
+    #Micro-F1 score 
     total_tp, total_fp, total_fn = 0, 0, 0
     for true_set, pred_set in zip(y_true, y_pred):
         total_tp += len(true_set & pred_set)
@@ -203,98 +198,32 @@ def compute_metrics_ensemble(csv_files, output_csv="./filtered_data2.csv"):
     recall = total_tp / (total_tp + total_fn) if (total_tp + total_fn) > 0 else 0
     micro_f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
     
-    # Hit metric 계산 (gt_label에 final_prediction 중 하나라도 포함되면 1, 아니면 0)
+    # Hit metric
     hit = valid_df.apply(lambda row: 1 if len(row["gt_label"] & row["final_prediction"]) > 0 else 0, axis=1).mean()
     
-    # 결과 출력
     return {
         "Coverage": coverage,
         "Micro-F1 Score": micro_f1,
         "Sample-wise F1 Score": sample_wise_f1,
         "Hit": hit
-    }    
-
-
-def compute_metrics_ensemble2(file_paths, output_csv="./filtered_data2.csv"):
-    dfs = []
-    for i, file in enumerate(file_paths):
-        df = pd.read_csv(file, header=None)
-        df.columns = [f'sample_id_{i}', f'prediction_{i}', f'gt_label'] 
-        dfs.append(df[[f'prediction_{i}', 'gt_label']])  
-
-
-    df = pd.concat(dfs, axis=1, ignore_index=False)
-    df = df.loc[:, ~df.columns.duplicated()].copy()
-
-
-    def find_common_prediction(row):
-        predictions = [str(row[f'prediction_{i}']) for i in range(len(file_paths))]
-        if any("abstain" in pred for pred in predictions):
-            return set(["abstain"])
-        common_preds = set.intersection(*map(set, predictions))
-        return common_preds if common_preds else set(["abstain"])
-
-    df["final_prediction"] = df.apply(find_common_prediction, axis=1)
-
-    # Abstain 
-    valid_df = df[df["final_prediction"].apply(lambda x: "abstain" not in x)].copy()
-    valid_df = df[df["final_prediction"].apply(lambda x: "Abstain" not in x)].copy()
-
-    valid_df.to_csv("filtered_data3.csv", index=False)
-    print(len(df), len(valid_df))
-    # coverage 
-    total_samples = len(df)
-    valid_samples = len(valid_df)
-    coverage = valid_samples / total_samples if total_samples > 0 else 0
-
-    # Multi-label F1 score 
-    y_true = valid_df["gt_label"]  
-
-    def f1_per_sample(true, pred):
-        print(set(true))
-        print(set(pred))
-        if len(true) == 0 and len(pred) == 0:
-            return 1 
-        tp = len(set(true) & set(pred))
-        fp = len(set(pred) - set(true))
-        fn = len(set(true) - set(pred))
-        precision = tp / (tp + fp) if (tp + fp) > 0 else 0
-        recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-        return 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-
-    sample_f1_scores = valid_df.apply(lambda row: f1_per_sample(row["gt_label"], row["final_prediction"]), axis=1)
-    sample_wise_f1 = sample_f1_scores.mean()
-
-    #Micro-F1 score 
-    total_tp, total_fp, total_fn = 0, 0, 0
-    for true_set, pred_set in zip(y_true, valid_df["final_prediction"]):
-        true_set, pred_set = set(true_set), set(pred_set)
-        total_tp += len(true_set & pred_set)
-        total_fp += len(pred_set - true_set)
-        total_fn += len(true_set - pred_set)
-
-    precision = total_tp / (total_tp + total_fp) if (total_tp + total_fp) > 0 else 0
-    recall = total_tp / (total_tp + total_fn) if (total_tp + total_fn) > 0 else 0
-    micro_f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-
-    # Hit metric 
-    hit = valid_df.apply(lambda row: 1 if len(set(row["gt_label"]) & set(row["final_prediction"])) > 0 else 0, axis=1).mean()
-
-
-    metrics = {
-        "Coverage": coverage,
-        "Micro-F1 Score": micro_f1,
-        "Sample-wise F1 Score": sample_wise_f1,
-        "Hit": hit
     }
-    print(metrics)
-    
-    return
 
 
     
 
 # Example
-metrics = compute_metrics_ensemble(["./results/single_agent/op_gpt-4o-mini_sup_gpt-4o_iter_15_pr_1_temp_0.95_topp_0.95.csv", "./results/single_agent/op_gpt-4o-mini_sup_gpt-4o_iter_15_pr_1_temp_0.95_topp_0.95.csv", "./results/single_agent/op_gpt-4o-mini_sup_gpt-4o_iter_15_pr_1_temp_0.95_topp_0.95.csv"])
+#For 2agent method 
 # metrics = compute_metrics("./results/single_agent/op_gpt-4o-mini_sup_gpt-4o_iter_15_pr_1_temp_0.95_topp_0.95.csv")
+metrics = compute_metrics("/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/2Agent/mistral-small/sub_gpt-4o/result_pr1/Only_answer.csv")
 print(metrics)
+#For Enesmeble methods, they make 3 files for each 3 trials.
+# metrics = compute_metrics_ensemble(["/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/multi_Prompts/gpt-4o-mini/only_result_0.csv", 
+#                                     "/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/multi_Prompts/gpt-4o-mini/only_result_1.csv", 
+#                                     "/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/multi_Prompts/gpt-4o-mini/only_result_2.csv"])
+metrics = compute_metrics_ensemble(["/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/multi_Prompts/gpt-4o-mini/only_result_0.csv", 
+                                    "/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/multi_Prompts/gpt-4o-mini/only_result_1.csv", 
+                                    "/nfs_edlab/smjo/KG-gpt2/ver_7_cronKG/results_final/multi_Prompts/gpt-4o-mini/only_result_2.csv"])
+print(metrics)
+
+
+
