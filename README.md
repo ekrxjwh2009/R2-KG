@@ -26,7 +26,7 @@ QA dataset and fact verification dataset used in R2-KG can be found in below rep
 - [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763)
 - [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA)
 
-We've already included proper dataset in each dataset directory (except CRONQUESTIONS, refer to below Knowledge Graphs Preparation for CRONQUESTIONS). Look `/[DATASET]\data` directory.
+We've already included proper dataset in each dataset directory (except CRONQUESTIONS, refer to below Knowledge Graphs Preparation for CRONQUESTIONS). Look `/[DATASET]/data` directory.
 
 ### 1. Knowledge Graphs (KGs) Preparation
 Server has to provide appropriate information requested by Opeartor. We used SPARQL endpoint for triple-formed KGs (e.g., WebQSP, FactKG, MetaQA 3-hop). [jena-fuseki](https://github.com/stain/jena-docker?tab=readme-ov-file) provides docker image and instructions for running SPARQL endpoint server.
