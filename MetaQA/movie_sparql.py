@@ -4,7 +4,7 @@ from tqdm import tqdm
 import itertools
 import re
 
-DATABASE_PATH = "http://143.248.157.135:3333/"
+DATABASE_PATH = "[SPARQL SERVER URL]"
 
 ## Store the dataset with the name: "metaqa"
 datasets = ["metaqa"]  

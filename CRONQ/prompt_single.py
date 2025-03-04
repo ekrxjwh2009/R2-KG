@@ -189,7 +189,6 @@ Let's start the process.
 
 """
 
-
 pr_3 = """
 Your task is finding proper labels for given claim based on the graph data without your base knowledge.
 You can use below helper functions to find the evidence for finding labels.

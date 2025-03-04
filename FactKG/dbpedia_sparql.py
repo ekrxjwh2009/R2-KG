@@ -1,10 +1,11 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 import itertools
 
-DATABASE_PATH = "http://143.248.157.135:3030/"
+DATABASE_PATH = "[SPARQL SERVER URL]"
 
 ## Recommend to divide datasets into below categories since it is too large to store in one dataset.
 ## Already divided in the preprcessed data we've provided.
+## If you modify the name of the dataset, also modify the below list.
 datasets = ["article_categories",
             "category_labels_clean",
             "disambiguations",
@@ -332,7 +333,6 @@ def getTriplesFromEntity(entity, dataset = "all"):
     # Convert tuples back to lists
     unique_list = [list(i) for i in unique_list]
 
-    # print(unique_list)
     return unique_list
 
 

@@ -58,13 +58,13 @@ def main(args):
                     result_filename = f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}"
 
                 with open(os.path.join(save_path, f"{result_filename}.txt"),'a') as f:
-                    print(f"Qid: {qid}")
+                    print(f"Qid: {qid}\nQuestion: {question}")
                     label = label_set_dict[qid]
                     entities = entity_set_dict[qid]
 
                     info = Information(entities[0])
 
-                    f.write(f"\n\n\nQid: {qid}\nQuestion: {question}")
+                    f.write(f"\n\n\nQid: {qid}\nQuestion: {question}\n")
                     f.write(f"GT entity: {entities}")
 
                     prompt = main_prompt.replace('<<<<CLAIM>>>>', question).replace('<<<<GT_ENTITY>>>>', str(entities))

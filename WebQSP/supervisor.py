@@ -10,7 +10,6 @@ root_dir = os.path.dirname(os.path.dirname(current_dir))
 sys.path.append(root_dir)
 load_dotenv()
 
-# GITIGNORE WHEN MAKING REPO PUBLIC
 openai.api_key = os.getenv('OPENAI_KEY')
 
 client = OpenAI(
@@ -42,7 +41,7 @@ def feedback(supervisor, claim, gold_set, gold_relations, sub_prompt):
         try :  
             response = client.chat.completions.create(model=engine, messages=conversation, temperature=0.95, top_p=0.95)
             assistant_response = response.choices[0].message.content.strip()
-            print(assistant_response)
+            # print(assistant_response)
             
             try:
                 sub_statement = assistant_response.split("Statement")[1].split("Evaluation")[0].strip()
@@ -61,7 +60,6 @@ def feedback(supervisor, claim, gold_set, gold_relations, sub_prompt):
                     sub_response = "Done!!"
                     prediction = sub_result.split('Executable(')[1].split(")")[0]
                     prediction = list(set(ast.literal_eval(prediction)))
-                    print('pred : ',prediction)
                     break  # Ensure the loop exits
 
             except Exception as e:

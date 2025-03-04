@@ -191,7 +191,6 @@ Let's start the process.
 
 """
 
-
 pr_3 = """
 Your task is finding proper labels for given claim based on the graph data without your base knowledge.
 You can use below helper functions to find the evidence for finding labels.
@@ -301,25 +300,6 @@ Let's start the process.
 
 """
 
-
-original_prompt = """
-Your task is to answer the following questions. You can give multiple answers if you think the question has several answers.
-There are two types of question, If the question asks the time, you should give answer as year.
-If the question asks entity(object), you should give answer as noun.
-You shoud give the answer as list format.
-
-For example)
-Question: Which year John Nauckhoff got Order of Charles XIII?
-Your answer : [1928]
-
-Question : Who were the players who played in Torino with Pietro Mariani
-Your answer : [Carlo Borghi, Diego Fuser, Fortunato Torrisi, Giorgio Carrera, Silvano Benedetti, Fabrizio Lorieri, Giancarlo Corradini, Massimo Brambati, Toni Polster, Alessandro Bonesso, Giorgio Venturin, Maurizio Gridelli, Silvio Picci]
-
-Now, it's your turn.
-Question : <<<Question>>>
-Your answer : 
-
-"""
 
 paraphrase_prompt = """
 You are the paraphraser. Rewrite the following claim in a more formal tone, keeping the core idea intact.

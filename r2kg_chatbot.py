@@ -4,7 +4,6 @@ from openai import OpenAI
 import argparse
 import utils
 import config
-# from prompt import initial_prompt, pr1_singlecall
 from dotenv import load_dotenv
 from model import LLMBot
 
@@ -14,7 +13,6 @@ root_dir = os.path.dirname(current_dir)
 sys.path.append(root_dir)
 load_dotenv()
 
-# GITIGNORE WHEN MAKING REPO PUBLIC
 openai.api_key = os.getenv('OPENAI_KEY')
 
 client = OpenAI(
@@ -89,7 +87,7 @@ def reasoning(operator, supervisor, claim, iter_limit, initial_prompt, sub_promp
                 gold_entities += new_entites  
         
         if 'Done!!' in prompt:
-            print(result)
+            print(f"Prediction : {result}")
             break
         
         if i > 0:    
@@ -171,7 +169,6 @@ def client_answer(claim, supervisor, response, gold_set, gold_relations, sub_pro
         elif 'Verification' in helper_str:
             sub_answer, result = verification(helper_str, supervisor, claim, gold_set, gold_relations, sub_prompt)
             prompt += "\n" +sub_answer
-            # print(prompt)
             
         else:
             prompt += '\nYou gave wrong format. Call the helper function again follow the right format'
@@ -243,8 +240,6 @@ def exploreKGs(helper_str, gold_entities, KG, info):
         relations = helper_str.split('=[')[1].split(']')[0].strip().split(', ')
         #Entity matching
         matched_entity = utils.match_and_replace_single(ent, gold_entities)
-        # print(f"Before :{ent}, matched:{matched_entity}")
-
 
         if config.DATASET == 'CRONQUESTIONS':
             subgraphs = KG[matched_entity]
@@ -311,7 +306,6 @@ def exploreKGs(helper_str, gold_entities, KG, info):
                 existing_relations = db.getRelationsFromEntity(ent)
                 if (rel not in existing_relations) and ('~' + rel) not in existing_relations:
                     result_prompt += f"The relation you chose '{rel}' does not exist."
-                    # result_prompt += 'Relations_list["' + ent + '"] = ' + str(existing_relations)
                     continue
 
                 tails = []
@@ -349,8 +343,6 @@ def verification(helper_str, supervisor, claim, gold_set, gold_relations, sub_pr
         
         try: 
             prediction = helper_str.split("Verification[")[1].split("]")[0]
-            # if config.DATASET == 'WebQSP' or config.DATASET == 'MetaQA':
-            #     sub_response =
             sub_response = f"\nDone!!\nPrediction:{prediction}"
         except:
             sub_response = '\nYou gave wrong format. Call the verification function again follow the right format'

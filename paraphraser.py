@@ -11,7 +11,6 @@ root_dir = os.path.dirname(current_dir)
 sys.path.append(root_dir)
 load_dotenv()
 
-# GITIGNORE WHEN MAKING REPO PUBLIC
 openai.api_key = os.getenv('OPENAI_KEY')
 
 client = OpenAI(
@@ -21,7 +20,6 @@ client = OpenAI(
 def paraphrase(claim, paraphrase_prompt):
     
     engine = "gpt-4o-2024-08-06"
-    # engine = "gpt-4o-mini-2024-07-18"
 
     conversation = [{"role": "system", "content": "You are a helpful assistant."}]
     prompt = paraphrase_prompt.replace('<<<<CLAIM>>>>', claim)
@@ -38,7 +36,7 @@ def paraphrase(claim, paraphrase_prompt):
             return matches
 
         except openai.APIError as e:
-                #Handle API error here, e.g. retry or log
+                # Handle API error here, e.g. retry or log
                 print(f"OpenAI API returned an API Error: {e}")
                 continue
     

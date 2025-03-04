@@ -302,7 +302,6 @@ Given entity: <<<<GT_ENTITY>>>>
 
 """
 
-
 pr_2 = """
 Your task is finding proper labels for given claim based on the graph data without your base knowledge.
 You can use one of the helper functions below to find the evidence for finding labels.

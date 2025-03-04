@@ -1,4 +1,3 @@
-
 # R2-KG: General-Purpose Dual-Agent Framework for Reliable Reasoning on Knowledge Graphs
 This repo provides the source code & data of our paper: [R2-KG: General-Purpose Dual-Agent Framework for Reliable Reasoning on Knowledge Graphs](https://arxiv.org/abs/2502.12767) (Arxiv 2025).
 
@@ -36,7 +35,7 @@ Server has to provide appropriate information requested by Opeartor. We used SPA
 
 - [MetaQA](https://github.com/yuyuz/MetaQA): For convenience, we also provide preprocessed version of MetaQA KG [here](https://drive.google.com/drive/folders/1tbhIadnO4jPDQh98uGZ_vryD3ACSBKGp?usp=drive_link) (The URIs attached to this preprocessed file are provided for convenience and are not related to the actual data URIs). After then, use jena-fuseki to import the data into SPARQL endpoint (use the names of dataset mentioned in `./MetaQA/movie_sparql.py`). Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., `http://111.222.333.444:port/`) in `./MetaQA/movie_sparql.py`.
 
-- [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763): Although original [Freebase](https://developers.google.com/freebase) triples are available here, but [this repo](https://github.com/dki-lab/Freebase-Setup) helps setting up SPARQL endpoint for Freebase much easier. Follow the instructions in the repo (jena-fuseki is not needed here). Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., `http://111.222.333.444:port/`) in `./WebQSP/freebase_sparql.py`.
+- [WebQSP](https://www.microsoft.com/en-us/download/details.aspx?id=52763): Although original [Freebase](https://developers.google.com/freebase) triples are available here, but [this repo](https://github.com/dki-lab/Freebase-Setup) helps setting up SPARQL endpoint for Freebase much easier. Follow the instructions in the repo (jena-fuseki is not needed here). Finally, replace `[SPARQL SERVER URL]` to your database path (e.g., `http://111.222.333.444:port/sparql`) in `./WebQSP/freebase_sparql.py`.
 
 - [CRONQUESTIONS](https://github.com/apoorvumang/CronKGQA): You can get all dataset in linked repo. Since CRONQUESTIONS doesn't use triple-form of KG, The preprocessing was done separately within the code. After downloading CRONQUESTIONS, move `/wikidata_big` directory into `./CRONQ/data` in this repo (create `data` directory in `./CRONQ`).
 
@@ -74,7 +73,10 @@ We used [vllm](https://github.com/vllm-project/vllm) to serve other LLMs (open-s
 
 
 ## Evaluation
-###
+For evaluation, each dataset directory has `metric.py` file for metrics used for the evaluation. This file shows metric values ​​for a single file, and also the resulting metric values ​​when strict self-consistency is applied to multiple files. You can use the path of the file to be evaluated when running and the path of the file to be set as the result file as follows:
+```sh
+python metric.py [FILE_1] [FILE_2] [FILE_3] ... [FILE_N] [OUTPUTFILEPATH]
+```
 
 ## Citation
 You can cite us by:

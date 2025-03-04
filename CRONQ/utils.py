@@ -30,13 +30,13 @@ def make_data():
     relid2txt = open(relid_2_txt_pth,'r').readlines()
 
     entid2txt_dict, relid2txt_dict = {},{}
-    non_exist_ent, non_exist_rel = 0,0
+    non_exist_ent, non_exist_rel = 0, 0
     for line in entid2txt:
         line = line.rstrip()
         try :
             id, ent = line.split('\t')
         except :
-            non_exist_ent+=1
+            non_exist_ent += 1
             continue
         entid2txt_dict[id] = ent
         
@@ -45,7 +45,7 @@ def make_data():
         try: 
             id, rel = line.split('\t')
         except :
-            non_exist_rel+=1
+            non_exist_rel += 1
             continue
         relid2txt_dict[id] = rel
         
@@ -57,10 +57,10 @@ def make_data():
         try: 
             head = entid2txt_dict[head_id]
             rel = relid2txt_dict[rel_id]
-            inverse_rel = '~'+rel
+            inverse_rel = '~' + rel
             tail = entid2txt_dict[tail_id]
         except:
-            non_exist_graph+=1
+            non_exist_graph += 1
             continue
         full_KG[head].append([head, rel, tail ,start_time, end_time])
         full_KG[tail].append([tail, inverse_rel, head, start_time, end_time])
@@ -156,11 +156,11 @@ def main(args):
                         result_filename = f"op_{args.operator}_sup_{args.supervisor}_iter_{args.iter_limit}_{args.prompt}_temp_{args.temperature}_topp_{args.top_p}_paraphrase_{i}"
 
                     with open(os.path.join(save_path, f"{result_filename}.txt"),'a') as f:
-                        print(f"Qid: {qid}\n Question: {question}")
+                        print(f"Qid: {qid}\nQuestion: {question}")
                         label = qa_list[qid]['answers']
                         entities = qa_list[qid]['given_entities']
                         
-                        f.write(f"\n\n\nQid: {qid}\nQuestion: {question}")
+                        f.write(f"\n\n\nQid: {qid}\nQuestion: {question}\n")
                         f.write(f"GT entity: {entities}")
                         
                         prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))
@@ -186,7 +186,7 @@ def main(args):
                     label = qa_list[qid]['answers']
                     entities = qa_list[qid]['given_entities']
                     
-                    f.write(f"\n\n\nQid: {qid}\nQuestion: {question}")
+                    f.write(f"\n\n\nQid: {qid}\nQuestion: {question}\n")
                     f.write(f"GT entity: {entities}")
                     
                     prompt = main_prompt.replace('<<<Question>>>', question).replace('<<<Entity set>>>', str(entities))

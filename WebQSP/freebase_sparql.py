@@ -2,7 +2,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 import itertools
 import re
 
-DATABASE_PATH = "http://143.248.157.130:3003/sparql"
+DATABASE_PATH = "[SPARQL SERVER URL]"
 
 prefix = "PREFIX ns: <http://rdf.freebase.com/ns/>\nPREFIX nsk: <http://rdf.freebase.com/key/>"
 prefix_dict = {'ns': 'http://rdf.freebase.com/ns/',

@@ -129,7 +129,6 @@ Triple sets : <<<<Triple set>>>>
 Relations of Entity : <<<<GOLD RELATIONS>>>>
 """
 
-
 pr_3 ="""
 You are the evaluator. I will show you a claim and a triple set extracted from a graph. 
 Based on the given triple set and relation list of each entity, find proper labels for given question.

@@ -5,3 +5,4 @@ argparse
 python-dotenv
 config
 vllm
+pandas
