@@ -1,0 +1,20 @@
+name: r2kg
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    # Core dependencies (fast installation)
+    - openai
+    - jsonlines
+    - SPARQLWrapper
+    - python-dotenv
+    - config
+    - pandas
+    - tqdm
+    - rdflib
+    - argparse
+    # vLLM - install separately if needed:
+    # pip install vllm

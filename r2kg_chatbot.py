@@ -200,8 +200,11 @@ def getRelations(helper_str, gold_entities, KG, info):
             relations += db.getRelationsFromEntity(matched_entity)
             relations += db.getRelationsFromEntity('"' + matched_entity + '"')
         
-        elif config.DATASET == 'WebQSP':
-            import WebQSP.freebase_sparql as db
+        elif config.DATASET == 'WebQSP' or config.DATASET == 'CWQ':
+            if config.DATASET == 'WebQSP':
+                import WebQSP.freebase_sparql as db
+            elif config.DATASET == 'CWQ':
+                import CWQ.freebase_sparql as db
             if entity in info.mid_dict.keys(): mid = info.mid_dict[entity]
             else: raise NotImplementedError
 
@@ -283,8 +286,11 @@ def exploreKGs(helper_str, gold_entities, KG, info):
                 for tail in tails:
                     triples.append([matched_entity, rel, tail])
 
-        elif config.DATASET == 'WebQSP':
-            import WebQSP.freebase_sparql as db
+        elif config.DATASET == 'WebQSP' or config.DATASET == 'CWQ':
+            if config.DATASET == 'WebQSP':
+                import WebQSP.freebase_sparql as db
+            elif config.DATASET == 'CWQ':
+                import CWQ.freebase_sparql as db
             ent_mid = info.mid_dict[ent]
 
             for rel in relations:
@@ -354,12 +360,14 @@ def verification(helper_str, supervisor, claim, gold_set, gold_relations, sub_pr
             import FactKG.supervisor as sa
         elif config.DATASET == 'WebQSP':
             import WebQSP.supervisor as sa
+        elif config.DATASET == 'CWQ':
+            import CWQ.supervisor as sa
         elif config.DATASET == 'MetaQA':
             import MetaQA.supervisor as sa
         sub_response, prediction = sa.feedback(supervisor, claim, gold_set, gold_relations, sub_prompt)
 
     if prediction != None:
-        if config.DATASET == 'WebQSP' or config.DATASET == 'MetaQA':
+        if config.DATASET == 'WebQSP' or config.DATASET == 'CWQ' or config.DATASET == 'MetaQA':
             prediction = '[' + prediction + ']' if not str(prediction).startswith("[") else prediction
         
     return sub_response, prediction
@@ -395,6 +403,10 @@ if __name__ == "__main__":
         import WebQSP.utils as webqsp
         webqsp.main(args)
     
+    elif args.dataset == 'CWQ':
+        import CWQ.utils as cwq
+        cwq.main(args)
+        
     elif args.dataset == 'MetaQA':
         import MetaQA.utils as metaqa
         metaqa.main(args)
