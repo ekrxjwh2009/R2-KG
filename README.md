@@ -9,7 +9,7 @@ This is the official repository provides the source code & data of our paper: [R
 
 ## Requirements
 - Required libraries for R2-KG can be found in `environment.yml`. Use conda environment to install those libraries.
-- Install vllm seperately if you want to run r2kg on a local LLM environment.
+- Install vllm seperately if you want to run R2-KG on a local LLM environment.
 ```
 conda env create -f environment.yml
 conda activate r2kg
